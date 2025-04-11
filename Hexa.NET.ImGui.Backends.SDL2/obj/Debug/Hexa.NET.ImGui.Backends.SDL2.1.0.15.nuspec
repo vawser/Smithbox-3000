@@ -11,7 +11,7 @@
     <description>A .NET wrapper for the Dear ImGui (1.91.9b) library backend SDL2.</description>
     <copyright>Copyright (c) 2024 Juna Meinhold</copyright>
     <tags>ImGui Backends SDL2 UI Immidate GUI Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows macOS Android Bindings Wrapper Native</tags>
-    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="c3c4365e77cd05393c60f0d5e900b1d0a5b72256" />
+    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="87fe757bda3e23be8e16fd69b2fccf4d46be0f01" />
     <dependencies>
       <group targetFramework="net6.0">
         <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
