@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2024 Juna Meinhold")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A .NET wrapper for the Dear ImGui (1.91.9b) library backend SDL3.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.11")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87fe757bda3e23be8e16fd69b2fccf4d46be0f01")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb18054c153848cb4276056167d9a5da29eeb6f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImGui.Backends.SDL3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImGui.Backends.SDL3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.11")]

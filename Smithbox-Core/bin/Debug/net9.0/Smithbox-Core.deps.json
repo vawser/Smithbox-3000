@@ -1,0 +1,433 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Smithbox-Core/1.0.0": {
+        "dependencies": {
+          "Hexa.NET.DebugDraw": "2.3.2",
+          "Hexa.NET.ImGui": "2.2.7",
+          "Hexa.NET.ImGui.Backends": "1.0.15",
+          "Hexa.NET.ImGui.Backends.GLFW": "1.0.15",
+          "Hexa.NET.ImGui.Backends.SDL2": "1.0.15",
+          "Hexa.NET.ImGuizmo": "2.2.7",
+          "Hexa.NET.ImNodes": "2.2.7",
+          "Hexa.NET.ImPlot": "2.2.7",
+          "Hexa.NET.Math": "2.0.3",
+          "Hexa.NET.Utilities": "2.2.1",
+          "Microsoft.NET.ILLink.Tasks": "9.0.4",
+          "Silk.NET.SDL": "2.22.0",
+          "System.Text.Json": "9.0.0"
+        },
+        "runtime": {
+          "Smithbox-Core.dll": {}
+        }
+      },
+      "Hexa.NET.DebugDraw/2.3.2": {
+        "dependencies": {
+          "Hexa.NET.Utilities": "2.2.1"
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.DebugDraw.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Hexa.NET.Math/2.0.3": {
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Math.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "runtime": {
+          "lib/net9.0/HexaGen.Runtime.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "assemblyVersion": "3.1.6.0",
+            "fileVersion": "3.100.620.31604"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/8.0.0": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0",
+          "System.Text.Json": "9.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {},
+      "Silk.NET.Core/2.22.0": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Microsoft.DotNet.PlatformAbstractions": "3.1.6",
+          "Microsoft.Extensions.DependencyModel": "8.0.0",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Silk.NET.Core.dll": {
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
+          }
+        }
+      },
+      "Silk.NET.Maths/2.22.0": {
+        "runtime": {
+          "lib/net5.0/Silk.NET.Maths.dll": {
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
+          }
+        }
+      },
+      "Silk.NET.SDL/2.22.0": {
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.Maths": "2.22.0",
+          "Ultz.Native.SDL": "2.30.8"
+        },
+        "runtime": {
+          "lib/net6.0/Silk.NET.SDL.dll": {
+            "assemblyVersion": "2.22.0.0",
+            "fileVersion": "2.22.0.0"
+          }
+        }
+      },
+      "System.Memory/4.5.5": {},
+      "System.Numerics.Vectors/4.5.0": {},
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Text.Encodings.Web/8.0.0": {},
+      "System.Text.Json/9.0.0": {},
+      "Ultz.Native.SDL/2.30.8": {
+        "runtimeTargets": {
+          "runtimes/ios/native/libSDL2.a": {
+            "rid": "ios",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/iossimulator/native/libSDL2.a": {
+            "rid": "iossimulator",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm/native/libSDL2-2.0.so": {
+            "rid": "linux-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm64/native/libSDL2-2.0.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libSDL2-2.0.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libSDL2-2.0.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/tvos/native/libSDL2.a": {
+            "rid": "tvos",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/tvossimulator/native/libSDL2.a": {
+            "rid": "tvossimulator",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/SDL2.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "2.30.8.0"
+          },
+          "runtimes/win-x64/native/SDL2.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2.30.8.0"
+          },
+          "runtimes/win-x86/native/SDL2.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "2.30.8.0"
+          }
+        }
+      },
+      "Hexa.NET.ImGui/2.2.7": {
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImGui.dll": {
+            "assemblyVersion": "1.91.9.0",
+            "fileVersion": "1.91.9.0"
+          }
+        }
+      },
+      "Hexa.NET.ImGui.Backends/1.0.15": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImGui.Backends.dll": {
+            "assemblyVersion": "1.0.11.0",
+            "fileVersion": "1.0.11.0"
+          }
+        }
+      },
+      "Hexa.NET.ImGui.Backends.GLFW/1.0.15": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImGui.Backends.GLFW.dll": {
+            "assemblyVersion": "1.0.11.0",
+            "fileVersion": "1.0.11.0"
+          }
+        }
+      },
+      "Hexa.NET.ImGui.Backends.SDL2/1.0.15": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImGui.Backends.SDL2.dll": {
+            "assemblyVersion": "1.0.11.0",
+            "fileVersion": "1.0.11.0"
+          }
+        }
+      },
+      "Hexa.NET.ImGuizmo/2.2.7": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImGuizmo.dll": {
+            "assemblyVersion": "1.91.3.0",
+            "fileVersion": "1.91.3.0"
+          }
+        }
+      },
+      "Hexa.NET.ImNodes/2.2.7": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImNodes.dll": {
+            "assemblyVersion": "0.5.0.0",
+            "fileVersion": "0.5.0.0"
+          }
+        }
+      },
+      "Hexa.NET.ImPlot/2.2.7": {
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "runtime": {
+          "Hexa.NET.ImPlot.dll": {
+            "assemblyVersion": "0.17.0.0",
+            "fileVersion": "0.17.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Smithbox-Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.DebugDraw/2.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zyS2VlOSUmwbhSM2prCorUMB+K89GimLyjPTXISTS2YTDUTPnJ/W2IVMws7Tp45uHW6giL4d26NUoffqvedWKw==",
+      "path": "hexa.net.debugdraw/2.3.2",
+      "hashPath": "hexa.net.debugdraw.2.3.2.nupkg.sha512"
+    },
+    "Hexa.NET.Math/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hwZ3OCBRJZU7e2T373wMVhyAQE65rqUYBIabxKlrcOZbu2nLrXtK3CFe2WmGkW2r2+0mAmmCwR77pg347XxlEw==",
+      "path": "hexa.net.math/2.0.3",
+      "hashPath": "hexa.net.math.2.0.3.nupkg.sha512"
+    },
+    "Hexa.NET.Utilities/2.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/zU5+DTWVyEg+SMwSJdUM4sTIee4+6F1JfY4TTlYwuup3pNvh6Sxm30TsO9tFX4l2PPkCwOeZv57ztrj6naPew==",
+      "path": "hexa.net.utilities/2.2.1",
+      "hashPath": "hexa.net.utilities.2.2.1.nupkg.sha512"
+    },
+    "HexaGen.Runtime/1.1.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n6zlSCqGG8IAfhnreTzCgUZg3V/Wfm2AtDRKyA8F9dWz6hVvj2cJZA6+X9Px9uQKZ3dDa0yXLLrmBf9nOJG5lA==",
+      "path": "hexagen.runtime/1.1.18",
+      "hashPath": "hexagen.runtime.1.1.18.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jek4XYaQ/PGUwDKKhwR8K47Uh1189PFzMeLqO83mXrXQVIpARZCcfuDedH50YDTepBkfijCZN5U/vZi++erxtg==",
+      "path": "microsoft.dotnet.platformabstractions/3.1.6",
+      "hashPath": "microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyModel/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NSmDw3K0ozNDgShSIpsZcbFIzBX4w28nDag+TfaQujkXGazBm+lid5onlWoCBy4VsLxqnnKjEBbGSJVWJMf43g==",
+      "path": "microsoft.extensions.dependencymodel/8.0.0",
+      "hashPath": "microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
+      "path": "microsoft.net.illink.tasks/9.0.4",
+      "hashPath": "microsoft.net.illink.tasks.9.0.4.nupkg.sha512"
+    },
+    "Silk.NET.Core/2.22.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XbDilPmvsQIrvxZkeVCNNX3LyRtA3hN6UykAiyZjlu/JkYh68U3WQummpP+j7jsxlX8s/pOrrU3vbN8LnMl0VA==",
+      "path": "silk.net.core/2.22.0",
+      "hashPath": "silk.net.core.2.22.0.nupkg.sha512"
+    },
+    "Silk.NET.Maths/2.22.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W9b5UlUGCu5Ywb5f8ZyIWJ475ucY+mT/nEiSTo3JH098VxHaZS/02bYr9f29VWBaJhh3DwMkfxQvgTyXzTrHyw==",
+      "path": "silk.net.maths/2.22.0",
+      "hashPath": "silk.net.maths.2.22.0.nupkg.sha512"
+    },
+    "Silk.NET.SDL/2.22.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-t73lM7RnEX7otXOblQ38zjDbGfdEseJKHGgIaFien9lKjGp1jg28RLEY+toUXT5kH0DzgXGIoYAs7AkcCFyyyg==",
+      "path": "silk.net.sdl/2.22.0",
+      "hashPath": "silk.net.sdl.2.22.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "path": "system.text.encodings.web/8.0.0",
+      "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-js7+qAu/9mQvnhA4EfGMZNEzXtJCDxgkgj8ohuxq/Qxv+R56G+ljefhiJHOxTNiw54q8vmABCWUwkMulNdlZ4A==",
+      "path": "system.text.json/9.0.0",
+      "hashPath": "system.text.json.9.0.0.nupkg.sha512"
+    },
+    "Ultz.Native.SDL/2.30.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-akI6qe9zjA3T9Y5421cfHYKonIkV1rSr3Dgo5qOwxthXXRwTVsnJwb/Ap2x6/6BZcbhczeY+4aUw+2FYJF9LYw==",
+      "path": "ultz.native.sdl/2.30.8",
+      "hashPath": "ultz.native.sdl.2.30.8.nupkg.sha512"
+    },
+    "Hexa.NET.ImGui/2.2.7": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImGui.Backends/1.0.15": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImGui.Backends.GLFW/1.0.15": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImGui.Backends.SDL2/1.0.15": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImGuizmo/2.2.7": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImNodes/2.2.7": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Hexa.NET.ImPlot/2.2.7": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
