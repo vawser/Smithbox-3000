@@ -56,6 +56,10 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\ne
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\runtimes\win-arm64\native\ImGuiImpl.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\runtimes\win-x64\native\ImGuiImpl.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\runtimes\win-x86\native\ImGuiImpl.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.deps.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.xml
@@ -70,8 +74,4 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\obj\Debug\ne
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\obj\Debug\net8.0\refint\Hexa.NET.ImGui.Backends.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\obj\Debug\net8.0\Hexa.NET.ImGui.Backends.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\obj\Debug\net8.0\Hexa.NET.ImGui.Backends.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.deps.json
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.dll
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\bin\Debug\net8.0\Hexa.NET.ImGui.Backends.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Backends\obj\Debug\net8.0\ref\Hexa.NET.ImGui.Backends.dll

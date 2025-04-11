@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HKLib.Serialization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e52e1596babf8890b1383f32a90600fa1bd7041")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ea2018e0380bcd7e4b5c67708e24b0e3f89880c")]
 [assembly: System.Reflection.AssemblyProductAttribute("HKLib.Serialization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HKLib.Serialization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

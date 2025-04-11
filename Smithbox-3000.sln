@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andre.SoapstoneLib", "Andre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andre.SoulsFormats", "Andre\SoulsFormats\SoulsFormats\Andre.SoulsFormats.csproj", "{D09716AB-C1C9-917F-81B5-E74B9C0A9D05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smithbox.Assets", "Smithbox.Assets\Smithbox.Assets.csproj", "{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -194,6 +196,12 @@ Global
 		{D09716AB-C1C9-917F-81B5-E74B9C0A9D05}.NodeEditor|Any CPU.Build.0 = Debug|Any CPU
 		{D09716AB-C1C9-917F-81B5-E74B9C0A9D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D09716AB-C1C9-917F-81B5-E74B9C0A9D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.NodeEditor|Any CPU.ActiveCfg = Debug|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.NodeEditor|Any CPU.Build.0 = Debug|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D34A0267-7B7A-D5B7-2E36-DFE0D2366560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

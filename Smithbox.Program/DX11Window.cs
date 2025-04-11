@@ -13,10 +13,13 @@
     using Silk.NET.Direct3D11;
     using Silk.NET.SDL;
     using System;
+    using Smithbox.Core.Editor;
 
     public unsafe class DX11Window : CoreWindow
     {
         private D3D11Manager d3d11Manager;
+
+        private SmithboxEditor smithboxEditor;
 
         private ImGuiManager imGuiManager;
         private ImGuiDemo imGuiDemo;
@@ -41,13 +44,15 @@
             ImGuiImplD3D11.Init((Hexa.NET.ImGui.Backends.D3D11.ID3D11Device*)(void*)device.Handle, (Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContext*)(void*)deviceContext.Handle);
             ImGuiImplD3D11.NewFrame();
 
-            imGuiDemo = new();
-            imGuizmoDemo = new();
-            imNodesDemo = new();
-            imPlotDemo = new();
-
             // Window Title
             App.sdl.SetWindowTitle((Window*)SDLWindow, $"Smithbox - {Program.ProgramVersion}");
+
+            smithboxEditor = new();
+
+            //imGuiDemo = new();
+            //imGuizmoDemo = new();
+            //imNodesDemo = new();
+            //imPlotDemo = new();
         }
 
         private void OnRenderDrawData()
@@ -70,6 +75,9 @@
             //imGuizmoDemo.Draw();
             //imNodesDemo.Draw();
             //imPlotDemo.Draw();
+
+            smithboxEditor.Setup();
+            smithboxEditor.Draw();
 
             d3d11Manager.Clear(default);
             d3d11Manager.SetTarget();

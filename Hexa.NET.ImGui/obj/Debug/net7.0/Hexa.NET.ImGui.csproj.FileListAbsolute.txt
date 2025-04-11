@@ -34,6 +34,10 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\runt
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\runtimes\win-arm64\native\cimgui.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\runtimes\win-x64\native\cimgui.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\runtimes\win-x86\native\cimgui.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.deps.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa.NET.ImGui.csproj.AssemblyReference.cache
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa.NET.ImGui.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa.NET.ImGui.AssemblyInfoInputs.cache
@@ -44,8 +48,4 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\refint\Hexa.NET.ImGui.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa.NET.ImGui.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\Hexa.NET.ImGui.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.deps.json
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.dll
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\bin\Debug\net7.0\Hexa.NET.ImGui.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui\obj\Debug\net7.0\ref\Hexa.NET.ImGui.dll

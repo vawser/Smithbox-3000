@@ -56,6 +56,10 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\r
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\runtimes\win-arm64\native\cimguizmo.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\runtimes\win-x64\native\cimguizmo.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\runtimes\win-x86\native\cimguizmo.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.deps.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGui.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGui.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGui.xml
@@ -70,8 +74,4 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\obj\Debug\net9.0\H
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\obj\Debug\net9.0\refint\Hexa.NET.ImGuizmo.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\obj\Debug\net9.0\Hexa.NET.ImGuizmo.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\obj\Debug\net9.0\Hexa.NET.ImGuizmo.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.deps.json
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.dll
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.pdb
-C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\obj\Debug\net9.0\ref\Hexa.NET.ImGuizmo.dll
