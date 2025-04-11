@@ -1,6 +1,7 @@
 ﻿namespace Smithbox_Core
 {
     using Silk.NET.SDL;
+    using Smithbox.Core.Interface;
     using System;
 
     public class ClosingEventArgs : EventArgs
@@ -123,6 +124,7 @@
 
         public virtual void Render()
         {
+            DPI.UpdateDpi(window);
         }
 
         protected virtual void Dispose(bool disposing)

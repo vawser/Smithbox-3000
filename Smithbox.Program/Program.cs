@@ -8,6 +8,7 @@
     {
         public static string ProgramVersion = "2.0.0";
 
+        [STAThread] 
         private static void Main(string[] args)
         {
             App.Init(Backend.DirectX);

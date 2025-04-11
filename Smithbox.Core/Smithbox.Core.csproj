@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
+        
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
 		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
 		<EnableAotAnalyzer>true</EnableAotAnalyzer>
@@ -46,7 +46,6 @@
 
 	<ItemGroup>
 	  <Folder Include="ParamEditor\" />
-	  <Folder Include="Utils\" />
 	</ItemGroup>
 
 </Project>

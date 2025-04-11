@@ -1,25 +1,24 @@
 ﻿namespace Smithbox_Program
 {
-    using Smithbox_Core;
     using Hexa.NET.ImGui;
-    using Hexa.NET.ImGui.Backends;
     using Hexa.NET.ImGui.Backends.D3D11;
     using Hexa.NET.ImGui.Backends.SDL2;
     using Silk.NET.Core.Native;
     using Silk.NET.Direct3D11;
     using Silk.NET.SDL;
-    using System;
     using Smithbox.Core.Editor;
+    using Smithbox.Core.Interface;
     using Smithbox.Core.Interface.ImGuiDemo;
-    using Smithbox.Core.Interface.ImPlotDemo;
     using Smithbox.Core.Interface.ImGuizmoDemo;
     using Smithbox.Core.Interface.ImNodesDemo;
+    using Smithbox.Core.Interface.ImPlotDemo;
+    using Smithbox_Core;
 
     public unsafe class DX11Window : CoreWindow
     {
         private D3D11Manager d3d11Manager;
 
-        private SmithboxEditor smithboxEditor;
+        private Smithbox smithbox;
 
         private ImGuiManager imGuiManager;
         private ImGuiDemo imGuiDemo;
@@ -47,12 +46,15 @@
             // Window Title
             App.sdl.SetWindowTitle((Window*)SDLWindow, $"Smithbox - {Program.ProgramVersion}");
 
-            smithboxEditor = new();
+            smithbox = new();
 
             //imGuiDemo = new();
             //imGuizmoDemo = new();
             //imNodesDemo = new();
             //imPlotDemo = new();
+
+            CFG.Setup();
+            UI.Setup();
         }
 
         private void OnRenderDrawData()
@@ -76,7 +78,7 @@
             //imNodesDemo.Draw();
             //imPlotDemo.Draw();
 
-            smithboxEditor.Draw();
+            smithbox.Draw();
 
             d3d11Manager.Clear(default);
             d3d11Manager.SetTarget();
@@ -87,7 +89,7 @@
 
             d3d11Manager.Present(1, 0);
 
-            smithboxEditor.Setup();
+            smithbox.Setup();
         }
 
         private static bool ProcessEvent(Event @event)
@@ -101,6 +103,8 @@
         {
             if (!disposed)
             {
+                smithbox.Exit();
+
                 App.RemoveHook(ProcessEvent);
                 ImGuiImplD3D11.Shutdown();
                 ImGuiImplSDL2.Shutdown();

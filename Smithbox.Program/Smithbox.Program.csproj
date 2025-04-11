@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
+        
 		<PublishAot>true</PublishAot>
 
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
@@ -36,5 +36,10 @@
 		<ProjectReference Include="..\Hexa.NET.ImPlot\Hexa.NET.ImPlot.csproj" />
 		<ProjectReference Include="..\Smithbox.Core\Smithbox.Core.csproj" />
 	</ItemGroup>
-
+    
+    <ItemGroup>
+        <Content Include="imgui.ini">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
