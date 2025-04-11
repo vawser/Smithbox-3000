@@ -13,7 +13,12 @@
 		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
 		<EnableAotAnalyzer>true</EnableAotAnalyzer>
 		<IsAotCompatible>true</IsAotCompatible>
+		<ApplicationIcon>Icon\icon.ico</ApplicationIcon>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="Icon\icon.ico" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Silk.NET.Direct3D.Compilers" Version="2.22.0" />

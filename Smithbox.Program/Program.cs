@@ -6,6 +6,8 @@
 
     internal unsafe class Program
     {
+        public static string ProgramVersion = "2.0.0";
+
         private static void Main(string[] args)
         {
             App.Init(Backend.DirectX);

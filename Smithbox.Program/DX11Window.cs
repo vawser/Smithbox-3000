@@ -45,6 +45,9 @@
             imGuizmoDemo = new();
             imNodesDemo = new();
             imPlotDemo = new();
+
+            // Window Title
+            App.sdl.SetWindowTitle((Window*)SDLWindow, $"Smithbox - {Program.ProgramVersion}");
         }
 
         private void OnRenderDrawData()
@@ -63,10 +66,10 @@
             if (disposed) return;
             imGuiManager.NewFrame();
 
-            ImGui.ShowDemoWindow();
-            imGuizmoDemo.Draw();
-            imNodesDemo.Draw();
-            imPlotDemo.Draw();
+            //ImGui.ShowDemoWindow();
+            //imGuizmoDemo.Draw();
+            //imNodesDemo.Draw();
+            //imPlotDemo.Draw();
 
             d3d11Manager.Clear(default);
             d3d11Manager.SetTarget();
