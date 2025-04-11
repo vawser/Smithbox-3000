@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Hexa.NET.ImGuizmo</id>
+    <version>2.2.7</version>
+    <authors>Juna Meinhold</authors>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/HexaEngine/Hexa.NET.ImGui</projectUrl>
+    <description>A .NET wrapper for the ImGuizmo library. (1.91.3 WIP)</description>
+    <copyright>Copyright (c) 2023 Juna Meinhold</copyright>
+    <tags>ImGuizmo UI Immidate GUI Guizmo Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows macOS Android Bindings Wrapper Native</tags>
+    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="c3c4365e77cd05393c60f0d5e900b1d0a5b72256" />
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net7.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="HexaGen.Runtime" version="1.1.18" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net6.0\Hexa.NET.ImGuizmo.dll" target="lib\net6.0\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net6.0\Hexa.NET.ImGuizmo.xml" target="lib\net6.0\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net7.0\Hexa.NET.ImGuizmo.dll" target="lib\net7.0\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net7.0\Hexa.NET.ImGuizmo.xml" target="lib\net7.0\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net8.0\Hexa.NET.ImGuizmo.dll" target="lib\net8.0\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net8.0\Hexa.NET.ImGuizmo.xml" target="lib\net8.0\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.dll" target="lib\net9.0\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\net9.0\Hexa.NET.ImGuizmo.xml" target="lib\net9.0\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\netstandard2.0\Hexa.NET.ImGuizmo.dll" target="lib\netstandard2.0\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\netstandard2.0\Hexa.NET.ImGuizmo.xml" target="lib\netstandard2.0\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\netstandard2.1\Hexa.NET.ImGuizmo.dll" target="lib\netstandard2.1\Hexa.NET.ImGuizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\bin\Debug\netstandard2.1\Hexa.NET.ImGuizmo.xml" target="lib\netstandard2.1\Hexa.NET.ImGuizmo.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\LICENSE.txt" target="\LICENSE.txt" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGuizmo\README.md" target="\README.md" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\android-x64\cimguizmo.so" target="runtimes\android-x64\native\cimguizmo.so" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\android-arm64\cimguizmo.so" target="runtimes\android-arm64\native\cimguizmo.so" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\osx-arm64\cimguizmo.dylib" target="runtimes\osx-arm64\native\cimguizmo.dylib" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\osx-x64\cimguizmo.dylib" target="runtimes\osx-x64\native\cimguizmo.dylib" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\linux-arm64\cimguizmo.so" target="runtimes\linux-arm64\native\cimguizmo.so" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\linux-x64\cimguizmo.so" target="runtimes\linux-x64\native\cimguizmo.so" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\win-arm64\cimguizmo.dll" target="runtimes\win-arm64\native\cimguizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\win-x64\cimguizmo.dll" target="runtimes\win-x64\native\cimguizmo.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\native\win-x86\cimguizmo.dll" target="runtimes\win-x86\native\cimguizmo.dll" />
+  </files>
+</package>

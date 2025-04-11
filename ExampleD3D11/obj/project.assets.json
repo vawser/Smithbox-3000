@@ -1,0 +1,1388 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Hexa.NET.DebugDraw/2.3.2": {
+        "type": "package",
+        "dependencies": {
+          "Hexa.NET.Utilities": "2.1.14"
+        },
+        "compile": {
+          "lib/net9.0/Hexa.NET.DebugDraw.dll": {}
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.DebugDraw.dll": {}
+        }
+      },
+      "Hexa.NET.Math/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Hexa.NET.Math.dll": {}
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Math.dll": {}
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "Microsoft.DotNet.ILCompiler/9.0.4": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.DotNet.ILCompiler.props": {}
+        }
+      },
+      "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encodings.Web": "8.0.0",
+          "System.Text.Json": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Silk.NET.Core/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Microsoft.DotNet.PlatformAbstractions": "3.1.6",
+          "Microsoft.Extensions.DependencyModel": "8.0.0",
+          "System.Memory": "4.5.5",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Silk.NET.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Silk.NET.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.Direct3D.Compilers/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0"
+        },
+        "compile": {
+          "lib/net5.0/Silk.NET.Direct3D.Compilers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.Direct3D.Compilers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.Direct3D11/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.DXGI": "2.22.0"
+        },
+        "compile": {
+          "lib/net5.0/Silk.NET.Direct3D11.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.Direct3D11.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.Direct3D11.Extensions.D3D11On12/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.Direct3D11": "2.22.0",
+          "Silk.NET.Direct3D12": "2.22.0"
+        },
+        "compile": {
+          "lib/net5.0/Silk.NET.Direct3D11.Extensions.D3D11On12.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.Direct3D11.Extensions.D3D11On12.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.Direct3D12/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.DXGI": "2.22.0"
+        },
+        "compile": {
+          "lib/net5.0/Silk.NET.Direct3D12.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.Direct3D12.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.DXGI/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.Maths": "2.22.0"
+        },
+        "compile": {
+          "lib/net5.0/Silk.NET.DXGI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.DXGI.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.Maths/2.22.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Silk.NET.Maths.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Silk.NET.Maths.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Silk.NET.SDL/2.22.0": {
+        "type": "package",
+        "dependencies": {
+          "Silk.NET.Core": "2.22.0",
+          "Silk.NET.Maths": "2.22.0",
+          "Ultz.Native.SDL": "2.30.8"
+        },
+        "compile": {
+          "lib/net6.0/Silk.NET.SDL.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Silk.NET.SDL.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/Silk.NET.SDL.targets": {}
+        }
+      },
+      "System.Memory/4.5.5": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Text.Encodings.Web/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll": {
+            "assetType": "runtime",
+            "rid": "browser"
+          }
+        }
+      },
+      "System.Text.Json/9.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/System.Text.Json.targets": {}
+        }
+      },
+      "Ultz.Native.SDL/2.30.8": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/netstandard2.0/Ultz.Native.SDL.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/ios/native/libSDL2.a": {
+            "assetType": "native",
+            "rid": "ios"
+          },
+          "runtimes/iossimulator/native/libSDL2.a": {
+            "assetType": "native",
+            "rid": "iossimulator"
+          },
+          "runtimes/linux-arm/native/libSDL2-2.0.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libSDL2-2.0.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libSDL2-2.0.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libSDL2-2.0.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/tvos/native/libSDL2.a": {
+            "assetType": "native",
+            "rid": "tvos"
+          },
+          "runtimes/tvossimulator/native/libSDL2.a": {
+            "assetType": "native",
+            "rid": "tvossimulator"
+          },
+          "runtimes/win-arm64/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "ExampleFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.DebugDraw": "2.3.2",
+          "Hexa.NET.ImGui": "2.2.7",
+          "Hexa.NET.ImGui.Backends": "1.0.15",
+          "Hexa.NET.ImGui.Backends.GLFW": "1.0.15",
+          "Hexa.NET.ImGui.Backends.SDL2": "1.0.15",
+          "Hexa.NET.ImGuizmo": "2.2.7",
+          "Hexa.NET.ImNodes": "2.2.7",
+          "Hexa.NET.ImPlot": "2.2.7",
+          "Hexa.NET.Math": "2.0.3",
+          "Hexa.NET.Utilities": "2.2.1",
+          "Silk.NET.SDL": "2.22.0",
+          "System.Text.Json": "9.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ExampleFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExampleFramework.dll": {}
+        }
+      },
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImGui.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImGui.dll": {}
+        }
+      },
+      "Hexa.NET.ImGui.Backends/1.0.15": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.dll": {}
+        }
+      },
+      "Hexa.NET.ImGui.Backends.GLFW/1.0.15": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.GLFW.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.GLFW.dll": {}
+        }
+      },
+      "Hexa.NET.ImGui.Backends.SDL2/1.0.15": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.SDL2.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImGui.Backends.SDL2.dll": {}
+        }
+      },
+      "Hexa.NET.ImGuizmo/2.2.7": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImGuizmo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImGuizmo.dll": {}
+        }
+      },
+      "Hexa.NET.ImNodes/2.2.7": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImNodes.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImNodes.dll": {}
+        }
+      },
+      "Hexa.NET.ImPlot/2.2.7": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": "2.2.7",
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "bin/placeholder/Hexa.NET.ImPlot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hexa.NET.ImPlot.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hexa.NET.DebugDraw/2.3.2": {
+      "sha512": "zyS2VlOSUmwbhSM2prCorUMB+K89GimLyjPTXISTS2YTDUTPnJ/W2IVMws7Tp45uHW6giL4d26NUoffqvedWKw==",
+      "type": "package",
+      "path": "hexa.net.debugdraw/2.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.debugdraw.2.3.2.nupkg.sha512",
+        "hexa.net.debugdraw.nuspec",
+        "lib/net6.0/Hexa.NET.DebugDraw.dll",
+        "lib/net7.0/Hexa.NET.DebugDraw.dll",
+        "lib/net8.0/Hexa.NET.DebugDraw.dll",
+        "lib/net9.0/Hexa.NET.DebugDraw.dll",
+        "lib/netstandard2.0/Hexa.NET.DebugDraw.dll",
+        "lib/netstandard2.1/Hexa.NET.DebugDraw.dll"
+      ]
+    },
+    "Hexa.NET.Math/2.0.3": {
+      "sha512": "hwZ3OCBRJZU7e2T373wMVhyAQE65rqUYBIabxKlrcOZbu2nLrXtK3CFe2WmGkW2r2+0mAmmCwR77pg347XxlEw==",
+      "type": "package",
+      "path": "hexa.net.math/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.math.2.0.3.nupkg.sha512",
+        "hexa.net.math.nuspec",
+        "lib/net6.0/Hexa.NET.Math.dll",
+        "lib/net7.0/Hexa.NET.Math.dll",
+        "lib/net8.0/Hexa.NET.Math.dll",
+        "lib/net9.0/Hexa.NET.Math.dll",
+        "lib/netstandard2.0/Hexa.NET.Math.dll",
+        "lib/netstandard2.1/Hexa.NET.Math.dll"
+      ]
+    },
+    "Hexa.NET.Utilities/2.2.1": {
+      "sha512": "/zU5+DTWVyEg+SMwSJdUM4sTIee4+6F1JfY4TTlYwuup3pNvh6Sxm30TsO9tFX4l2PPkCwOeZv57ztrj6naPew==",
+      "type": "package",
+      "path": "hexa.net.utilities/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.utilities.2.2.1.nupkg.sha512",
+        "hexa.net.utilities.nuspec",
+        "lib/net6.0/Hexa.NET.Utilities.dll",
+        "lib/net6.0/Hexa.NET.Utilities.xml",
+        "lib/net7.0/Hexa.NET.Utilities.dll",
+        "lib/net7.0/Hexa.NET.Utilities.xml",
+        "lib/net8.0/Hexa.NET.Utilities.dll",
+        "lib/net8.0/Hexa.NET.Utilities.xml",
+        "lib/net9.0/Hexa.NET.Utilities.dll",
+        "lib/net9.0/Hexa.NET.Utilities.xml",
+        "lib/netstandard2.0/Hexa.NET.Utilities.dll",
+        "lib/netstandard2.0/Hexa.NET.Utilities.xml",
+        "lib/netstandard2.1/Hexa.NET.Utilities.dll",
+        "lib/netstandard2.1/Hexa.NET.Utilities.xml"
+      ]
+    },
+    "HexaGen.Runtime/1.1.18": {
+      "sha512": "n6zlSCqGG8IAfhnreTzCgUZg3V/Wfm2AtDRKyA8F9dWz6hVvj2cJZA6+X9Px9uQKZ3dDa0yXLLrmBf9nOJG5lA==",
+      "type": "package",
+      "path": "hexagen.runtime/1.1.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexagen.runtime.1.1.18.nupkg.sha512",
+        "hexagen.runtime.nuspec",
+        "lib/net472/HexaGen.Runtime.dll",
+        "lib/net472/HexaGen.Runtime.xml",
+        "lib/net6.0/HexaGen.Runtime.dll",
+        "lib/net6.0/HexaGen.Runtime.xml",
+        "lib/net7.0/HexaGen.Runtime.dll",
+        "lib/net7.0/HexaGen.Runtime.xml",
+        "lib/net8.0-android34.0/HexaGen.Runtime.dll",
+        "lib/net8.0-android34.0/HexaGen.Runtime.xml",
+        "lib/net8.0/HexaGen.Runtime.dll",
+        "lib/net8.0/HexaGen.Runtime.xml",
+        "lib/net9.0-android35.0/HexaGen.Runtime.dll",
+        "lib/net9.0-android35.0/HexaGen.Runtime.xml",
+        "lib/net9.0/HexaGen.Runtime.dll",
+        "lib/net9.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.0/HexaGen.Runtime.dll",
+        "lib/netstandard2.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.1/HexaGen.Runtime.dll",
+        "lib/netstandard2.1/HexaGen.Runtime.xml"
+      ]
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "type": "package",
+      "path": "microsoft.csharp/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/Microsoft.CSharp.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.3/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.dll",
+        "lib/netstandard2.0/Microsoft.CSharp.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "microsoft.csharp.4.7.0.nupkg.sha512",
+        "microsoft.csharp.nuspec",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/Microsoft.CSharp.dll",
+        "ref/netcore50/Microsoft.CSharp.xml",
+        "ref/netcore50/de/Microsoft.CSharp.xml",
+        "ref/netcore50/es/Microsoft.CSharp.xml",
+        "ref/netcore50/fr/Microsoft.CSharp.xml",
+        "ref/netcore50/it/Microsoft.CSharp.xml",
+        "ref/netcore50/ja/Microsoft.CSharp.xml",
+        "ref/netcore50/ko/Microsoft.CSharp.xml",
+        "ref/netcore50/ru/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
+        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/Microsoft.CSharp.dll",
+        "ref/netstandard1.0/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
+        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
+        "ref/netstandard2.0/Microsoft.CSharp.dll",
+        "ref/netstandard2.0/Microsoft.CSharp.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.DotNet.ILCompiler/9.0.4": {
+      "sha512": "G85txKEuQ8s64BG9Pk3TbmE+cDgKReepnIPNfC1lNks4u2v5SkQhjCuuSAep+H2xtgFpYU7w9LFOF+vVtJZguA==",
+      "type": "package",
+      "path": "microsoft.dotnet.ilcompiler/9.0.4",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/BuildFrameworkNativeObjects.proj",
+        "build/Microsoft.DotNet.ILCompiler.SingleEntry.targets",
+        "build/Microsoft.DotNet.ILCompiler.props",
+        "build/Microsoft.NETCore.Native.Publish.targets",
+        "build/Microsoft.NETCore.Native.Unix.targets",
+        "build/Microsoft.NETCore.Native.Windows.targets",
+        "build/Microsoft.NETCore.Native.targets",
+        "build/NativeAOT.natstepfilter",
+        "build/NativeAOT.natvis",
+        "build/WindowsAPIs.txt",
+        "build/findvcvarsall.bat",
+        "microsoft.dotnet.ilcompiler.9.0.4.nupkg.sha512",
+        "microsoft.dotnet.ilcompiler.nuspec",
+        "runtime.json",
+        "tools/netstandard/ILCompiler.Build.Tasks.deps.json",
+        "tools/netstandard/ILCompiler.Build.Tasks.dll"
+      ]
+    },
+    "Microsoft.DotNet.PlatformAbstractions/3.1.6": {
+      "sha512": "jek4XYaQ/PGUwDKKhwR8K47Uh1189PFzMeLqO83mXrXQVIpARZCcfuDedH50YDTepBkfijCZN5U/vZi++erxtg==",
+      "type": "package",
+      "path": "microsoft.dotnet.platformabstractions/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/Microsoft.DotNet.PlatformAbstractions.dll",
+        "lib/net45/Microsoft.DotNet.PlatformAbstractions.xml",
+        "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.dll",
+        "lib/netstandard1.3/Microsoft.DotNet.PlatformAbstractions.xml",
+        "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll",
+        "lib/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.xml",
+        "microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
+        "microsoft.dotnet.platformabstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.DependencyModel/8.0.0": {
+      "sha512": "NSmDw3K0ozNDgShSIpsZcbFIzBX4w28nDag+TfaQujkXGazBm+lid5onlWoCBy4VsLxqnnKjEBbGSJVWJMf43g==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencymodel/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyModel.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyModel.targets",
+        "lib/net462/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net462/Microsoft.Extensions.DependencyModel.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyModel.xml",
+        "lib/net7.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net7.0/Microsoft.Extensions.DependencyModel.xml",
+        "lib/net8.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net8.0/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
+        "microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencymodel.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "sha512": "xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
+      "type": "package",
+      "path": "microsoft.net.illink.tasks/9.0.4",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "Sdk/Sdk.props",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
+        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
+        "build/Microsoft.NET.ILLink.Analyzers.props",
+        "build/Microsoft.NET.ILLink.Tasks.props",
+        "build/Microsoft.NET.ILLink.targets",
+        "microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
+        "microsoft.net.illink.tasks.nuspec",
+        "tools/net472/ILLink.Tasks.dll",
+        "tools/net472/ILLink.Tasks.dll.config",
+        "tools/net472/Mono.Cecil.Mdb.dll",
+        "tools/net472/Mono.Cecil.Pdb.dll",
+        "tools/net472/Mono.Cecil.Rocks.dll",
+        "tools/net472/Mono.Cecil.dll",
+        "tools/net472/Sdk/Sdk.props",
+        "tools/net472/System.Buffers.dll",
+        "tools/net472/System.Collections.Immutable.dll",
+        "tools/net472/System.Memory.dll",
+        "tools/net472/System.Numerics.Vectors.dll",
+        "tools/net472/System.Reflection.Metadata.dll",
+        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net472/build/Microsoft.NET.ILLink.targets",
+        "tools/net9.0/ILLink.Tasks.deps.json",
+        "tools/net9.0/ILLink.Tasks.dll",
+        "tools/net9.0/Mono.Cecil.Mdb.dll",
+        "tools/net9.0/Mono.Cecil.Pdb.dll",
+        "tools/net9.0/Mono.Cecil.Rocks.dll",
+        "tools/net9.0/Mono.Cecil.dll",
+        "tools/net9.0/Sdk/Sdk.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.targets",
+        "tools/net9.0/illink.deps.json",
+        "tools/net9.0/illink.dll",
+        "tools/net9.0/illink.runtimeconfig.json",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Silk.NET.Core/2.22.0": {
+      "sha512": "XbDilPmvsQIrvxZkeVCNNX3LyRtA3hN6UykAiyZjlu/JkYh68U3WQummpP+j7jsxlX8s/pOrrU3vbN8LnMl0VA==",
+      "type": "package",
+      "path": "silk.net.core/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Core.dll",
+        "lib/net5.0/Silk.NET.Core.xml",
+        "lib/net6.0/Silk.NET.Core.dll",
+        "lib/net6.0/Silk.NET.Core.xml",
+        "lib/netcoreapp3.1/Silk.NET.Core.dll",
+        "lib/netcoreapp3.1/Silk.NET.Core.xml",
+        "lib/netstandard2.0/Silk.NET.Core.dll",
+        "lib/netstandard2.0/Silk.NET.Core.xml",
+        "lib/netstandard2.1/Silk.NET.Core.dll",
+        "lib/netstandard2.1/Silk.NET.Core.xml",
+        "silk.net.core.2.22.0.nupkg.sha512",
+        "silk.net.core.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.Direct3D.Compilers/2.22.0": {
+      "sha512": "bhEstw7nVUJrceoWR80gsePXV7fK/okyEeRtto9oBq0WrexswlX4L+F+/jPYal8RpU/nBDZwXX5BwQAkCMcJhQ==",
+      "type": "package",
+      "path": "silk.net.direct3d.compilers/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Direct3D.Compilers.dll",
+        "lib/net5.0/Silk.NET.Direct3D.Compilers.xml",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D.Compilers.dll",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D.Compilers.xml",
+        "lib/netstandard2.0/Silk.NET.Direct3D.Compilers.dll",
+        "lib/netstandard2.0/Silk.NET.Direct3D.Compilers.xml",
+        "lib/netstandard2.1/Silk.NET.Direct3D.Compilers.dll",
+        "lib/netstandard2.1/Silk.NET.Direct3D.Compilers.xml",
+        "silk.net.direct3d.compilers.2.22.0.nupkg.sha512",
+        "silk.net.direct3d.compilers.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.Direct3D11/2.22.0": {
+      "sha512": "QYIKinr2/LLVa+p4UIZ00pYhsLTfm3ZgpZaXYAl9fmzgrqHk3EE1UE1ArM8dl8ud8T9quaALeArtFgYE5nrEfw==",
+      "type": "package",
+      "path": "silk.net.direct3d11/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Direct3D11.dll",
+        "lib/net5.0/Silk.NET.Direct3D11.xml",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D11.dll",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D11.xml",
+        "lib/netstandard2.0/Silk.NET.Direct3D11.dll",
+        "lib/netstandard2.0/Silk.NET.Direct3D11.xml",
+        "lib/netstandard2.1/Silk.NET.Direct3D11.dll",
+        "lib/netstandard2.1/Silk.NET.Direct3D11.xml",
+        "silk.net.direct3d11.2.22.0.nupkg.sha512",
+        "silk.net.direct3d11.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.Direct3D11.Extensions.D3D11On12/2.22.0": {
+      "sha512": "j5mjF4v4KxClMgUAYlcs54ii3kqAszIBZp4WXO4nWEd4jijTsOiKikC3JWVHuTlsx2/jXNTT/ey61I/r2DQBgA==",
+      "type": "package",
+      "path": "silk.net.direct3d11.extensions.d3d11on12/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Direct3D11.Extensions.D3D11On12.dll",
+        "lib/net5.0/Silk.NET.Direct3D11.Extensions.D3D11On12.xml",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D11.Extensions.D3D11On12.dll",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D11.Extensions.D3D11On12.xml",
+        "lib/netstandard2.0/Silk.NET.Direct3D11.Extensions.D3D11On12.dll",
+        "lib/netstandard2.0/Silk.NET.Direct3D11.Extensions.D3D11On12.xml",
+        "lib/netstandard2.1/Silk.NET.Direct3D11.Extensions.D3D11On12.dll",
+        "lib/netstandard2.1/Silk.NET.Direct3D11.Extensions.D3D11On12.xml",
+        "silk.net.direct3d11.extensions.d3d11on12.2.22.0.nupkg.sha512",
+        "silk.net.direct3d11.extensions.d3d11on12.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.Direct3D12/2.22.0": {
+      "sha512": "hwaBKYlkXfXWVNjc3BRvrb5IxqXG8tfAdW1bs5wLlh1XBcW21SjpFPG1C+KvwDwdsi8jxcsuM+RkumhVtOZrrA==",
+      "type": "package",
+      "path": "silk.net.direct3d12/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Direct3D12.dll",
+        "lib/net5.0/Silk.NET.Direct3D12.xml",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D12.dll",
+        "lib/netcoreapp3.1/Silk.NET.Direct3D12.xml",
+        "lib/netstandard2.0/Silk.NET.Direct3D12.dll",
+        "lib/netstandard2.0/Silk.NET.Direct3D12.xml",
+        "lib/netstandard2.1/Silk.NET.Direct3D12.dll",
+        "lib/netstandard2.1/Silk.NET.Direct3D12.xml",
+        "silk.net.direct3d12.2.22.0.nupkg.sha512",
+        "silk.net.direct3d12.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.DXGI/2.22.0": {
+      "sha512": "HCscGPG34XMPiKFSYzBrIXnqB/IOtC/NyFfXcNpkl70doJ8Gd1ph0jRSrJ7ZDkvveUYgc9BzEJuHbvbknfBJ5Q==",
+      "type": "package",
+      "path": "silk.net.dxgi/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.DXGI.dll",
+        "lib/net5.0/Silk.NET.DXGI.xml",
+        "lib/netcoreapp3.1/Silk.NET.DXGI.dll",
+        "lib/netcoreapp3.1/Silk.NET.DXGI.xml",
+        "lib/netstandard2.0/Silk.NET.DXGI.dll",
+        "lib/netstandard2.0/Silk.NET.DXGI.xml",
+        "lib/netstandard2.1/Silk.NET.DXGI.dll",
+        "lib/netstandard2.1/Silk.NET.DXGI.xml",
+        "silk.net.dxgi.2.22.0.nupkg.sha512",
+        "silk.net.dxgi.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.Maths/2.22.0": {
+      "sha512": "W9b5UlUGCu5Ywb5f8ZyIWJ475ucY+mT/nEiSTo3JH098VxHaZS/02bYr9f29VWBaJhh3DwMkfxQvgTyXzTrHyw==",
+      "type": "package",
+      "path": "silk.net.maths/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Silk.NET.Maths.dll",
+        "lib/net5.0/Silk.NET.Maths.xml",
+        "lib/net6.0-android31.0/Silk.NET.Maths.dll",
+        "lib/net6.0-android31.0/Silk.NET.Maths.xml",
+        "lib/net6.0-ios16.1/Silk.NET.Maths.dll",
+        "lib/net6.0-ios16.1/Silk.NET.Maths.xml",
+        "lib/netcoreapp3.1/Silk.NET.Maths.dll",
+        "lib/netcoreapp3.1/Silk.NET.Maths.xml",
+        "lib/netstandard2.0/Silk.NET.Maths.dll",
+        "lib/netstandard2.0/Silk.NET.Maths.xml",
+        "lib/netstandard2.1/Silk.NET.Maths.dll",
+        "lib/netstandard2.1/Silk.NET.Maths.xml",
+        "silk.net.maths.2.22.0.nupkg.sha512",
+        "silk.net.maths.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "Silk.NET.SDL/2.22.0": {
+      "sha512": "t73lM7RnEX7otXOblQ38zjDbGfdEseJKHGgIaFien9lKjGp1jg28RLEY+toUXT5kH0DzgXGIoYAs7AkcCFyyyg==",
+      "type": "package",
+      "path": "silk.net.sdl/2.22.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/net6.0/Silk.NET.SDL.targets",
+        "buildTransitive/net6.0/Silk.NET.SDL.targets",
+        "lib/net5.0/Silk.NET.SDL.dll",
+        "lib/net5.0/Silk.NET.SDL.xml",
+        "lib/net6.0/Silk.NET.SDL.dll",
+        "lib/net6.0/Silk.NET.SDL.xml",
+        "lib/netcoreapp3.1/Silk.NET.SDL.dll",
+        "lib/netcoreapp3.1/Silk.NET.SDL.xml",
+        "lib/netstandard2.0/Silk.NET.SDL.dll",
+        "lib/netstandard2.0/Silk.NET.SDL.xml",
+        "lib/netstandard2.1/Silk.NET.SDL.dll",
+        "lib/netstandard2.1/Silk.NET.SDL.xml",
+        "silk.net.sdl.2.22.0.nupkg.sha512",
+        "silk.net.sdl.nuspec",
+        "silkdotnet_v3.png"
+      ]
+    },
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "type": "package",
+      "path": "system.memory/4.5.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.5.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Encodings.Web/8.0.0": {
+      "sha512": "yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "type": "package",
+      "path": "system.text.encodings.web/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encodings.Web.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
+        "lib/net462/System.Text.Encodings.Web.dll",
+        "lib/net462/System.Text.Encodings.Web.xml",
+        "lib/net6.0/System.Text.Encodings.Web.dll",
+        "lib/net6.0/System.Text.Encodings.Web.xml",
+        "lib/net7.0/System.Text.Encodings.Web.dll",
+        "lib/net7.0/System.Text.Encodings.Web.xml",
+        "lib/net8.0/System.Text.Encodings.Web.dll",
+        "lib/net8.0/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.8.0.0.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Json/9.0.0": {
+      "sha512": "js7+qAu/9mQvnhA4EfGMZNEzXtJCDxgkgj8ohuxq/Qxv+R56G+ljefhiJHOxTNiw54q8vmABCWUwkMulNdlZ4A==",
+      "type": "package",
+      "path": "system.text.json/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "buildTransitive/net461/System.Text.Json.targets",
+        "buildTransitive/net462/System.Text.Json.targets",
+        "buildTransitive/net8.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netstandard2.0/System.Text.Json.targets",
+        "lib/net462/System.Text.Json.dll",
+        "lib/net462/System.Text.Json.xml",
+        "lib/net8.0/System.Text.Json.dll",
+        "lib/net8.0/System.Text.Json.xml",
+        "lib/net9.0/System.Text.Json.dll",
+        "lib/net9.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.9.0.0.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Ultz.Native.SDL/2.30.8": {
+      "sha512": "akI6qe9zjA3T9Y5421cfHYKonIkV1rSr3Dgo5qOwxthXXRwTVsnJwb/Ap2x6/6BZcbhczeY+4aUw+2FYJF9LYw==",
+      "type": "package",
+      "path": "ultz.native.sdl/2.30.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/net461/Ultz.Native.SDL.targets",
+        "build/netstandard2.0/Ultz.Native.SDL.targets",
+        "buildTransitive/net461/Ultz.Native.SDL.targets",
+        "buildTransitive/netstandard2.0/Ultz.Native.SDL.targets",
+        "lib/net461/_._",
+        "lib/netstandard2.0/_._",
+        "runtimes/ios/native/libSDL2.a",
+        "runtimes/iossimulator/native/libSDL2.a",
+        "runtimes/linux-arm/native/libSDL2-2.0.so",
+        "runtimes/linux-arm64/native/libSDL2-2.0.so",
+        "runtimes/linux-x64/native/libSDL2-2.0.so",
+        "runtimes/osx/native/libSDL2-2.0.dylib",
+        "runtimes/tvos/native/libSDL2.a",
+        "runtimes/tvossimulator/native/libSDL2.a",
+        "runtimes/win-arm64/native/SDL2.dll",
+        "runtimes/win-x64/native/SDL2.dll",
+        "runtimes/win-x86/native/SDL2.dll",
+        "silkdotnet_v3.png",
+        "ultz.native.sdl.2.30.8.nupkg.sha512",
+        "ultz.native.sdl.nuspec"
+      ]
+    },
+    "ExampleFramework/1.0.0": {
+      "type": "project",
+      "path": "../ExampleFramework/ExampleFramework.csproj",
+      "msbuildProject": "../ExampleFramework/ExampleFramework.csproj"
+    },
+    "Hexa.NET.ImGui/2.2.7": {
+      "type": "project",
+      "path": "../Hexa.NET.ImGui/Hexa.NET.ImGui.csproj",
+      "msbuildProject": "../Hexa.NET.ImGui/Hexa.NET.ImGui.csproj"
+    },
+    "Hexa.NET.ImGui.Backends/1.0.15": {
+      "type": "project",
+      "path": "../Hexa.NET.ImGui.Backends/Hexa.NET.ImGui.Backends.csproj",
+      "msbuildProject": "../Hexa.NET.ImGui.Backends/Hexa.NET.ImGui.Backends.csproj"
+    },
+    "Hexa.NET.ImGui.Backends.GLFW/1.0.15": {
+      "type": "project",
+      "path": "../Hexa.NET.ImGui.Backends.GLFW/Hexa.NET.ImGui.Backends.GLFW.csproj",
+      "msbuildProject": "../Hexa.NET.ImGui.Backends.GLFW/Hexa.NET.ImGui.Backends.GLFW.csproj"
+    },
+    "Hexa.NET.ImGui.Backends.SDL2/1.0.15": {
+      "type": "project",
+      "path": "../Hexa.NET.ImGui.Backends.SDL2/Hexa.NET.ImGui.Backends.SDL2.csproj",
+      "msbuildProject": "../Hexa.NET.ImGui.Backends.SDL2/Hexa.NET.ImGui.Backends.SDL2.csproj"
+    },
+    "Hexa.NET.ImGuizmo/2.2.7": {
+      "type": "project",
+      "path": "../Hexa.NET.ImGuizmo/Hexa.NET.ImGuizmo.csproj",
+      "msbuildProject": "../Hexa.NET.ImGuizmo/Hexa.NET.ImGuizmo.csproj"
+    },
+    "Hexa.NET.ImNodes/2.2.7": {
+      "type": "project",
+      "path": "../Hexa.NET.ImNodes/Hexa.NET.ImNodes.csproj",
+      "msbuildProject": "../Hexa.NET.ImNodes/Hexa.NET.ImNodes.csproj"
+    },
+    "Hexa.NET.ImPlot/2.2.7": {
+      "type": "project",
+      "path": "../Hexa.NET.ImPlot/Hexa.NET.ImPlot.csproj",
+      "msbuildProject": "../Hexa.NET.ImPlot/Hexa.NET.ImPlot.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "ExampleFramework >= 1.0.0",
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.ImGui.Backends >= 1.0.15",
+      "Hexa.NET.ImGuizmo >= 2.2.7",
+      "Hexa.NET.ImNodes >= 2.2.7",
+      "Hexa.NET.ImPlot >= 2.2.7",
+      "Microsoft.DotNet.ILCompiler >= 9.0.4",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.4",
+      "Silk.NET.DXGI >= 2.22.0",
+      "Silk.NET.Direct3D.Compilers >= 2.22.0",
+      "Silk.NET.Direct3D11 >= 2.22.0",
+      "Silk.NET.Direct3D11.Extensions.D3D11On12 >= 2.22.0",
+      "Silk.NET.Direct3D12 >= 2.22.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\benja\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleD3D11\\ExampleD3D11.csproj",
+      "projectName": "ExampleD3D11",
+      "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleD3D11\\ExampleD3D11.csproj",
+      "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleD3D11\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleFramework\\ExampleFramework.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleFramework\\ExampleFramework.csproj"
+            },
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui.Backends\\Hexa.NET.ImGui.Backends.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui.Backends\\Hexa.NET.ImGui.Backends.csproj"
+            },
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGuizmo\\Hexa.NET.ImGuizmo.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGuizmo\\Hexa.NET.ImGuizmo.csproj"
+            },
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui\\Hexa.NET.ImGui.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui\\Hexa.NET.ImGui.csproj"
+            },
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImNodes\\Hexa.NET.ImNodes.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImNodes\\Hexa.NET.ImNodes.csproj"
+            },
+            "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImPlot\\Hexa.NET.ImPlot.csproj": {
+              "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImPlot\\Hexa.NET.ImPlot.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Microsoft.DotNet.ILCompiler": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.4, )",
+            "autoReferenced": true
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.4, )",
+            "autoReferenced": true
+          },
+          "Silk.NET.DXGI": {
+            "target": "Package",
+            "version": "[2.22.0, )"
+          },
+          "Silk.NET.Direct3D.Compilers": {
+            "target": "Package",
+            "version": "[2.22.0, )"
+          },
+          "Silk.NET.Direct3D11": {
+            "target": "Package",
+            "version": "[2.22.0, )"
+          },
+          "Silk.NET.Direct3D11.Extensions.D3D11On12": {
+            "target": "Package",
+            "version": "[2.22.0, )"
+          },
+          "Silk.NET.Direct3D12": {
+            "target": "Package",
+            "version": "[2.22.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
+            "version": "[9.0.4, 9.0.4]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

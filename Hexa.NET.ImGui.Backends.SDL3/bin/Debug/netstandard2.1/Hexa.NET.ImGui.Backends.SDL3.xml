@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hexa.NET.ImGui.Backends.SDL3</name>
+    </assembly>
+    <members>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode.AutoFirst">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode.AutoAll">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode.Manual">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOpenGLNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*,System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOpenGL(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr,System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOpenGL(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@,System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForVulkanNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForVulkan(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForVulkan(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForD3DNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForD3D(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForD3D(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForMetalNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForMetal(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForMetal(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLRendererNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLRenderer(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr,Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLRenderer(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@,Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLRenderer(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLRenderer(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLGPUNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLGPU(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForSDLGPU(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOtherNative(Hexa.NET.ImGui.Backends.SDL3.SDLWindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOther(Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3InitForOther(Hexa.NET.ImGui.Backends.SDL3.SDLWindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3ProcessEventNative(Hexa.NET.ImGui.Backends.SDL3.SDLEvent*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3ProcessEvent(Hexa.NET.ImGui.Backends.SDL3.SDLEventPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3ProcessEvent(Hexa.NET.ImGui.Backends.SDL3.SDLEvent@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3SetGamepadModeNative(Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode,Hexa.NET.ImGui.Backends.SDL3.SDLGamepad**,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3SetGamepadMode(Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode,Hexa.NET.ImGui.Backends.SDL3.SDLGamepadPtrPtr,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDL3SetGamepadMode(Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3GamepadMode,Hexa.NET.ImGui.Backends.SDL3.SDLGamepad*@,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3InitNative(Hexa.NET.ImGui.Backends.SDL3.SDLRenderer*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3Init(Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3Init(Hexa.NET.ImGui.Backends.SDL3.SDLRenderer@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.SDL3.SDLRenderer@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3CreateFontsTextureNative">
+            <summary>
+            Called by Init/NewFrame/Shutdown<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3CreateFontsTexture">
+            <summary>
+            Called by Init/NewFrame/Shutdown<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3DestroyFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3DestroyFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3CreateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3CreateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3DestroyDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.SDLRenderer3DestroyDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.InitApi(HexaGen.Runtime.INativeContext)">
+            <summary>
+            Initializes the function table, automatically called. Do not call manually, only after <see cref="M:Hexa.NET.ImGui.Backends.SDL3.ImGuiImplSDL3.FreeApi"/>.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLEvent">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLEventPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLEventPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLEventPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLGamepad">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLGamepadPtrPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLGamepadPtrPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLGamepadPtrPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLRenderer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLRendererPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLWindow">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.SDL3.SDLWindowPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

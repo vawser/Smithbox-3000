@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "ooTCzyDZFrw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\ExampleFramework\\ExampleFramework.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.debugdraw\\2.3.2\\hexa.net.debugdraw.2.3.2.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.math\\2.0.3\\hexa.net.math.2.0.3.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.utilities\\2.2.1\\hexa.net.utilities.2.2.1.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexagen.runtime\\1.1.18\\hexagen.runtime.1.1.18.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.0\\microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.4\\microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\silk.net.core\\2.22.0\\silk.net.core.2.22.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\silk.net.maths\\2.22.0\\silk.net.maths.2.22.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\silk.net.sdl\\2.22.0\\silk.net.sdl.2.22.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.json\\9.0.0\\system.text.json.9.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\ultz.native.sdl\\2.30.8\\ultz.native.sdl.2.30.8.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.imgui\\2.2.7\\hexa.net.imgui.2.2.7.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.imguizmo\\2.2.7\\hexa.net.imguizmo.2.2.7.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.imnodes\\2.2.7\\hexa.net.imnodes.2.2.7.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\hexa.net.implot\\2.2.7\\hexa.net.implot.2.2.7.nupkg.sha512"
+  ],
+  "logs": []
+}
