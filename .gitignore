@@ -1,8 +1,8 @@
 /.vs
-/ExampleD3D11/bin
-/ExampleD3D11/obj
-/ExampleFramework/bin
-/ExampleFramework/obj
+/Smithbox.Core/bin
+/Smithbox.Core/obj
+/Smithbox.Program/bin
+/Smithbox.Program/obj
 /Hexa.NET.ImGui/bin
 /Hexa.NET.ImGui/obj
 /Hexa.NET.ImGui.Backends/bin
