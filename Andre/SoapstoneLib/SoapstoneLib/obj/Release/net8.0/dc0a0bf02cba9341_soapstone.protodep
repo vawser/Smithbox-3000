@@ -1,0 +1,4 @@
+obj\Release\net8.0/Soapstone.cs \
+obj\Release\net8.0/SoapstoneGrpc.cs: ../Proto/common.proto\
+ ../Proto/internal.proto\
+ ../Proto/soapstone.proto

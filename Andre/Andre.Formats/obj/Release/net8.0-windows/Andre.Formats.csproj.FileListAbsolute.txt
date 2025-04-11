@@ -1,0 +1,16 @@
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\Andre.Formats.deps.json
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\Andre.Formats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\Andre.Core.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\SoulsFormats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.csproj.AssemblyReference.cache
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.csproj.CopyComplete
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\Andre.Formats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\refint\Andre.Formats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\obj\Release\net8.0-windows\ref\Andre.Formats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\x64\libzstd.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.Formats\bin\Release\net8.0-windows\x86\libzstd.dll

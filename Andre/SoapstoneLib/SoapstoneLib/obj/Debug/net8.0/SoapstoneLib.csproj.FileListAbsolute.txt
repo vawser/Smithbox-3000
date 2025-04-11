@@ -1,0 +1,13 @@
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\bin\Debug\net8.0\SoapstoneLib.deps.json
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\bin\Debug\net8.0\SoapstoneLib.dll
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\bin\Debug\net8.0\SoapstoneLib.pdb
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.csproj.AssemblyReference.cache
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.dll
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\refint\SoapstoneLib.dll
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\SoapstoneLib.pdb
+C:\Users\benja\Programming\C#\Smithbox\src\SoapstoneLib\SoapstoneLib\obj\Debug\net8.0\ref\SoapstoneLib.dll

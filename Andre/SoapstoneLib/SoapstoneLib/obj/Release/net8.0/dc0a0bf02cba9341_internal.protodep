@@ -1,0 +1,2 @@
+obj\Release\net8.0/Internal.cs: ../Proto/common.proto\
+ ../Proto/internal.proto

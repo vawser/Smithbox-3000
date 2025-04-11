@@ -1,0 +1,13 @@
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\bin\Release\net8.0\Andre.IO.deps.json
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\bin\Release\net8.0\Andre.IO.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\bin\Release\net8.0\Andre.IO.pdb
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\refint\Andre.IO.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.pdb
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\ref\Andre.IO.dll
+C:\Users\benja\Programming\C#\Smithbox\src\Andre\Andre.IO\obj\Release\net8.0\Andre.IO.csproj.AssemblyReference.cache

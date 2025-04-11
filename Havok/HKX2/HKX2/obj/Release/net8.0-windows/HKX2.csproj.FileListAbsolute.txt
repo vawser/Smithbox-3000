@@ -1,0 +1,15 @@
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\bin\Release\net8.0-windows\HKX2.deps.json
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\bin\Release\net8.0-windows\HKX2.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\bin\Release\net8.0-windows\SoulsFormats.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.csproj.AssemblyReference.cache
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.csproj.CopyComplete
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\HKX2.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\refint\HKX2.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\obj\Release\net8.0-windows\ref\HKX2.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\bin\Release\net8.0-windows\x64\libzstd.dll
+C:\Users\benja\Programming\C#\Smithbox\src\HKX2\HKX2\bin\Release\net8.0-windows\x86\libzstd.dll

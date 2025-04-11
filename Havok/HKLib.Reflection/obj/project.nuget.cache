@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "d44f8ohxpCc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Havok\\HKLib.Reflection\\HKLib.Reflection.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}

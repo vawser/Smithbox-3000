@@ -1,0 +1,12 @@
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\bin\Debug\net9.0\HKLib.deps.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\bin\Debug\net9.0\HKLib.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\bin\Debug\net9.0\HKLib.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\refint\HKLib.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\HKLib.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Havok\HKLib\obj\Debug\net9.0\ref\HKLib.dll

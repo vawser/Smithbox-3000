@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jshkA4SilOU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
