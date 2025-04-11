@@ -45,6 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="ParamEditor\" />
 	  <Folder Include="Utils\" />
 	</ItemGroup>
 

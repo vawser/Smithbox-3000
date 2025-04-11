@@ -1,10 +1,10 @@
 ﻿namespace Smithbox_Core
 {
-    using Smithbox_Core.Input;
     using Hexa.NET.ImGui.Backends.SDL2;
     using Silk.NET.SDL;
     using System;
     using System.Collections.Generic;
+    using Smithbox.Core.Interface.Input;
 
     public enum Backend
     {

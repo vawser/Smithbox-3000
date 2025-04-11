@@ -1,10 +1,6 @@
 ﻿namespace Smithbox_Program
 {
     using Smithbox_Core;
-    using Smithbox_Core.ImGuiDemo;
-    using Smithbox_Core.ImGuizmoDemo;
-    using Smithbox_Core.ImNodesDemo;
-    using Smithbox_Core.ImPlotDemo;
     using Hexa.NET.ImGui;
     using Hexa.NET.ImGui.Backends;
     using Hexa.NET.ImGui.Backends.D3D11;
@@ -14,6 +10,10 @@
     using Silk.NET.SDL;
     using System;
     using Smithbox.Core.Editor;
+    using Smithbox.Core.Interface.ImGuiDemo;
+    using Smithbox.Core.Interface.ImPlotDemo;
+    using Smithbox.Core.Interface.ImGuizmoDemo;
+    using Smithbox.Core.Interface.ImNodesDemo;
 
     public unsafe class DX11Window : CoreWindow
     {
@@ -76,7 +76,6 @@
             //imNodesDemo.Draw();
             //imPlotDemo.Draw();
 
-            smithboxEditor.Setup();
             smithboxEditor.Draw();
 
             d3d11Manager.Clear(default);
@@ -87,6 +86,8 @@
             d3d11Manager.DeviceContext.ClearState();
 
             d3d11Manager.Present(1, 0);
+
+            smithboxEditor.Setup();
         }
 
         private static bool ProcessEvent(Event @event)
