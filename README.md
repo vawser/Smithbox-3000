@@ -1,8 +1,8 @@
 # Smithbox
 Smithbox is a modding tool for Elden Ring, Armored Core VI, Sekiro, Dark Souls 3, Dark Souls 2, Dark Souls 1, Bloodborne and Demon's Souls.
 
-[![GitHub release](https://img.shields.io/github/release/vawser/Smithbox.svg)](https://github.com/vawser/Smithbox-3000/releases/latest)
-[![Github All Releases](https://img.shields.io/github/downloads/vawser/Smithbox/total.svg)](https://github.com/vawser/Smithbox-3000/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/vawser/Smithbox-3000.svg)](https://github.com/vawser/Smithbox-3000/releases/latest)
+[![Github All Releases](https://img.shields.io/github/downloads/vawser/Smithbox-3000/total.svg)](https://github.com/vawser/Smithbox-3000/releases/latest)
 [![Smithbox Discord](https://img.shields.io/badge/Discord%20-%237289DA.svg?&logo=discord&logoColor=white)](https://discord.gg/5p9bRKkK4J)
 
 ## Key Features
