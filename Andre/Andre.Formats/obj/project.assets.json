@@ -163,6 +163,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
+          "Andre.SoulsFormats": "1.0.0",
           "System.Text.Json": "8.0.5"
         },
         "compile": {

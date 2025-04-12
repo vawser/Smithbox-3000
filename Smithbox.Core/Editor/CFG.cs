@@ -25,6 +25,11 @@ public class CFG
     public bool DisplayProjectsWindow = true;
 
     /// <summary>
+    /// If true, the File Browser window is displayed
+    /// </summary>
+    public bool DisplayFileBrowser = true;
+
+    /// <summary>
     /// If true, the Primary Param Editor window is displayed
     /// </summary>
     public bool DisplayPrimaryParamEditor = true;
@@ -69,6 +74,13 @@ public class CFG
     /// </summary>
     public float WarningLoggerPreviewFadeTime = 30.0f;
 
+    //----------------------------------
+    // Param Editor
+    //----------------------------------
+    /// <summary>
+    /// If true, the project Meta files are used instead of the primary Meta files.
+    /// </summary>
+    public bool UseProjectMeta = false;
 
 
     //----------------------------------

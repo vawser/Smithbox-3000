@@ -1,0 +1,291 @@
+﻿using Andre.IO.VFS;
+using Hexa.NET.ImGui;
+using Smithbox.Core.Editor;
+using Smithbox.Core.FileBrowserNS.Entries;
+using Smithbox.Core.Interface;
+using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Smithbox.Core.FileBrowserNS;
+
+// Credit to GoogleBen (https://github.com/googleben/Smithbox/tree/VFS)
+public class FileBrowser
+{
+    private Project Project;
+
+    public int ID = 0;
+
+    private List<VirtualFileSystemFsEntry> roots = [];
+
+    public FsEntry? selected = null;
+
+    public bool Initialized = false;
+
+    public FileBrowser(int id, Project projectOwner)
+    {
+        Project = projectOwner;
+        ID = id;
+
+        Initialize();
+    }
+    public async void Initialize()
+    {
+        if (Initialized)
+            return;
+
+        // Param Defs
+        Task<bool> vfsRootsTask = LoadVfsRoots();
+        bool vfsRootsLoaded = await vfsRootsTask;
+
+        if (vfsRootsLoaded)
+        {
+            TaskLogs.AddLog("Loaded VFS roots.");
+        }
+        else
+        {
+            TaskLogs.AddLog("Failed to load VFS roots.");
+        }
+
+        Initialized = true;
+    }
+
+    private async Task<bool> LoadVfsRoots()
+    {
+        await Task.Delay(1000);
+
+        roots.Clear();
+        bool anyFs = false;
+        bool vanillaFs = false;
+
+        if (Project.VanillaRealFS is not EmptyVirtualFileSystem)
+        {
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.VanillaRealFS, "Game Directory"));
+            anyFs = true;
+            vanillaFs = true;
+        }
+
+        if (Project.VanillaBinderFS is not EmptyVirtualFileSystem)
+        {
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.VanillaBinderFS, "Vanilla Dvdbnds"));
+            anyFs = true;
+            vanillaFs = true;
+        }
+
+        if (vanillaFs && Project.VanillaFS is not EmptyVirtualFileSystem)
+        {
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.VanillaFS, "Full Vanilla FS"));
+        }
+
+        if (Project.ProjectFS is not EmptyVirtualFileSystem)
+        {
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.ProjectFS, "Project Directory"));
+            anyFs = true;
+        }
+
+        if (anyFs && Project.FileSystem is not EmptyVirtualFileSystem)
+        {
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.FileSystem, "Full Combined FS"));
+        }
+
+        return true;
+    }
+
+    public void Draw()
+    {
+        RenderDockspace();
+
+        //Menubar();
+        Shortcuts();
+
+        ImGui.Begin($"File Browser##FileBrowser", ImGuiWindowFlags.MenuBar);
+
+        ImGui.End();
+
+        ImGui.Begin($"Item Viewer##ItemViewer", ImGuiWindowFlags.MenuBar);
+
+        ImGui.End();
+
+        //DisplayFileBrowser();
+        //DisplayItemViewer();
+    }
+
+    private void RenderDockspace()
+    {
+        uint dockspaceID = ImGui.GetID($"FileBrowserDockspace{ID}");
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.None);
+    }
+
+    private void Menubar()
+    {
+        if (ImGui.BeginMenuBar())
+        {
+            if (ImGui.BeginMenu("Edit"))
+            {
+
+                ImGui.EndMenu();
+            }
+
+            ImGui.EndMenuBar();
+        }
+    }
+
+    private void Shortcuts()
+    {
+        if (ImGui.IsWindowHovered())
+        {
+
+        }
+    }
+
+    private void DisplayFileBrowser()
+    {
+        if (ImGui.Begin($"Browser List##FileBrowserList"))
+        {
+            if (roots.Count == 0)
+            {
+                ImGui.Text("No File System roots available. Load a project.");
+
+                return;
+            }
+
+            foreach (var root in roots)
+            {
+                Traverse(root, $"File Browser");
+            }
+
+            ImGui.End();
+        }
+    }
+
+    private void DisplayItemViewer()
+    {
+        if (ImGui.Begin("Item Viewer"))
+        {
+            if (selected == null)
+            {
+                ImGui.Text("Nothing selected");
+            }
+            else
+            {
+                if (selected.CanView)
+                {
+                    if (!selected.IsInitialized && !selected.IsLoading)
+                        selected.LoadAsync(Project);
+
+                    if (selected.IsInitialized) 
+                        selected.OnGui();
+                    else 
+                        ImGui.Text("Loading...");
+                }
+                else
+                {
+                    ImGui.Text($"Selected: {selected.Name}");
+                    ImGui.Text("This file has no Item Viewer.");
+                }
+            }
+            ImGui.End();
+        }
+    }
+
+    private void Traverse(FsEntry e, string parentIdStr)
+    {
+        string id = $"{parentIdStr}##{e.Name}";
+        var flags = ImGuiTreeNodeFlags.OpenOnDoubleClick;
+
+        if (e is VirtualFileSystemFsEntry)
+            flags |= ImGuiTreeNodeFlags.CollapsingHeader;
+
+        if (!e.CanHaveChildren)
+            flags |= ImGuiTreeNodeFlags.Leaf;
+
+        if (selected == e)
+            flags |= ImGuiTreeNodeFlags.Selected;
+
+        bool shouldBeOpen = e.CanHaveChildren && (e.IsInitialized || e.IsLoading);
+
+        ImGui.SetNextItemOpen(shouldBeOpen);
+        bool isOpen = ImGui.TreeNodeEx(id, flags, e.Name);
+
+        if (ImGui.IsItemClicked())
+        {
+            Console.WriteLine(id);
+            if (!e.IsInitialized)
+            {
+                e.LoadAsync(Project);
+                Select(e);
+            }
+            else if (!e.CanHaveChildren)
+                Select(e);
+            else
+                e.Unload();
+
+        }
+
+        if (isOpen)
+        {
+            //if (!e.IsInitialized && e.CanHaveChildren) e.LoadAsync();
+            //IsInitialized may have changed, so re-check
+            shouldBeOpen = e.CanHaveChildren && (e.IsInitialized || e.IsLoading);
+
+            //nodes that have CanHaveChildren = false will be set to be leaf nodes, but leaf nodes always
+            //return true from ImGui.TreeNode, so we need to double-check shouldBeOpen here so that
+            //we don't erroneously display children, such as in the case of a BHD file, since they
+            //override CanHaveChildren to be false but still populate the Children list.
+            if (shouldBeOpen)
+            {
+                if (e.IsLoading)
+                {
+                    ImGui.TreeNodeEx("Loading...", ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.Leaf);
+                }
+                else
+                {
+                    foreach (var child in e.Children.Order(fsEntryComparer))
+                    {
+                        Traverse(child, id);
+                    }
+                }
+            }
+            if (!flags.HasFlag(ImGuiTreeNodeFlags.NoTreePushOnOpen)) ImGui.TreePop();
+        }
+    }
+
+    private void TryDeselect(FsEntry e)
+    {
+        if (selected == e)
+        {
+            selected = null;
+        }
+    }
+
+    private void Select(FsEntry e)
+    {
+        if (selected == e) 
+            return;
+
+        if (selected != null) 
+            selected.onUnload = null;
+
+        selected = e;
+        e.onUnload = TryDeselect;
+    }
+
+    public IComparer<FsEntry> fsEntryComparer = Comparer<FsEntry>.Create((a, b) =>
+    {
+        bool aIsVfsDir = a is VirtualFileSystemDirectoryFsEntry;
+        bool bIsVfsDir = b is VirtualFileSystemDirectoryFsEntry;
+
+        if (aIsVfsDir && !bIsVfsDir) 
+            return -1;
+
+        if (bIsVfsDir && !aIsVfsDir) 
+            return 1;
+
+        return string.Compare(a.Name, b.Name, StringComparison.CurrentCulture);
+    });
+}

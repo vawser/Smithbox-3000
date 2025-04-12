@@ -55,6 +55,8 @@ public class Smithbox
     /// </summary>
     public void Draw()
     {
+        RenderDockspace();
+
         UIHelper.ApplyBaseStyle();
 
         MessageBox.Draw();
@@ -64,7 +66,7 @@ public class Smithbox
 
         if (CFG.Current.DisplayProjectsWindow)
         {
-            ImGui.Begin($"Projects##BaseDock_Window");
+            ImGui.Begin($"Projects##ProjectWindow");
 
             DisplayProjectActions();
             DisplayProjectList();
@@ -86,6 +88,37 @@ public class Smithbox
             CreateProject();
         }
     }
+
+    private void RenderDockspace()
+    {
+        ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, Vector2.Zero);
+
+        ImGuiViewportPtr viewport = ImGui.GetMainViewport();
+
+        ImGui.SetNextWindowPos(viewport.Pos);
+        ImGui.SetNextWindowSize(viewport.Size);
+        ImGui.SetNextWindowViewport(viewport.ID);
+
+        ImGuiWindowFlags windowFlags =
+            //ImGuiWindowFlags.NoTitleBar |
+            ImGuiWindowFlags.NoCollapse |
+            ImGuiWindowFlags.NoResize |
+            //ImGuiWindowFlags.NoMove |
+            ImGuiWindowFlags.NoBringToFrontOnFocus |
+            ImGuiWindowFlags.NoNavFocus |
+            ImGuiWindowFlags.MenuBar;
+
+        ImGui.Begin("MainDockspace_W", windowFlags);
+
+        uint dockspaceID = ImGui.GetID("MainDockspace");
+
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
+
+        ImGui.End();
+
+        ImGui.PopStyleVar();
+    }
+
     private void Menubar()
     {
         if (ImGui.BeginMainMenuBar())
@@ -99,6 +132,12 @@ public class Smithbox
                     CFG.Current.DisplayProjectsWindow = !CFG.Current.DisplayProjectsWindow;
                 }
                 UIHelper.Tooltip("Toggle the visibility of the Projects window.");
+
+                if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
+                {
+                    CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
 
                 if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
                 {
@@ -116,6 +155,14 @@ public class Smithbox
             }
 
             ImGui.Separator();
+
+            TaskLogs.DisplayActionLoggerBar();
+            TaskLogs.DisplayActionLoggerWindow();
+
+            ImGui.Separator();
+
+            TaskLogs.DisplayWarningLoggerBar();
+            TaskLogs.DisplayWarningLoggerWindow();  
 
             ImGui.EndMainMenuBar();
         }

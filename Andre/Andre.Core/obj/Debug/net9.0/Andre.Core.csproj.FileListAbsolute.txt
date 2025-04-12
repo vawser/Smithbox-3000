@@ -10,3 +10,9 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\An
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\refint\Andre.Core.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\Andre.Core.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\ref\Andre.Core.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\bin\Debug\net9.0\x64\libzstd.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\bin\Debug\net9.0\x86\libzstd.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\bin\Debug\net9.0\Andre.SoulsFormats.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\bin\Debug\net9.0\Andre.SoulsFormats.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\Andre.Core.csproj.AssemblyReference.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Core\obj\Debug\net9.0\Andre.Core.csproj.Up2Date

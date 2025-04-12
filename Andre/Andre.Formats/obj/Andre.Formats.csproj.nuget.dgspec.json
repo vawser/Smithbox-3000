@@ -31,7 +31,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -1,10 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "jshkA4SilOU=",
+  "dgSpecHash": "9S1EW7Owz8E=",
   "success": true,
   "projectFilePath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\benja\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+    "C:\\Users\\benja\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\communitytoolkit.highperformance\\8.2.2\\communitytoolkit.highperformance.8.2.2.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\dotnext\\4.14.0\\dotnext.4.14.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\dotnext.io\\4.15.0\\dotnext.io.4.15.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\dotnext.unsafe\\4.14.0\\dotnext.unsafe.4.14.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.encoding.codepages\\8.0.0\\system.text.encoding.codepages.8.0.0.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
+    "C:\\Users\\benja\\.nuget\\packages\\zstdnet\\1.4.5\\zstdnet.1.4.5.nupkg.sha512"
   ],
   "logs": []
 }

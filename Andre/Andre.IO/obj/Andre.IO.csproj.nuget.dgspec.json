@@ -4,6 +4,159 @@
     "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.IO\\Andre.IO.csproj": {}
   },
   "projects": {
+    "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj",
+        "projectName": "Andre.Core",
+        "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj",
+        "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\Andre.Formats.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\Andre.Formats.csproj",
+        "projectName": "Andre.Formats",
+        "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\Andre.Formats.csproj",
+        "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Core\\Andre.Core.csproj"
+              },
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.IO\\Andre.IO.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -12,6 +165,84 @@
         "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.IO\\Andre.IO.csproj",
         "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.IO\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\Andre.Formats.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\Andre.Formats\\Andre.Formats.csproj"
+              },
+              "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj": {
+                "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj",
+        "projectName": "Andre.SoulsFormats",
+        "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\Andre.SoulsFormats.csproj",
+        "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Andre\\SoulsFormats\\SoulsFormats\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,9 +281,33 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "BouncyCastle.Cryptography": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "CommunityToolkit.HighPerformance": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "DotNext.IO": {
+              "target": "Package",
+              "version": "[4.15.0, )"
+            },
+            "DotNext.Unsafe": {
+              "target": "Package",
+              "version": "[4.14.0, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.5, )"
+            },
+            "ZstdNet": {
+              "target": "Package",
+              "version": "[1.4.5, )"
             }
           },
           "imports": [

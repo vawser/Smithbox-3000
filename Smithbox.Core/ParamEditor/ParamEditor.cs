@@ -22,8 +22,6 @@ public class ParamEditor
     public ActionManager ActionManager;
     public ParamActions ParamActions;
 
-    private TextEditor textEditor;
-
     public ParamEditor(int id, Project projectOwner)
     {
         Project = projectOwner;
@@ -31,15 +29,15 @@ public class ParamEditor
 
         ActionManager = new();
         ParamActions = new(this);
-
-        textEditor = new("test", new TextSource("test text"));
     }
 
     public void Draw()
     {
+        //RenderDockspace();
+
         ImGui.Begin($"Param Editor##ParamEditor{ID}", ImGuiWindowFlags.MenuBar);
 
-        Menubar();
+        //Menubar();
 
         if (Project.ParamData.Initialized)
         {
@@ -61,6 +59,12 @@ public class ParamEditor
         }
 
         ImGui.End();
+    }
+
+    private void RenderDockspace()
+    {
+        uint dockspaceID = ImGui.GetID($"ParamEditorDockspace{ID}");
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
     }
 
     private void Menubar()

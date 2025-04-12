@@ -1,8 +1,12 @@
-﻿using Hexa.NET.ImGui;
+﻿using Andre.IO.VFS;
+using Hexa.NET.ImGui;
+using Silk.NET.Core.Native;
+using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -23,6 +27,16 @@ public class Project
     public string DataPath;
     public ProjectType ProjectType;
 
+    /// <summary>
+    /// Tracked so we only ever import param row names automatically once.
+    /// </summary>
+    public bool ImportedParamRowNames;
+
+    /// <summary>
+    /// Tracked so we know when to apply Param Row stripping, and if to restore them.
+    /// </summary>
+    public bool EnableParamRowStrip;
+
     public Project() { }
 
     public Project(Guid newGuid, string projectName, string projectPath, string dataPath, ProjectType projectType)
@@ -32,6 +46,8 @@ public class Project
         ProjectPath = projectPath;
         DataPath = dataPath;
         ProjectType = projectType;
+        ImportedParamRowNames = false;
+        EnableParamRowStrip = false;
     }
 
     /// <summary>
@@ -41,11 +57,20 @@ public class Project
     private bool Initialized = false;
 
     /// <summary>
+    /// Track if we are in the process of initialization
+    /// </summary>
+    [JsonIgnore]
+    private bool IsInitializing = false;
+
+    /// <summary>
     /// If true, this project is the currently selected project.
     /// </summary>
     [JsonIgnore]
     public bool IsSelected = false;
 
+    /// <summary>
+    /// Param Editor
+    /// </summary>
     [JsonIgnore]
     public ParamEditor PrimaryParamEditor;
 
@@ -55,35 +80,111 @@ public class Project
     [JsonIgnore]
     public ParamData ParamData;
 
-    public void Initialize()
+    /// <summary>
+    /// File Browser
+    /// </summary>
+    [JsonIgnore]
+    public FileBrowser FileBrowser;
+
+    /// <summary>
+    /// Top-level VFS, contains the others.
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem FileSystem = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the project data
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem ProjectFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data (binder file)
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaBinderFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data (direct file)
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaRealFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaFS = EmptyVirtualFileSystem.Instance;
+
+    public async void Initialize()
     {
-        // Data is initialized separately to the editors themselves
+        // DLLs
+        Task<bool> dllGrabTask = SetupDLLs();
+        bool dllGrabResult = await dllGrabTask;
+
+        if (!dllGrabResult)
+        {
+            TaskLogs.AddLog("Failed to grab oo2core.dll");
+        }
+
+        // VFS
+        Task<bool> vfsTask = SetupVFS();
+        bool vfsSetup = await vfsTask;
+
+        if (vfsSetup)
+        {
+            TaskLogs.AddLog("Setup virtual filesystem.");
+        }
+        else
+        {
+            TaskLogs.AddLog("Failed to setup virtual filesystem.");
+        }
+
+        // Data
         ParamData = new(this);
 
+        // File Browser
+        FileBrowser = new(0, this);
+
+        // Param Editor
         PrimaryParamEditor = new ParamEditor(0, this);
         SecondaryParamEditor = new ParamEditor(1, this);
 
+        IsInitializing = false;
         Initialized = true;
     }
 
     public void Draw()
     {
-        if (!Initialized)
+        // Only initialize once the project is selected
+        // This is so we don't try and initialize all
+        // projects in the stored list immediately
+        if (IsSelected && !Initialized && !IsInitializing)
         {
+            IsInitializing = true;
             Initialize();
         }
 
-        ParamData.Update();
-
-        // Param Editors
-        if (CFG.Current.DisplayPrimaryParamEditor)
+        if (Initialized)
         {
-            PrimaryParamEditor.Draw();
-        }
+            ParamData.Update();
 
-        if (CFG.Current.DisplaySecondaryParamEditor)
-        {
-            SecondaryParamEditor.Draw();
+            // File Browser
+            if (CFG.Current.DisplayFileBrowser)
+            {
+                FileBrowser.Draw();
+            }
+
+            // Param Editors
+            if (CFG.Current.DisplayPrimaryParamEditor)
+            {
+                PrimaryParamEditor.Draw();
+            }
+
+            if (CFG.Current.DisplaySecondaryParamEditor)
+            {
+                SecondaryParamEditor.Draw();
+            }
         }
     }
 
@@ -95,5 +196,107 @@ public class Project
         var json = JsonSerializer.Serialize(this, SmithboxSerializerContext.Default.Project);
 
         File.WriteAllText(file, json);
+    }
+
+    public async Task<bool> SetupDLLs()
+    {
+        await Task.Delay(1000);
+
+        if (ProjectType is ProjectType.SDT or ProjectType.ER)
+        {
+            var rootDllPath = Path.Join(DataPath, "oo2core_6_win64.dll");
+            var projectDllPath = Path.Join(AppContext.BaseDirectory, "oo2core_6_win64.dll");
+
+            if (!File.Exists(rootDllPath))
+            {
+                return false;
+            }
+            else
+            {
+                if (!File.Exists(projectDllPath))
+                {
+                    File.Copy(rootDllPath, projectDllPath);
+                }
+            }
+        }
+
+        if (ProjectType is ProjectType.AC6)
+        {
+            var rootDllPath = Path.Join(DataPath, "oo2core_8_win64.dll");
+            var projectDllPath = Path.Join(AppContext.BaseDirectory, "oo2core_8_win64.dll");
+
+            if (!File.Exists(rootDllPath))
+            {
+                return false;
+            }
+            else
+            {
+                if (!File.Exists(projectDllPath))
+                {
+                    File.Copy(rootDllPath, projectDllPath);
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public async Task<bool> SetupVFS()
+    {
+        await Task.Delay(1000);
+
+        List<VirtualFileSystem> fileSystems = [];
+
+        ProjectFS.Dispose();
+        VanillaRealFS.Dispose();
+        VanillaBinderFS.Dispose();
+        VanillaFS.Dispose();
+        FileSystem.Dispose();
+
+        // Project File System
+        if (Directory.Exists(ProjectPath))
+        {
+            ProjectFS = new RealVirtualFileSystem(ProjectPath, false);
+            fileSystems.Add(ProjectFS);
+        }
+        else
+        {
+            ProjectFS = EmptyVirtualFileSystem.Instance;
+        }
+
+        // Vanilla File System
+        if (Directory.Exists(DataPath))
+        {
+            VanillaRealFS = new RealVirtualFileSystem(DataPath, false);
+            fileSystems.Add(ProjectFS);
+
+            var andreGame = ProjectType.AsAndreGame();
+
+            if (andreGame != null)
+            {
+                VanillaBinderFS = ArchiveBinderVirtualFileSystem.FromGameFolder(DataPath, andreGame.Value);
+                fileSystems.Add(VanillaBinderFS);
+
+                VanillaFS = new CompundVirtualFileSystem([VanillaRealFS, VanillaBinderFS]);
+            }
+            else
+            {
+                VanillaRealFS = EmptyVirtualFileSystem.Instance;
+                VanillaFS = EmptyVirtualFileSystem.Instance;
+            }
+        }
+        else
+        {
+            VanillaRealFS = EmptyVirtualFileSystem.Instance;
+            VanillaFS = EmptyVirtualFileSystem.Instance;
+        }
+
+
+        if (fileSystems.Count == 0)
+            FileSystem = EmptyVirtualFileSystem.Instance;
+        else
+            FileSystem = new CompundVirtualFileSystem(fileSystems);
+
+        return true;
     }
 }

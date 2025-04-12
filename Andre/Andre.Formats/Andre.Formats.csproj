@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>12</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -20,4 +21,30 @@
     <ProjectReference Include="..\Andre.Core\Andre.Core.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+    <None Remove="Resources\EldenRingDictionary.txt" />
+    <AdditionalFiles Include="Resources\EldenRingDictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\DarkSouls2Dictionary.txt" />
+    <AdditionalFiles Include="Resources\DarkSouls2Dictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="bhd5_decrypt_rust.dll" />
+    <AdditionalFiles Include="bhd5_decrypt_rust.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\DarkSouls3Dictionary.txt" />
+    <AdditionalFiles Include="Resources\DarkSouls3Dictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\DarkSoulsDictionary.txt" />
+    <AdditionalFiles Include="Resources\DarkSoulsDictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\SekiroDictionary.txt" />
+    <AdditionalFiles Include="Resources\SekiroDictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
 </Project>

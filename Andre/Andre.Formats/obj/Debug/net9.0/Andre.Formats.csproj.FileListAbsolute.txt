@@ -18,3 +18,9 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\obj\Debug\net9.0
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\obj\Debug\net9.0\refint\Andre.Formats.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\obj\Debug\net9.0\Andre.Formats.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\obj\Debug\net9.0\ref\Andre.Formats.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\Resources\EldenRingDictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\Resources\DarkSouls2Dictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\bhd5_decrypt_rust.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\Resources\DarkSouls3Dictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\Resources\DarkSoulsDictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.Formats\bin\Debug\net9.0\Resources\SekiroDictionary.txt
