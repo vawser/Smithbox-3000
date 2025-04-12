@@ -148,51 +148,42 @@ public class FileBrowser
 
     private void DisplayFileBrowser()
     {
-        ImGui.Begin($"Browser List##BrowserList", ImGuiWindowFlags.None);
+        if (roots.Count == 0)
         {
-            if (roots.Count == 0)
-            {
-                ImGui.Text("No File System roots available. Load a project.");
+            ImGui.Text("No File System roots available. Load a project.");
 
-                return;
-            }
+            return;
+        }
 
-            foreach (var root in roots)
-            {
-                Traverse(root, $"File Browser");
-            }
-
-            ImGui.End();
+        foreach (var root in roots)
+        {
+            Traverse(root, $"File Browser");
         }
     }
 
     private void DisplayItemViewer()
     {
-        if (ImGui.Begin("Item Viewer"))
+        if (selected == null)
         {
-            if (selected == null)
+            ImGui.Text("Nothing selected");
+        }
+        else
+        {
+            if (selected.CanView)
             {
-                ImGui.Text("Nothing selected");
+                if (!selected.IsInitialized && !selected.IsLoading)
+                    selected.LoadAsync(Project);
+
+                if (selected.IsInitialized) 
+                    selected.OnGui();
+                else 
+                    ImGui.Text("Loading...");
             }
             else
             {
-                if (selected.CanView)
-                {
-                    if (!selected.IsInitialized && !selected.IsLoading)
-                        selected.LoadAsync(Project);
-
-                    if (selected.IsInitialized) 
-                        selected.OnGui();
-                    else 
-                        ImGui.Text("Loading...");
-                }
-                else
-                {
-                    ImGui.Text($"Selected: {selected.Name}");
-                    ImGui.Text("This file has no Item Viewer.");
-                }
+                ImGui.Text($"Selected: {selected.Name}");
+                ImGui.Text("This file has no Item Viewer.");
             }
-            ImGui.End();
         }
     }
 

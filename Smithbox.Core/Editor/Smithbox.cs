@@ -3,8 +3,10 @@ using Microsoft.Extensions.Logging;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.ImGuiDemo;
 using Smithbox.Core.Utils;
+using SoulsFormats;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -26,6 +28,7 @@ public class Smithbox
 
     public Smithbox()
     {
+
     }
 
     /// <summary>
@@ -47,6 +50,12 @@ public class Smithbox
         LoadExistingProjects();
 
         ProjectCreation.Setup();
+
+        // Set culture to invariant so we don't get funny issues due to localization
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+        // Setup ignore asserts feature
+        BinaryReaderEx.IgnoreAsserts = CFG.Current.IgnoreReadAsserts;
     }
 
     /// <summary>

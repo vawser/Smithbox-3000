@@ -15,6 +15,10 @@ public class CFG
     //----------------------------------
     // Project
     //----------------------------------
+    /// <summary>
+    /// If true, file reads will ignore failed asserts
+    /// </summary>
+    public bool IgnoreReadAsserts = false;
 
     //----------------------------------
     // Interface

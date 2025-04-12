@@ -141,15 +141,20 @@ public class Project
             TaskLogs.AddLog("Failed to setup virtual filesystem.");
         }
 
-        // Data
-        ParamData = new(this);
-
         // File Browser
-        FileBrowser = new(0, this);
+        if (FeatureFlags.IncludeFileBrowser)
+        {
+            FileBrowser = new(0, this);
+        }
 
         // Param Editor
-        PrimaryParamEditor = new ParamEditor(0, this);
-        SecondaryParamEditor = new ParamEditor(1, this);
+        if (FeatureFlags.IncludeParamEditor)
+        {
+            ParamData = new(this);
+
+            PrimaryParamEditor = new ParamEditor(0, this);
+            SecondaryParamEditor = new ParamEditor(1, this);
+        }
 
         IsInitializing = false;
         Initialized = true;
@@ -175,23 +180,29 @@ public class Project
         {
             Menubar();
 
-            ParamData.Update();
-
             // File Browser
-            if (CFG.Current.DisplayFileBrowser)
+            if (FeatureFlags.IncludeFileBrowser)
             {
-                FileBrowser.Draw();
+                if (CFG.Current.DisplayFileBrowser)
+                {
+                    FileBrowser.Draw();
+                }
             }
 
-            // Param Editors
-            if (CFG.Current.DisplayPrimaryParamEditor)
+            // Param Editor
+            if (FeatureFlags.IncludeParamEditor)
             {
-                PrimaryParamEditor.Draw();
-            }
+                ParamData.Update();
 
-            if (CFG.Current.DisplaySecondaryParamEditor)
-            {
-                SecondaryParamEditor.Draw();
+                if (CFG.Current.DisplayPrimaryParamEditor)
+                {
+                    PrimaryParamEditor.Draw();
+                }
+
+                if (CFG.Current.DisplaySecondaryParamEditor)
+                {
+                    SecondaryParamEditor.Draw();
+                }
             }
         }
 
@@ -211,23 +222,29 @@ public class Project
                 }
                 UIHelper.Tooltip("Toggle the visibility of the Projects window.");
 
-                if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
+                if (FeatureFlags.IncludeFileBrowser)
                 {
-                    CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
+                    if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
+                    {
+                        CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
+                    }
+                    UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
                 }
-                UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
 
-                if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
+                if (FeatureFlags.IncludeParamEditor)
                 {
-                    CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
-                }
-                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
+                    if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
+                    {
+                        CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
+                    }
+                    UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
 
-                if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
-                {
-                    CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
+                    if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
+                    {
+                        CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
+                    }
+                    UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
                 }
-                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
 
                 ImGui.EndMenu();
             }
