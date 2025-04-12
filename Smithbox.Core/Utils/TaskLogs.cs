@@ -52,8 +52,6 @@ public static class TaskLogs
 
                 if (level is LogLevel.Warning or LogLevel.Error)
                 {
-                    _warningShowTime = CFG.Current.WarningLoggerPreviewFadeTime * 1000;
-
                     LogEntry lastLog = _warningLog.LastOrDefault();
                     if (lastLog != null)
                     {
@@ -89,8 +87,6 @@ public static class TaskLogs
                 }
                 else
                 {
-                    _actionShowTime = CFG.Current.GeneralLoggerPreviewFadeTime * 1000;
-
                     LogEntry lastLog = _actionLog.LastOrDefault();
                     if (lastLog != null)
                     {
@@ -168,16 +164,8 @@ public static class TaskLogs
             // Only show the warning for X frames in the menu bar
             if (_lastActionLogEntry != null)
             {
-                if (_actionShowTime > 0 || CFG.Current.GeneralLoggerPreviewFadeTime < 0)
-                {
-                    if (CFG.Current.GeneralLoggerPreviewFadeTime > 0)
-                    {
-                        _actionShowTime--;
-                    }
-
-                    Vector4 color = PickColor(_lastActionLogEntry.Level);
-                    ImGui.TextColored(color, _lastActionLogEntry.FormattedMessage);
-                }
+                Vector4 color = PickColor(_lastActionLogEntry.Level);
+                ImGui.TextColored(color, _lastActionLogEntry.FormattedMessage);
             }
         }
     }
@@ -266,17 +254,8 @@ public static class TaskLogs
 
             if (_lastWarningLogEntry != null)
             {
-                // Only show the warning for X frames in the menu bar
-                if (_warningShowTime > 0 || CFG.Current.WarningLoggerPreviewFadeTime < 0)
-                {
-                    if (CFG.Current.WarningLoggerPreviewFadeTime > 0)
-                    {
-                        _warningShowTime--;
-                    }
-
-                    Vector4 color = PickColor(_lastWarningLogEntry.Level);
-                    ImGui.TextColored(color, _lastWarningLogEntry.FormattedMessage);
-                }
+                Vector4 color = PickColor(_lastWarningLogEntry.Level);
+                ImGui.TextColored(color, _lastWarningLogEntry.FormattedMessage);
             }
         }
     }

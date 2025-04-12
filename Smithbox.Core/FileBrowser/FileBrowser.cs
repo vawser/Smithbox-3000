@@ -28,6 +28,7 @@ public class FileBrowser
     private List<VirtualFileSystemFsEntry> roots = [];
 
     public FsEntry? selected = null;
+    public string selectedId = "";
 
     public bool Initialized = false;
 
@@ -114,14 +115,18 @@ public class FileBrowser
 
         ImGui.Begin($"Browser List##BrowserList", SubWindowFlags);
 
+        DisplayFileBrowser();
+
         ImGui.End();
 
         ImGui.Begin($"Item Viewer##ItemViewer", SubWindowFlags);
 
+        DisplayItemViewer();
+
         ImGui.End();
 
-        //DisplayFileBrowser();
-        //DisplayItemViewer();
+        //
+        //
     }
 
     private void Menubar()
@@ -172,12 +177,18 @@ public class FileBrowser
             if (selected.CanView)
             {
                 if (!selected.IsInitialized && !selected.IsLoading)
-                    selected.LoadAsync(Project);
+                {
+                    selected.LoadAsync(selectedId, selected.Name, Project);
+                }
 
-                if (selected.IsInitialized) 
+                if (selected.IsInitialized)
+                {
                     selected.OnGui();
-                else 
+                }
+                else
+                {
                     ImGui.Text("Loading...");
+                }
             }
             else
             {
@@ -211,13 +222,17 @@ public class FileBrowser
             Console.WriteLine(id);
             if (!e.IsInitialized)
             {
-                e.LoadAsync(Project);
-                Select(e);
+                e.LoadAsync(id, e.Name, Project);
+                Select(id, e);
             }
             else if (!e.CanHaveChildren)
-                Select(e);
+            {
+                Select(id, e);
+            }
             else
+            {
                 e.Unload();
+            }
 
         }
 
@@ -257,15 +272,20 @@ public class FileBrowser
         }
     }
 
-    private void Select(FsEntry e)
+    private void Select(string id, FsEntry e)
     {
-        if (selected == e) 
+        if (selected == e)
+        {
             return;
+        }
 
-        if (selected != null) 
+        if (selected != null)
+        {
             selected.onUnload = null;
+        }
 
         selected = e;
+        selectedId = id;
         e.onUnload = TryDeselect;
     }
 

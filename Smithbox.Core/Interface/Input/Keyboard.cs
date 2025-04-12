@@ -19,6 +19,8 @@
         private static readonly KeyboardEventArgs keyboardEventArgs = new();
         private static readonly KeyboardCharEventArgs keyboardCharEventArgs = new();
 
+        private static readonly HashSet<Key> _downKeys = new();
+
         public static IReadOnlyList<Key> Keys => keys;
 
         public static IReadOnlyList<string> KeyNames => keyNames;
@@ -92,12 +94,36 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsDown(Key n)
         {
+
             return states[n] == KeyState.Down;
         }
 
         public static Keymod GetModState()
         {
             return sdl.GetModState();
+        }
+
+        public static bool KeyPress(Key n)
+        {
+            if(IsDown(n))
+            {
+                if (!_downKeys.Contains(n))
+                {
+                    _downKeys.Add(n);
+                }
+            }
+
+            if(IsUp(n))
+            {
+                if (_downKeys.Contains(n))
+                {
+                    _downKeys.Remove(n);
+                    return true;
+                }
+            }
+
+
+            return false;
         }
     }
 }

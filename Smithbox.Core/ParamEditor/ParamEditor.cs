@@ -3,6 +3,7 @@ using Hexa.NET.ImGui.Widgets;
 using Hexa.NET.ImGui.Widgets.Extras.TextEditor;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,6 @@ public class ParamEditor
 
         if (Project.ParamData.Initialized)
         {
-            Shortcuts();
             ParamActions.Draw();
 
             if (Project.IsSelected)
@@ -62,6 +62,8 @@ public class ParamEditor
         {
             ImGuiSpinner.Spinner(50f, 5.0f, ColorUtils.ColorFromVec4(UI.Current.ImGui_Highlight_Text));
         }
+
+        Shortcuts();
 
         ImGui.End();
     }
@@ -143,25 +145,54 @@ public class ParamEditor
         }
     }
 
+    private bool DetectShortcuts = false;
+
+    /// <summary>
+    /// Called after the windows
+    /// </summary>
     private void Shortcuts()
     {
-        if (ImGui.IsWindowHovered())
+        if(DetectShortcuts)
         {
-
+            if (Keyboard.KeyPress(Key.A))
+            {
+                TaskLogs.AddLog("A");
+            }
+            if (Keyboard.KeyPress(Key.B))
+            {
+                TaskLogs.AddLog("B");
+            }
         }
     }
 
     private void DisplayEditor()
     {
+        DetectShortcuts = false;
+
         ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
+
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
 
         ImGui.End();
 
         ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
 
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+
         ImGui.End();
 
         ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
+
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
 
         ImGui.End();
     }

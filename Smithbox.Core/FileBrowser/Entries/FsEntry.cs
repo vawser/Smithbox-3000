@@ -28,12 +28,12 @@ public abstract class FsEntry
     private TaskManager.LiveTask? loadingTask = null;
     public bool IsLoading => loadingTask != null;
 
-    public TaskManager.LiveTask LoadAsync(Project ownerProject)
+    public TaskManager.LiveTask LoadAsync(string id, string name, Project ownerProject)
     {
         if (loadingTask != null) 
             return loadingTask;
 
-        loadingTask = new TaskManager.LiveTask("FsEntryLoadAsync", "FsEntry LoadAsync", "", "", TaskManager.RequeueType.WaitThenRequeue, false,
+        loadingTask = new TaskManager.LiveTask($"{id}", $"{name}", $"Loaded {name}", $"Failed to load {name}", TaskManager.RequeueType.WaitThenRequeue, false,
             () =>
             {
                 Load(ownerProject);

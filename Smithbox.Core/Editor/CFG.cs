@@ -73,16 +73,6 @@ public class CFG
     /// </summary>
     public bool DisplayWarningLogger = true;
 
-    /// <summary>
-    /// The duration after which the General logger preview will fade out
-    /// </summary>
-    public float GeneralLoggerPreviewFadeTime = 30.0f;
-
-    /// <summary>
-    /// The duration after which the Warning logger preview will fade out
-    /// </summary>
-    public float WarningLoggerPreviewFadeTime = 30.0f;
-
     //----------------------------------
     // Param Editor
     //----------------------------------

@@ -1,4 +1,5 @@
 ﻿using Hexa.NET.ImGui;
+using Smithbox.Core.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,20 @@ public static class EditorSettings
 
         if (ImGui.BeginPopupModal("Editor Settings", ref Open, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
         {
+            if (ImGui.CollapsingHeader("General"))
+            {
+                // Ignore Read Asserts
+                ImGui.Checkbox("Ignore Read Asserts##ignoreReadAsserts", ref CFG.Current.IgnoreReadAsserts);
+                UIHelper.Tooltip("If true, file reads will ignore failed asserts. Useful for loading files that have been 'corrupted' intentionally.");
+            }
+
+            if (FeatureFlags.IncludeParamEditor)
+            {
+                if(ImGui.CollapsingHeader("Param Editor"))
+                {
+
+                }
+            }
 
             ImGui.EndPopup();
         }
