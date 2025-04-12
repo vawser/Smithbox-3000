@@ -2,6 +2,7 @@
 using Hexa.NET.ImGui;
 using Silk.NET.Core.Native;
 using Smithbox.Core.FileBrowserNS;
+using Smithbox.Core.Interface;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
 using System;
@@ -156,6 +157,11 @@ public class Project
 
     public void Draw()
     {
+        ImGui.Begin($"Project##Project", ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove);
+
+        uint dockspaceID = ImGui.GetID("ProjectDockspace");
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
+
         // Only initialize once the project is selected
         // This is so we don't try and initialize all
         // projects in the stored list immediately
@@ -167,6 +173,8 @@ public class Project
 
         if (Initialized)
         {
+            Menubar();
+
             ParamData.Update();
 
             // File Browser
@@ -185,6 +193,46 @@ public class Project
             {
                 SecondaryParamEditor.Draw();
             }
+        }
+
+        ImGui.End();
+    }
+
+    private void Menubar()
+    {
+        if (ImGui.BeginMenuBar())
+        {
+            // Technically not per project, but functionally belongs here
+            if (ImGui.BeginMenu("View"))
+            {
+                if (ImGui.MenuItem("Projects", CFG.Current.DisplayProjectListWindow))
+                {
+                    CFG.Current.DisplayProjectListWindow = !CFG.Current.DisplayProjectListWindow;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Projects window.");
+
+                if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
+                {
+                    CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
+
+                if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
+                {
+                    CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
+
+                if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
+                {
+                    CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
+
+                ImGui.EndMenu();
+            }
+
+            ImGui.EndMenuBar();
         }
     }
 

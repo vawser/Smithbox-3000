@@ -1,6 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using HKLib.hk2018.hk.RPC;
-using Smithbox.Core.Editor;
+using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.ImGuiDemo;
 using Smithbox.Core.Utils;
 using System;
@@ -10,7 +10,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smithbox.Core.Interface;
+namespace Smithbox.Core.Editor;
 
 public static class ProjectCreation
 {

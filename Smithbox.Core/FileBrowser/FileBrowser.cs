@@ -19,6 +19,10 @@ public class FileBrowser
 {
     private Project Project;
 
+    // Defined here so we can remove NoMove when setting up the imgui.ini
+    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
+
     public int ID = 0;
 
     private List<VirtualFileSystemFsEntry> roots = [];
@@ -98,27 +102,26 @@ public class FileBrowser
 
     public void Draw()
     {
-        RenderDockspace();
+        ImGui.Begin($"File Browser##FileBrowser", MainWindowFlags);
 
-        //Menubar();
+        uint dockspaceID = ImGui.GetID("FileBrowserDockspace");
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
+
+        Menubar();
         Shortcuts();
-
-        ImGui.Begin($"File Browser##FileBrowser", ImGuiWindowFlags.MenuBar);
 
         ImGui.End();
 
-        ImGui.Begin($"Item Viewer##ItemViewer", ImGuiWindowFlags.MenuBar);
+        ImGui.Begin($"Browser List##BrowserList", SubWindowFlags);
+
+        ImGui.End();
+
+        ImGui.Begin($"Item Viewer##ItemViewer", SubWindowFlags);
 
         ImGui.End();
 
         //DisplayFileBrowser();
         //DisplayItemViewer();
-    }
-
-    private void RenderDockspace()
-    {
-        uint dockspaceID = ImGui.GetID($"FileBrowserDockspace{ID}");
-        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.None);
     }
 
     private void Menubar()
@@ -145,7 +148,7 @@ public class FileBrowser
 
     private void DisplayFileBrowser()
     {
-        if (ImGui.Begin($"Browser List##FileBrowserList"))
+        ImGui.Begin($"Browser List##BrowserList", ImGuiWindowFlags.None);
         {
             if (roots.Count == 0)
             {

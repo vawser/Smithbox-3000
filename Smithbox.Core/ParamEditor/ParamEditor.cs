@@ -17,6 +17,10 @@ public class ParamEditor
 {
     private Project Project;
 
+    // Defined here so we can remove NoMove when setting up the imgui.ini
+    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
+
     public int ID = 0;
 
     public ActionManager ActionManager;
@@ -33,11 +37,12 @@ public class ParamEditor
 
     public void Draw()
     {
-        //RenderDockspace();
+        ImGui.Begin($"Param Editor##ParamEditor{ID}", MainWindowFlags);
 
-        ImGui.Begin($"Param Editor##ParamEditor{ID}", ImGuiWindowFlags.MenuBar);
+        uint dockspaceID = ImGui.GetID($"ParamEditorDockspace{ID}");
+        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
 
-        //Menubar();
+        Menubar();
 
         if (Project.ParamData.Initialized)
         {
@@ -59,12 +64,6 @@ public class ParamEditor
         }
 
         ImGui.End();
-    }
-
-    private void RenderDockspace()
-    {
-        uint dockspaceID = ImGui.GetID($"ParamEditorDockspace{ID}");
-        ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
     }
 
     private void Menubar()
@@ -154,6 +153,16 @@ public class ParamEditor
 
     private void DisplayEditor()
     {
+        ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
 
+        ImGui.End();
+
+        ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
+
+        ImGui.End();
+
+        ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
+
+        ImGui.End();
     }
 }

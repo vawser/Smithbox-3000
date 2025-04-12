@@ -22,7 +22,12 @@ public class CFG
     /// <summary>
     /// If true, the Projects window is displayed
     /// </summary>
-    public bool DisplayProjectsWindow = true;
+    public bool DisplayProjectListWindow = true;
+
+    /// <summary>
+    /// If true, the Project window is displayed
+    /// </summary>
+    public bool DisplayProjectWindow = true;
 
     /// <summary>
     /// If true, the File Browser window is displayed

@@ -23,7 +23,6 @@ public class Smithbox
     private List<Project> Projects = new();
 
     private bool HasSetup = false;
-    private OpenFileDialog FileDialog;
 
     public Smithbox()
     {
@@ -61,12 +60,15 @@ public class Smithbox
 
         MessageBox.Draw();
         ProjectCreation.Draw();
+        EditorSettings.Draw();
+        ControlSettings.Draw();
+        InterfaceSettings.Draw();
 
         Menubar();
 
-        if (CFG.Current.DisplayProjectsWindow)
+        if (CFG.Current.DisplayProjectListWindow)
         {
-            ImGui.Begin($"Projects##ProjectWindow");
+            ImGui.Begin($"Project List##ProjectListWindow");
 
             DisplayProjectActions();
             DisplayProjectList();
@@ -74,9 +76,12 @@ public class Smithbox
             ImGui.End();
         }
 
-        foreach (var projectEntry in Projects)
+        if (CFG.Current.DisplayProjectWindow)
         {
-            projectEntry.Draw();
+            foreach (var projectEntry in Projects)
+            {
+                projectEntry.Draw();
+            }
         }
 
         UIHelper.UnapplyBaseStyle();
@@ -100,10 +105,10 @@ public class Smithbox
         ImGui.SetNextWindowViewport(viewport.ID);
 
         ImGuiWindowFlags windowFlags =
-            //ImGuiWindowFlags.NoTitleBar |
+            ImGuiWindowFlags.NoTitleBar |
             ImGuiWindowFlags.NoCollapse |
             ImGuiWindowFlags.NoResize |
-            //ImGuiWindowFlags.NoMove |
+            ImGuiWindowFlags.NoMove |
             ImGuiWindowFlags.NoBringToFrontOnFocus |
             ImGuiWindowFlags.NoNavFocus |
             ImGuiWindowFlags.MenuBar;
@@ -123,33 +128,44 @@ public class Smithbox
     {
         if (ImGui.BeginMainMenuBar())
         {
+            if (ImGui.BeginMenu("Settings"))
+            {
+                if (ImGui.MenuItem("Editor"))
+                {
+                    EditorSettings.Show();
+                }
+                UIHelper.Tooltip("Open the Editor settings window.");
+
+                if (ImGui.MenuItem("Controls"))
+                {
+                    ControlSettings.Show();
+                }
+                UIHelper.Tooltip("Open the Controls settings window.");
+
+                if (ImGui.MenuItem("Interface"))
+                {
+                    InterfaceSettings.Show();
+                }
+                UIHelper.Tooltip("Open the Interface settings window.");
+
+                ImGui.EndMenu();
+            }
+
             ImGui.Separator();
 
             if (ImGui.BeginMenu("View"))
             {
-                if (ImGui.MenuItem("Projects", CFG.Current.DisplayProjectsWindow))
+                if (ImGui.MenuItem("Project List", CFG.Current.DisplayProjectListWindow))
                 {
-                    CFG.Current.DisplayProjectsWindow = !CFG.Current.DisplayProjectsWindow;
+                    CFG.Current.DisplayProjectListWindow = !CFG.Current.DisplayProjectListWindow;
                 }
-                UIHelper.Tooltip("Toggle the visibility of the Projects window.");
+                UIHelper.Tooltip("Toggle the visibility of the Project Lists window.");
 
-                if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
+                if (ImGui.MenuItem("Project", CFG.Current.DisplayProjectWindow))
                 {
-                    CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
+                    CFG.Current.DisplayProjectWindow = !CFG.Current.DisplayProjectWindow;
                 }
-                UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
-
-                if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
-                {
-                    CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
-                }
-                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
-
-                if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
-                {
-                    CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
-                }
-                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
+                UIHelper.Tooltip("Toggle the visibility of the Project window.");
 
                 ImGui.EndMenu();
             }
