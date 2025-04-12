@@ -68,10 +68,28 @@ public class ParamEditor
         ImGui.End();
     }
 
-    private void Menubar()
+    private async Task Menubar()
     {
         if (ImGui.BeginMenuBar())
         {
+            if (ImGui.BeginMenu("File"))
+            {
+                if (ImGui.MenuItem("Save"))
+                {
+                    Save();
+                }
+
+                if (IsParamUpgradeValid())
+                {
+                    if (ImGui.MenuItem("Upgrade"))
+                    {
+                        Upgrade();
+                    }
+                }
+
+                ImGui.EndMenuBar();
+            }
+
             if (ImGui.BeginMenu("Edit"))
             {
                 if (ImGui.MenuItem("Undo"))
@@ -158,10 +176,6 @@ public class ParamEditor
             {
                 TaskLogs.AddLog("A");
             }
-            if (Keyboard.KeyPress(Key.B))
-            {
-                TaskLogs.AddLog("B");
-            }
         }
     }
 
@@ -195,5 +209,48 @@ public class ParamEditor
         }
 
         ImGui.End();
+    }
+
+    private async void Save()
+    {
+        Task<bool> saveTask = Project.ParamData.PrimaryBank.Save();
+        bool saveTaskFinished = await saveTask;
+
+        if (saveTaskFinished)
+        {
+            TaskLogs.AddLog("Saved primary param bank.");
+        }
+        else
+        {
+            TaskLogs.AddLog("Failed to save primary param bank.");
+        }
+    }
+
+    private async void Upgrade()
+    {
+        Task<bool> upgradeTask = Project.ParamData.PrimaryBank.Upgrade();
+        bool upgradeTaskFinished = await upgradeTask;
+
+        if (upgradeTaskFinished)
+        {
+            TaskLogs.AddLog("Upgraded primary param bank.");
+        }
+        else
+        {
+            TaskLogs.AddLog("Failed to upgrade primary param bank.");
+        }
+    }
+
+    private bool IsParamUpgradeValid()
+    {
+        if (Project.ParamData.Initialized && Project.IsSelected)
+        {
+            if (Project.ParamData.PrimaryBank.ParamVersion <= Project.ParamData.VanillaBank.ParamVersion)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

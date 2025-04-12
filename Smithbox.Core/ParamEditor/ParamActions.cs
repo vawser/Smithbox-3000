@@ -69,4 +69,14 @@ public class ParamActions
     {
 
     }
+
+    public void ImportDefaultParamRowNames(ParamBank targetBank)
+    {
+
+    }
+
+    public void ImportExternalParamRowNames(ParamBank targetBank)
+    {
+
+    }
 }

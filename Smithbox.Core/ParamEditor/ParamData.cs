@@ -101,7 +101,7 @@ public class ParamData
         // Primary Bank
         PrimaryBank = new(this, Project.ProjectPath);
 
-        Task<bool> primaryBankTask = PrimaryBank.Load(Paramdefs);
+        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FileSystem, Paramdefs);
         bool primaryBankLoaded = await primaryBankTask;
         
         if (primaryBankLoaded)
@@ -117,7 +117,7 @@ public class ParamData
         // Vanilla Bank
         VanillaBank = new(this, Project.DataPath);
 
-        Task<bool> vanillaBankTask = VanillaBank.Load(Paramdefs);
+        Task<bool> vanillaBankTask = VanillaBank.Load(Project.VanillaFS, Paramdefs);
         bool vanillaBankLoaded = await vanillaBankTask;
 
         if (vanillaBankLoaded)
@@ -133,13 +133,13 @@ public class ParamData
         // Primary Bank: Import Row Names
         if(!Project.ImportedParamRowNames)
         {
-            // TODO:
+            Project.PrimaryParamEditor.ParamActions.ImportDefaultParamRowNames(PrimaryBank);
         }
 
         // Primary Bank: Stripped Param Row Restore
         if (Project.EnableParamRowStrip)
         {
-            // TODO:
+            // Project.PrimaryParamEditor.ParamActions.ImportExternalParamRowNames(PrimaryBank);
         }
 
         Initialized = true;

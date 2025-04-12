@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Andre.Formats")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+579e005fec1625ae715f0d95b64d0ea3a5b52f2c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fc40710bf4697e79460d828c55bd64adc6e2145")]
 [assembly: System.Reflection.AssemblyProductAttribute("Andre.Formats")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Andre.Formats")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

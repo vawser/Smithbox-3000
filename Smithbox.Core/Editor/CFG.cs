@@ -81,6 +81,11 @@ public class CFG
     /// </summary>
     public bool UseProjectMeta = false;
 
+    /// <summary>
+    /// If true, then loose params are prioitized over packed params (for games where it is relevant)
+    /// </summary>
+    public bool UseLooseParams = false;
+
 
     //----------------------------------
     /// General

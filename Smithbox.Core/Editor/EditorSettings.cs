@@ -56,7 +56,10 @@ public static class EditorSettings
             {
                 if(ImGui.CollapsingHeader("Param Editor"))
                 {
-
+                    // Prioritize Loose Params
+                    ImGui.Checkbox("Prioritize Loose Params##useLooseParams", ref CFG.Current.UseLooseParams);
+                    UIHelper.Tooltip("If true, then loose params will be prioritized over packed params.");
+                    
                 }
             }
 
