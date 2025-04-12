@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ public class Smithbox
     private List<Project> Projects = new();
 
     private bool HasSetup = false;
+    private OpenFileDialog FileDialog;
 
     public Smithbox()
     {
@@ -44,6 +46,8 @@ public class Smithbox
         UI.Load();
 
         LoadExistingProjects();
+
+        ProjectCreation.Setup();
     }
 
     /// <summary>
@@ -51,21 +55,70 @@ public class Smithbox
     /// </summary>
     public void Draw()
     {
+        UIHelper.ApplyBaseStyle();
+
         MessageBox.Draw();
+        ProjectCreation.Draw();
 
-        uint dockspaceID = ImGui.GetID("BaseDock");
+        Menubar();
 
-        ImGui.Begin($"Projects##BaseDock_Window");
+        if (CFG.Current.DisplayProjectsWindow)
+        {
+            ImGui.Begin($"Projects##BaseDock_Window");
 
-        foreach(var projectEntry in Projects)
+            DisplayProjectActions();
+            DisplayProjectList();
+
+            ImGui.End();
+        }
+
+        foreach (var projectEntry in Projects)
         {
             projectEntry.Draw();
         }
 
-        DisplayProjectActions();
-        DisplayProjectList();
+        UIHelper.UnapplyBaseStyle();
 
-        ImGui.End();
+        // Create new project if triggered to do so
+        if (ProjectCreation.Create)
+        {
+            ProjectCreation.Create = false;
+            CreateProject();
+        }
+    }
+    private void Menubar()
+    {
+        if (ImGui.BeginMainMenuBar())
+        {
+            ImGui.Separator();
+
+            if (ImGui.BeginMenu("View"))
+            {
+                if (ImGui.MenuItem("Projects", CFG.Current.DisplayProjectsWindow))
+                {
+                    CFG.Current.DisplayProjectsWindow = !CFG.Current.DisplayProjectsWindow;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Projects window.");
+
+                if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
+                {
+                    CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
+
+                if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
+                {
+                    CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
+
+                ImGui.EndMenu();
+            }
+
+            ImGui.Separator();
+
+            ImGui.EndMainMenuBar();
+        }
     }
 
     /// <summary>
@@ -73,14 +126,14 @@ public class Smithbox
     /// </summary>
     public void DisplayProjectActions()
     {
-        if (ImGui.Button("Add Project"))
+        var windowWidth = ImGui.GetWindowWidth() * 0.95f;
+        var buttonSize = new Vector2(windowWidth, 32);
+
+        if (ImGui.Button("Add Project", buttonSize))
         {
-            var dialog = new OpenFileDialog();
-            if(dialog.Result == OpenFileResult.Ok)
-            {
-                var file = dialog.SelectedFile;
-            }
+            ProjectCreation.Show();
         }
+        UIHelper.Tooltip($"Add a new project to the project list.");
     }
 
     /// <summary>
@@ -88,12 +141,20 @@ public class Smithbox
     /// </summary>
     public void DisplayProjectList()
     {
-        if(SelectedProject != null)
+        UIHelper.SimpleHeader("projectListHeader", "Available Projects", "The projects currently available to select from.", UI.Current.ImGui_Highlight_Text);
+
+        foreach (var projectEntry in Projects)
         {
-            ImGui.Separator();
+            if (ImGui.Selectable($"{projectEntry.ProjectName}##{projectEntry.ProjectGUID}", SelectedProject == projectEntry))
+            {
+                SelectedProject = projectEntry;
 
-
-            ImGui.Separator();
+                foreach (var tEntry in Projects)
+                {
+                    tEntry.IsSelected = false;
+                }
+                SelectedProject.IsSelected = true;
+            }
         }
     }
 
@@ -125,7 +186,7 @@ public class Smithbox
                     var filestring = File.ReadAllText(entry);
                     var options = new JsonSerializerOptions();
 
-                    var curProject = JsonSerializer.Deserialize(filestring, ProjectSerializerContext.Default.Project);
+                    var curProject = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.Project);
 
                     if (curProject == null)
                     {
@@ -142,15 +203,37 @@ public class Smithbox
                 }
             }
         }
+
+        if(Projects.Count > 0)
+        {
+            var firstProject = Projects.First();
+
+            SelectedProject = firstProject;
+            SelectedProject.IsSelected = true;
+        }
     }
 
     private void CreateProject()
     {
-        var newProject = new Project(GUID.Generate());
+        var guid = GUID.Generate();
+        var projectName = ProjectCreation.ProjectName;
+        var projectPath = ProjectCreation.ProjectPath;
+        var dataPath = ProjectCreation.DataPath;
+        var projectType = ProjectCreation.ProjectType;
 
+        var newProject = new Project(guid, projectName, projectPath, dataPath, projectType);
 
+        ProjectCreation.Reset();
 
         Projects.Add(newProject);
 
+        newProject.Save();
+
+        // Auto-select new project
+        foreach (var tEntry in Projects)
+        {
+            tEntry.IsSelected = false;
+        }
+        SelectedProject.IsSelected = true;
     }
 }

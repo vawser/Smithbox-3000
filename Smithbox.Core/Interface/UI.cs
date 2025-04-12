@@ -12,12 +12,6 @@ using Smithbox.Core.Utils;
 
 namespace Smithbox.Core.Interface;
 
-
-[JsonSerializable(typeof(UI))]
-internal partial class UISerializerContext : JsonSerializerContext
-{
-}
-
 public class UI
 {
     public static UI Current { get; private set; }
@@ -46,7 +40,7 @@ public class UI
             {
                 var filestring = File.ReadAllText(file);
                 var options = new JsonSerializerOptions();
-                Current = JsonSerializer.Deserialize(filestring, UISerializerContext.Default.UI);
+                Current = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.UI);
 
                 if (Current == null)
                 {
@@ -68,7 +62,7 @@ public class UI
         var folder = FolderUtils.GetConfigurationFolder();
         var file = Path.Combine(folder, "Interface.json");
 
-        var json = JsonSerializer.Serialize(Current, UISerializerContext.Default.UI);
+        var json = JsonSerializer.Serialize(Current, SmithboxSerializerContext.Default.UI);
 
         File.WriteAllText(file, json);
     }

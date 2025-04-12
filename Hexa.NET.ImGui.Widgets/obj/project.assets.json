@@ -1,0 +1,3614 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETStandard,Version=v2.0": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/netstandard2.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "IndexRange/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/IndexRange.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/IndexRange.dll": {}
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.HashCode/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bcl.HashCode.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bcl.HashCode.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.Numerics/9.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bcl.Numerics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bcl.Numerics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "System.Buffers/4.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.Pipelines/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Memory/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.6.0",
+          "System.Numerics.Vectors": "4.6.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Text.Encodings.Web/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Text.Json/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "9.0.3",
+          "System.Buffers": "4.5.1",
+          "System.IO.Pipelines": "9.0.3",
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "9.0.3",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard2.0/System.Text.Json.targets": {}
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Ultz.Bcl.Half/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Ultz.Bcl.Half.Fallback": "1.0.0"
+        }
+      },
+      "Ultz.Bcl.Half.Fallback/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ultz.Bcl.Half.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ultz.Bcl.Half.dll": {}
+        }
+      }
+    },
+    ".NETStandard,Version=v2.1": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/netstandard2.1/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/9.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.Pipelines/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IO.Pipelines.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Memory/4.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.6.0",
+          "System.Numerics.Vectors": "4.6.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Text.Encodings.Web/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Text.Json/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "9.0.3",
+          "System.Buffers": "4.5.1",
+          "System.IO.Pipelines": "9.0.3",
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "9.0.3",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard2.0/System.Text.Json.targets": {}
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Ultz.Bcl.Half/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Ultz.Bcl.Half.Fallback": "1.0.0"
+        }
+      },
+      "Ultz.Bcl.Half.Fallback/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ultz.Bcl.Half.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ultz.Bcl.Half.dll": {}
+        }
+      }
+    },
+    "net8.0": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/net8.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/8.0.15": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      }
+    },
+    "net8.0-android34.0": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/net8.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Core": "1.15.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/8.0.15": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation/1.9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation.Experimental/1.4.1.7": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation.Jvm/1.9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Arch.Core.Common/2.2.0.14": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Arch.Core.Runtime/2.2.0.14": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "[2.2.0.14, 2.2.1)"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Collection/1.4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Collection.Jvm": "1.4.5.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Collection.Jvm/1.4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Concurrent.Futures/1.2.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.Google.Guava.ListenableFuture": "1.0.0.25"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Core/1.15.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Annotation.Experimental": "1.4.1.7",
+          "Xamarin.AndroidX.Collection": "1.4.5.1",
+          "Xamarin.AndroidX.Concurrent.Futures": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.30",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.8.7.1",
+          "Xamarin.AndroidX.Tracing.Tracing": "1.2.0.8",
+          "Xamarin.AndroidX.VersionedParcelable": "1.2.0.8",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Core.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Interpolator/1.0.0.30": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Interpolator.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Common/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Lifecycle.Common.Jvm": "2.8.7.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.AtomicFU": "0.26.0.1",
+          "Xamarin.KotlinX.Coroutines.Core": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Common.Jvm/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Core": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Runtime/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "2.2.0.14",
+          "Xamarin.AndroidX.Lifecycle.Common": "[2.8.7.1, 2.8.8)",
+          "Xamarin.AndroidX.Lifecycle.Runtime.Android": "2.8.7.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Runtime.Android/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "2.2.0.14",
+          "Xamarin.AndroidX.Arch.Core.Runtime": "2.2.0.14",
+          "Xamarin.AndroidX.Lifecycle.Common": "[2.8.7.1, 2.8.8)",
+          "Xamarin.AndroidX.ProfileInstaller.ProfileInstaller": "1.4.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Android": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.ProfileInstaller.ProfileInstaller/1.4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Concurrent.Futures": "1.2.0.4",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.2.0.1",
+          "Xamarin.Google.Guava.ListenableFuture": "1.0.0.25"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Startup.StartupRuntime/1.2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Tracing.Tracing": "1.2.0.8"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Tracing.Tracing/1.2.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.VersionedParcelable/1.2.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Collection": "1.4.5.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.targets": {}
+        }
+      },
+      "Xamarin.Google.Guava.ListenableFuture/1.0.0.25": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.Jetbrains.Annotations/26.0.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.Kotlin.StdLib/2.0.21.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Jetbrains.Annotations": "26.0.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.AtomicFU/0.26.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.KotlinX.AtomicFU.Jvm": "0.26.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.AtomicFU.Jvm/0.26.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Android/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Core.Jvm": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Core/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.KotlinX.Coroutines.Core.Jvm": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Core.Jvm/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Jetbrains.Annotations": "26.0.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      }
+    },
+    "net9.0": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/net9.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      }
+    },
+    "net9.0-android35.0": {
+      "Hexa.NET.ImGui/2.2.7": {
+        "type": "package",
+        "dependencies": {
+          "HexaGen.Runtime": "1.1.18"
+        },
+        "compile": {
+          "lib/net9.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.ImGui.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Hexa.NET.ImGui.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-arm64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/android-x64/native/libc++_shared.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.Utilities/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Hexa.NET.Utilities.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HexaGen.Runtime/1.1.18": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Core": "1.15.0.1"
+        },
+        "compile": {
+          "lib/net9.0-android35.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0-android35.0/HexaGen.Runtime.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation/1.9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation.Experimental/1.4.1.7": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Annotation.Jvm/1.9.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Arch.Core.Common/2.2.0.14": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Arch.Core.Runtime/2.2.0.14": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "[2.2.0.14, 2.2.1)"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Collection/1.4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Collection.Jvm": "1.4.5.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Collection.Jvm/1.4.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Concurrent.Futures/1.2.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.Google.Guava.ListenableFuture": "1.0.0.25"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Core/1.15.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Annotation.Experimental": "1.4.1.7",
+          "Xamarin.AndroidX.Collection": "1.4.5.1",
+          "Xamarin.AndroidX.Concurrent.Futures": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.30",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.8.7.1",
+          "Xamarin.AndroidX.Tracing.Tracing": "1.2.0.8",
+          "Xamarin.AndroidX.VersionedParcelable": "1.2.0.8",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Core.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Interpolator/1.0.0.30": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Interpolator.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Common/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Lifecycle.Common.Jvm": "2.8.7.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.AtomicFU": "0.26.0.1",
+          "Xamarin.KotlinX.Coroutines.Core": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Common.Jvm/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation.Jvm": "1.9.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Core": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Runtime/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "2.2.0.14",
+          "Xamarin.AndroidX.Lifecycle.Common": "[2.8.7.1, 2.8.8)",
+          "Xamarin.AndroidX.Lifecycle.Runtime.Android": "2.8.7.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Lifecycle.Runtime.Android/2.8.7.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Arch.Core.Common": "2.2.0.14",
+          "Xamarin.AndroidX.Arch.Core.Runtime": "2.2.0.14",
+          "Xamarin.AndroidX.Lifecycle.Common": "[2.8.7.1, 2.8.8)",
+          "Xamarin.AndroidX.ProfileInstaller.ProfileInstaller": "1.4.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Android": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.ProfileInstaller.ProfileInstaller/1.4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Concurrent.Futures": "1.2.0.4",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.2.0.1",
+          "Xamarin.Google.Guava.ListenableFuture": "1.0.0.25"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Startup.StartupRuntime/1.2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Tracing.Tracing": "1.2.0.8"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.Tracing.Tracing/1.2.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.targets": {}
+        }
+      },
+      "Xamarin.AndroidX.VersionedParcelable/1.2.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.AndroidX.Annotation": "1.9.1.1",
+          "Xamarin.AndroidX.Collection": "1.4.5.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.targets": {}
+        }
+      },
+      "Xamarin.Google.Guava.ListenableFuture/1.0.0.25": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.Jetbrains.Annotations/26.0.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.Kotlin.StdLib/2.0.21.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Jetbrains.Annotations": "26.0.1.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.AtomicFU/0.26.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.KotlinX.AtomicFU.Jvm": "0.26.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.AtomicFU.Jvm/0.26.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Android/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Kotlin.StdLib": "2.0.21.1",
+          "Xamarin.KotlinX.Coroutines.Core.Jvm": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Core/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.KotlinX.Coroutines.Core.Jvm": "1.9.0.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      },
+      "Xamarin.KotlinX.Coroutines.Core.Jvm/1.9.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Jetbrains.Annotations": "26.0.1.1",
+          "Xamarin.Kotlin.StdLib": "2.0.21.1"
+        },
+        "compile": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.dll": {
+            "related": ".aar;.pdb;.xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hexa.NET.ImGui/2.2.7": {
+      "sha512": "5bhSWfb+kjwHJWK09AE738PLn/HkTJZJV4NMv2hG5qbcOIEyKt2m0wnZMbe9jnNKowvOnBVCS03S1x2nIFDqEw==",
+      "type": "package",
+      "path": "hexa.net.imgui/2.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "buildTransitive/Hexa.NET.ImGui.targets",
+        "hexa.net.imgui.2.2.7.nupkg.sha512",
+        "hexa.net.imgui.nuspec",
+        "lib/net6.0/Hexa.NET.ImGui.dll",
+        "lib/net6.0/Hexa.NET.ImGui.xml",
+        "lib/net7.0/Hexa.NET.ImGui.dll",
+        "lib/net7.0/Hexa.NET.ImGui.xml",
+        "lib/net8.0/Hexa.NET.ImGui.dll",
+        "lib/net8.0/Hexa.NET.ImGui.xml",
+        "lib/net9.0/Hexa.NET.ImGui.dll",
+        "lib/net9.0/Hexa.NET.ImGui.xml",
+        "lib/netstandard2.0/Hexa.NET.ImGui.dll",
+        "lib/netstandard2.0/Hexa.NET.ImGui.xml",
+        "lib/netstandard2.1/Hexa.NET.ImGui.dll",
+        "lib/netstandard2.1/Hexa.NET.ImGui.xml",
+        "runtimes/android-arm64/native/cimgui.so",
+        "runtimes/android-arm64/native/libc++_shared.so",
+        "runtimes/android-x64/native/cimgui.so",
+        "runtimes/android-x64/native/libc++_shared.so",
+        "runtimes/linux-arm64/native/cimgui.so",
+        "runtimes/linux-x64/native/cimgui.so",
+        "runtimes/osx-arm64/native/cimgui.dylib",
+        "runtimes/osx-x64/native/cimgui.dylib",
+        "runtimes/win-arm64/native/cimgui.dll",
+        "runtimes/win-x64/native/cimgui.dll",
+        "runtimes/win-x86/native/cimgui.dll"
+      ]
+    },
+    "Hexa.NET.Utilities/2.2.1": {
+      "sha512": "/zU5+DTWVyEg+SMwSJdUM4sTIee4+6F1JfY4TTlYwuup3pNvh6Sxm30TsO9tFX4l2PPkCwOeZv57ztrj6naPew==",
+      "type": "package",
+      "path": "hexa.net.utilities/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.utilities.2.2.1.nupkg.sha512",
+        "hexa.net.utilities.nuspec",
+        "lib/net6.0/Hexa.NET.Utilities.dll",
+        "lib/net6.0/Hexa.NET.Utilities.xml",
+        "lib/net7.0/Hexa.NET.Utilities.dll",
+        "lib/net7.0/Hexa.NET.Utilities.xml",
+        "lib/net8.0/Hexa.NET.Utilities.dll",
+        "lib/net8.0/Hexa.NET.Utilities.xml",
+        "lib/net9.0/Hexa.NET.Utilities.dll",
+        "lib/net9.0/Hexa.NET.Utilities.xml",
+        "lib/netstandard2.0/Hexa.NET.Utilities.dll",
+        "lib/netstandard2.0/Hexa.NET.Utilities.xml",
+        "lib/netstandard2.1/Hexa.NET.Utilities.dll",
+        "lib/netstandard2.1/Hexa.NET.Utilities.xml"
+      ]
+    },
+    "HexaGen.Runtime/1.1.18": {
+      "sha512": "n6zlSCqGG8IAfhnreTzCgUZg3V/Wfm2AtDRKyA8F9dWz6hVvj2cJZA6+X9Px9uQKZ3dDa0yXLLrmBf9nOJG5lA==",
+      "type": "package",
+      "path": "hexagen.runtime/1.1.18",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexagen.runtime.1.1.18.nupkg.sha512",
+        "hexagen.runtime.nuspec",
+        "lib/net472/HexaGen.Runtime.dll",
+        "lib/net472/HexaGen.Runtime.xml",
+        "lib/net6.0/HexaGen.Runtime.dll",
+        "lib/net6.0/HexaGen.Runtime.xml",
+        "lib/net7.0/HexaGen.Runtime.dll",
+        "lib/net7.0/HexaGen.Runtime.xml",
+        "lib/net8.0-android34.0/HexaGen.Runtime.dll",
+        "lib/net8.0-android34.0/HexaGen.Runtime.xml",
+        "lib/net8.0/HexaGen.Runtime.dll",
+        "lib/net8.0/HexaGen.Runtime.xml",
+        "lib/net9.0-android35.0/HexaGen.Runtime.dll",
+        "lib/net9.0-android35.0/HexaGen.Runtime.xml",
+        "lib/net9.0/HexaGen.Runtime.dll",
+        "lib/net9.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.0/HexaGen.Runtime.dll",
+        "lib/netstandard2.0/HexaGen.Runtime.xml",
+        "lib/netstandard2.1/HexaGen.Runtime.dll",
+        "lib/netstandard2.1/HexaGen.Runtime.xml"
+      ]
+    },
+    "IndexRange/1.0.3": {
+      "sha512": "tqgj3LuQHDH0OfGZamyiW1i9fhpny5piqvI+8Y7IIaRly+Bhqv5Z7zSlcIwA/DlYPS/cBmVwb+J4VGEFFqmnfQ==",
+      "type": "package",
+      "path": "indexrange/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Package.md",
+        "icon.png",
+        "indexrange.1.0.3.nupkg.sha512",
+        "indexrange.nuspec",
+        "lib/net35/IndexRange.dll",
+        "lib/net45/IndexRange.dll",
+        "lib/net47/IndexRange.dll",
+        "lib/netstandard2.0/IndexRange.dll",
+        "lib/netstandard2.1/IndexRange.dll",
+        "lib/uap10.0.10240/IndexRange.dll",
+        "lib/uap10.0.10240/IndexRange.pri"
+      ]
+    },
+    "Microsoft.Bcl.AsyncInterfaces/9.0.3": {
+      "sha512": "oFFX9Ls8dnNUBCD9yzRzHTY8tqvv+CiX43B8L8DjrM8BqYTAlORYaJf6+KXNtSC2bD1135yV8OxzcZFaluow5w==",
+      "type": "package",
+      "path": "microsoft.bcl.asyncinterfaces/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Bcl.AsyncInterfaces.targets",
+        "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/net462/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
+        "microsoft.bcl.asyncinterfaces.9.0.3.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Bcl.HashCode/6.0.0": {
+      "sha512": "GI4jcoi6eC9ZhNOQylIBaWOQjyGaR8T6N3tC1u8p3EXfndLCVNNWa+Zp+ocjvvS3kNBN09Zma2HXL0ezO0dRfw==",
+      "type": "package",
+      "path": "microsoft.bcl.hashcode/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/Microsoft.Bcl.HashCode.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Bcl.HashCode.targets",
+        "lib/net462/Microsoft.Bcl.HashCode.dll",
+        "lib/net462/Microsoft.Bcl.HashCode.xml",
+        "lib/net6.0/Microsoft.Bcl.HashCode.dll",
+        "lib/net6.0/Microsoft.Bcl.HashCode.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.HashCode.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.HashCode.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.HashCode.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.HashCode.xml",
+        "microsoft.bcl.hashcode.6.0.0.nupkg.sha512",
+        "microsoft.bcl.hashcode.nuspec"
+      ]
+    },
+    "Microsoft.Bcl.Numerics/9.0.3": {
+      "sha512": "OJMoGSvTJjek9UPpm2m4BBk6uYeoeJnwVW98imzuIS3JrJm50/oB667e8IM/vtdUdE6kihzHppiqI6ZBncr50w==",
+      "type": "package",
+      "path": "microsoft.bcl.numerics/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Bcl.Numerics.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Bcl.Numerics.targets",
+        "lib/net462/Microsoft.Bcl.Numerics.dll",
+        "lib/net462/Microsoft.Bcl.Numerics.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.Numerics.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.Numerics.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.Numerics.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.Numerics.xml",
+        "microsoft.bcl.numerics.9.0.3.nupkg.sha512",
+        "microsoft.bcl.numerics.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.NET.ILLink.Tasks/8.0.15": {
+      "sha512": "s4eXlcRGyHeCgFUGQnhq0e/SCHBPp0jOHgMqZg3fQ2OCHJSm1aOUhI6RFWuVIcEb9ig2WgI2kWukk8wu72EbUQ==",
+      "type": "package",
+      "path": "microsoft.net.illink.tasks/8.0.15",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "Sdk/Sdk.props",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
+        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
+        "build/Microsoft.NET.ILLink.Analyzers.props",
+        "build/Microsoft.NET.ILLink.Tasks.props",
+        "build/Microsoft.NET.ILLink.targets",
+        "microsoft.net.illink.tasks.8.0.15.nupkg.sha512",
+        "microsoft.net.illink.tasks.nuspec",
+        "tools/net472/ILLink.Tasks.dll",
+        "tools/net472/ILLink.Tasks.dll.config",
+        "tools/net472/Mono.Cecil.Mdb.dll",
+        "tools/net472/Mono.Cecil.Pdb.dll",
+        "tools/net472/Mono.Cecil.Rocks.dll",
+        "tools/net472/Mono.Cecil.dll",
+        "tools/net472/Sdk/Sdk.props",
+        "tools/net472/System.Buffers.dll",
+        "tools/net472/System.Collections.Immutable.dll",
+        "tools/net472/System.Memory.dll",
+        "tools/net472/System.Numerics.Vectors.dll",
+        "tools/net472/System.Reflection.Metadata.dll",
+        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net472/build/Microsoft.NET.ILLink.targets",
+        "tools/net8.0/ILLink.Tasks.deps.json",
+        "tools/net8.0/ILLink.Tasks.dll",
+        "tools/net8.0/Mono.Cecil.Mdb.dll",
+        "tools/net8.0/Mono.Cecil.Pdb.dll",
+        "tools/net8.0/Mono.Cecil.Rocks.dll",
+        "tools/net8.0/Mono.Cecil.dll",
+        "tools/net8.0/Sdk/Sdk.props",
+        "tools/net8.0/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net8.0/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net8.0/build/Microsoft.NET.ILLink.targets",
+        "tools/net8.0/illink.deps.json",
+        "tools/net8.0/illink.dll",
+        "tools/net8.0/illink.runtimeconfig.json",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "sha512": "xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
+      "type": "package",
+      "path": "microsoft.net.illink.tasks/9.0.4",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "Sdk/Sdk.props",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/cs/ILLink.CodeFixProvider.dll",
+        "analyzers/dotnet/cs/ILLink.RoslynAnalyzer.dll",
+        "build/Microsoft.NET.ILLink.Analyzers.props",
+        "build/Microsoft.NET.ILLink.Tasks.props",
+        "build/Microsoft.NET.ILLink.targets",
+        "microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
+        "microsoft.net.illink.tasks.nuspec",
+        "tools/net472/ILLink.Tasks.dll",
+        "tools/net472/ILLink.Tasks.dll.config",
+        "tools/net472/Mono.Cecil.Mdb.dll",
+        "tools/net472/Mono.Cecil.Pdb.dll",
+        "tools/net472/Mono.Cecil.Rocks.dll",
+        "tools/net472/Mono.Cecil.dll",
+        "tools/net472/Sdk/Sdk.props",
+        "tools/net472/System.Buffers.dll",
+        "tools/net472/System.Collections.Immutable.dll",
+        "tools/net472/System.Memory.dll",
+        "tools/net472/System.Numerics.Vectors.dll",
+        "tools/net472/System.Reflection.Metadata.dll",
+        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net472/build/Microsoft.NET.ILLink.targets",
+        "tools/net9.0/ILLink.Tasks.deps.json",
+        "tools/net9.0/ILLink.Tasks.dll",
+        "tools/net9.0/Mono.Cecil.Mdb.dll",
+        "tools/net9.0/Mono.Cecil.Pdb.dll",
+        "tools/net9.0/Mono.Cecil.Rocks.dll",
+        "tools/net9.0/Mono.Cecil.dll",
+        "tools/net9.0/Sdk/Sdk.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.Analyzers.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.Tasks.props",
+        "tools/net9.0/build/Microsoft.NET.ILLink.targets",
+        "tools/net9.0/illink.deps.json",
+        "tools/net9.0/illink.dll",
+        "tools/net9.0/illink.runtimeconfig.json",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "NETStandard.Library/2.0.3": {
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "type": "package",
+      "path": "netstandard.library/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/netstandard2.0/NETStandard.Library.targets",
+        "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
+        "build/netstandard2.0/ref/System.AppContext.dll",
+        "build/netstandard2.0/ref/System.Collections.Concurrent.dll",
+        "build/netstandard2.0/ref/System.Collections.NonGeneric.dll",
+        "build/netstandard2.0/ref/System.Collections.Specialized.dll",
+        "build/netstandard2.0/ref/System.Collections.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Composition.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.EventBasedAsync.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Primitives.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.TypeConverter.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.dll",
+        "build/netstandard2.0/ref/System.Console.dll",
+        "build/netstandard2.0/ref/System.Core.dll",
+        "build/netstandard2.0/ref/System.Data.Common.dll",
+        "build/netstandard2.0/ref/System.Data.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Contracts.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Debug.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.FileVersionInfo.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Process.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.StackTrace.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TextWriterTraceListener.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tools.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TraceSource.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tracing.dll",
+        "build/netstandard2.0/ref/System.Drawing.Primitives.dll",
+        "build/netstandard2.0/ref/System.Drawing.dll",
+        "build/netstandard2.0/ref/System.Dynamic.Runtime.dll",
+        "build/netstandard2.0/ref/System.Globalization.Calendars.dll",
+        "build/netstandard2.0/ref/System.Globalization.Extensions.dll",
+        "build/netstandard2.0/ref/System.Globalization.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.ZipFile.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.DriveInfo.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Primitives.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Watcher.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.IsolatedStorage.dll",
+        "build/netstandard2.0/ref/System.IO.MemoryMappedFiles.dll",
+        "build/netstandard2.0/ref/System.IO.Pipes.dll",
+        "build/netstandard2.0/ref/System.IO.UnmanagedMemoryStream.dll",
+        "build/netstandard2.0/ref/System.IO.dll",
+        "build/netstandard2.0/ref/System.Linq.Expressions.dll",
+        "build/netstandard2.0/ref/System.Linq.Parallel.dll",
+        "build/netstandard2.0/ref/System.Linq.Queryable.dll",
+        "build/netstandard2.0/ref/System.Linq.dll",
+        "build/netstandard2.0/ref/System.Net.Http.dll",
+        "build/netstandard2.0/ref/System.Net.NameResolution.dll",
+        "build/netstandard2.0/ref/System.Net.NetworkInformation.dll",
+        "build/netstandard2.0/ref/System.Net.Ping.dll",
+        "build/netstandard2.0/ref/System.Net.Primitives.dll",
+        "build/netstandard2.0/ref/System.Net.Requests.dll",
+        "build/netstandard2.0/ref/System.Net.Security.dll",
+        "build/netstandard2.0/ref/System.Net.Sockets.dll",
+        "build/netstandard2.0/ref/System.Net.WebHeaderCollection.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.Client.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.dll",
+        "build/netstandard2.0/ref/System.Net.dll",
+        "build/netstandard2.0/ref/System.Numerics.dll",
+        "build/netstandard2.0/ref/System.ObjectModel.dll",
+        "build/netstandard2.0/ref/System.Reflection.Extensions.dll",
+        "build/netstandard2.0/ref/System.Reflection.Primitives.dll",
+        "build/netstandard2.0/ref/System.Reflection.dll",
+        "build/netstandard2.0/ref/System.Resources.Reader.dll",
+        "build/netstandard2.0/ref/System.Resources.ResourceManager.dll",
+        "build/netstandard2.0/ref/System.Resources.Writer.dll",
+        "build/netstandard2.0/ref/System.Runtime.CompilerServices.VisualC.dll",
+        "build/netstandard2.0/ref/System.Runtime.Extensions.dll",
+        "build/netstandard2.0/ref/System.Runtime.Handles.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.dll",
+        "build/netstandard2.0/ref/System.Runtime.Numerics.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Formatters.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Json.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Primitives.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Xml.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.dll",
+        "build/netstandard2.0/ref/System.Runtime.dll",
+        "build/netstandard2.0/ref/System.Security.Claims.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Algorithms.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Csp.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Encoding.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Primitives.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.X509Certificates.dll",
+        "build/netstandard2.0/ref/System.Security.Principal.dll",
+        "build/netstandard2.0/ref/System.Security.SecureString.dll",
+        "build/netstandard2.0/ref/System.ServiceModel.Web.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.Extensions.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.dll",
+        "build/netstandard2.0/ref/System.Text.RegularExpressions.dll",
+        "build/netstandard2.0/ref/System.Threading.Overlapped.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.Parallel.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.dll",
+        "build/netstandard2.0/ref/System.Threading.Thread.dll",
+        "build/netstandard2.0/ref/System.Threading.ThreadPool.dll",
+        "build/netstandard2.0/ref/System.Threading.Timer.dll",
+        "build/netstandard2.0/ref/System.Threading.dll",
+        "build/netstandard2.0/ref/System.Transactions.dll",
+        "build/netstandard2.0/ref/System.ValueTuple.dll",
+        "build/netstandard2.0/ref/System.Web.dll",
+        "build/netstandard2.0/ref/System.Windows.dll",
+        "build/netstandard2.0/ref/System.Xml.Linq.dll",
+        "build/netstandard2.0/ref/System.Xml.ReaderWriter.dll",
+        "build/netstandard2.0/ref/System.Xml.Serialization.dll",
+        "build/netstandard2.0/ref/System.Xml.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlSerializer.dll",
+        "build/netstandard2.0/ref/System.Xml.dll",
+        "build/netstandard2.0/ref/System.dll",
+        "build/netstandard2.0/ref/mscorlib.dll",
+        "build/netstandard2.0/ref/netstandard.dll",
+        "build/netstandard2.0/ref/netstandard.xml",
+        "lib/netstandard1.0/_._",
+        "netstandard.library.2.0.3.nupkg.sha512",
+        "netstandard.library.nuspec"
+      ]
+    },
+    "System.Buffers/4.6.0": {
+      "sha512": "lN6tZi7Q46zFzAbRYXTIvfXcyvQQgxnY7Xm6C6xQ9784dEL1amjM6S6Iw4ZpsvesAKnRVsM4scrDQaDqSClkjA==",
+      "type": "package",
+      "path": "system.buffers/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Buffers.targets",
+        "buildTransitive/net462/_._",
+        "lib/net462/System.Buffers.dll",
+        "lib/net462/System.Buffers.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "system.buffers.4.6.0.nupkg.sha512",
+        "system.buffers.nuspec"
+      ]
+    },
+    "System.IO.Pipelines/9.0.3": {
+      "sha512": "aP1Qh9llcEmo0qN+VKvVDHFMe5Cqpfb1VjhBO7rjmxCXtLs3IfVSOiNqqLBZ/4Qbcr4J0SDdJq9S7EKAGpnwEA==",
+      "type": "package",
+      "path": "system.io.pipelines/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Pipelines.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/System.IO.Pipelines.targets",
+        "lib/net462/System.IO.Pipelines.dll",
+        "lib/net462/System.IO.Pipelines.xml",
+        "lib/net8.0/System.IO.Pipelines.dll",
+        "lib/net8.0/System.IO.Pipelines.xml",
+        "lib/net9.0/System.IO.Pipelines.dll",
+        "lib/net9.0/System.IO.Pipelines.xml",
+        "lib/netstandard2.0/System.IO.Pipelines.dll",
+        "lib/netstandard2.0/System.IO.Pipelines.xml",
+        "system.io.pipelines.9.0.3.nupkg.sha512",
+        "system.io.pipelines.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Memory/4.6.0": {
+      "sha512": "OEkbBQoklHngJ8UD8ez2AERSk2g+/qpAaSWWCBFbpH727HxDq5ydVkuncBaKcKfwRqXGWx64dS6G1SUScMsitg==",
+      "type": "package",
+      "path": "system.memory/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Memory.targets",
+        "buildTransitive/net462/_._",
+        "lib/net462/System.Memory.dll",
+        "lib/net462/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "system.memory.4.6.0.nupkg.sha512",
+        "system.memory.nuspec"
+      ]
+    },
+    "System.Numerics.Vectors/4.6.0": {
+      "sha512": "t+SoieZsRuEyiw/J+qXUbolyO219tKQQI0+2/YI+Qv7YdGValA6WiuokrNKqjrTNsy5ABWU11bdKOzUdheteXg==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Numerics.Vectors.targets",
+        "buildTransitive/net462/_._",
+        "lib/net462/System.Numerics.Vectors.dll",
+        "lib/net462/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "system.numerics.vectors.4.6.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.1.0": {
+      "sha512": "5o/HZxx6RVqYlhKSq8/zronDkALJZUT2Vz0hx43f0gwe8mwlM0y2nYlqdBwLMzr262Bwvpikeb/yEwkAa5PADg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net7.0/_._",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.1.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec"
+      ]
+    },
+    "System.Text.Encodings.Web/9.0.3": {
+      "sha512": "5L+iI4fBMtGwt4FHLQh40/rgdbxnw6lHaLkR3gbaHG97TohzUv+z/oP03drsTR1lKCLhOkp40cFnHYOQLtpT5A==",
+      "type": "package",
+      "path": "system.text.encodings.web/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Text.Encodings.Web.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Text.Encodings.Web.targets",
+        "lib/net462/System.Text.Encodings.Web.dll",
+        "lib/net462/System.Text.Encodings.Web.xml",
+        "lib/net8.0/System.Text.Encodings.Web.dll",
+        "lib/net8.0/System.Text.Encodings.Web.xml",
+        "lib/net9.0/System.Text.Encodings.Web.dll",
+        "lib/net9.0/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
+        "runtimes/browser/lib/net9.0/System.Text.Encodings.Web.dll",
+        "runtimes/browser/lib/net9.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.9.0.3.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Text.Json/9.0.3": {
+      "sha512": "r2JRkLjsYrq5Dpo7+y3Wa73OfirZPdVhxiTJWwZ+oJM7FOAe0LkM3GlH+pgkNRdd1G1kwUbmRCdmh4uoaWwu1g==",
+      "type": "package",
+      "path": "system.text.json/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "analyzers/dotnet/roslyn3.11/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn3.11/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn3.11/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.0/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.0/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/System.Text.Json.SourceGeneration.dll",
+        "analyzers/dotnet/roslyn4.4/cs/cs/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/de/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/es/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/fr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/it/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ja/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ko/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pl/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/pt-BR/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/ru/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/tr/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/System.Text.Json.SourceGeneration.resources.dll",
+        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/System.Text.Json.SourceGeneration.resources.dll",
+        "buildTransitive/net461/System.Text.Json.targets",
+        "buildTransitive/net462/System.Text.Json.targets",
+        "buildTransitive/net8.0/System.Text.Json.targets",
+        "buildTransitive/netcoreapp2.0/System.Text.Json.targets",
+        "buildTransitive/netstandard2.0/System.Text.Json.targets",
+        "lib/net462/System.Text.Json.dll",
+        "lib/net462/System.Text.Json.xml",
+        "lib/net8.0/System.Text.Json.dll",
+        "lib/net8.0/System.Text.Json.xml",
+        "lib/net9.0/System.Text.Json.dll",
+        "lib/net9.0/System.Text.Json.xml",
+        "lib/netstandard2.0/System.Text.Json.dll",
+        "lib/netstandard2.0/System.Text.Json.xml",
+        "system.text.json.9.0.3.nupkg.sha512",
+        "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Threading.Tasks.Extensions.dll",
+        "lib/net461/System.Threading.Tasks.Extensions.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Ultz.Bcl.Half/1.0.0": {
+      "sha512": "L4b7xAqEmgNgCYBGdyWhemEIazgr0rPhm9sDrrGjym9zJpt8JQx7mtiSGn8QsVM/9H0pL2CRvK1hdbDrTGydXg==",
+      "type": "package",
+      "path": "ultz.bcl.half/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ultz.bcl.half.1.0.0.nupkg.sha512",
+        "ultz.bcl.half.nuspec"
+      ]
+    },
+    "Ultz.Bcl.Half.Fallback/1.0.0": {
+      "sha512": "VceNF0imvWAy3j+Eb+VWjvxSNjunQjYJjdzvVVF8NfMbgptbrFOMsYd9g7dsEDkIvwh73Ld4pkCh2xcT82Ofhg==",
+      "type": "package",
+      "path": "ultz.bcl.half.fallback/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Ultz.Bcl.Half.dll",
+        "ultz.bcl.half.fallback.1.0.0.nupkg.sha512",
+        "ultz.bcl.half.fallback.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Annotation/1.9.1.1": {
+      "sha512": "NR31icO9qNPJ88wyqCe0N0T2kqYb3Xa36qhg9XHbDdvIANhAYNicfskMSWjYZTIHIbt/EosPxSXZ9kXWD+1VVA==",
+      "type": "package",
+      "path": "xamarin.androidx.annotation/1.9.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Annotation.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.targets",
+        "icon.png",
+        "jar/androidx.annotation.annotation.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.xml",
+        "readme.md",
+        "xamarin.androidx.annotation.1.9.1.1.nupkg.sha512",
+        "xamarin.androidx.annotation.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Annotation.Experimental/1.4.1.7": {
+      "sha512": "YOsGXEqxif04lVrRZlyTQnrx7piTZGABVCXD5Mf8wGKAA+n2Xx2e49htdBYLxS3TLSd3lgIlK0QZzd8XZTsbmQ==",
+      "type": "package",
+      "path": "xamarin.androidx.annotation.experimental/1.4.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.annotation.annotation-experimental.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Experimental.xml",
+        "readme.md",
+        "xamarin.androidx.annotation.experimental.1.4.1.7.nupkg.sha512",
+        "xamarin.androidx.annotation.experimental.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Annotation.Jvm/1.9.1.1": {
+      "sha512": "qpzjn3sb4E1Fwf2rAh1yqwbqJO9FLq+S+Y1QhgdDEYjMqni2HVW9IUBBjDqL7LS7mix96004qX/aQ6OJu5mXkg==",
+      "type": "package",
+      "path": "xamarin.androidx.annotation.jvm/1.9.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.targets",
+        "icon.png",
+        "jar/androidx.annotation.annotation-jvm.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Annotation.Jvm.xml",
+        "readme.md",
+        "xamarin.androidx.annotation.jvm.1.9.1.1.nupkg.sha512",
+        "xamarin.androidx.annotation.jvm.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Arch.Core.Common/2.2.0.14": {
+      "sha512": "OCrmjYVbpTeZIVUWGtg+CUewcLiDfWKi+945rgbBUCm9lFmssmQJFxrFIdY2hTDKkGitfaPm3B05v7X10/Tfaw==",
+      "type": "package",
+      "path": "xamarin.androidx.arch.core.common/2.2.0.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.targets",
+        "icon.png",
+        "jar/androidx.arch.core.core-common.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Common.xml",
+        "readme.md",
+        "xamarin.androidx.arch.core.common.2.2.0.14.nupkg.sha512",
+        "xamarin.androidx.arch.core.common.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Arch.Core.Runtime/2.2.0.14": {
+      "sha512": "FD4WVl5w6LtqzLXx8Gq+4ZzFdu2GeVzjXB7cULC3JySfxVndC0An/rZMTXClTEwFgdrdsEZ3KslIerJISZ5YIw==",
+      "type": "package",
+      "path": "xamarin.androidx.arch.core.runtime/2.2.0.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.arch.core.core-runtime.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Arch.Core.Runtime.xml",
+        "readme.md",
+        "xamarin.androidx.arch.core.runtime.2.2.0.14.nupkg.sha512",
+        "xamarin.androidx.arch.core.runtime.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Collection/1.4.5.1": {
+      "sha512": "7Xg+ud+TDZ0MQGbAmvl3UaTM2aCfCFOHOW0pCFuCJ3vsER7QlYs3dbBWCR2+gQtE+XEiiSYSEs0pOGGbovIiqg==",
+      "type": "package",
+      "path": "xamarin.androidx.collection/1.4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Collection.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.targets",
+        "icon.png",
+        "jar/androidx.collection.collection.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.xml",
+        "readme.md",
+        "xamarin.androidx.collection.1.4.5.1.nupkg.sha512",
+        "xamarin.androidx.collection.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Collection.Jvm/1.4.5.1": {
+      "sha512": "Pl/SLsqixdaYD43JI/gMTgPuD9N8MgilGWitSj8cGZJse38A1G54r65ZBn3IphfcLTSZzzqUAu6H8adL8zwu2Q==",
+      "type": "package",
+      "path": "xamarin.androidx.collection.jvm/1.4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.targets",
+        "icon.png",
+        "jar/androidx.collection.collection-jvm.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Collection.Jvm.xml",
+        "readme.md",
+        "xamarin.androidx.collection.jvm.1.4.5.1.nupkg.sha512",
+        "xamarin.androidx.collection.jvm.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Concurrent.Futures/1.2.0.4": {
+      "sha512": "C3mVcdlKb+RwU3nbhJguO6VWZB4FDLPx5wTPdA0c+mmAhUTx2640sSmEkJkqybzjX3iinX6Ed4Ei6wSnBxlz8w==",
+      "type": "package",
+      "path": "xamarin.androidx.concurrent.futures/1.2.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.targets",
+        "icon.png",
+        "jar/androidx.concurrent.concurrent-futures.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Concurrent.Futures.xml",
+        "readme.md",
+        "xamarin.androidx.concurrent.futures.1.2.0.4.nupkg.sha512",
+        "xamarin.androidx.concurrent.futures.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Core/1.15.0.1": {
+      "sha512": "Mleysaq9i25ldrcQ1U9KYAM7f40Jj57yJojwQL3BEwp70ItIlh0wE2qnaECVLv8uRsQCZmS4jP3pOsgx3S/9rA==",
+      "type": "package",
+      "path": "xamarin.androidx.core/1.15.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.core.core.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Core.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Core.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Core.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Core.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Core.xml",
+        "proguard/proguard.txt",
+        "readme.md",
+        "xamarin.androidx.core.1.15.0.1.nupkg.sha512",
+        "xamarin.androidx.core.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Interpolator/1.0.0.30": {
+      "sha512": "Yzm+ng+xTYJTBNvMVvVBnfinXVj2muclqJlXSCr82D/Aht4WUcY0wEs41+GtAS/LBl+thHbYUzLHW4x3vGuHVw==",
+      "type": "package",
+      "path": "xamarin.androidx.interpolator/1.0.0.30",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.interpolator.interpolator.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Interpolator.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Interpolator.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Interpolator.xml",
+        "readme.md",
+        "xamarin.androidx.interpolator.1.0.0.30.nupkg.sha512",
+        "xamarin.androidx.interpolator.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Lifecycle.Common/2.8.7.1": {
+      "sha512": "DkOcKixB9c8TMeu5UcwO27qknaqqaxaJBcTWfoMkqwKzNRAzspmEEgZfvFvRfLurVZhIZPJGLuYvx1BCV63FVw==",
+      "type": "package",
+      "path": "xamarin.androidx.lifecycle.common/2.8.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.targets",
+        "icon.png",
+        "jar/androidx.lifecycle.lifecycle-common.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.xml",
+        "readme.md",
+        "xamarin.androidx.lifecycle.common.2.8.7.1.nupkg.sha512",
+        "xamarin.androidx.lifecycle.common.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Lifecycle.Common.Jvm/2.8.7.1": {
+      "sha512": "FH/EgljRtpMOhj4T3Ev+yMQKmzLJCbKXjaw3pPAS9Efq4lvL46dTExeu6V4Ek7MvNAaaBUVyrnzyjAEsa5MyTA==",
+      "type": "package",
+      "path": "xamarin.androidx.lifecycle.common.jvm/2.8.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.targets",
+        "icon.png",
+        "jar/androidx.lifecycle.lifecycle-common-jvm.jar",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Common.Jvm.xml",
+        "readme.md",
+        "xamarin.androidx.lifecycle.common.jvm.2.8.7.1.nupkg.sha512",
+        "xamarin.androidx.lifecycle.common.jvm.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Lifecycle.Runtime/2.8.7.1": {
+      "sha512": "M/qbaj8HWh2/GyY8tjiJ1Wrr9OsEspGgirxz/RWfT9g8zwz2U1Vek+p4vvVfhp7NlOxK8m2lvTxP185F+8UJbw==",
+      "type": "package",
+      "path": "xamarin.androidx.lifecycle.runtime/2.8.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.lifecycle.lifecycle-runtime.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.xml",
+        "readme.md",
+        "xamarin.androidx.lifecycle.runtime.2.8.7.1.nupkg.sha512",
+        "xamarin.androidx.lifecycle.runtime.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Lifecycle.Runtime.Android/2.8.7.1": {
+      "sha512": "GBF24Lc6Lh9VG2KZDKuCdBoUVokH+nHUxuNtotlPWF2PNCXBtx9BSMb7OznZxrKRT6/2ItNDGl62PppOoQPPRg==",
+      "type": "package",
+      "path": "xamarin.androidx.lifecycle.runtime.android/2.8.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.lifecycle.lifecycle-runtime-android.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Lifecycle.Runtime.Android.xml",
+        "proguard/proguard.txt",
+        "readme.md",
+        "xamarin.androidx.lifecycle.runtime.android.2.8.7.1.nupkg.sha512",
+        "xamarin.androidx.lifecycle.runtime.android.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.ProfileInstaller.ProfileInstaller/1.4.1.1": {
+      "sha512": "fR+IyIF98/gncL5XrUtToSGiEjsXPTmrxIWzzgu6f9yyGhwp3QSSUWLSHxPBhyM02pooUm6qmL6uM6YfIa5vOg==",
+      "type": "package",
+      "path": "xamarin.androidx.profileinstaller.profileinstaller/1.4.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.profileinstaller.profileinstaller.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.xml",
+        "readme.md",
+        "xamarin.androidx.profileinstaller.profileinstaller.1.4.1.1.nupkg.sha512",
+        "xamarin.androidx.profileinstaller.profileinstaller.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Startup.StartupRuntime/1.2.0.1": {
+      "sha512": "ZCD6GTydpx33yB4ByirJBtNGmD4qirZusxqaf2yon2PJFTnFRKgR9MuBZc4VbRqSm+sFX8FzipyclQI8NdCD6w==",
+      "type": "package",
+      "path": "xamarin.androidx.startup.startupruntime/1.2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.startup.startup-runtime.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Startup.StartupRuntime.xml",
+        "proguard/proguard.txt",
+        "readme.md",
+        "xamarin.androidx.startup.startupruntime.1.2.0.1.nupkg.sha512",
+        "xamarin.androidx.startup.startupruntime.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.Tracing.Tracing/1.2.0.8": {
+      "sha512": "uorN+oHPDG4O4rz3juRJ8x3QQB6Vahsb6ovMZkTay1AhHeby75yvl36XwAPiAknu/quhrRpwTgIjNJIzQQ0LPQ==",
+      "type": "package",
+      "path": "xamarin.androidx.tracing.tracing/1.2.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.tracing.tracing.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.Tracing.Tracing.xml",
+        "readme.md",
+        "xamarin.androidx.tracing.tracing.1.2.0.8.nupkg.sha512",
+        "xamarin.androidx.tracing.tracing.nuspec"
+      ]
+    },
+    "Xamarin.AndroidX.VersionedParcelable/1.2.0.8": {
+      "sha512": "Rr4tBwrZFTDA9DjYMKzY26RVxygQgkU600kOVeXEph05gY6iYpdmZo0sTxemR/OFzKdMjGXmnHHuewAlOrzR+A==",
+      "type": "package",
+      "path": "xamarin.androidx.versionedparcelable/1.2.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "aar/androidx.versionedparcelable.versionedparcelable.aar",
+        "build/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.targets",
+        "buildTransitive/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.targets",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.dll",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.pdb",
+        "lib/net8.0-android34.0/Xamarin.AndroidX.VersionedParcelable.xml",
+        "proguard/proguard.txt",
+        "readme.md",
+        "xamarin.androidx.versionedparcelable.1.2.0.8.nupkg.sha512",
+        "xamarin.androidx.versionedparcelable.nuspec"
+      ]
+    },
+    "Xamarin.Google.Guava.ListenableFuture/1.0.0.25": {
+      "sha512": "92uAeJpmSQ5J6xlx5pTLyCuvp+HTJTiu1GMlKYfdxvTLUCQ4GVsvPR3YBWWbgNFLIL/JBaug/APCEEV0LduEvg==",
+      "type": "package",
+      "path": "xamarin.google.guava.listenablefuture/1.0.0.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.aar",
+        "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.dll",
+        "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.pdb",
+        "lib/net8.0-android34.0/Xamarin.Google.Guava.ListenableFuture.xml",
+        "readme.md",
+        "xamarin.google.guava.listenablefuture.1.0.0.25.nupkg.sha512",
+        "xamarin.google.guava.listenablefuture.nuspec"
+      ]
+    },
+    "Xamarin.Jetbrains.Annotations/26.0.1.1": {
+      "sha512": "yyT1767n/mKlbAdndY8rK8podSY9t5Cp1cXzZXDZiZSoqQ7n/NbyRzKalWIIDoEDcAmvtwDEVpL8fULRNJT4hA==",
+      "type": "package",
+      "path": "xamarin.jetbrains.annotations/26.0.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.aar",
+        "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.dll",
+        "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.pdb",
+        "lib/net8.0-android34.0/Xamarin.Jetbrains.Annotations.xml",
+        "readme.md",
+        "xamarin.jetbrains.annotations.26.0.1.1.nupkg.sha512",
+        "xamarin.jetbrains.annotations.nuspec"
+      ]
+    },
+    "Xamarin.Kotlin.StdLib/2.0.21.1": {
+      "sha512": "dDAt3H6E7cglabwtJm+mQFRhJMWBAQFNJpUlLGRLAlboCDPwBhXVdeDLOMhwfyk2i2AT04Vuy/wk6dzhcDxUUw==",
+      "type": "package",
+      "path": "xamarin.kotlin.stdlib/2.0.21.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.aar",
+        "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.dll",
+        "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.pdb",
+        "lib/net8.0-android34.0/Xamarin.Kotlin.StdLib.xml",
+        "readme.md",
+        "xamarin.kotlin.stdlib.2.0.21.1.nupkg.sha512",
+        "xamarin.kotlin.stdlib.nuspec"
+      ]
+    },
+    "Xamarin.KotlinX.AtomicFU/0.26.0.1": {
+      "sha512": "VYplzxHjlVAd7WITQHRJt/0KSo5I7HYfnJb8xfpB98CK4oQWIzudleYg1uy8B5LPHpxvzJdPI54Jno6mICDNPg==",
+      "type": "package",
+      "path": "xamarin.kotlinx.atomicfu/0.26.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.aar",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.dll",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.pdb",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.xml",
+        "readme.md",
+        "xamarin.kotlinx.atomicfu.0.26.0.1.nupkg.sha512",
+        "xamarin.kotlinx.atomicfu.nuspec"
+      ]
+    },
+    "Xamarin.KotlinX.AtomicFU.Jvm/0.26.0.1": {
+      "sha512": "yRRWxbDL7S7Wn8DMlNw13eR5Zw07nAAG0bjwljODYWHdetcXtdP1wLmtxXA7bv0PI+tOq0sK+dV05xP6mKMJ3A==",
+      "type": "package",
+      "path": "xamarin.kotlinx.atomicfu.jvm/0.26.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.aar",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.dll",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.pdb",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.AtomicFU.Jvm.xml",
+        "readme.md",
+        "xamarin.kotlinx.atomicfu.jvm.0.26.0.1.nupkg.sha512",
+        "xamarin.kotlinx.atomicfu.jvm.nuspec"
+      ]
+    },
+    "Xamarin.KotlinX.Coroutines.Android/1.9.0.1": {
+      "sha512": "hv4gfbP9fnSpLE+x5RbBKYDHGwHFJDgALz7MTIZQHy74VW/xSDu1ySjRbg9CgE1OcUsr+7oy/GY2dAkDuSQcOA==",
+      "type": "package",
+      "path": "xamarin.kotlinx.coroutines.android/1.9.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.aar",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.dll",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.pdb",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Android.xml",
+        "readme.md",
+        "xamarin.kotlinx.coroutines.android.1.9.0.1.nupkg.sha512",
+        "xamarin.kotlinx.coroutines.android.nuspec"
+      ]
+    },
+    "Xamarin.KotlinX.Coroutines.Core/1.9.0.1": {
+      "sha512": "vXLrj5Zb7+nPElKzONIYMMVLYi+uH1NJ+rK9gXGzK70SnbU0UBqx4OEfJqXGQk7SG2T8ptMRdqwBnmML8TAIuQ==",
+      "type": "package",
+      "path": "xamarin.kotlinx.coroutines.core/1.9.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.aar",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.dll",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.pdb",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.xml",
+        "readme.md",
+        "xamarin.kotlinx.coroutines.core.1.9.0.1.nupkg.sha512",
+        "xamarin.kotlinx.coroutines.core.nuspec"
+      ]
+    },
+    "Xamarin.KotlinX.Coroutines.Core.Jvm/1.9.0.1": {
+      "sha512": "HDWmxpc9vsh2aV7UgjVOzgDCCUsOV7hZUZT7VsqMCmlEmDGRTD3EDzwkzWXJOhPwsz0DLS+fZk6YDC47w0+mWA==",
+      "type": "package",
+      "path": "xamarin.kotlinx.coroutines.core.jvm/1.9.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "icon.png",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.aar",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.dll",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.pdb",
+        "lib/net8.0-android34.0/Xamarin.KotlinX.Coroutines.Core.Jvm.xml",
+        "readme.md",
+        "xamarin.kotlinx.coroutines.core.jvm.1.9.0.1.nupkg.sha512",
+        "xamarin.kotlinx.coroutines.core.jvm.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETStandard,Version=v2.0": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "IndexRange >= 1.0.3",
+      "Microsoft.Bcl.HashCode >= 6.0.0",
+      "Microsoft.Bcl.Numerics >= 9.0.3",
+      "NETStandard.Library >= 2.0.3",
+      "System.Numerics.Vectors >= 4.6.0",
+      "System.Text.Json >= 9.0.3",
+      "Ultz.Bcl.Half >= 1.0.0"
+    ],
+    ".NETStandard,Version=v2.1": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "System.Numerics.Vectors >= 4.6.0",
+      "System.Text.Json >= 9.0.3",
+      "Ultz.Bcl.Half >= 1.0.0"
+    ],
+    "net8.0": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "Microsoft.NET.ILLink.Tasks >= 8.0.15"
+    ],
+    "net8.0-android34.0": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "Microsoft.NET.ILLink.Tasks >= 8.0.15"
+    ],
+    "net9.0": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.4"
+    ],
+    "net9.0-android35.0": [
+      "Hexa.NET.ImGui >= 2.2.7",
+      "Hexa.NET.Utilities >= 2.2.1",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.4"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\benja\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.2.12",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui.Widgets\\Hexa.NET.ImGui.Widgets.csproj",
+      "projectName": "Hexa.NET.ImGui.Widgets",
+      "projectPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui.Widgets\\Hexa.NET.ImGui.Widgets.csproj",
+      "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\benja\\Programming\\C#\\Smithbox-3000\\Hexa.NET.ImGui.Widgets\\obj\\",
+      "projectStyle": "PackageReference",
+      "crossTargeting": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0",
+        "net8.0-android",
+        "net9.0",
+        "net9.0-android",
+        "netstandard2.0",
+        "netstandard2.1"
+      ],
+      "sources": {
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        },
+        "net8.0-android34.0": {
+          "targetAlias": "net8.0-android",
+          "projectReferences": {}
+        },
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {}
+        },
+        "net9.0-android35.0": {
+          "targetAlias": "net9.0-android",
+          "projectReferences": {}
+        },
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "projectReferences": {}
+        },
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.15, )",
+            "autoReferenced": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      },
+      "net8.0-android34.0": {
+        "targetAlias": "net8.0-android",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[8.0.15, )",
+            "autoReferenced": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.Android.Ref.34",
+            "version": "[34.0.147, 34.0.147]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.Android": {
+            "privateAssets": "all"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      },
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.4, )",
+            "autoReferenced": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      },
+      "net9.0-android35.0": {
+        "targetAlias": "net9.0-android",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "Microsoft.NET.ILLink.Tasks": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[9.0.4, )",
+            "autoReferenced": true
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.Android": {
+            "privateAssets": "all"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+      },
+      "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "IndexRange": {
+            "target": "Package",
+            "version": "[1.0.3, )"
+          },
+          "Microsoft.Bcl.HashCode": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
+          "Microsoft.Bcl.Numerics": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          },
+          "NETStandard.Library": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.0.3, )",
+            "autoReferenced": true
+          },
+          "System.Numerics.Vectors": {
+            "target": "Package",
+            "version": "[4.6.0, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          },
+          "Ultz.Bcl.Half": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+      },
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "dependencies": {
+          "Hexa.NET.ImGui": {
+            "target": "Package",
+            "version": "[2.2.7, )"
+          },
+          "Hexa.NET.Utilities": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
+          "System.Numerics.Vectors": {
+            "target": "Package",
+            "version": "[4.6.0, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          },
+          "Ultz.Bcl.Half": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "NETStandard.Library": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Hexa.NET.ImGui.Widgets.Extras</id>
+    <version>1.0.6</version>
+    <authors>Juna Meinhold</authors>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/HexaEngine/Hexa.NET.ImGui</projectUrl>
+    <description>Hexa.NET.ImGui.Widgets is a comprehensive library of custom widgets for the ImGui graphical user interface library. This package includes a variety of pre-built widgets that enhance the functionality and usability of ImGui in your .NET applications. Each widget is designed to be easy to integrate, with consistent styling and behavior. This library is an extension of the Hexa.NET.ImGui wrapper, providing additional UI components for a seamless user experience.</description>
+    <copyright>Copyright (c) 2024 Juna Meinhold</copyright>
+    <tags>Hexa.NET, ImGui, GUI, Widgets, UI, User Interface, .NET, C#, Custom Widgets, HexaNET, ImGuiWrapper</tags>
+    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="0f9e0040bdf4dea36fe19d281be2c037118ed544" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Hexa.NET.ImGui.Widgets" version="1.2.12" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Math" version="2.0.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.12.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0-android34.0">
+        <dependency id="Hexa.NET.ImGui.Widgets" version="1.2.12" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Math" version="2.0.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.12.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Hexa.NET.ImGui.Widgets" version="1.2.12" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Math" version="2.0.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.12.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0-android35.0">
+        <dependency id="Hexa.NET.ImGui.Widgets" version="1.2.12" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Math" version="2.0.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.12.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net8.0\Hexa.NET.ImGui.Widgets.Extras.dll" target="lib\net8.0\Hexa.NET.ImGui.Widgets.Extras.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net8.0\Hexa.NET.ImGui.Widgets.Extras.xml" target="lib\net8.0\Hexa.NET.ImGui.Widgets.Extras.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net8.0-android\Hexa.NET.ImGui.Widgets.Extras.dll" target="lib\net8.0-android34.0\Hexa.NET.ImGui.Widgets.Extras.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net8.0-android\Hexa.NET.ImGui.Widgets.Extras.xml" target="lib\net8.0-android34.0\Hexa.NET.ImGui.Widgets.Extras.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net9.0\Hexa.NET.ImGui.Widgets.Extras.dll" target="lib\net9.0\Hexa.NET.ImGui.Widgets.Extras.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net9.0\Hexa.NET.ImGui.Widgets.Extras.xml" target="lib\net9.0\Hexa.NET.ImGui.Widgets.Extras.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net9.0-android\Hexa.NET.ImGui.Widgets.Extras.dll" target="lib\net9.0-android35.0\Hexa.NET.ImGui.Widgets.Extras.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets.Extras\bin\Debug\net9.0-android\Hexa.NET.ImGui.Widgets.Extras.xml" target="lib\net9.0-android35.0\Hexa.NET.ImGui.Widgets.Extras.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\LICENSE.txt" target="\LICENSE.txt" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\README.md" target="\README.md" />
+  </files>
+</package>

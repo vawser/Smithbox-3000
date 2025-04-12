@@ -10,14 +10,6 @@ using Smithbox.Core.Utils;
 
 namespace Smithbox.Core.Editor;
 
-
-[JsonSourceGenerationOptions(WriteIndented = true,
-    GenerationMode = JsonSourceGenerationMode.Metadata, IncludeFields = true)]
-[JsonSerializable(typeof(CFG))]
-internal partial class CfgSerializerContext : JsonSerializerContext
-{
-}
-
 public class CFG
 {
     //----------------------------------
@@ -27,6 +19,20 @@ public class CFG
     //----------------------------------
     // Interface
     //----------------------------------
+    /// <summary>
+    /// If true, the Projects window is displayed
+    /// </summary>
+    public bool DisplayProjectsWindow = true;
+
+    /// <summary>
+    /// If true, the Primary Param Editor window is displayed
+    /// </summary>
+    public bool DisplayPrimaryParamEditor = true;
+
+    /// <summary>
+    /// If true, the Secondary Param Editor window is displayed
+    /// </summary>
+    public bool DisplaySecondaryParamEditor = true;
 
     /// <summary>
     /// The display scaling to apply to the Interface
@@ -94,7 +100,7 @@ public class CFG
             {
                 var filestring = File.ReadAllText(file);
                 var options = new JsonSerializerOptions();
-                Current = JsonSerializer.Deserialize(filestring, CfgSerializerContext.Default.CFG);
+                Current = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.CFG);
 
                 if (Current == null)
                 {
@@ -116,7 +122,7 @@ public class CFG
         var folder = FolderUtils.GetConfigurationFolder();
         var file = Path.Combine(folder, "Configuration.json");
 
-        var json = JsonSerializer.Serialize(Current, CfgSerializerContext.Default.CFG);
+        var json = JsonSerializer.Serialize(Current, SmithboxSerializerContext.Default.CFG);
 
         File.WriteAllText(file, json);
     }

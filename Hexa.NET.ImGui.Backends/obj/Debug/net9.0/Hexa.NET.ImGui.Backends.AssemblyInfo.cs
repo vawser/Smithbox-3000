@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A .NET wrapper for the Dear ImGui (1.91.9b) library backends (Win32, Vulkan, Open" +
     "GL2, OpenGL3, D3D11, D3D12, OSX, Metal, Android).")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.11")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dd38a62c38992d169ecf8d63b3cac14b5a69524")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9e0040bdf4dea36fe19d281be2c037118ed544")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImGui.Backends")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImGui.Backends")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.11")]

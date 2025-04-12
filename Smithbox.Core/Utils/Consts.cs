@@ -10,5 +10,5 @@ public static class Consts
 {
     public const string DataFolder = ".smithbox";
     public const string ConfigurationFolder = ".smithbox/Configuration";
-    public const string ProjectFolder = ".smithbox/Project";
+    public const string ProjectFolder = ".smithbox/Projects";
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hexa.NET.ImGui.Widgets.Extras</name>
+    </assembly>
+    <members>
+        <member name="T:Hexa.NET.ImGui.Widgets.Extras.ImGuiBezierWidget">
+            <summary>
+            Provides utility methods for rendering and interacting with Bezier curves in ImGui.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Widgets.Extras.ImGuiBezierWidget.Bezier(System.String,Hexa.NET.Mathematics.BezierCurve@,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Creates an ImGui Bezier widget for interactive curve editing.
+            </summary>
+            <param name="label">The label for the widget.</param>
+            <param name="P">The reference to the BezierCurve that represents control points.</param>
+            <param name="size">The size of the widget.</param>
+            <param name="curveWidth">The width of the main curved line.</param>
+            <param name="lineWidth">The width of handlers' small lines.</param>
+            <param name="grabRadius">The radius of the handlers' circle.</param>
+            <param name="grabBorder">The border width of handlers' circle.</param>
+            <param name="areaConstrained">Flag indicating if grabbers should be constrained to the grid area.</param>
+            <returns>True if the Bezier curve is changed, false otherwise.</returns>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Widgets.Extras.TextEditor.TextEditor.ClearSelection">
+            <summary>
+            Clear the current selection.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Widgets.Extras.TextEditor.TextEditor.EraseSelection">
+            <summary>
+            Erase the current selection.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Widgets.Extras.TextEditor.TextEditorTab.ClearSelection">
+            <summary>
+            Clear the current selection.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Widgets.Extras.TextEditor.TextEditorTab.EraseSelection">
+            <summary>
+            Erase the current selection.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Widgets.Extras.TextEditor.TextEditorWindow">
+            <summary>
+            A work in progress text editor with syntax highlighting and more.
+            </summary>
+        </member>
+    </members>
+</doc>

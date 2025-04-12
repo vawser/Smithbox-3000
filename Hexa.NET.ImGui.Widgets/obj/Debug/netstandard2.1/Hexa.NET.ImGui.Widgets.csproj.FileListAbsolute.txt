@@ -1,0 +1,13 @@
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.deps.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.xml
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.csproj.AssemblyReference.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.AssemblyInfoInputs.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.AssemblyInfo.cs
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.csproj.CoreCompileInputs.cache
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.sourcelink.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.xml
+C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\obj\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.pdb

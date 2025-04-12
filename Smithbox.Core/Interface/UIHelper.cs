@@ -109,7 +109,7 @@ public static class UIHelper
         }
     }
 
-    public static void ShowHoverTooltip(string desc)
+    public static void Tooltip(string desc)
     {
         if (ImGui.IsItemHovered())
         {
@@ -202,5 +202,24 @@ public static class UIHelper
     public static void CopyToClipboard(string text)
     {
         // TODO: copy to clipboard
+    }
+
+    public static void SimpleHeader(string id, string title, string tooltip, Vector4 textColor)
+    {
+        var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
+
+        if (ImGui.BeginTable($"{id}", 1, tblFlags))
+        {
+            ImGui.TableSetupColumn("Title", ImGuiTableColumnFlags.WidthFixed);
+
+            ImGui.TableNextRow();
+            ImGui.TableSetColumnIndex(0);
+
+            ImGui.AlignTextToFramePadding();
+            ImGui.TextColored(UI.Current.ImGui_Highlight_Text, $"{title}");
+            UIHelper.Tooltip(tooltip);
+
+            ImGui.EndTable();
+        }
     }
 }

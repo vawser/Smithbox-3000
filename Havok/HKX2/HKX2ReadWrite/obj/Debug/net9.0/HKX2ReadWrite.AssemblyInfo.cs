@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HKX2ReadWrite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dd38a62c38992d169ecf8d63b3cac14b5a69524")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9e0040bdf4dea36fe19d281be2c037118ed544")]
 [assembly: System.Reflection.AssemblyProductAttribute("HKX2ReadWrite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HKX2ReadWrite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

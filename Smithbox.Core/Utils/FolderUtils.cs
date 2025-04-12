@@ -48,7 +48,7 @@ public class FolderUtils
         var projectJsonList = new List<string>();
         var projectFolder = GetProjectFolder();
 
-        projectJsonList = Directory.EnumerateFiles(projectFolder, ".json").ToList();
+        projectJsonList = Directory.EnumerateFiles(projectFolder, "*.json").ToList();
 
         return projectJsonList;
     }

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Hexa.NET.ImGui.Widgets</id>
+    <version>1.2.12</version>
+    <authors>Juna Meinhold</authors>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/HexaEngine/Hexa.NET.ImGui</projectUrl>
+    <description>Hexa.NET.ImGui.Widgets is a comprehensive library of custom widgets for the ImGui graphical user interface library. This package includes a variety of pre-built widgets that enhance the functionality and usability of ImGui in your .NET applications. Each widget is designed to be easy to integrate, with consistent styling and behavior. This library is an extension of the Hexa.NET.ImGui wrapper, providing additional UI components for a seamless user experience.</description>
+    <copyright>Copyright (c) 2024 Juna Meinhold</copyright>
+    <tags>Hexa.NET, ImGui, GUI, Widgets, UI, User Interface, .NET, C#, Custom Widgets, HexaNET, ImGuiWrapper</tags>
+    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="0f9e0040bdf4dea36fe19d281be2c037118ed544" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0-android34.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net9.0-android35.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+        <dependency id="IndexRange" version="1.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.HashCode" version="6.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Bcl.Numerics" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Numerics.Vectors" version="4.6.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="Ultz.Bcl.Half" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />
+        <dependency id="Hexa.NET.Utilities" version="2.2.1" exclude="Build,Analyzers" />
+        <dependency id="System.Numerics.Vectors" version="4.6.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="9.0.3" exclude="Build,Analyzers" />
+        <dependency id="Ultz.Bcl.Half" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net8.0\Hexa.NET.ImGui.Widgets.dll" target="lib\net8.0\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net8.0\Hexa.NET.ImGui.Widgets.xml" target="lib\net8.0\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net8.0-android\Hexa.NET.ImGui.Widgets.dll" target="lib\net8.0-android34.0\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net8.0-android\Hexa.NET.ImGui.Widgets.xml" target="lib\net8.0-android34.0\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net9.0\Hexa.NET.ImGui.Widgets.dll" target="lib\net9.0\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net9.0\Hexa.NET.ImGui.Widgets.xml" target="lib\net9.0\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net9.0-android\Hexa.NET.ImGui.Widgets.dll" target="lib\net9.0-android35.0\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net9.0-android\Hexa.NET.ImGui.Widgets.xml" target="lib\net9.0-android35.0\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.0\Hexa.NET.ImGui.Widgets.dll" target="lib\netstandard2.0\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.0\Hexa.NET.ImGui.Widgets.xml" target="lib\netstandard2.0\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.dll" target="lib\netstandard2.1\Hexa.NET.ImGui.Widgets.dll" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\netstandard2.1\Hexa.NET.ImGui.Widgets.xml" target="lib\netstandard2.1\Hexa.NET.ImGui.Widgets.xml" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net8.0-android\Hexa.NET.ImGui.Widgets.aar" target="lib\net8.0-android34.0\Hexa.NET.ImGui.Widgets.aar" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\Hexa.NET.ImGui.Widgets\bin\Debug\net9.0-android\Hexa.NET.ImGui.Widgets.aar" target="lib\net9.0-android35.0\Hexa.NET.ImGui.Widgets.aar" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\LICENSE.txt" target="\LICENSE.txt" />
+    <file src="C:\Users\benja\Programming\C#\Smithbox-3000\README.md" target="\README.md" />
+  </files>
+</package>

@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2023 Juna Meinhold")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A .NET wrapper for the ImNodes library. (0.5.0)")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.5.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dd38a62c38992d169ecf8d63b3cac14b5a69524")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9e0040bdf4dea36fe19d281be2c037118ed544")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImNodes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImNodes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.5.0")]
