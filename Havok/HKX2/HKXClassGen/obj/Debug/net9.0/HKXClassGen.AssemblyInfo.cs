@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HKXClassGen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fc40710bf4697e79460d828c55bd64adc6e2145")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da7db1e6fe6fdf14222f9e81d88f438615abeca5")]
 [assembly: System.Reflection.AssemblyProductAttribute("HKXClassGen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HKXClassGen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

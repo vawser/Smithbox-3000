@@ -69,10 +69,6 @@ public static class InterfaceSettings
                 // Display Warning Logger
                 ImGui.Checkbox("Display Warning Logger##displayWarningLogger", ref CFG.Current.DisplayWarningLogger);
                 UIHelper.Tooltip("If true, the Warning Logger preview and window will be visible.");
-
-                // Display Scale
-                ImGui.InputFloat("Display Scale##interfaceDisplayScale", ref CFG.Current.InterfaceDisplayScale);
-                UIHelper.Tooltip("The display scale to use for the interface.");
             }
             ImGui.EndPopup();
         }

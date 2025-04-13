@@ -34,7 +34,7 @@ public class ParamBank
 
     public readonly HashSet<int> EMPTYSET = new();
 
-    public Dictionary<string, Param> Params;
+    public Dictionary<string, Param> Params = new();
 
     /// <summary>
     /// Special-case param
@@ -101,31 +101,45 @@ public class ParamBank
     {
         await Task.Delay(1000);
 
+        var successfulLoad = false;
+
         switch (DataParent.Project.ProjectType)
         {
-            case ProjectType.DES: LoadParameters_DES(fs, defs); break;
-            case ProjectType.DS1: LoadParameters_DS1(fs, defs); break;
-            case ProjectType.DS1R: LoadParameters_DS1R(fs, defs); break;
-            case ProjectType.DS2: LoadParameters_DS2(fs, defs); break;
-            case ProjectType.DS2S: LoadParameters_DS2S(fs, defs); break;
-            case ProjectType.DS3: LoadParameters_DS3(fs, defs); break;
-            case ProjectType.BB: LoadParameters_BB(fs, defs); break;
-            case ProjectType.SDT: LoadParameters_SDT(fs, defs); break;
-            case ProjectType.ER: LoadParameters_ER(fs, defs); break;
-            case ProjectType.AC6: LoadParameters_AC6(fs, defs); break;
-            case ProjectType.ERN: LoadParameters_ERN(fs, defs); break;
+            case ProjectType.DES:
+                successfulLoad = LoadParameters_DES(fs, defs); break;
+            case ProjectType.DS1:
+                successfulLoad = LoadParameters_DS1(fs, defs); break;
+            case ProjectType.DS1R:
+                successfulLoad = LoadParameters_DS1R(fs, defs); break;
+            case ProjectType.DS2:
+                successfulLoad = LoadParameters_DS2(fs, defs); break;
+            case ProjectType.DS2S:
+                successfulLoad = LoadParameters_DS2S(fs, defs); break;
+            case ProjectType.DS3:
+                successfulLoad = LoadParameters_DS3(fs, defs); break;
+            case ProjectType.BB:
+                successfulLoad = LoadParameters_BB(fs, defs); break;
+            case ProjectType.SDT:
+                successfulLoad = LoadParameters_SDT(fs, defs); break;
+            case ProjectType.ER:
+                successfulLoad = LoadParameters_ER(fs, defs); break;
+            case ProjectType.AC6:
+                successfulLoad = LoadParameters_AC6(fs, defs); break;
+            case ProjectType.ERN:
+                successfulLoad = LoadParameters_ERN(fs, defs); break;
             default: break;
         }
 
-
-        return true;
+        return successfulLoad;
     }
 
     /// <summary>
     /// Demons' Souls
     /// </summary>
-    private void LoadParameters_DES(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DES(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -133,18 +147,21 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}");
+            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                var data = fs.GetFile(paramPath).GetData();
+                using var bnd = BND3.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
 
             // Draw Params
@@ -156,23 +173,29 @@ public class ParamBank
 
                     try
                     {
-                        using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                        var data = fs.GetFile(paramPath).GetData();
+                        using var bnd = BND3.Read(data);
                         FillParamBank(defs, bnd, ref Params, out ParamVersion);
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        successfulLoad = false;
                     }
                 }
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Dark Souls (PTDE)
     /// </summary>
-    private void LoadParameters_DS1(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DS1(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -180,18 +203,21 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}");
+            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                var data = fs.GetFile(paramPath).GetData();
+                using var bnd = BND3.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
 
             // Draw Params
@@ -203,23 +229,29 @@ public class ParamBank
 
                     try
                     {
-                        using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                        var data = fs.GetFile(paramPath).GetData();
+                        using var bnd = BND3.Read(data);
                         FillParamBank(defs, bnd, ref Params, out ParamVersion);
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        successfulLoad = false;
                     }
                 }
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Dark Souls (Remastered)
     /// </summary>
-    private void LoadParameters_DS1R(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DS1R(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -227,18 +259,21 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}");
+            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                var data = fs.GetFile(paramPath).GetData();
+                using var bnd = BND3.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
 
             // Draw Params
@@ -250,23 +285,29 @@ public class ParamBank
 
                     try
                     {
-                        using var bnd = BND3.Read(fs.GetFile(paramPath).GetData());
+                        var data = fs.GetFile(paramPath).GetData();
+                        using var bnd = BND3.Read(data);
                         FillParamBank(defs, bnd, ref Params, out ParamVersion);
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        successfulLoad = false;
                     }
                 }
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Dark Souls II
     /// </summary>
-    private void LoadParameters_DS2(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DS2(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -275,7 +316,8 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+            TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
 
         // Load loose params (prioritizing ones in mod folder)
@@ -292,7 +334,8 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
         else
@@ -303,7 +346,8 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
@@ -317,7 +361,8 @@ public class ParamBank
         // Otherwise the param is a loose param
         if (fs.FileExists(enemyPath))
         {
-            EnemyParam = Param.Read(fs.GetFile(enemyPath).GetData());
+            var paramData = fs.GetFile(enemyPath).GetData();
+            EnemyParam = Param.Read(paramData);
         }
 
         if (EnemyParam is { ParamType: not null })
@@ -331,6 +376,7 @@ public class ParamBank
             {
                 TaskLogs.AddLog($"Could not apply ParamDef for {EnemyParam.ParamType}",
                     LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
@@ -339,7 +385,8 @@ public class ParamBank
         foreach (var p in looseParams)
         {
             var name = Path.GetFileNameWithoutExtension(p);
-            var lp = Param.Read(fs.GetFile(p).GetData());
+            var paramData = fs.GetFile(p).GetData();
+            var lp = Param.Read(paramData);
             var fname = lp.ParamType;
 
             if (fname is "GENERATOR_DBG_LOCATION_PARAM")
@@ -369,17 +416,22 @@ public class ParamBank
             {
                 var message = $"Could not apply ParamDef for {fname}";
                 TaskLogs.AddLog(message, LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         paramBnd.Dispose();
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Dark Souls II: Scholar of the First Sin
     /// </summary>
-    private void LoadParameters_DS2S(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DS2S(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -388,7 +440,8 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+            TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
 
         // Load loose params (prioritizing ones in mod folder)
@@ -405,7 +458,8 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
         else
@@ -416,7 +470,8 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
@@ -430,7 +485,8 @@ public class ParamBank
         // Otherwise the param is a loose param
         if (fs.FileExists(enemyPath))
         {
-            EnemyParam = Param.Read(fs.GetFile(enemyPath).GetData());
+            var paramData = fs.GetFile(enemyPath).GetData();
+            EnemyParam = Param.Read(paramData);
         }
 
         if (EnemyParam is { ParamType: not null })
@@ -444,6 +500,7 @@ public class ParamBank
             {
                 TaskLogs.AddLog($"Could not apply ParamDef for {EnemyParam.ParamType}",
                     LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
@@ -452,7 +509,8 @@ public class ParamBank
         foreach (var p in looseParams)
         {
             var name = Path.GetFileNameWithoutExtension(p);
-            var lp = Param.Read(fs.GetFile(p).GetData());
+            var paramData = fs.GetFile(p).GetData();
+            var lp = Param.Read(paramData);
             var fname = lp.ParamType;
 
             if (fname is "GENERATOR_DBG_LOCATION_PARAM")
@@ -482,17 +540,22 @@ public class ParamBank
             {
                 var message = $"Could not apply ParamDef for {fname}";
                 TaskLogs.AddLog(message, LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         paramBnd.Dispose();
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Dark Souls III
     /// </summary>
-    private void LoadParameters_DS3(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_DS3(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -501,7 +564,8 @@ public class ParamBank
 
         if (!fs.FileExists(packedFile))
         {
-            TaskLogs.AddLog($"Failed to find {packedFile}");
+            TaskLogs.AddLog($"Failed to find {packedFile}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
@@ -509,34 +573,42 @@ public class ParamBank
             {
                 try
                 {
-                    using var bnd = BND4.Read(fs.GetFile(looseFile).GetData());
+                    var data = fs.GetFile(looseFile).GetData();
+                    using var bnd = BND4.Read(data);
                     FillParamBank(defs, bnd, ref Params, out ParamVersion);
                 }
                 catch (Exception e)
                 {
-                    TaskLogs.AddLog($"Failed to load game param: {looseFile}");
+                    TaskLogs.AddLog($"Failed to load game param: {looseFile}", LogLevel.Warning, e);
+                    successfulLoad = false;
                 }
             }
             else
             {
                 try
                 {
-                    using var bnd = SFUtil.DecryptDS3Regulation(fs.GetFile(packedFile).GetData().ToArray());
+                    var data = fs.GetFile(packedFile).GetData().ToArray();
+                    using var bnd = SFUtil.DecryptDS3Regulation(data);
                     FillParamBank(defs, bnd, ref Params, out ParamVersion);
                 }
                 catch (Exception e)
                 {
-                    TaskLogs.AddLog($"Failed to load game param: {packedFile}");
+                    TaskLogs.AddLog($"Failed to load game param: {packedFile}", LogLevel.Warning, e);
+                    successfulLoad = false;
                 }
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Bloodborne
     /// </summary>
-    private void LoadParameters_BB(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_BB(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -544,27 +616,34 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}");
+            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(paramPath).GetData());
+                var data = fs.GetFile(paramPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Sekiro: Shadows Die Twice
     /// </summary>
-    private void LoadParameters_SDT(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_SDT(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -572,27 +651,34 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}");
+            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(paramPath).GetData());
+                var data = fs.GetFile(paramPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}");
+                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Elden Ring
     /// </summary>
-    private void LoadParameters_ER(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_ER(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -601,44 +687,55 @@ public class ParamBank
 
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}");
+            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using BND4 bnd = SFUtil.DecryptERRegulation(fs.GetFile(gameParamPath).GetData().ToArray());
+                var data = fs.GetFile(gameParamPath).GetData().ToArray();
+                using BND4 bnd = SFUtil.DecryptERRegulation(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning,
+                e.InnerException);
+                successfulLoad = false;
             }
         }
 
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}");
+            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(systemParamPath).GetData());
+                var data = fs.GetFile(systemParamPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Armored Core VI: Fires of Rubicon
     /// </summary>
-    private void LoadParameters_AC6(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_AC6(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -650,81 +747,97 @@ public class ParamBank
         // Game Param
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}");
+            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using BND4 bnd = SFUtil.DecryptAC6Regulation(fs.GetFile(gameParamPath).GetData().ToArray());
+                var data = fs.GetFile(gameParamPath).GetData().ToArray();
+                using BND4 bnd = SFUtil.DecryptAC6Regulation(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         // System Param
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}");
+            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(systemParamPath).GetData());
+                var data = fs.GetFile(systemParamPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         // Graphics Param
         if (!fs.FileExists(graphicsParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {graphicsParamPath}");
+            TaskLogs.AddLog($"Failed to find {graphicsParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(graphicsParamPath).GetData());
+                var data = fs.GetFile(graphicsParamPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {graphicsParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {graphicsParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         // Event Param
         if (!fs.FileExists(eventParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {eventParamPath}");
+            TaskLogs.AddLog($"Failed to find {eventParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(eventParamPath).GetData());
+                var data = fs.GetFile(eventParamPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {eventParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {eventParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
+
+        return successfulLoad;
     }
 
     /// <summary>
     /// Elden Ring: Nightreign
     /// </summary>
-    private void LoadParameters_ERN(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
+    private bool LoadParameters_ERN(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
+        var successfulLoad = true;
+
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
@@ -733,37 +846,45 @@ public class ParamBank
 
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}");
+            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using BND4 bnd = SFUtil.DecryptERNRegulation(fs.GetFile(gameParamPath).GetData().ToArray());
+                var data = fs.GetFile(gameParamPath).GetData().ToArray();
+                using BND4 bnd = SFUtil.DecryptNightreignRegulation(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
 
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}");
+            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            successfulLoad = false;
         }
         else
         {
             try
             {
-                using var bnd = BND4.Read(fs.GetFile(systemParamPath).GetData());
+                var data = fs.GetFile(systemParamPath).GetData();
+                using var bnd = BND4.Read(data);
                 FillParamBank(defs, bnd, ref Params, out ParamVersion);
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}");
+                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                successfulLoad = false;
             }
         }
+
+        return successfulLoad;
     }
 
     private void FillParamBank(Dictionary<string, PARAMDEF> defs, IBinder parambnd, ref Dictionary<string, Param> paramBank, out ulong version,
@@ -924,30 +1045,45 @@ public class ParamBank
     {
         await Task.Delay(1000);
 
+        var successfulSave = false;
+
         switch (DataParent.Project.ProjectType)
         {
-            case ProjectType.DES:  SaveParameters_DES(); break;
-            case ProjectType.DS1:  SaveParameters_DS1(); break;
-            case ProjectType.DS1R: SaveParameters_DS1R(); break;
-            case ProjectType.DS2:  SaveParameters_DS2(); break;
-            case ProjectType.DS2S: SaveParameters_DS2S(); break;
-            case ProjectType.DS3:  SaveParameters_DS3(); break;
-            case ProjectType.BB:   SaveParameters_BB(); break;
-            case ProjectType.SDT:  SaveParameters_SDT(); break;
-            case ProjectType.ER:   SaveParameters_ER(); break;
-            case ProjectType.AC6:  SaveParameters_AC6(); break;
-            case ProjectType.ERN:  SaveParameters_ERN(); break;
+            case ProjectType.DES:
+                successfulSave = SaveParameters_DES(); break;
+            case ProjectType.DS1:
+                successfulSave = SaveParameters_DS1(); break;
+            case ProjectType.DS1R:
+                successfulSave = SaveParameters_DS1R(); break;
+            case ProjectType.DS2:
+                successfulSave = SaveParameters_DS2(); break;
+            case ProjectType.DS2S:
+                successfulSave = SaveParameters_DS2S(); break;
+            case ProjectType.DS3:
+                successfulSave = SaveParameters_DS3(); break;
+            case ProjectType.BB:
+                successfulSave = SaveParameters_BB(); break;
+            case ProjectType.SDT:
+                successfulSave = SaveParameters_SDT(); break;
+            case ProjectType.ER:
+                successfulSave = SaveParameters_ER(); break;
+            case ProjectType.AC6:
+                successfulSave = SaveParameters_AC6(); break;
+            case ProjectType.ERN:
+                successfulSave = SaveParameters_ERN(); break;
             default: break;
         }
 
-        return true;
+        return successfulSave;
     }
 
     /// <summary>
     /// Demons' Souls
     /// </summary>
-    private void SaveParameters_DES()
+    private bool SaveParameters_DES()
     {
+        var successfulSave = true;
+
         var fs = DataParent.Project.FileSystem;
         var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
 
@@ -957,7 +1093,7 @@ public class ParamBank
         {
             TaskLogs.AddLog("Cannot locate param files. Save failed.",
                 LogLevel.Error);
-            return;
+            return false;
         }
 
         var data = fs.GetFile(paramPath).GetData().ToArray();
@@ -1019,86 +1155,108 @@ public class ParamBank
                 VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @$"param\drawparam\{Path.GetFileName(bnd)}", drawParamBnd);
             }
         }
+
+        return successfulSave;
     }
 
     /// <summary>
     /// Dark Souls (PTDE)
     /// </summary>
-    private void SaveParameters_DS1()
+    private bool SaveParameters_DS1()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Dark Souls (Remastered)
     /// </summary>
-    private void SaveParameters_DS1R()
+    private bool SaveParameters_DS1R()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Dark Souls II
     /// </summary>
-    private void SaveParameters_DS2()
+    private bool SaveParameters_DS2()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Dark Souls II: Scholar of the First Sin
     /// </summary>
-    private void SaveParameters_DS2S()
+    private bool SaveParameters_DS2S()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Dark Souls III
     /// </summary>
-    private void SaveParameters_DS3()
+    private bool SaveParameters_DS3()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Bloodborne
     /// </summary>
-    private void SaveParameters_BB()
+    private bool SaveParameters_BB()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Sekiro: Shadows Die Twice
     /// </summary>
-    private void SaveParameters_SDT()
+    private bool SaveParameters_SDT()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Elden Ring
     /// </summary>
-    private void SaveParameters_ER()
+    private bool SaveParameters_ER()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Armored Core VI: Fires of Rubicon
     /// </summary>
-    private void SaveParameters_AC6()
+    private bool SaveParameters_AC6()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
     /// Elden Ring: Nightreign
     /// </summary>
-    private void SaveParameters_ERN()
+    private bool SaveParameters_ERN()
     {
+        var successfulSave = true;
 
+        return successfulSave;
     }
 
     /// <summary>
@@ -1108,38 +1266,49 @@ public class ParamBank
     {
         await Task.Delay(1000);
 
+        var successfulUpgrade = true;
+
         switch (DataParent.Project.ProjectType)
         {
-            case ProjectType.ER: UpgradeParameters_ER(); break;
-            case ProjectType.AC6: UpgradeParameters_AC6(); break;
-            case ProjectType.ERN: UpgradeParameters_ERN(); break;
+            case ProjectType.ER:
+                successfulUpgrade = UpgradeParameters_ER(); break;
+            case ProjectType.AC6:
+                successfulUpgrade = UpgradeParameters_AC6(); break;
+            case ProjectType.ERN:
+                successfulUpgrade = UpgradeParameters_ERN(); break;
             default: break;
         }
 
-        return true;
+        return successfulUpgrade;
     }
 
     /// <summary>
     /// Elden Ring
     /// </summary>
-    private void UpgradeParameters_ER()
+    private bool UpgradeParameters_ER()
     {
+        var successfulUpgrade = true;
 
+        return successfulUpgrade;
     }
 
     /// <summary>
     /// Armored Core VI: Fires of Rubicon
     /// </summary>
-    private void UpgradeParameters_AC6()
+    private bool UpgradeParameters_AC6()
     {
+        var successfulUpgrade = true;
 
+        return successfulUpgrade;
     }
 
     /// <summary>
     /// Elden Ring: Nightreign
     /// </summary>
-    private void UpgradeParameters_ERN()
+    private bool UpgradeParameters_ERN()
     {
+        var successfulUpgrade = true;
 
+        return successfulUpgrade;
     }
 }

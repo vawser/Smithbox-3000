@@ -20,6 +20,11 @@ public class CFG
     /// </summary>
     public bool IgnoreReadAsserts = false;
 
+    /// <summary>
+    /// If true, verbose logging will be enabled.
+    /// </summary>
+    public bool EnableVerboseLogging = true;
+
     //----------------------------------
     // Interface
     //----------------------------------

@@ -8,6 +8,7 @@ using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -213,6 +214,17 @@ public class Project
     {
         if (ImGui.BeginMenuBar())
         {
+            if (ImGui.BeginMenu("File"))
+            {
+                if (ImGui.MenuItem("Open Project Folder"))
+                {
+                    Process.Start("explorer.exe", ProjectPath);
+                }
+                UIHelper.Tooltip("Open the project folder for this project.");
+
+                ImGui.EndMenu();
+            }
+
             // Technically not per project, but functionally belongs here
             if (ImGui.BeginMenu("View"))
             {

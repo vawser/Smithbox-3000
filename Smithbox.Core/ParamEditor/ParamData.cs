@@ -76,12 +76,12 @@ public class ParamData
 
         if (paramDefsLoaded)
         {
-            TaskLogs.AddLog("Loaded param definitions.");
+            TaskLogs.AddLog("Finished param definition setup.");
             IsParamDefLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to load param definitions.");
+            TaskLogs.AddLog("Failed to setup param definitions.");
         }
 
         // Meta
@@ -90,12 +90,12 @@ public class ParamData
 
         if (paramMetaLoaded)
         {
-            TaskLogs.AddLog("Loaded param meta.");
+            TaskLogs.AddLog("Finished param meta setup.");
             IsParamMetaLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to load param meta.");
+            TaskLogs.AddLog("Failed to setup param meta.");
         }
 
         // Primary Bank
@@ -106,12 +106,12 @@ public class ParamData
         
         if (primaryBankLoaded)
         {
-            TaskLogs.AddLog("Loaded primary param bank.");
+            TaskLogs.AddLog("Finished primary param bank setup.");
             IsPrimaryBankLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to load primary param bank.");
+            TaskLogs.AddLog("Failed to setup primary param bank fully.");
         }
 
         // Vanilla Bank
@@ -122,12 +122,12 @@ public class ParamData
 
         if (vanillaBankLoaded)
         {
-            TaskLogs.AddLog("Loaded vanilla param bank.");
+            TaskLogs.AddLog("Finished vanilla param bank setup.");
             IsVanillaBankLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to load vanilla param bank.");
+            TaskLogs.AddLog("Failed to setup vanilla param bank fully.");
         }
 
         // Primary Bank: Import Row Names

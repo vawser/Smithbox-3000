@@ -1,8 +1,12 @@
-﻿namespace Smithbox_Core
+﻿using Silk.NET.SDL;
+
+namespace Smithbox_Core
 {
     using Silk.NET.SDL;
     using Smithbox.Core.Interface;
+    using Smithbox.Core.Utils;
     using System;
+    using System.Text.Json;
 
     public class ClosingEventArgs : EventArgs
     {
@@ -22,12 +26,11 @@
         private int height;
         private bool disposedValue;
 
+        private WindowState WindowState;
+
         public CoreWindow()
         {
-            int width = 1280;
-            int height = 720;
-            int y = 100;
-            int x = 100;
+            WindowState = LoadWindowState();
 
             WindowFlags flags = WindowFlags.Resizable | WindowFlags.Hidden | WindowFlags.AllowHighdpi;
 
@@ -42,7 +45,7 @@
                     break;
             }
 
-            window = sdl.CreateWindow("", x, y, width, height, (uint)flags);
+            window = sdl.CreateWindow("", WindowState.X, WindowState.Y, WindowState.Width, WindowState.Height, (uint)flags);
             id = sdl.GetWindowID(window);
         }
 
@@ -102,6 +105,7 @@
                     break;
 
                 case WindowEventID.Close:
+                    SaveWindowState(sdl, window);
                     ClosingEventArgs eventArgs = new();
                     Closing?.Invoke(this, eventArgs);
                     if (eventArgs.Handled)
@@ -143,5 +147,60 @@
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+        private unsafe void SaveWindowState(Sdl sdl, Window* window)
+        {
+            int width, height, x, y;
+
+            sdl.GetWindowSize(window, &width, &height);
+            sdl.GetWindowPosition(window, &x, &y);
+
+            WindowState state = new();
+
+            state.Width = width;
+            state.Height = height;
+            state.X = x;
+            state.Y = y;
+            state.IsMaximized = (sdl.GetWindowFlags(window) & (uint)WindowFlags.WindowMaximized) != 0;
+
+            string json = JsonSerializer.Serialize(state, SmithboxSerializerContext.Default.WindowState);
+
+            File.WriteAllText(@$"{Consts.ConfigurationFolder}\Program.json", json);
+        }
+
+        private WindowState LoadWindowState()
+        {
+            var windowState = new WindowState();
+            var configPath = @$"{AppContext.BaseDirectory}\{Consts.ConfigurationFolder}\Program.json";
+
+            if (File.Exists(configPath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(configPath);
+                    windowState = JsonSerializer.Deserialize(json, SmithboxSerializerContext.Default.WindowState);
+                }
+                catch
+                {
+                    windowState = new WindowState();
+                    windowState.Width = 800;
+                    windowState.Height = 600;
+                    windowState.X = Sdl.WindowposCentered;
+                    windowState.Y = Sdl.WindowposCentered;
+                    windowState.IsMaximized = false;
+                }
+            }
+
+            return windowState;
+        }
     }
+}
+
+public class WindowState
+{
+    public int Width { get; set; } = 800;
+    public int Height { get; set; } = 600;
+    public int X { get; set; } = Sdl.WindowposCentered;
+    public int Y { get; set; } = Sdl.WindowposCentered;
+    public bool IsMaximized { get; set; } = false;
 }

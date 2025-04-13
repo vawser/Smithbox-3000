@@ -87,7 +87,7 @@ public class ParamEditor
                     }
                 }
 
-                ImGui.EndMenuBar();
+                ImGui.EndMenu();
             }
 
             if (ImGui.BeginMenu("Edit"))

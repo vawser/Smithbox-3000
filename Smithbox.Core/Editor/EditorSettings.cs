@@ -50,6 +50,10 @@ public static class EditorSettings
                 // Ignore Read Asserts
                 ImGui.Checkbox("Ignore Read Asserts##ignoreReadAsserts", ref CFG.Current.IgnoreReadAsserts);
                 UIHelper.Tooltip("If true, file reads will ignore failed asserts. Useful for loading files that have been 'corrupted' intentionally.");
+
+                // Enable Verbose Logging
+                ImGui.Checkbox("Enable Verbose Logging##enableVerboseLogging", ref CFG.Current.EnableVerboseLogging);
+                UIHelper.Tooltip("If true, berbose logging will be displayed in the general logger.");
             }
 
             if (FeatureFlags.IncludeParamEditor)

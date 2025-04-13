@@ -35,6 +35,16 @@ public static class TaskLogs
     private static float _actionShowTime = 0;
     private static float _warningShowTime = 0;
 
+    public static void AddVerboseLog(string text,
+        LogLevel level = LogLevel.Information,
+        Exception ex = null)
+    {
+        if(CFG.Current.EnableVerboseLogging)
+        {
+            AddLog(text, level, ex);
+        }
+    }
+
     /// <summary>
     /// Adds a new entry to task logger.
     /// </summary>
