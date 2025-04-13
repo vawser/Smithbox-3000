@@ -26,6 +26,34 @@ public class CFG
     public bool EnableVerboseLogging = true;
 
     //----------------------------------
+    // Viewport
+    //----------------------------------
+    /// <summary>
+    /// If true, the mouse free look will use inverted Y.
+    /// </summary>
+    public bool UseInvertedControls = false;
+
+    /// <summary>
+    /// The look sensitivity for the free look.
+    /// </summary>
+    public float LookSensitivity = 0.005f;
+
+    /// <summary>
+    /// The base speed for free look movement
+    /// </summary>
+    public float FreeLookBaseSpeed = 10.0f;
+
+    /// <summary>
+    /// The speed multiplier for free look movement in 'Fast' mode.
+    /// </summary>
+    public float FreeLookFastSpeed = 4.0f;
+
+    /// <summary>
+    /// The speed multiplier for free look movement in 'Slow' mode.
+    /// </summary>
+    public float FreeLookSlowSpeed = 0.25f;
+
+    //----------------------------------
     // Interface
     //----------------------------------
     /// <summary>
@@ -52,6 +80,11 @@ public class CFG
     /// If true, the Secondary Param Editor window is displayed
     /// </summary>
     public bool DisplaySecondaryParamEditor = true;
+
+    /// <summary>
+    /// If true, the Primary Model Editor window is displayed
+    /// </summary>
+    public bool DisplayPrimaryModelEditor = true;
 
     /// <summary>
     /// The display scaling to apply to the Interface

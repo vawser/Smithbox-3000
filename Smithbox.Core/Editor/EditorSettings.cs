@@ -67,6 +67,53 @@ public static class EditorSettings
                 }
             }
 
+            if (FeatureFlags.IncludeModelEditor)
+            {
+                if (ImGui.CollapsingHeader("Viewport", ImGuiTreeNodeFlags.DefaultOpen))
+                {
+                    // Use Inverted Controls
+                    ImGui.Checkbox("Use Inverted Controls", ref CFG.Current.UseInvertedControls);
+                    UIHelper.Tooltip("If true, then the mouse look will use inverted Y.");
+
+                    // Look Sensitivity
+                    var curLookSensitivity = CFG.Current.LookSensitivity;
+                    ImGui.DragFloat("Look Sensitivity##viewportLookSensitivity", ref curLookSensitivity);
+                    if (ImGui.IsItemDeactivatedAfterEdit())
+                    {
+                        CFG.Current.LookSensitivity = curLookSensitivity;
+                    }
+                    UIHelper.Tooltip("The look sensitivity of the free look mode in the viewport.");
+
+                    // Free Look: Base Speed
+                    var curBaseSpeed = CFG.Current.FreeLookBaseSpeed;
+                    ImGui.DragFloat("Free Look: Base Speed##viewportBaseSpeed", ref curBaseSpeed);
+                    if (ImGui.IsItemDeactivatedAfterEdit())
+                    {
+                        CFG.Current.FreeLookBaseSpeed = curBaseSpeed;
+                    }
+                    UIHelper.Tooltip("The base movement speed of the camera in free look mode.");
+
+                    // Free Look: Fast Multiplier
+                    var curFastMultiplier = CFG.Current.FreeLookFastSpeed;
+                    ImGui.DragFloat("Free Look: Fast Speed Multiplier##viewportFastMultiplier", ref curFastMultiplier);
+                    if (ImGui.IsItemDeactivatedAfterEdit())
+                    {
+                        CFG.Current.FreeLookFastSpeed = curFastMultiplier;
+                    }
+                    UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Fast' mode.");
+
+                    // Free Look: Slow Multiplier
+                    var curSlowMultiplier = CFG.Current.FreeLookSlowSpeed;
+                    ImGui.DragFloat("Free Look: Slow Speed Multiplier##viewportSlowMultiplier", ref curSlowMultiplier);
+                    if (ImGui.IsItemDeactivatedAfterEdit())
+                    {
+                        CFG.Current.FreeLookSlowSpeed = curSlowMultiplier;
+                    }
+                    UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Slow' mode.");
+
+                }
+            }
+
             ImGui.EndPopup();
         }
     }

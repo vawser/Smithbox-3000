@@ -3,6 +3,7 @@ using Hexa.NET.ImGui;
 using Silk.NET.Core.Native;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
+using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
 using System;
@@ -58,6 +59,42 @@ public class Project
     }
 
     /// <summary>
+    /// Top-level VFS, contains the others.
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem FileSystem = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the project data
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem ProjectFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data (binder file)
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaBinderFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data (direct file)
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaRealFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// VFS for the vanilla game data
+    /// </summary>
+    [JsonIgnore]
+    public VirtualFileSystem VanillaFS = EmptyVirtualFileSystem.Instance;
+
+    /// <summary>
+    /// File Browser
+    /// </summary>
+    [JsonIgnore]
+    public FileBrowser FileBrowser;
+
+    /// <summary>
     /// If true, the data elements (i.e. Aliases and Editors) for this project have been initialized.
     /// </summary>
     [JsonIgnore]
@@ -88,40 +125,10 @@ public class Project
     public ParamData ParamData;
 
     /// <summary>
-    /// File Browser
+    /// Param Editor
     /// </summary>
     [JsonIgnore]
-    public FileBrowser FileBrowser;
-
-    /// <summary>
-    /// Top-level VFS, contains the others.
-    /// </summary>
-    [JsonIgnore]
-    public VirtualFileSystem FileSystem = EmptyVirtualFileSystem.Instance;
-
-    /// <summary>
-    /// VFS for the project data
-    /// </summary>
-    [JsonIgnore]
-    public VirtualFileSystem ProjectFS = EmptyVirtualFileSystem.Instance;
-
-    /// <summary>
-    /// VFS for the vanilla game data (binder file)
-    /// </summary>
-    [JsonIgnore]
-    public VirtualFileSystem VanillaBinderFS = EmptyVirtualFileSystem.Instance;
-
-    /// <summary>
-    /// VFS for the vanilla game data (direct file)
-    /// </summary>
-    [JsonIgnore]
-    public VirtualFileSystem VanillaRealFS = EmptyVirtualFileSystem.Instance;
-
-    /// <summary>
-    /// VFS for the vanilla game data
-    /// </summary>
-    [JsonIgnore]
-    public VirtualFileSystem VanillaFS = EmptyVirtualFileSystem.Instance;
+    public ModelEditor PrimaryModelEditor;
 
     public async void Initialize()
     {
@@ -162,6 +169,12 @@ public class Project
 
             PrimaryParamEditor = new ParamEditor(0, this);
             SecondaryParamEditor = new ParamEditor(1, this);
+        }
+
+        // Model Editor
+        if (FeatureFlags.IncludeModelEditor)
+        {
+            PrimaryModelEditor = new ModelEditor(0, this);
         }
 
         IsInitializing = false;
@@ -210,6 +223,15 @@ public class Project
                 if (CFG.Current.DisplaySecondaryParamEditor)
                 {
                     SecondaryParamEditor.Draw(cmd);
+                }
+            }
+
+            // Model Editor
+            if (FeatureFlags.IncludeModelEditor)
+            {
+                if (CFG.Current.DisplayPrimaryModelEditor)
+                {
+                    PrimaryModelEditor.Draw(cmd);
                 }
             }
         }

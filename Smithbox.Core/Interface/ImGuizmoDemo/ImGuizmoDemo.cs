@@ -51,7 +51,7 @@
         {
             // IMPORTANT: If you want to render your scene through the window, set the background color to transparent, make sure to calculate the viewport after it to avoid misalignment
             ImGui.PushStyleColor(ImGuiCol.WindowBg, Vector4.Zero);
-            if (!ImGui.Begin("Demo ImGuizmo", ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove))
+            if (!ImGui.Begin("Demo ImGuizmo", ImGuiWindowFlags.MenuBar))
             {
                 ImGui.PopStyleColor(1);
                 ImGui.End();
