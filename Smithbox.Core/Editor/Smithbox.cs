@@ -220,9 +220,13 @@ public class Smithbox
     {
         UIHelper.SimpleHeader("projectListHeader", "Available Projects", "The projects currently available to select from.", UI.Current.ImGui_Highlight_Text);
 
-        foreach (var projectEntry in Projects)
+        for(int i = 0; i < Projects.Count; i++)
         {
-            if (ImGui.Selectable($"{projectEntry.ProjectName}##{projectEntry.ProjectGUID}", SelectedProject == projectEntry))
+            var projectEntry = Projects[i];
+
+            var imGuiID = projectEntry.ProjectGUID;
+
+            if (ImGui.Selectable($"{projectEntry.ProjectName}##{imGuiID}", SelectedProject == projectEntry))
             {
                 SelectedProject = projectEntry;
 
@@ -231,6 +235,28 @@ public class Smithbox
                     tEntry.IsSelected = false;
                 }
                 SelectedProject.IsSelected = true;
+            }
+
+            if (ImGui.BeginPopupContextItem($"ProjectListContextMenu{imGuiID}"))
+            {
+                if(projectEntry.AutoSelect)
+                {
+                    if (ImGui.Selectable($"Disable Automatic Load##autoLoadDisable{imGuiID}"))
+                    {
+                        projectEntry.AutoSelect = false;
+                    }
+                    UIHelper.Tooltip("Disable automatic load for this project.");
+                }
+                else
+                {
+                    if (ImGui.Selectable($"Enable Automatic Load##autoLoadEnable{imGuiID}"))
+                    {
+                        projectEntry.AutoSelect = true;
+                    }
+                    UIHelper.Tooltip("Set this project to automatically load when Smithbox starts.");
+                }
+
+                ImGui.EndPopup();
             }
         }
     }
@@ -284,10 +310,14 @@ public class Smithbox
 
         if(Projects.Count > 0)
         {
-            var firstProject = Projects.First();
-
-            SelectedProject = firstProject;
-            SelectedProject.IsSelected = true;
+            foreach(var projectEntry in Projects)
+            {
+                if(projectEntry.AutoSelect)
+                {
+                    SelectedProject = projectEntry;
+                    SelectedProject.IsSelected = true;
+                }
+            }
         }
     }
 

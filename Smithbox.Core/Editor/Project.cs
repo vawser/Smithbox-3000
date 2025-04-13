@@ -39,6 +39,11 @@ public class Project
     /// </summary>
     public bool EnableParamRowStrip;
 
+    /// <summary>
+    /// If true, then this project is auto-selected on program start.
+    /// </summary>
+    public bool AutoSelect;
+
     public Project() { }
 
     public Project(Guid newGuid, string projectName, string projectPath, string dataPath, ProjectType projectType)
