@@ -35,7 +35,7 @@ public abstract class SoulsFileFsEntry : FsEntry
         {
             if (vfs == null)
             {
-                TaskLogs.AddLog($"Bdt file {fileName} can't construct an FsEntry without a vfs!", LogLevel.Warning);
+                TaskLogs.AddLog($"[File Browser] Bdt file {fileName} can't construct an FsEntry without a vfs!", LogLevel.Warning);
                 return null;
             }
 
@@ -57,7 +57,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
                 if (isDvdbnd)
                 {
-                    TaskLogs.AddLog($"Binder file {fileName} appears to be a dvdbnd bdt", LogLevel.Debug);
+                    TaskLogs.AddLog($"[File Browser] Binder file {fileName} appears to be a dvdbnd bdt", LogLevel.Debug);
 
                     string bhdPath = path.Replace(".bdt", ".bhd");
 
@@ -68,7 +68,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
                     if (!vfs.FileExists(bhdPath))
                     {
-                        TaskLogs.AddLog($"Couldn't find bhd for bdt file {fileName}", LogLevel.Warning);
+                        TaskLogs.AddLog($"[File Browser] Couldn't find bhd for bdt file {fileName}", LogLevel.Warning);
                         return null;
                     }
 
@@ -83,7 +83,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
             if (getBhdData == null)
             {
-                TaskLogs.AddLog($"Could not find corresponding bhd for bdt \"{fileName}\"!", LogLevel.Warning);
+                TaskLogs.AddLog($"[File Browser] Could not find corresponding bhd for bdt \"{fileName}\"!", LogLevel.Warning);
                 return null;
             }
 
@@ -104,7 +104,7 @@ public abstract class SoulsFileFsEntry : FsEntry
             var data = getDataFunc();
             if (!BXF3.IsBHD(data) && !BXF4.IsBHD(data))
             {
-                TaskLogs.AddLog($"Binder file {fileName} appears to be a dvdbnd bhd", LogLevel.Debug);
+                TaskLogs.AddLog($"[File Browser] Binder file {fileName} appears to be a dvdbnd bhd", LogLevel.Debug);
                 return new DvdBndFsEntry(fileName, null, getDataFunc);
             }
             if (ownerProject.ProjectType == ProjectType.DS1
@@ -184,7 +184,7 @@ public abstract class SoulsFileFsEntry : FsEntry
                     }
                     else
                     {
-                        TaskLogs.AddLog($"Could not find chdbnd corresponding to chrbdt {fileName}!",
+                        TaskLogs.AddLog($"[File Browser] Could not find chdbnd corresponding to chrbdt {fileName}!",
                             LogLevel.Warning);
                     }
 

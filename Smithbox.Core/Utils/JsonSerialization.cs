@@ -15,6 +15,7 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(UI))]
 [JsonSerializable(typeof(Project))]
 [JsonSerializable(typeof(WindowState))]
+[JsonSerializable(typeof(ImGuiCFG))]
 internal partial class SmithboxSerializerContext : JsonSerializerContext
 {
 }

@@ -18,7 +18,7 @@ public class ParamRef
     {
         if (refString == "")
         {
-            TaskLogs.AddLog($"PARAM META: {curMeta.Name} - ParamRef string is empty.");
+            TaskLogs.AddLog($"[{curMeta.DataParent.Project.ProjectName}:Param Editor] {curMeta.Name} - ParamRef string is empty.");
             return;
         }
 

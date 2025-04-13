@@ -7,7 +7,7 @@
     using System;
     using System.Numerics;
     using Smithbox.Core.Interface.Input;
-    using Smithbox.Core.Interface.ImGuiDemo;
+    using Smithbox.Core.Interface;
 
     public class ImGuizmoDemo
     {

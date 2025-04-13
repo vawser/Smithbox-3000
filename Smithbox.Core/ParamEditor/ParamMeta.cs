@@ -17,7 +17,7 @@ namespace Smithbox.Core.ParamEditorNS;
 
 public class ParamMeta
 {
-    private ParamData DataParent;
+    public ParamData DataParent;
 
     public const int XML_VERSION = 0;
 

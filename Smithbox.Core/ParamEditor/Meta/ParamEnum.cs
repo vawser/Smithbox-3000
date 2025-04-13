@@ -26,7 +26,7 @@ public class ParamEnum
         }
         else
         {
-            TaskLogs.AddLog($"PARAM META: {curMeta.Name} - Unable to populate ParamEnum Name property for {enumNode.Name}", LogLevel.Error);
+            TaskLogs.AddLog($"[{curMeta.DataParent.Project.ProjectName}:Param Editor] {curMeta.Name} - Unable to populate ParamEnum Name property for {enumNode.Name}", LogLevel.Error);
         }
 
         foreach (XmlNode option in enumNode.SelectNodes("Option"))
@@ -37,7 +37,7 @@ public class ParamEnum
             }
             else
             {
-                TaskLogs.AddLog($"PARAM META: {curMeta.Name} - Unable to populate ParamEnum Option Attribute Value property for {enumNode.Name}", LogLevel.Error);
+                TaskLogs.AddLog($"[{curMeta.DataParent.Project.ProjectName}:Param Editor] {curMeta.Name} - Unable to populate ParamEnum Option Attribute Value property for {enumNode.Name}", LogLevel.Error);
             }
         }
     }

@@ -147,7 +147,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -160,7 +160,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
 
@@ -179,7 +179,7 @@ public class ParamBank
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                         successfulLoad = false;
                     }
                 }
@@ -203,7 +203,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -216,7 +216,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
 
@@ -235,7 +235,7 @@ public class ParamBank
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                         successfulLoad = false;
                     }
                 }
@@ -259,7 +259,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -272,7 +272,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
 
@@ -291,7 +291,7 @@ public class ParamBank
                     }
                     catch (Exception e)
                     {
-                        TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                         successfulLoad = false;
                     }
                 }
@@ -316,7 +316,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
 
@@ -334,7 +334,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -346,7 +346,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -374,7 +374,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Could not apply ParamDef for {EnemyParam.ParamType}",
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Could not apply ParamDef for {EnemyParam.ParamType}",
                     LogLevel.Warning, e);
                 successfulLoad = false;
             }
@@ -440,7 +440,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
 
@@ -458,7 +458,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -470,7 +470,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load draw param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load draw param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -498,7 +498,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Could not apply ParamDef for {EnemyParam.ParamType}",
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Could not apply ParamDef for {EnemyParam.ParamType}",
                     LogLevel.Warning, e);
                 successfulLoad = false;
             }
@@ -564,7 +564,7 @@ public class ParamBank
 
         if (!fs.FileExists(packedFile))
         {
-            TaskLogs.AddLog($"Failed to find {packedFile}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {packedFile}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -616,7 +616,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -629,7 +629,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -651,7 +651,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog($"Failed to find {paramPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {paramPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -664,7 +664,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {paramPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {paramPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -687,7 +687,7 @@ public class ParamBank
 
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {gameParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -700,7 +700,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning,
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {gameParamPath}", LogLevel.Warning,
                 e.InnerException);
                 successfulLoad = false;
             }
@@ -708,7 +708,7 @@ public class ParamBank
 
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {systemParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -721,7 +721,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -747,7 +747,7 @@ public class ParamBank
         // Game Param
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {gameParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -760,7 +760,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -768,7 +768,7 @@ public class ParamBank
         // System Param
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {systemParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -781,7 +781,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -789,7 +789,7 @@ public class ParamBank
         // Graphics Param
         if (!fs.FileExists(graphicsParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {graphicsParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {graphicsParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -802,7 +802,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {graphicsParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {graphicsParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -810,7 +810,7 @@ public class ParamBank
         // Event Param
         if (!fs.FileExists(eventParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {eventParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {eventParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -823,7 +823,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {eventParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {eventParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -846,7 +846,7 @@ public class ParamBank
 
         if (!fs.FileExists(gameParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {gameParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {gameParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -859,14 +859,14 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {gameParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
 
         if (!fs.FileExists(systemParamPath))
         {
-            TaskLogs.AddLog($"Failed to find {systemParamPath}", LogLevel.Warning);
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to find {systemParamPath}", LogLevel.Warning);
             successfulLoad = false;
         }
         else
@@ -879,7 +879,7 @@ public class ParamBank
             }
             catch (Exception e)
             {
-                TaskLogs.AddLog($"Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load game param: {systemParamPath}", LogLevel.Warning, e);
                 successfulLoad = false;
             }
         }
@@ -929,11 +929,11 @@ public class ParamBank
                         {
                             _usedTentativeParamTypes.Add(paramName, curParam.ParamType);
                             curParam.ParamType = newParamType;
-                            TaskLogs.AddLog($"Couldn't find ParamDef for {paramName}, but tentative ParamType \"{newParamType}\" exists.", LogLevel.Debug);
+                            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Couldn't find ParamDef for {paramName}, but tentative ParamType \"{newParamType}\" exists.", LogLevel.Debug);
                         }
                         else
                         {
-                            TaskLogs.AddLog($"Couldn't find ParamDef for param {paramName} and no tentative ParamType exists.", LogLevel.Error);
+                            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Couldn't find ParamDef for param {paramName} and no tentative ParamType exists.", LogLevel.Error);
 
                             continue;
                         }
@@ -947,11 +947,11 @@ public class ParamBank
 
                         curParam.ParamType = newParamType;
 
-                        TaskLogs.AddLog($"Couldn't read ParamType for {paramName}, but tentative ParamType \"{newParamType}\" exists.", LogLevel.Debug);
+                        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Couldn't read ParamType for {paramName}, but tentative ParamType \"{newParamType}\" exists.", LogLevel.Debug);
                     }
                     else
                     {
-                        TaskLogs.AddLog($"Couldn't read ParamType for {paramName} and no tentative ParamType exists.", LogLevel.Error);
+                        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Couldn't read ParamType for {paramName} and no tentative ParamType exists.", LogLevel.Error);
 
                         continue;
                     }
@@ -964,7 +964,7 @@ public class ParamBank
 
                 if (!defs.ContainsKey(curParam.ParamType ?? ""))
                 {
-                    TaskLogs.AddLog($"Couldn't find ParamDef for param {paramName} with ParamType \"{curParam.ParamType}\".", LogLevel.Warning);
+                    TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Couldn't find ParamDef for param {paramName} with ParamType \"{curParam.ParamType}\".", LogLevel.Warning);
 
                     continue;
                 }
@@ -982,7 +982,7 @@ public class ParamBank
             {
                 if (paramName is "m99_ToneCorrectBank" or "m99_ToneMapBank" or "default_ToneCorrectBank")
                 {
-                    TaskLogs.AddLog($"Skipped this param: {paramName}");
+                    TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Skipped this param: {paramName}");
                     continue;
                 }
             }
@@ -997,7 +997,7 @@ public class ParamBank
             catch (Exception e)
             {
                 var name = f.Name.Split("\\").Last();
-                var message = $"Could not apply ParamDef for {name}";
+                var message = $"[{DataParent.Project.ProjectName}:Param Editor] Could not apply ParamDef for {name}";
 
                 TaskLogs.AddLog(message, LogLevel.Warning, e);
             }
@@ -1091,7 +1091,7 @@ public class ParamBank
 
         if (!fs.FileExists(paramPath))
         {
-            TaskLogs.AddLog("Cannot locate param files. Save failed.",
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.",
                 LogLevel.Error);
             return false;
         }

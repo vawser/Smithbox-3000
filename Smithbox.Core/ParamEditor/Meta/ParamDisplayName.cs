@@ -24,7 +24,7 @@ public class ParamDisplayName
         }
         else
         {
-            TaskLogs.AddLog($"PARAM META: {curMeta.Name} - Unable to populate ParamColorEdit Name property for {Param}");
+            TaskLogs.AddLog($"[{curMeta.DataParent.Project.ProjectName}:Param Editor] {curMeta.Name} - Unable to populate ParamColorEdit Name property for {Param}");
         }
 
         if (node.Attributes["Name"] != null)
@@ -33,7 +33,7 @@ public class ParamDisplayName
         }
         else
         {
-            TaskLogs.AddLog($"PARAM META: {curMeta.Name} - Unable to populate ParamColorEdit Name property for {Name}");
+            TaskLogs.AddLog($"[{curMeta.DataParent.Project.ProjectName}:Param Editor] {curMeta.Name} - Unable to populate ParamColorEdit Name property for {Name}");
         }
     }
 }

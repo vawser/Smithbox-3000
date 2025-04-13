@@ -61,14 +61,14 @@ public class TextFsEntry : FsEntry
                 if (errors == null)
                     errors = [];
                 errors.Add((e, e1));
-                TaskLogs.AddLog($"Failed to decode file {name} as {e.EncodingName}, trying next encoding...",
+                TaskLogs.AddLog($"[File Browser] Failed to decode file {name} as {e.EncodingName}, trying next encoding...",
                     LogLevel.Debug, e1);
                 continue;
             }
             encoding = e;
             if (contents?.Contains('�') ?? false)
             {
-                TaskLogs.AddLog($"Decoding text in file {name} as {e.EncodingName} yielded error characters, trying next encoding...", LogLevel.Debug);
+                TaskLogs.AddLog($"[File Browser] Decoding text in file {name} as {e.EncodingName} yielded error characters, trying next encoding...", LogLevel.Debug);
             }
             else
             {
@@ -94,7 +94,7 @@ public class TextFsEntry : FsEntry
                     errors.Select(t =>
                         new Exception($"Error decoding text as {t.Item1.EncodingName}", t.Item2))
                 );
-            TaskLogs.AddLog($"Failed to find encoding for text in file {name}.",
+            TaskLogs.AddLog($"[File Browser] Failed to find encoding for text in file {name}.",
                 LogLevel.Warning, ex: e);
         }
 
@@ -128,7 +128,7 @@ public class TextFsEntry : FsEntry
                 }
                 catch (Exception ex)
                 {
-                    TaskLogs.AddLog($"Failed to decode text of file {name} with selected encoding {e.EncodingName}",
+                    TaskLogs.AddLog($"[File Browser] Failed to decode text of file {name} with selected encoding {e.EncodingName}",
                         LogLevel.Warning, ex: ex);
                 }
             }

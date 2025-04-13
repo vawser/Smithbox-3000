@@ -45,7 +45,7 @@ public static class EditorSettings
 
         if (ImGui.BeginPopupModal("Editor Settings", ref Open, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
         {
-            if (ImGui.CollapsingHeader("General"))
+            if (ImGui.CollapsingHeader("General", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 // Ignore Read Asserts
                 ImGui.Checkbox("Ignore Read Asserts##ignoreReadAsserts", ref CFG.Current.IgnoreReadAsserts);
@@ -58,7 +58,7 @@ public static class EditorSettings
 
             if (FeatureFlags.IncludeParamEditor)
             {
-                if(ImGui.CollapsingHeader("Param Editor"))
+                if(ImGui.CollapsingHeader("Param Editor", ImGuiTreeNodeFlags.DefaultOpen))
                 {
                     // Prioritize Loose Params
                     ImGui.Checkbox("Prioritize Loose Params##useLooseParams", ref CFG.Current.UseLooseParams);

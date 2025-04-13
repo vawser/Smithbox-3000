@@ -71,7 +71,7 @@ public class VirtualFileSystemDirectoryFsEntry : FsEntry
         var dir = vfs.GetDirectory(path);
         if (dir == null)
         {
-            TaskLogs.AddLog($"Failed to load dir {path}", LogLevel.Warning);
+            TaskLogs.AddLog($"[File Browser] Failed to load dir {path}", LogLevel.Warning);
             return;
         }
 

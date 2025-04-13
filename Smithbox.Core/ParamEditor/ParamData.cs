@@ -76,12 +76,12 @@ public class ParamData
 
         if (paramDefsLoaded)
         {
-            TaskLogs.AddLog("Finished param definition setup.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Finished param definition setup.");
             IsParamDefLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to setup param definitions.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to setup param definitions.");
         }
 
         // Meta
@@ -90,12 +90,12 @@ public class ParamData
 
         if (paramMetaLoaded)
         {
-            TaskLogs.AddLog("Finished param meta setup.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Finished param meta setup.");
             IsParamMetaLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to setup param meta.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to setup param meta.");
         }
 
         // Primary Bank
@@ -106,12 +106,12 @@ public class ParamData
         
         if (primaryBankLoaded)
         {
-            TaskLogs.AddLog("Finished primary param bank setup.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Finished primary param bank setup.");
             IsPrimaryBankLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to setup primary param bank fully.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to setup primary param bank fully.");
         }
 
         // Vanilla Bank
@@ -122,12 +122,12 @@ public class ParamData
 
         if (vanillaBankLoaded)
         {
-            TaskLogs.AddLog("Finished vanilla param bank setup.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Finished vanilla param bank setup.");
             IsVanillaBankLoaded = true;
         }
         else
         {
-            TaskLogs.AddLog("Failed to setup vanilla param bank fully.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to setup vanilla param bank fully.");
         }
 
         // Primary Bank: Import Row Names

@@ -50,11 +50,11 @@ public class FileBrowser
 
         if (vfsRootsLoaded)
         {
-            TaskLogs.AddLog("Loaded VFS roots.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:File Browser] Loaded VFS roots.");
         }
         else
         {
-            TaskLogs.AddLog("Failed to load VFS roots.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:File Browser] Failed to load VFS roots.");
         }
 
         Initialized = true;
@@ -101,7 +101,7 @@ public class FileBrowser
         return true;
     }
 
-    public void Draw()
+    public void Draw(string[] cmd)
     {
         ImGui.Begin($"File Browser##FileBrowser", MainWindowFlags);
 

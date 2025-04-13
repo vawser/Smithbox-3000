@@ -1,5 +1,5 @@
 ﻿using Hexa.NET.ImGui;
-using Smithbox.Core.Interface;
+using Smithbox.Core.Editor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smithbox.Core.Editor;
+namespace Smithbox.Core.Interface;
 
 public static class InterfaceSettings
 {
@@ -45,10 +45,14 @@ public static class InterfaceSettings
 
         if (ImGui.BeginPopupModal("Interface Settings", ref Open, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
         {
-            if (ImGui.CollapsingHeader("General"))
+            if (ImGui.CollapsingHeader("General", ImGuiTreeNodeFlags.DefaultOpen))
             {
-                // Display Scale
-                ImGui.InputFloat("Display Scale##interfaceDisplayScale", ref CFG.Current.InterfaceDisplayScale);
+                var curDisplayScale = CFG.Current.InterfaceDisplayScale;
+                ImGui.DragFloat("Display Scale##interfaceDisplayScale", ref curDisplayScale);
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                {
+                    CFG.Current.InterfaceDisplayScale = curDisplayScale;
+                }
                 UIHelper.Tooltip("The display scale to use for the interface.");
 
                 // Scale by DPI
@@ -60,7 +64,21 @@ public static class InterfaceSettings
                 UIHelper.Tooltip("If true, alias text (e.g. the name of the map next to its ID) will wrap if it exceeds the border of the window, rather than being truncated.");
             }
 
-            if (ImGui.CollapsingHeader("Logger"))
+            if (ImGui.CollapsingHeader("Font", ImGuiTreeNodeFlags.DefaultOpen))
+            {
+                var curFontSize = ImGuiCFG.Current.FontSize;
+                ImGui.DragFloat("Font Size##fontSize", ref curFontSize);
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                {
+                    ImGuiCFG.Current.FontSize = curFontSize;
+                    
+                    // TODO: need to work out how to rebuild the fonts properly
+                    //ImGuiManager.RebuildFonts = true;
+                }
+                UIHelper.Tooltip("The font size to use.");
+            }
+
+            if (ImGui.CollapsingHeader("Logger", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 // Display General Logger
                 ImGui.Checkbox("Display General Logger##displayGeneralLogger", ref CFG.Current.DisplayGeneralLogger);
@@ -70,6 +88,7 @@ public static class InterfaceSettings
                 ImGui.Checkbox("Display Warning Logger##displayWarningLogger", ref CFG.Current.DisplayWarningLogger);
                 UIHelper.Tooltip("If true, the Warning Logger preview and window will be visible.");
             }
+
             ImGui.EndPopup();
         }
     }

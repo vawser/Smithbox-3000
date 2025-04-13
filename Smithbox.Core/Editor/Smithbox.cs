@@ -63,6 +63,8 @@ public class Smithbox
     /// </summary>
     public void Draw()
     {
+        var command = EditorCommand.GetNextCommand();
+
         RenderDockspace();
 
         UIHelper.ApplyBaseStyle();
@@ -89,7 +91,10 @@ public class Smithbox
         {
             foreach (var projectEntry in Projects)
             {
-                projectEntry.Draw();
+                if (projectEntry == SelectedProject)
+                {
+                    projectEntry.Draw(command);
+                }
             }
         }
 
@@ -137,7 +142,7 @@ public class Smithbox
     {
         if (ImGui.BeginMainMenuBar())
         {
-            if (ImGui.BeginMenu("Settings"))
+            if (ImGui.BeginMenu($"Settings"))
             {
                 if (ImGui.MenuItem("Editor"))
                 {
@@ -242,6 +247,7 @@ public class Smithbox
 
         CFG.Save();
         UI.Save();
+        ImGuiCFG.Save();
     }
 
     private void LoadExistingProjects()
@@ -262,7 +268,7 @@ public class Smithbox
 
                     if (curProject == null)
                     {
-                        TaskLogs.AddLog($"Failed to load project: {entry}", LogLevel.Warning);
+                        TaskLogs.AddLog($"[Smithbox] Failed to load project: {entry}", LogLevel.Warning);
                     }
                     else
                     {
@@ -271,7 +277,7 @@ public class Smithbox
                 }
                 catch (Exception e)
                 {
-                    TaskLogs.AddLog($"Failed to load project: {entry}", LogLevel.Warning);
+                    TaskLogs.AddLog($"[Smithbox] Failed to load project: {entry}", LogLevel.Warning);
                 }
             }
         }

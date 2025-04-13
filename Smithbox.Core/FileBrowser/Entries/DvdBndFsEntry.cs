@@ -51,7 +51,7 @@ public class DvdBndFsEntry : SoulsFileFsEntry
         {
             wasEncrypted = true;
 
-            TaskLogs.AddLog($"DVDBND {name} appears encrypted. Decrypting (this may take a while)...");
+            TaskLogs.AddLog($"[File Browser] DVDBND {name} appears encrypted. Decrypting (this may take a while)...");
 
             string path = name.Replace(".bdt", ".bhd");
 

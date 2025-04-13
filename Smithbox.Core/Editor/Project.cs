@@ -120,13 +120,15 @@ public class Project
 
     public async void Initialize()
     {
+        TaskLogs.AddLog($"[{ProjectName}] Initializing...");
+
         // DLLs
         Task<bool> dllGrabTask = SetupDLLs();
         bool dllGrabResult = await dllGrabTask;
 
         if (!dllGrabResult)
         {
-            TaskLogs.AddLog("Failed to grab oo2core.dll");
+            TaskLogs.AddLog($"[{ProjectName}] Failed to grab oo2core.dll");
         }
 
         // VFS
@@ -135,11 +137,11 @@ public class Project
 
         if (vfsSetup)
         {
-            TaskLogs.AddLog("Setup virtual filesystem.");
+            TaskLogs.AddLog($"[{ProjectName}] Setup virtual filesystem.");
         }
         else
         {
-            TaskLogs.AddLog("Failed to setup virtual filesystem.");
+            TaskLogs.AddLog($"[{ProjectName}] Failed to setup virtual filesystem.");
         }
 
         // File Browser
@@ -161,7 +163,7 @@ public class Project
         Initialized = true;
     }
 
-    public void Draw()
+    public void Draw(string[] cmd)
     {
         ImGui.Begin($"Project##Project", ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove);
 
@@ -186,7 +188,7 @@ public class Project
             {
                 if (CFG.Current.DisplayFileBrowser)
                 {
-                    FileBrowser.Draw();
+                    FileBrowser.Draw(cmd);
                 }
             }
 
@@ -197,12 +199,12 @@ public class Project
 
                 if (CFG.Current.DisplayPrimaryParamEditor)
                 {
-                    PrimaryParamEditor.Draw();
+                    PrimaryParamEditor.Draw(cmd);
                 }
 
                 if (CFG.Current.DisplaySecondaryParamEditor)
                 {
-                    SecondaryParamEditor.Draw();
+                    SecondaryParamEditor.Draw(cmd);
                 }
             }
         }
@@ -214,7 +216,7 @@ public class Project
     {
         if (ImGui.BeginMenuBar())
         {
-            if (ImGui.BeginMenu("File"))
+            if (ImGui.BeginMenu($"File"))
             {
                 if (ImGui.MenuItem("Open Project Folder"))
                 {

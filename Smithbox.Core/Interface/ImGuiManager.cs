@@ -1,4 +1,4 @@
-﻿namespace Smithbox.Core.Interface.ImGuiDemo
+﻿namespace Smithbox.Core.Interface
 {
     using Hexa.NET.ImGui;
     using Hexa.NET.ImGui.Backends;
@@ -7,16 +7,25 @@
     using Hexa.NET.ImGuizmo;
     using Hexa.NET.ImNodes;
     using Hexa.NET.ImPlot;
+    using Smithbox.Core.Editor;
     using System.Numerics;
 
+    /// <summary>
+    /// This is the main file for the ImGui rendering setup
+    /// </summary>
     public class ImGuiManager : IDisposable
     {
         private ImGuiContextPtr guiContext;
         private ImNodesContextPtr nodesContext;
         private ImPlotContextPtr plotContext;
 
+        public static bool RebuildFonts = false;
+
         public unsafe ImGuiManager()
         {
+            ImGuiCFG.Setup();
+            ImGuiCFG.Load();
+
             // Create ImGui context
             guiContext = ImGui.CreateContext(null);
 
@@ -54,11 +63,35 @@
             io.ConfigViewportsNoTaskBarIcon = false;
 
             // setup fonts.
-            ImGuiFontBuilder builder = new();
-            builder
-                .AddDefaultFont()
-                .SetOption(config => { config.GlyphMinAdvanceX = 18; config.GlyphOffset = new(0, 4); })
-                .AddFontFromFileTTF("assets/fonts/SEGMDL2.TTF", 14, [(char)0xE700, (char)0xF800]);
+            ImGuiFontBuilder baseFont = new();
+
+            var fontSize = ImGuiCFG.Current.FontSize;
+
+            baseFont.AddDefaultFont();
+
+            baseFont.SetOption(
+                config => 
+                { 
+                    config.GlyphMinAdvanceX = 18; 
+                    config.GlyphOffset = new(0, 4);
+                }
+                );
+
+            baseFont.AddFontFromFileTTF("Assets/Fonts/SEGMDL2.TTF", fontSize, [(char)0xE700, (char)0xF800]);
+
+            ImGuiFontBuilder icontFont = new();
+
+            icontFont.SetOption(
+                config =>
+                {
+                    config.MergeMode = true;
+                    config.GlyphMinAdvanceX = 12;
+                    config.OversampleH = 5;
+                    config.OversampleV = 5;
+                }
+                );
+
+            icontFont.AddFontFromFileTTF("Assets/Fonts/forkawesome-webfont.ttf", fontSize, [(char)Icons.IconMin, (char)Icons.IconMax]);
 
             // setup ImGui style
             var style = ImGui.GetStyle();
@@ -167,6 +200,8 @@
             // Set ImPlot context
             ImPlot.SetCurrentContext(plotContext);
 
+            CheckFontRebuild();
+
             // Start new frame, call order matters.
             ImGuiImplSDL2.NewFrame();
             ImGui.NewFrame();
@@ -220,6 +255,49 @@
                 disposed = true;
 
                 GC.SuppressFinalize(this);
+            }
+        }
+
+        public void CheckFontRebuild()
+        {
+            if(RebuildFonts)
+            {
+                RebuildFonts = false;
+
+                var io = ImGui.GetIO();
+
+                // setup fonts.
+                ImGuiFontBuilder baseFont = new();
+
+                var fontSize = ImGuiCFG.Current.FontSize;
+
+                baseFont.AddDefaultFont();
+
+                baseFont.SetOption(
+                    config =>
+                    {
+                        config.GlyphMinAdvanceX = 18;
+                        config.GlyphOffset = new(0, 4);
+                    }
+                    );
+
+                baseFont.AddFontFromFileTTF("Assets/Fonts/SEGMDL2.TTF", fontSize, [(char)0xE700, (char)0xF800]);
+
+                ImGuiFontBuilder icontFont = new();
+
+                icontFont.SetOption(
+                    config =>
+                    {
+                        config.MergeMode = true;
+                        config.GlyphMinAdvanceX = 12;
+                        config.OversampleH = 5;
+                        config.OversampleV = 5;
+                    }
+                    );
+
+                icontFont.AddFontFromFileTTF("Assets/Fonts/forkawesome-webfont.ttf", fontSize, [(char)Icons.IconMin, (char)Icons.IconMax]);
+
+                io.Fonts.Build();
             }
         }
     }

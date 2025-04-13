@@ -105,7 +105,7 @@ public class VfsUtils
         }
         catch (Exception e)
         {
-            TaskLogs.AddLog($"Failed to save: {Path.GetFileName(assetPath)} - {e}");
+            TaskLogs.AddLog($"[{curProject.ProjectName}] Failed to save: {Path.GetFileName(assetPath)} - {e}");
         }
     }
 }

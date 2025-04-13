@@ -36,7 +36,7 @@ public class ParamEditor
         ParamActions = new(this);
     }
 
-    public void Draw()
+    public void Draw(string[] cmd)
     {
         ImGui.Begin($"Param Editor##ParamEditor{ID}", MainWindowFlags);
 
@@ -57,10 +57,6 @@ public class ParamEditor
             {
                 ImGui.Text("You have not selected a project yet.");
             }
-        }
-        else
-        {
-            ImGuiSpinner.Spinner(50f, 5.0f, ColorUtils.ColorFromVec4(UI.Current.ImGui_Highlight_Text));
         }
 
         Shortcuts();
@@ -174,7 +170,7 @@ public class ParamEditor
         {
             if (Keyboard.KeyPress(Key.A))
             {
-                TaskLogs.AddLog("A");
+                TaskLogs.AddLog("[TEST] A");
             }
         }
     }
@@ -188,6 +184,16 @@ public class ParamEditor
         if (ImGui.IsWindowFocused())
         {
             DetectShortcuts = true;
+        }
+
+        for(int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)
+        {
+            var entry = Project.ParamData.PrimaryBank.Params.ElementAt(i);
+
+            if (ImGui.Selectable($"{entry.Key}##paramEntry{i}"))
+            {
+
+            }
         }
 
         ImGui.End();
@@ -218,11 +224,11 @@ public class ParamEditor
 
         if (saveTaskFinished)
         {
-            TaskLogs.AddLog("Saved primary param bank.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Saved primary param bank.");
         }
         else
         {
-            TaskLogs.AddLog("Failed to save primary param bank.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to save primary param bank.");
         }
     }
 
@@ -233,11 +239,11 @@ public class ParamEditor
 
         if (upgradeTaskFinished)
         {
-            TaskLogs.AddLog("Upgraded primary param bank.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Upgraded primary param bank.");
         }
         else
         {
-            TaskLogs.AddLog("Failed to upgrade primary param bank.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to upgrade primary param bank.");
         }
     }
 

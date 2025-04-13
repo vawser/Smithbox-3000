@@ -12,6 +12,7 @@
     using Smithbox.Core.Interface.ImGuizmoDemo;
     using Smithbox.Core.Interface.ImNodesDemo;
     using Smithbox.Core.Interface.ImPlotDemo;
+    using Smithbox.Core.Utils;
     using Smithbox_Core;
 
     public unsafe class DX11Window : CoreWindow
@@ -70,7 +71,11 @@
 
         public override void Render()
         {
-            if (disposed) return;
+            if (disposed) 
+                return;
+
+            TaskManager.ThrowTaskExceptions();
+
             imGuiManager.NewFrame();
 
             //ImGui.ShowDemoWindow();

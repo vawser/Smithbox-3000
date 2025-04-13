@@ -9,11 +9,16 @@ namespace Smithbox_Program
     using Silk.NET.Direct3D11;
     using Silk.NET.DXGI;
     using Silk.NET.Maths;
+    using Smithbox.Core.Editor;
+    using Smithbox.Core.Interface;
     using System.Diagnostics;
     using System.Numerics;
     using System.Runtime.InteropServices;
     using ImDrawIdx = UInt16;
 
+    /// <summary>
+    /// NOT USED - for reference only
+    /// </summary>
     [Obsolete("Use ImGuiImplD3D11 instead")]
     public static class ImGuiD3D11Renderer
     {
@@ -258,6 +263,57 @@ namespace Smithbox_Program
         private static unsafe void CreateFontsTexture()
         {
             var io = ImGui.GetIO();
+
+            ImFontAtlasPtr fonts = ImGui.GetIO().Fonts;
+
+            io.Fonts.Clear();
+
+            // Add base font
+            {
+                string baseFontPath = "Assets/Fonts/RobotoMono-Light.ttf";
+
+                var realBaseFontPath = Path.Combine(AppContext.BaseDirectory, baseFontPath);
+                var baseFontBytes = File.ReadAllBytes(realBaseFontPath);
+                var baseFontPtr = ImGui.MemAlloc((uint)baseFontBytes.Length);
+                Marshal.Copy(baseFontBytes, 0, (nint)baseFontPtr, baseFontBytes.Length);
+
+                ImFontConfig* ptr = ImGui.ImFontConfig();
+                ImFontConfigPtr cfg = new(ptr);
+                cfg.GlyphMinAdvanceX = 5.0f;
+                cfg.OversampleH = 5;
+                cfg.OversampleV = 5;
+
+                fonts.AddFontFromMemoryTTF(baseFontPtr, baseFontBytes.Length, 16.0f, cfg,
+                    fonts.GetGlyphRangesDefault());
+            }
+
+            // Add icon font
+            {
+                string iconFontPath = "Assets/Fonts/forkawesome-webfont.ttf";
+
+                var realIconFontPath = Path.Combine(AppContext.BaseDirectory, iconFontPath);
+                var iconFontBytes = File.ReadAllBytes(realIconFontPath);
+                var iconFontPtr = ImGui.MemAlloc((uint)iconFontBytes.Length);
+                Marshal.Copy(iconFontBytes, 0, (nint)iconFontPtr, iconFontBytes.Length);
+
+                ImFontConfig* ptr = ImGui.ImFontConfig();
+                ImFontConfigPtr cfg = new(ptr);
+                cfg.MergeMode = true;
+                cfg.GlyphMinAdvanceX = 12.0f;
+                cfg.OversampleH = 5;
+                cfg.OversampleV = 5;
+
+                ImFontGlyphRangesBuilder b = new();
+
+                uint[] ranges = { Icons.IconMin, Icons.IconMax, 0 };
+
+                fixed (uint* r = ranges)
+                {
+                    ImFontPtr f = fonts.AddFontFromMemoryTTF(iconFontPtr, iconFontBytes.Length, 16.0f, cfg, r);
+                }
+            }
+
+            // The rest
             RendererData* bd = GetBackendData();
             byte* pixels;
             int width;
