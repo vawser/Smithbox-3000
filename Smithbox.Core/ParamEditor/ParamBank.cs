@@ -1267,7 +1267,8 @@ public class ParamBank
     /// </summary>
     private bool SaveParameters_DS2()
     {
-        var successfulSave = true;
+        // No need to duplicate code here
+        var successfulSave = SaveParameters_DS2S();
 
         return successfulSave;
     }

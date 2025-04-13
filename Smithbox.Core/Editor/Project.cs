@@ -5,6 +5,7 @@ using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Scatchpad;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,12 @@ public class Project
         ImportedParamRowNames = false;
         EnableParamRowStrip = false;
     }
+
+    /// <summary>
+    /// Scratchpad
+    /// </summary>
+    [JsonIgnore]
+    public Scratchpad Scratchpad;
 
     /// <summary>
     /// Top-level VFS, contains the others.
@@ -125,7 +132,7 @@ public class Project
     public ParamData ParamData;
 
     /// <summary>
-    /// Param Editor
+    /// Model Editor Editor
     /// </summary>
     [JsonIgnore]
     public ModelEditor PrimaryModelEditor;
@@ -176,6 +183,14 @@ public class Project
         {
             PrimaryModelEditor = new ModelEditor(0, this);
         }
+
+        // Scratchpad
+#if DEBUG
+        if (FeatureFlags.IncludeScratchpad)
+        {
+            Scratchpad = new Scratchpad(0, this);
+        }
+#endif
 
         IsInitializing = false;
         Initialized = true;
@@ -232,6 +247,15 @@ public class Project
                 if (CFG.Current.DisplayPrimaryModelEditor)
                 {
                     PrimaryModelEditor.Draw(cmd);
+                }
+            }
+
+            // Scratchpad
+            if (FeatureFlags.IncludeScratchpad)
+            {
+                if (CFG.Current.DisplayScratchpad)
+                {
+                    Scratchpad.Draw(cmd);
                 }
             }
         }

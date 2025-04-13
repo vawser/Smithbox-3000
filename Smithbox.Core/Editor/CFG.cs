@@ -87,6 +87,11 @@ public class CFG
     public bool DisplayPrimaryModelEditor = true;
 
     /// <summary>
+    /// If true, the Scratchpad window is displayed
+    /// </summary>
+    public bool DisplayScratchpad = true;
+
+    /// <summary>
     /// The display scaling to apply to the Interface
     /// </summary>
     public float InterfaceDisplayScale = 1.0f;
