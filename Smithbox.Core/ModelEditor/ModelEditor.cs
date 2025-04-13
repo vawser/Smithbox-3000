@@ -22,7 +22,7 @@ public class ModelEditor
     private Project Project;
 
     // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar; //| ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
     private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
     public int ID = 0;
@@ -158,7 +158,7 @@ public class ModelEditor
     {
         // IMPORTANT: If you want to render your scene through the window, set the background color to transparent, make sure to calculate the viewport after it to avoid misalignment
         ImGui.PushStyleColor(ImGuiCol.WindowBg, Vector4.Zero);
-        if (!ImGui.Begin($"Viewport##modelEditorViewport{ID}", ImGuiWindowFlags.MenuBar))
+        if (!ImGui.Begin($"Viewport##modelEditorViewport{ID}", MainWindowFlags))
         {
             ImGui.PopStyleColor(1);
             ImGui.End();
