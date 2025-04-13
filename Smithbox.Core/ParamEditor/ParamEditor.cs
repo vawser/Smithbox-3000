@@ -168,12 +168,22 @@ public class ParamEditor
     {
         if(DetectShortcuts)
         {
-            if (Keyboard.KeyPress(Key.A))
+            if (Keyboard.KeyPress(Key.P))
             {
-                TaskLogs.AddLog("[TEST] A");
+                // TEST ACTION
+                Project.ParamData.PrimaryBank.RowNameStrip();
+            }
+
+            if (Keyboard.KeyPress(Key.O))
+            {
+                // TEST ACTION
+                Project.ParamData.PrimaryBank.RowNameRestore();
             }
         }
     }
+
+    // TEMP
+    private string _selectedParam = "";
 
     private void DisplayEditor()
     {
@@ -192,7 +202,7 @@ public class ParamEditor
 
             if (ImGui.Selectable($"{entry.Key}##paramEntry{i}"))
             {
-
+                _selectedParam = entry.Key;
             }
         }
 
@@ -203,6 +213,27 @@ public class ParamEditor
         if (ImGui.IsWindowFocused())
         {
             DetectShortcuts = true;
+        }
+
+        if(_selectedParam != "")
+        {
+            var curParam = Project.ParamData.PrimaryBank.Params[_selectedParam];
+
+            for (int i = 0; i < curParam.Rows.Count; i++)
+            {
+                var curRow = curParam.Rows[i];
+
+                var rowName = $"{i}:{curRow.ID}";
+                if(curRow.Name != null)
+                {
+                    rowName = $"{rowName} {curRow.Name}";
+                }
+
+                if (ImGui.Selectable($"{rowName}##rowEntry{i}"))
+                {
+
+                }
+            }
         }
 
         ImGui.End();

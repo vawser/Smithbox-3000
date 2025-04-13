@@ -124,6 +124,16 @@ public class CFG
     /// </summary>
     public bool UseLooseParams = false;
 
+    /// <summary>
+    /// If true, then loose params are repacked into the enc_regulation for DS2 projects.
+    /// </summary>
+    public bool RepackLooseDS2Params = false;
+
+    /// <summary>
+    /// If true, then row name restore will use index matching. If false, it will use ID matching.
+    /// </summary>
+    public bool UseIndexMatchForRowNameRestore = true;
+
 
     //----------------------------------
     /// General

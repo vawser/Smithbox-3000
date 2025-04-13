@@ -3,6 +3,7 @@ using Andre.IO.VFS;
 using Microsoft.Extensions.Logging;
 using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 using System;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS;
@@ -1166,6 +1168,48 @@ public class ParamBank
     {
         var successfulSave = true;
 
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+
+        string param = @"param\GameParam\GameParam.parambnd";
+        if (!fs.FileExists(param))
+        {
+            param += ".dcx";
+            if (!fs.FileExists(param))
+            {
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+                return false;
+            }
+        }
+
+        using var paramBnd = BND3.Read(fs.GetFile(param).GetData());
+
+        foreach (BinderFile p in paramBnd.Files)
+        {
+            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            {
+                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+            }
+        }
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\GameParam\GameParam.parambnd", paramBnd);
+
+        if (fs.DirectoryExists($@"param\DrawParam"))
+        {
+            foreach (var bnd in fs.GetFileNamesWithExtensions(@"param\DrawParam", ".parambnd"))
+            {
+                using var drawParamBnd = BND3.Read(fs.GetFile(bnd).GetData());
+                foreach (BinderFile p in drawParamBnd.Files)
+                {
+                    if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+                    {
+                        p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+                    }
+                }
+
+                VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @$"param\DrawParam\{Path.GetFileName(bnd)}", drawParamBnd);
+            }
+        }
+
         return successfulSave;
     }
 
@@ -1175,6 +1219,45 @@ public class ParamBank
     private bool SaveParameters_DS1R()
     {
         var successfulSave = true;
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project); ;
+        string param = @"param\GameParam\GameParam.parambnd.dcx";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+            return false;
+        }
+
+        using var paramBnd = BND3.Read(fs.GetFile(param).GetData());
+        // Replace params with edited ones
+        foreach (BinderFile p in paramBnd.Files)
+        {
+            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            {
+                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+            }
+        }
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\GameParam\GameParam.parambnd.dcx", paramBnd);
+
+        //DrawParam
+        if (fs.DirectoryExists($@"param\DrawParam"))
+        {
+            foreach (var bnd in fs.GetFileNamesWithExtensions($@"param\DrawParam", ".parambnd.dcx"))
+            {
+                using var drawParamBnd = BND3.Read(fs.GetFile(bnd).GetData());
+                foreach (BinderFile p in drawParamBnd.Files)
+                {
+                    if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+                    {
+                        p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+                    }
+                }
+
+                VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @$"param\DrawParam\{Path.GetFileName(bnd)}", drawParamBnd);
+            }
+        }
 
         return successfulSave;
     }
@@ -1195,6 +1278,131 @@ public class ParamBank
     private bool SaveParameters_DS2S()
     {
         var successfulSave = true;
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project); ;
+        string param = @"enc_regulation.bnd.dcx";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        BND4 paramBnd;
+        var data = fs.GetFile(param).GetData().ToArray();
+        if (!BND4.Is(data))
+        {
+            // Decrypt the file
+            paramBnd = SFUtil.DecryptDS2Regulation(data);
+            // Since the file is encrypted, check for a backup. If it has none, then make one and write a decrypted one.
+            if (!toFs.FileExists($"{param}.bak"))
+            {
+                toFs.WriteFile($"{param}.bak", data);
+            }
+            toFs.WriteFile(param, paramBnd.Write());
+        }
+        else
+        {
+            paramBnd = BND4.Read(data);
+        }
+
+        if (!CFG.Current.UseLooseParams)
+        {
+            // Save params non-loosely: Replace params regulation and write remaining params loosely.
+            if (paramBnd.Files.Find(e => e.Name.EndsWith(".param")) == null)
+            {
+                if (CFG.Current.RepackLooseDS2Params)
+                {
+                    paramBnd.Dispose();
+                    param = $@"enc_regulation.bnd.dcx";
+                    data = DataParent.Project.VanillaFS.GetFile(param).GetData().ToArray();
+
+                    if (!BND4.Is(data))
+                    {
+                        // Decrypt the file.
+                        paramBnd = SFUtil.DecryptDS2Regulation(data);
+
+                        // Since the file is encrypted, check for a backup. If it has none, then make one and write a decrypted one.
+                        if (!toFs.FileExists($@"{param}.bak"))
+                        {
+                            toFs.WriteFile($"{param}.bak", data);
+                            toFs.WriteFile(param, paramBnd.Write());
+                        }
+                    }
+                    else
+                        paramBnd = BND4.Read(data);
+                }
+            }
+
+            try
+            {
+                // Strip and store row names before saving, as too many row names can cause DS2 to crash.
+                RowNameStrip();
+
+                foreach (KeyValuePair<string, Param> p in Params)
+                {
+                    BinderFile bnd = paramBnd.Files.Find(e => Path.GetFileNameWithoutExtension(e.Name) == p.Key);
+
+                    if (bnd != null)
+                    {
+                        // Regulation contains this param, overwrite it.
+                        bnd.Bytes = p.Value.Write();
+                    }
+                    else
+                    {
+                        // Regulation does not contain this param, write param loosely.
+                        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, $@"Param\{p.Key}.param", p.Value);
+                    }
+                }
+            }
+            catch
+            {
+                RowNameRestore();
+                throw;
+            }
+
+            RowNameRestore();
+        }
+        else
+        {
+            // Save params loosely: Strip params from regulation and write all params loosely.
+
+            List<BinderFile> newFiles = new();
+            foreach (BinderFile p in paramBnd.Files)
+            {
+                // Strip params from regulation bnd
+                if (!p.Name.ToUpper().Contains(".PARAM"))
+                {
+                    newFiles.Add(p);
+                }
+            }
+
+            paramBnd.Files = newFiles;
+
+            try
+            {
+                // Strip and store row names before saving, as too many row names can cause DS2 to crash.
+                RowNameStrip();
+
+                // Write params to loose files.
+                foreach (KeyValuePair<string, Param> p in Params)
+                {
+                    VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, $@"Param\{p.Key}.param", p.Value);
+                }
+            }
+            catch
+            {
+                RowNameRestore();
+                throw;
+            }
+
+            RowNameRestore();
+        }
+
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"enc_regulation.bnd.dcx", paramBnd);
+        paramBnd.Dispose();
 
         return successfulSave;
     }
@@ -1310,5 +1518,120 @@ public class ParamBank
         var successfulUpgrade = true;
 
         return successfulUpgrade;
+    }
+
+    /// <summary>
+    /// Strip and store the row names for this param bank
+    /// </summary>
+    public void RowNameStrip()
+    {
+        var store = new RowNameStore();
+        store.Params = new();
+
+        foreach (KeyValuePair<string, Param> p in Params)
+        {
+            var paramEntry = new RowNameParam();
+            paramEntry.Name = p.Key;
+            paramEntry.Entries = new();
+
+            for (int i = 0; i < p.Value.Rows.Count; i++)
+            {
+                var row = p.Value.Rows[i];
+
+                // Store
+                var rowEntry = new RowNameEntry();
+
+                rowEntry.Index = i;
+                rowEntry.ID = row.ID;
+                rowEntry.Name = row.Name;
+
+                paramEntry.Entries.Add(rowEntry);
+
+                // Strip
+                p.Value.Rows[i].Name = "";
+            }
+
+            store.Params.Add(paramEntry);
+        }
+
+        var folder = FolderUtils.GetLocalProjectFolder(DataParent.Project);
+
+        if(!Directory.Exists(folder))
+        {
+            Directory.CreateDirectory(folder);
+        }
+
+        var file = Path.Combine(folder, "Stripped Row Names.json");
+
+        var json = JsonSerializer.Serialize(store, SmithboxSerializerContext.Default.RowNameStore);
+
+        File.WriteAllText(file, json);
+
+        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Stripped row names and stored them in {file}");
+    }
+
+    public void RowNameRestore()
+    {
+        RowNameStore store = null;
+
+        var folder = FolderUtils.GetLocalProjectFolder(DataParent.Project);
+        var file = Path.Combine(folder, "Stripped Row Names.json");
+
+        if (!File.Exists(file))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to located {file} for row name restore.", LogLevel.Error);
+        }
+        else
+        {
+            try
+            {
+                var filestring = File.ReadAllText(file);
+                var options = new JsonSerializerOptions();
+                store = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.RowNameStore);
+
+                if (store == null)
+                {
+                    throw new Exception($"[{DataParent.Project.ProjectName}:Param Editor] JsonConvert returned null during RowNameRestore.");
+                }
+            }
+            catch (Exception e)
+            {
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Failed to load {file} for row name restore.", LogLevel.Error);
+            }
+        }
+
+        // Only proceed if we have row names to work with
+        if(store != null)
+        {
+            var storeDict = store.Params.ToDictionary(e => e.Name);
+
+            foreach (KeyValuePair<string, Param> p in Params)
+            {
+                var rowNames = storeDict[p.Key];
+                var rowNameDict = rowNames.Entries.ToDictionary(e => e.Index);
+
+                for (var i = 0; i < p.Value.Rows.Count; i++)
+                {
+                    if(CFG.Current.UseIndexMatchForRowNameRestore)
+                    {
+                        p.Value.Rows[i].Name = rowNameDict[i].Name;
+                    }
+                    else
+                    {
+                        // ID may not be unique, so we will manually loop here
+                        foreach(var entry in rowNames.Entries)
+                        {
+                            if(entry.ID == p.Value.Rows[i].ID)
+                            {
+                                p.Value.Rows[i].Name = entry.Name;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Restored row names from {file}");
     }
 }

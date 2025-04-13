@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smithbox.Core.Editor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,5 +52,12 @@ public class FolderUtils
         projectJsonList = Directory.EnumerateFiles(projectFolder, "*.json").ToList();
 
         return projectJsonList;
+    }
+
+    public static string GetLocalProjectFolder(Project curProject)
+    {
+        var folder = $"{curProject.ProjectPath}/{Consts.LocalProjectFolder}/";
+
+        return folder;
     }
 }
