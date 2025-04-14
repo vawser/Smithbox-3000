@@ -693,6 +693,22 @@ namespace SoulsFormats
             File.WriteAllBytes(path, bytes);
         }
 
+        public static byte[] EncryptNightreignRegulation(BND4 bnd, DCX.Type compression = DCX.Type.Unknown)
+        {
+            byte[] bytes = null;
+            if (compression != DCX.Type.Unknown)
+            {
+                bytes = bnd.Write(compression);
+            }
+            else
+            {
+                bytes = bnd.Write();
+            }
+
+            bytes = EncryptByteArray(REGULATION_KEY_ER, bytes);
+            return bytes;
+        }
+
         /// <summary>
         /// Repacks and encrypts ER's regulation BND4 to the specified path.
         /// </summary>

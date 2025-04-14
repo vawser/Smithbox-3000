@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HKX2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da7db1e6fe6fdf14222f9e81d88f438615abeca5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90c4847d30901cf19849dbbb3076bf97802d6979")]
 [assembly: System.Reflection.AssemblyProductAttribute("HKX2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HKX2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

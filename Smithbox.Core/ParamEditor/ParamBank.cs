@@ -1415,6 +1415,52 @@ public class ParamBank
     {
         var successfulSave = true;
 
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"Data0.bdt";
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+        BND4 paramBnd = SFUtil.DecryptDS3Regulation(data);
+
+        // Replace params with edited ones
+        foreach (BinderFile p in paramBnd.Files)
+        {
+            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            {
+                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+            }
+        }
+
+        // If not loose write out the new regulation
+        if (!CFG.Current.UseLooseParams)
+        {
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"Data0.bdt", paramBnd, ProjectType.DS3);
+        }
+        else
+        {
+            // Otherwise write them out as parambnds
+            BND4 paramBND = new()
+            {
+                BigEndian = false,
+                Compression = DCX.Type.DCX_DFLT_10000_44_9,
+                Extended = 0x04,
+                Unk04 = false,
+                Unk05 = false,
+                Format = Binder.Format.Compression | Binder.Format.Flag6 | Binder.Format.LongOffsets |
+                         Binder.Format.Names1,
+                Unicode = true,
+                Files = paramBnd.Files.Where(f => f.Name.EndsWith(".param")).ToList()
+            };
+
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\gameparam\gameparam_dlc2.parambnd.dcx", paramBND);
+        }
+
         return successfulSave;
     }
 
@@ -1424,6 +1470,32 @@ public class ParamBank
     private bool SaveParameters_BB()
     {
         var successfulSave = true;
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"param\gameparam\gameparam.parambnd.dcx";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+
+        var paramBnd = BND4.Read(data);
+
+        // Replace params with edited ones
+        foreach (BinderFile p in paramBnd.Files)
+        {
+            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            {
+                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+            }
+        }
+
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\gameparam\gameparam.parambnd.dcx", paramBnd);
 
         return successfulSave;
     }
@@ -1435,6 +1507,34 @@ public class ParamBank
     {
         var successfulSave = true;
 
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"param\gameparam\gameparam.parambnd.dcx";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+
+        var paramBnd = BND4.Read(data);
+
+        // Replace params with edited ones
+        foreach (BinderFile p in paramBnd.Files)
+        {
+            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            {
+                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+            }
+        }
+
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\gameparam\gameparam.parambnd.dcx", paramBnd);
+
+        return successfulSave;
+
         return successfulSave;
     }
 
@@ -1444,6 +1544,57 @@ public class ParamBank
     private bool SaveParameters_ER()
     {
         var successfulSave = true;
+
+        void OverwriteParamsER(BND4 paramBnd)
+        {
+            // Replace params with edited ones
+            foreach (BinderFile p in paramBnd.Files)
+            {
+                if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+                {
+                    Param paramFile = Params[Path.GetFileNameWithoutExtension(p.Name)];
+                    IReadOnlyList<Param.Row> backup = paramFile.Rows;
+
+                    p.Bytes = paramFile.Write();
+                    paramFile.Rows = backup;
+                }
+            }
+        }
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"regulation.bin";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+
+        BND4 regParams = SFUtil.DecryptERRegulation(data);
+
+        OverwriteParamsER(regParams);
+
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"regulation.bin", regParams, ProjectType.ER);
+
+        var sysParam = @"param\systemparam\systemparam.parambnd.dcx";
+
+        if (!fs.FileExists(sysParam))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate system param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        if (fs.TryGetFile(sysParam, out var sysParamF))
+        {
+            using var sysParams = BND4.Read(sysParamF.GetData());
+            OverwriteParamsER(sysParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\systemparam\systemparam.parambnd.dcx", sysParams);
+        }
 
         return successfulSave;
     }
@@ -1455,6 +1606,101 @@ public class ParamBank
     {
         var successfulSave = true;
 
+        void OverwriteParamsAC6(BND4 paramBnd)
+        {
+            // Replace params with edited ones
+            foreach (BinderFile p in paramBnd.Files)
+            {
+                var paramName = Path.GetFileNameWithoutExtension(p.Name);
+                if (Params.TryGetValue(paramName, out Param paramFile))
+                {
+                    IReadOnlyList<Param.Row> backup = paramFile.Rows;
+                    if (DataParent.Project.ProjectType is ProjectType.AC6)
+                    {
+                        if (_usedTentativeParamTypes.TryGetValue(paramName, out var oldParamType))
+                        {
+                            // This param was given a tentative ParamType, return original ParamType if possible.
+                            oldParamType ??= "";
+                            var prevParamType = paramFile.ParamType;
+                            paramFile.ParamType = oldParamType;
+
+                            p.Bytes = paramFile.Write();
+                            paramFile.ParamType = prevParamType;
+                            paramFile.Rows = backup;
+                            continue;
+                        }
+                    }
+
+                    p.Bytes = paramFile.Write();
+                    paramFile.Rows = backup;
+                }
+            }
+        }
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"regulation.bin";
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+
+        BND4 regParams = SFUtil.DecryptAC6Regulation(data);
+        OverwriteParamsAC6(regParams);
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"regulation.bin", regParams, ProjectType.AC6);
+
+        var sysParam = @"param\systemparam\systemparam.parambnd.dcx";
+
+        if (!fs.FileExists(sysParam))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate system param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        if (fs.TryGetFile(sysParam, out var sysParamF))
+        {
+            using var sysParams = BND4.Read(sysParamF.GetData());
+            OverwriteParamsAC6(sysParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, sysParam, sysParams);
+        }
+
+        var graphicsParam = @"param\graphicsconfig\graphicsconfig.parambnd.dcx";
+
+        if (!fs.FileExists(sysParam))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate graphics param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        if (fs.TryGetFile(graphicsParam, out var graphicsParamF))
+        {
+            using var graphicsParams = BND4.Read(graphicsParamF.GetData());
+            OverwriteParamsAC6(graphicsParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, graphicsParam, graphicsParams);
+        }
+
+        var eventParam = @"param\eventparam\eventparam.parambnd.dcx";
+
+        if (!fs.FileExists(eventParam))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate event param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        if (fs.TryGetFile(eventParam, out var eventParamF))
+        {
+            using var eventParams = BND4.Read(eventParamF.GetData());
+            OverwriteParamsAC6(eventParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, eventParam, eventParams);
+        }
+
         return successfulSave;
     }
 
@@ -1464,6 +1710,57 @@ public class ParamBank
     private bool SaveParameters_ERN()
     {
         var successfulSave = true;
+
+        void OverwriteParamsER(BND4 paramBnd)
+        {
+            // Replace params with edited ones
+            foreach (BinderFile p in paramBnd.Files)
+            {
+                if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+                {
+                    Param paramFile = Params[Path.GetFileNameWithoutExtension(p.Name)];
+                    IReadOnlyList<Param.Row> backup = paramFile.Rows;
+
+                    p.Bytes = paramFile.Write();
+                    paramFile.Rows = backup;
+                }
+            }
+        }
+
+        var fs = DataParent.Project.FileSystem;
+        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        string param = @"regulation.bin";
+
+        if (!fs.FileExists(param))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        var data = fs.GetFile(param).GetData().ToArray();
+
+        BND4 regParams = SFUtil.DecryptNightreignRegulation(data);
+
+        OverwriteParamsER(regParams);
+
+        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"regulation.bin", regParams, ProjectType.ERN);
+
+        var sysParam = @"param\systemparam\systemparam.parambnd.dcx";
+
+        if (!fs.FileExists(sysParam))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate system param files. Save failed.", LogLevel.Error);
+
+            return false;
+        }
+
+        if (fs.TryGetFile(sysParam, out var sysParamF))
+        {
+            using var sysParams = BND4.Read(sysParamF.GetData());
+            OverwriteParamsER(sysParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\systemparam\systemparam.parambnd.dcx", sysParams);
+        }
 
         return successfulSave;
     }

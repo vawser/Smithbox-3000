@@ -173,12 +173,6 @@ public class ParamEditor
                 // TEST ACTION
                 Project.ParamData.PrimaryBank.RowNameStrip();
             }
-
-            if (Keyboard.KeyPress(Key.O))
-            {
-                // TEST ACTION
-                Project.ParamData.PrimaryBank.RowNameRestore();
-            }
         }
     }
 

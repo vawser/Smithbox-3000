@@ -52,6 +52,10 @@ public class VfsUtils
             {
                 toFs.WriteFile(assetPath + ".temp", SFUtil.EncryptERRegulation(bndER));
             }
+            else if (gameType == ProjectType.ERN && item is BND4 bndERN)
+            {
+                toFs.WriteFile(assetPath + ".temp", SFUtil.EncryptNightreignRegulation(bndERN));
+            }
             else if (gameType == ProjectType.AC6 && item is BND4 bndAC6)
             {
                 toFs.WriteFile(assetPath + ".temp", SFUtil.EncryptAC6Regulation(bndAC6));
