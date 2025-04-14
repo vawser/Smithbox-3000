@@ -32,6 +32,8 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(ParamUpgraderInfo))]
 [JsonSerializable(typeof(OldRegulationEntry))]
 [JsonSerializable(typeof(UpgraderMassEditEntry))]
+
+[JsonSerializable(typeof(ParamTypeInfo))]
 internal partial class SmithboxSerializerContext : JsonSerializerContext
 {
 }

@@ -158,12 +158,16 @@ public class ParamEditor
 
             if (ImGui.BeginMenu("Information"))
             {
-                var primaryVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.PrimaryBank.ParamVersion);
-                var vanillaVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.VanillaBank.ParamVersion);
+                if (Project.ParamData.Initialized)
+                {
+                    var primaryVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.PrimaryBank.ParamVersion);
 
-                ImGui.Text($"Primary Bank Version: {primaryVersion}");
-                ImGui.Text($"Vanilla Bank Version: {vanillaVersion}");
+                    ImGui.Text($"Primary Bank Version: {primaryVersion}");
+                
+                    var vanillaVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.VanillaBank.ParamVersion);
 
+                    ImGui.Text($"Vanilla Bank Version: {vanillaVersion}");
+                }
                 ImGui.EndMenu();
             }
 

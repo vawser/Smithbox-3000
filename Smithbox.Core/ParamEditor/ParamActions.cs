@@ -74,9 +74,4 @@ public class ParamActions
     {
 
     }
-
-    public void ImportExternalParamRowNames(ParamBank targetBank)
-    {
-
-    }
 }

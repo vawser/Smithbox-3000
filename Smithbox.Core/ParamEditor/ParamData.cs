@@ -1,12 +1,14 @@
 ﻿using Andre.Formats;
 using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS;
@@ -16,6 +18,8 @@ public class ParamData
     public Project Project;
 
     public bool Initialized = false;
+
+    public ParamUICache UICache;
 
     public Dictionary<PARAMDEF, ParamMeta> ParamMeta = new();
 
@@ -47,16 +51,13 @@ public class ParamData
     public bool IsPrimaryBankLoaded { get; private set; }
     public bool IsVanillaBankLoaded { get; private set; }
 
-    /// <summary>
-    /// Mapping from Param filename -> Manual ParamType.
-    /// This is for params with no usable ParamType at some particular game version.
-    /// By convention, ParamTypes ending in "_TENTATIVE" do not have official data to reference.
-    /// </summary>
-    public Dictionary<string, string> TentativeParamTypes;
+    public ParamTypeInfo ParamTypeInfo;
 
     public ParamData(Project projectOwner)
     {
         Project = projectOwner;
+        UICache = new(projectOwner);
+
         Initialize();
     }
 
@@ -69,6 +70,8 @@ public class ParamData
         IsParamMetaLoaded = false;
         IsPrimaryBankLoaded = false;
         IsVanillaBankLoaded = false;
+
+        UICache.ClearCaches();
 
         // Param Defs
         Task<bool> paramDefsTask = LoadParamDefs();
@@ -139,7 +142,66 @@ public class ParamData
         // Primary Bank: Stripped Param Row Restore
         if (Project.EnableParamRowStrip)
         {
-            // Project.PrimaryParamEditor.ParamActions.ImportExternalParamRowNames(PrimaryBank);
+            PrimaryBank.RowNameRestore();
+        }
+
+        Initialized = true;
+    }
+
+    /// <summary>
+    /// Manual reload of banks
+    /// </summary>
+    public async void ReloadBanks()
+    {
+        IsParamDefLoaded = false;
+        IsParamMetaLoaded = false;
+        IsPrimaryBankLoaded = false;
+        IsVanillaBankLoaded = false;
+
+        UICache.ClearCaches();
+
+        // Primary Bank
+        PrimaryBank = new(this, Project.ProjectPath);
+
+        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FileSystem, Paramdefs);
+        bool primaryBankLoaded = await primaryBankTask;
+
+        if (primaryBankLoaded)
+        {
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Reloaded primary bank.");
+            IsPrimaryBankLoaded = true;
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to reload primary bank.");
+        }
+
+        // Vanilla Bank
+        VanillaBank = new(this, Project.DataPath);
+
+        Task<bool> vanillaBankTask = VanillaBank.Load(Project.VanillaFS, Paramdefs);
+        bool vanillaBankLoaded = await vanillaBankTask;
+
+        if (vanillaBankLoaded)
+        {
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Reloaded vanilla bank.");
+            IsVanillaBankLoaded = true;
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to reload vanilla bank.");
+        }
+
+        // Primary Bank: Import Row Names
+        if (!Project.ImportedParamRowNames)
+        {
+            Project.PrimaryParamEditor.ParamActions.ImportDefaultParamRowNames(PrimaryBank);
+        }
+
+        // Primary Bank: Stripped Param Row Restore
+        if (Project.EnableParamRowStrip)
+        {
+            PrimaryBank.RowNameRestore();
         }
 
         Initialized = true;
@@ -165,8 +227,11 @@ public class ParamData
         await Task.Delay(1000);
 
         Paramdefs = new Dictionary<string, PARAMDEF>();
-        TentativeParamTypes = new Dictionary<string, string>();
+        ParamTypeInfo = new();
+        ParamTypeInfo.Mapping = new();
+        ParamTypeInfo.Exceptions = new();
 
+        // Param Defs
         var paramDefDirectory = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Defs";
 
         var files = Directory.GetFiles(paramDefDirectory, "*.xml");
@@ -180,20 +245,34 @@ public class ParamData
             defPairs.Add((f, pdef));
         }
 
-        var tentativeMappingPath = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Defs\TentativeParamType.csv";
+        // Param Type Info
+        var paramTypeInfoPath = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Param Type Info.json";
 
-        if (File.Exists(tentativeMappingPath))
+        if (File.Exists(paramTypeInfoPath))
         {
-            foreach (var line in File.ReadAllLines(tentativeMappingPath).Skip(1))
-            {
-                var parts = line.Split(',');
+            var paramTypeInfo = new ParamTypeInfo();
+            paramTypeInfo.Mapping = new();
+            paramTypeInfo.Exceptions = new();
 
-                if (parts.Length != 2 || string.IsNullOrWhiteSpace(parts[0]) || string.IsNullOrWhiteSpace(parts[1]))
+            ParamTypeInfo = paramTypeInfo;
+
+            try
+            {
+                var filestring = File.ReadAllText(paramTypeInfoPath);
+                var options = new JsonSerializerOptions();
+
+                paramTypeInfo = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.ParamTypeInfo);
+
+                if (paramTypeInfo == null)
                 {
-                    throw new FormatException($"Malformed line in {tentativeMappingPath}: {line}");
+                    throw new Exception($"[{Project.ProjectName}:Param Editor] Failed to read Param Type Info.json");
                 }
 
-                TentativeParamTypes[parts[0]] = parts[1];
+                ParamTypeInfo = paramTypeInfo;
+            }
+            catch (Exception e)
+            {
+                TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to load Param Type Info.json");
             }
         }
 
@@ -252,5 +331,33 @@ public class ParamData
         }
 
         return true;
+    }
+
+    public void RefreshAllParamDiffCaches(bool checkAuxVanillaDiff)
+    {
+        PrimaryBank.RefreshParamDiffCaches(true);
+
+        foreach (KeyValuePair<string, ParamBank> bank in Project.ParamData.AuxBanks)
+        {
+            bank.Value.RefreshParamDiffCaches(checkAuxVanillaDiff);
+        }
+
+        UICache.ClearCaches();
+    }
+
+    public void RefreshParamDifferenceCacheTask(bool checkAuxVanillaDiff = false)
+    {
+        // Refresh diff cache
+        TaskManager.LiveTask task = new(
+            "paramEditor_refreshDifferenceCache",
+            "Param Editor",
+            "difference cache between param banks has been refreshed.",
+            "difference cache refresh has failed.",
+            TaskManager.RequeueType.Repeat,
+            true,
+            () => RefreshAllParamDiffCaches(checkAuxVanillaDiff)
+        );
+
+        TaskManager.Run(task);
     }
 }

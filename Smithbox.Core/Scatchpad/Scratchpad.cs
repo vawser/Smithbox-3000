@@ -90,37 +90,24 @@ public class Scratchpad
 
         if (ImGui.Button("Convert"))
         {
-            // Read
-            var massEditCmds = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Upgrader\massedit.txt";
+            var primaryBank = Project.ParamData.PrimaryBank;
 
-            var parts = File.ReadAllLines(massEditCmds);
+            var paramTypeInfo = new ParamTypeInfo();
+            paramTypeInfo.Mapping = new();
+            paramTypeInfo.Exceptions = new();
 
-            List<(ulong, string, string)> upgradeEdits = new();
-            for (var i = 0; i < parts.Length; i += 3)
+            foreach (var entry in primaryBank.Params)
             {
-                upgradeEdits.Add((ulong.Parse(parts[i].Replace("_", "").Replace("L", "")), parts[i + 1], parts[i + 2]));
-            }
+                var filename = entry.Key;
+                var paramType = entry.Value.ParamType;
 
-            // Convert
-            var jsonCmds = new ParamUpgraderInfo();
-
-            jsonCmds.UpgradeCommands = new();
-
-            foreach (var entry in upgradeEdits)
-            {
-                var newCmdEntry = new UpgraderMassEditEntry();
-
-                newCmdEntry.Version = $"{entry.Item1}";
-                newCmdEntry.Message = entry.Item2;
-                newCmdEntry.Command = entry.Item3;
-
-                jsonCmds.UpgradeCommands.Add(newCmdEntry);
+                paramTypeInfo.Mapping.Add(filename, paramType);
             }
 
             // Write
-            var path = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Mass Edit.json";
+            var path = @$"{AppContext.BaseDirectory}\.smithbox\CONVERT.json";
 
-            var json = JsonSerializer.Serialize(jsonCmds, SmithboxSerializerContext.Default.ParamUpgraderInfo);
+            var json = JsonSerializer.Serialize(paramTypeInfo, SmithboxSerializerContext.Default.ParamTypeInfo);
 
             File.WriteAllText(path, json);
         }

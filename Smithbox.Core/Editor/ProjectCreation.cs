@@ -146,9 +146,12 @@ public static class ProjectCreation
                     {
                         var type = (ProjectType)entry;
 
-                        if (ImGui.Selectable(type.GetDisplayName()))
+                        if (ProjectUtils.IsSupportedProjectType(type))
                         {
-                            ProjectType = type;
+                            if (ImGui.Selectable(type.GetDisplayName()))
+                            {
+                                ProjectType = type;
+                            }
                         }
                     }
                     ImGui.EndCombo();

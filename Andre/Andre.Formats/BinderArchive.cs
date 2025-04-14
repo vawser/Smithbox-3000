@@ -90,7 +90,7 @@ namespace Andre.Formats
                 Game.SDT => SekiroArchiveNames,
                 Game.ER => EldenRingArchiveNames,
                 Game.AC6 => ArmoredCore6ArchiveNames,
-                Game.DS2 => throw new NotImplementedException(),
+                Game.DS2 => DarkSouls2ArchiveNames,
                 _ => throw new ArgumentOutOfRangeException(nameof(game), game, null)
             };
 

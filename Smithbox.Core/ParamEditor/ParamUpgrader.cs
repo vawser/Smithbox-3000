@@ -286,6 +286,11 @@ public static class ParamUpgrader
         {
             TaskLogs.AddLog($"[{TargetProject.ProjectName}:Param Editor] Primary bank is already fully upgraded.");
         }
+
+        TargetProject.ParamData.UICache.ClearCaches();
+        TargetProject.ParamData.RefreshAllParamDiffCaches(false);
+
+        TargetProject.ParamData.PrimaryBank.Save();
     }
 
     public async static Task<bool> UpgradeParamsTask()
@@ -336,7 +341,8 @@ public static class ParamUpgrader
         primaryBank.ParamVersion = vanillaBank.ParamVersion;
         primaryBank.PendingUpgrade = true;
 
-        // TODO: refresh cache
+        TargetProject.ParamData.UICache.ClearCaches();
+        TargetProject.ParamData.RefreshAllParamDiffCaches(false);
 
         return true;
     }
@@ -477,7 +483,7 @@ public static class ParamUpgrader
                 {
                     if (!TargetProject.ParamData.Paramdefs.ContainsKey(p.ParamType) || paramName == "EquipParamWeapon_Npc")
                     {
-                        if (TargetProject.ParamData.TentativeParamTypes.TryGetValue(paramName, out var newParamType))
+                        if (TargetProject.ParamData.ParamTypeInfo.Mapping.TryGetValue(paramName, out var newParamType))
                         {
                             p.ParamType = newParamType;
                         }
@@ -494,7 +500,7 @@ public static class ParamUpgrader
                 }
                 else
                 {
-                    if (TargetProject.ParamData.TentativeParamTypes.TryGetValue(paramName, out var newParamType))
+                    if (TargetProject.ParamData.ParamTypeInfo.Mapping.TryGetValue(paramName, out var newParamType))
                     {
                         p.ParamType = newParamType;
                     }

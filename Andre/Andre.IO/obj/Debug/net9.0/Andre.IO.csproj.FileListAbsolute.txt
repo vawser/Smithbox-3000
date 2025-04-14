@@ -26,3 +26,6 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Andr
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Andre.SoulsFormats.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Andre.Core.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\obj\Debug\net9.0\Andre.IO.csproj.Up2Date
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Resources\ArmoredCore6Dictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Resources\ScholarDictionary.txt
+C:\Users\benja\Programming\C#\Smithbox-3000\Andre\Andre.IO\bin\Debug\net9.0\Resources\SekiroBonusDictionary.txt

@@ -46,5 +46,17 @@
     <AdditionalFiles Include="Resources\SekiroDictionary.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
+    <None Remove="Resources\ArmoredCore6Dictionary.txt" />
+    <AdditionalFiles Include="Resources\ArmoredCore6Dictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\ScholarDictionary.txt" />
+    <AdditionalFiles Include="Resources\ScholarDictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Remove="Resources\SekiroBonusDictionary.txt" />
+    <AdditionalFiles Include="Resources\SekiroBonusDictionary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
 </Project>

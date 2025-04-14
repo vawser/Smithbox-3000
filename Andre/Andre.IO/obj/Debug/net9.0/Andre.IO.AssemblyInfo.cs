@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Andre.IO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90c4847d30901cf19849dbbb3076bf97802d6979")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75fab5de18eb84e4777dce1d1752f28276edbf90")]
 [assembly: System.Reflection.AssemblyProductAttribute("Andre.IO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Andre.IO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

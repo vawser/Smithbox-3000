@@ -2,6 +2,7 @@
 using Andre.IO.VFS;
 using HKLib.hk2018.castTest;
 using Microsoft.Extensions.Logging;
+using Silk.NET.SDL;
 using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
@@ -56,6 +57,47 @@ public class ParamBank
     /// Used to later restore original ParamType on write (if possible).
     /// </summary>
     private Dictionary<string, string> _usedTentativeParamTypes;
+
+    // Difference cache for primary bank
+    private Dictionary<string, HashSet<int>> _primaryDiffCache;
+
+    // Difference cache for vanilla bank
+    private Dictionary<string, HashSet<int>> _vanillaDiffCache;
+
+    public IReadOnlyDictionary<string, HashSet<int>> VanillaDiffCache
+    {
+        get
+        {
+            if (!IsParamBankLoaded)
+            {
+                return null;
+            }
+            else
+            {
+                if (DataParent.VanillaBank == this)
+                    return null;
+            }
+
+            return _vanillaDiffCache;
+        }
+    }
+
+    public IReadOnlyDictionary<string, HashSet<int>> PrimaryDiffCache
+    {
+        get
+        {
+            if (!IsParamBankLoaded)
+            {
+                return null;
+            }
+            else
+            {
+                if (DataParent.PrimaryBank == this)
+                    return null;
+            }
+            return _primaryDiffCache;
+        }
+    }
 
     public ParamBank(ParamData parent, string sourcePath)
     {
@@ -129,6 +171,8 @@ public class ParamBank
             default: break;
         }
 
+        IsParamBankLoaded = true;
+
         return successfulLoad;
     }
 
@@ -138,9 +182,6 @@ public class ParamBank
     private bool LoadParameters_DES(VirtualFileSystem fs, Dictionary<string, PARAMDEF> defs)
     {
         var successfulLoad = true;
-
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
 
         var paramPath = PathUtils.GetGameParam_DES(fs);
 
@@ -195,9 +236,6 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
         var paramPath = PathUtils.GetGameParam_DS1(fs);
 
         if (!fs.FileExists(paramPath))
@@ -251,10 +289,7 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var paramPath = PathUtils.GetGameParam_DS1R(fs);
+        var paramPath = $@"param\GameParam\GameParam.parambnd.dcx";
 
         if (!fs.FileExists(paramPath))
         {
@@ -307,11 +342,8 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var paramPath = PathUtils.GetGameParam_DS2(fs);
-        var enemyPath = PathUtils.GetEnemyParam_DS2S(fs);
+        var paramPath = $@"enc_regulation.bnd.dcx";
+        var enemyPath = $@"Param\\EnemyParam.param";
 
         if (!fs.FileExists(paramPath))
         {
@@ -431,11 +463,8 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var paramPath = PathUtils.GetGameParam_DS2S(fs);
-        var enemyPath = PathUtils.GetEnemyParam_DS2S(fs);
+        var paramPath = $@"enc_regulation.bnd.dcx";
+        var enemyPath = $@"Param\\EnemyParam.param";
 
         if (!fs.FileExists(paramPath))
         {
@@ -555,11 +584,8 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var looseFile = PathUtils.GetGameParamLoose_DS3(fs);
-        var packedFile = PathUtils.GetGameParamPacked_DS3(fs);
+        var looseFile = $@"param\\gameparam\\gameparam_dlc2.parambnd.dcx";
+        var packedFile = $@"Data0.bdt";
 
         if (!fs.FileExists(packedFile))
         {
@@ -608,10 +634,7 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var paramPath = PathUtils.GetGameParam_BB(fs);
+        var paramPath = $@"param\\gameparam\\gameparam.parambnd.dcx";
 
         if (!fs.FileExists(paramPath))
         {
@@ -643,10 +666,7 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var paramPath = PathUtils.GetGameParam_SDT(fs);
+        var paramPath = $@"param\gameparam\gameparam.parambnd.dcx";
 
         if (!fs.FileExists(paramPath))
         {
@@ -678,11 +698,8 @@ public class ParamBank
     {
         var successfulLoad = true;
 
-        var dataPath = DataParent.Project.DataPath;
-        var projectPath = DataParent.Project.ProjectPath;
-
-        var gameParamPath = PathUtils.GetGameParam_ER(fs);
-        var systemParamPath = PathUtils.GetSystemParam_ER(fs);
+        var gameParamPath = $@"regulation.bin";
+        var systemParamPath = $@"param\systemparam\systemparam.parambnd.dcx";
 
         if (!fs.FileExists(gameParamPath))
         {
@@ -738,10 +755,10 @@ public class ParamBank
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
-        var gameParamPath = PathUtils.GetGameParam_AC6(fs);
-        var systemParamPath = PathUtils.GetSystemParam_AC6(fs);
-        var graphicsParamPath = PathUtils.GetGraphicsParam_AC6(fs);
-        var eventParamPath = PathUtils.GetEventParam_AC6(fs);
+        var gameParamPath = $@"regulation.bin";
+        var systemParamPath = $@"param\systemparam\systemparam.parambnd.dcx";
+        var graphicsParamPath = $@"param\graphicsconfig\graphicsconfig.parambnd.dcx";
+        var eventParamPath = $@"param\eventparam\eventparam.parambnd.dcx";
 
         // Game Param
         if (!fs.FileExists(gameParamPath))
@@ -840,8 +857,8 @@ public class ParamBank
         var dataPath = DataParent.Project.DataPath;
         var projectPath = DataParent.Project.ProjectPath;
 
-        var gameParamPath = PathUtils.GetGameParam_ERN(fs);
-        var systemParamPath = PathUtils.GetSystemParam_ERN(fs);
+        var gameParamPath = $@"regulation.bin";
+        var systemParamPath = $@"param\systemparam\systemparam.parambnd.dcx";
 
         if (!fs.FileExists(gameParamPath))
         {
@@ -922,9 +939,9 @@ public class ParamBank
                 // Missing paramtype
                 if (!string.IsNullOrEmpty(curParam.ParamType))
                 {
-                    if (!defs.ContainsKey(curParam.ParamType))
+                    if (!defs.ContainsKey(curParam.ParamType) || DataParent.ParamTypeInfo.Exceptions.Contains(paramName))
                     {
-                        if (DataParent.TentativeParamTypes.TryGetValue(paramName, out var newParamType))
+                        if (DataParent.ParamTypeInfo.Mapping.TryGetValue(paramName, out var newParamType) )
                         {
                             _usedTentativeParamTypes.Add(paramName, curParam.ParamType);
                             curParam.ParamType = newParamType;
@@ -940,7 +957,7 @@ public class ParamBank
                 }
                 else
                 {
-                    if (DataParent.TentativeParamTypes.TryGetValue(paramName, out var newParamType))
+                    if (DataParent.ParamTypeInfo.Mapping.TryGetValue(paramName, out var newParamType))
                     {
                         _usedTentativeParamTypes.Add(paramName, curParam.ParamType);
 
@@ -1522,9 +1539,26 @@ public class ParamBank
         // Replace params with edited ones
         foreach (BinderFile p in paramBnd.Files)
         {
-            if (Params.ContainsKey(Path.GetFileNameWithoutExtension(p.Name)))
+            var paramName = Path.GetFileNameWithoutExtension(p.Name);
+            if (Params.TryGetValue(paramName, out Param paramFile))
             {
-                p.Bytes = Params[Path.GetFileNameWithoutExtension(p.Name)].Write();
+                IReadOnlyList<Param.Row> backup = paramFile.Rows;
+
+                if (_usedTentativeParamTypes.TryGetValue(paramName, out var oldParamType))
+                {
+                    // This param was given a tentative ParamType, return original ParamType if possible.
+                    oldParamType ??= "";
+                    var prevParamType = paramFile.ParamType;
+                    paramFile.ParamType = oldParamType;
+
+                    p.Bytes = paramFile.Write();
+                    paramFile.ParamType = prevParamType;
+                    paramFile.Rows = backup;
+                    continue;
+                }
+
+                p.Bytes = paramFile.Write();
+                paramFile.Rows = backup;
             }
         }
 
@@ -1620,20 +1654,18 @@ public class ParamBank
                 if (Params.TryGetValue(paramName, out Param paramFile))
                 {
                     IReadOnlyList<Param.Row> backup = paramFile.Rows;
-                    if (DataParent.Project.ProjectType is ProjectType.AC6)
-                    {
-                        if (_usedTentativeParamTypes.TryGetValue(paramName, out var oldParamType))
-                        {
-                            // This param was given a tentative ParamType, return original ParamType if possible.
-                            oldParamType ??= "";
-                            var prevParamType = paramFile.ParamType;
-                            paramFile.ParamType = oldParamType;
 
-                            p.Bytes = paramFile.Write();
-                            paramFile.ParamType = prevParamType;
-                            paramFile.Rows = backup;
-                            continue;
-                        }
+                    if (_usedTentativeParamTypes.TryGetValue(paramName, out var oldParamType))
+                    {
+                        // This param was given a tentative ParamType, return original ParamType if possible.
+                        oldParamType ??= "";
+                        var prevParamType = paramFile.ParamType;
+                        paramFile.ParamType = oldParamType;
+
+                        p.Bytes = paramFile.Write();
+                        paramFile.ParamType = prevParamType;
+                        paramFile.Rows = backup;
+                        continue;
                     }
 
                     p.Bytes = paramFile.Write();
@@ -1890,5 +1922,161 @@ public class ParamBank
         }
 
         TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Restored row names from {file}");
+    }
+
+    public void ClearParamDiffCaches()
+    {
+        _vanillaDiffCache = new Dictionary<string, HashSet<int>>();
+        _primaryDiffCache = new Dictionary<string, HashSet<int>>();
+        foreach (var param in Params.Keys)
+        {
+            _vanillaDiffCache.Add(param, new HashSet<int>());
+            _primaryDiffCache.Add(param, new HashSet<int>());
+        }
+    }
+
+    public void RefreshParamDiffCaches(bool checkVanillaDiff)
+    {
+        if (this != DataParent.VanillaBank && checkVanillaDiff)
+        {
+            _vanillaDiffCache = GetParamDiff(DataParent.VanillaBank);
+        }
+
+        if (this == DataParent.VanillaBank && DataParent.PrimaryBank._vanillaDiffCache != null)
+        {
+            _primaryDiffCache = DataParent.PrimaryBank._vanillaDiffCache;
+        }
+        else if (this != DataParent.PrimaryBank)
+        {
+            _primaryDiffCache = GetParamDiff(DataParent.PrimaryBank);
+        }
+
+        DataParent.UICache.ClearCaches();
+    }
+
+    private Dictionary<string, HashSet<int>> GetParamDiff(ParamBank otherBank)
+    {
+        if (IsParamBankLoaded || otherBank == null || otherBank.IsParamBankLoaded)
+        {
+            return null;
+        }
+
+        Dictionary<string, HashSet<int>> newCache = new();
+        foreach (var param in Params.Keys)
+        {
+            HashSet<int> cache = new();
+            newCache.Add(param, cache);
+            Param p = Params[param];
+
+            if (!otherBank.Params.ContainsKey(param))
+            {
+                Console.WriteLine("Missing vanilla param " + param);
+                continue;
+            }
+
+            Param.Row[] rows = Params[param].Rows.OrderBy(r => r.ID).ToArray();
+            Param.Row[] vrows = otherBank.Params[param].Rows.OrderBy(r => r.ID).ToArray();
+
+            var vanillaIndex = 0;
+            var lastID = -1;
+            ReadOnlySpan<Param.Row> lastVanillaRows = default;
+
+            for (var i = 0; i < rows.Length; i++)
+            {
+                var ID = rows[i].ID;
+                if (ID == lastID)
+                {
+                    RefreshParamRowDiffCache(rows[i], lastVanillaRows, cache);
+                }
+                else
+                {
+                    lastID = ID;
+                    while (vanillaIndex < vrows.Length && vrows[vanillaIndex].ID < ID)
+                    {
+                        vanillaIndex++;
+                    }
+
+                    if (vanillaIndex >= vrows.Length)
+                    {
+                        RefreshParamRowDiffCache(rows[i], Span<Param.Row>.Empty, cache);
+                    }
+                    else
+                    {
+                        var count = 0;
+                        while (vanillaIndex + count < vrows.Length && vrows[vanillaIndex + count].ID == ID)
+                        {
+                            count++;
+                        }
+
+                        lastVanillaRows = new ReadOnlySpan<Param.Row>(vrows, vanillaIndex, count);
+                        RefreshParamRowDiffCache(rows[i], lastVanillaRows, cache);
+                        vanillaIndex += count;
+                    }
+                }
+            }
+        }
+
+        return newCache;
+    }
+
+    private void RefreshParamRowDiffCache(Param.Row row, ReadOnlySpan<Param.Row> otherBankRows,
+        HashSet<int> cache)
+    {
+        if (IsChanged(row, otherBankRows))
+        {
+            cache.Add(row.ID);
+        }
+        else
+        {
+            cache.Remove(row.ID);
+        }
+    }
+
+    public void RefreshParamRowDiffs(Param.Row row, string param)
+    {
+        if (param == null)
+        {
+            return;
+        }
+
+        if (DataParent.VanillaBank.Params.ContainsKey(param) && VanillaDiffCache != null && VanillaDiffCache.ContainsKey(param))
+        {
+            Param.Row[] otherBankRows = DataParent.VanillaBank.Params[param].Rows.Where(cell => cell.ID == row.ID).ToArray();
+            RefreshParamRowDiffCache(row, otherBankRows, VanillaDiffCache[param]);
+        }
+
+        if (this != DataParent.PrimaryBank)
+        {
+            return;
+        }
+
+        foreach (ParamBank aux in DataParent.AuxBanks.Values)
+        {
+            if (!aux.Params.ContainsKey(param) || aux.PrimaryDiffCache == null || !aux.PrimaryDiffCache.ContainsKey(param))
+            {
+                continue; // Don't try for now
+            }
+
+            Param.Row[] otherBankRows = aux.Params[param].Rows.Where(cell => cell.ID == row.ID).ToArray();
+            RefreshParamRowDiffCache(row, otherBankRows, aux.PrimaryDiffCache[param]);
+        }
+    }
+
+    private bool IsChanged(Param.Row row, ReadOnlySpan<Param.Row> vanillaRows)
+    {
+        if (vanillaRows.Length == 0)
+        {
+            return true;
+        }
+
+        foreach (Param.Row vrow in vanillaRows)
+        {
+            if (row.RowMatches(vrow))
+            {
+                return false; //if we find a matching vanilla row
+            }
+        }
+
+        return true;
     }
 }

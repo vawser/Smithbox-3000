@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Andre.Formats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS;
 
-public class ParamUtils
+public static class ParamUtils
 {
     public static string ParseRegulationVersion(ulong version)
     {
@@ -21,5 +22,14 @@ public class ParamUtils
         string rev = verStr[4..];
 
         return $"{major}.{minor}.{patch}.{rev}";
+    }
+    public static bool RowMatches(this Param.Row row, Param.Row vrow)
+    {
+        if (row.Def.ParamType != vrow.Def.ParamType || row.Def.DataVersion != vrow.Def.DataVersion)
+        {
+            return false;
+        }
+
+        return row.DataEquals(vrow);
     }
 }

@@ -93,7 +93,7 @@ namespace Andre.IO.VFS
                 Game.SDT => new(File.ReadAllText(@"Resources\SekiroDictionary.txt"), BHD5.Game.DarkSouls3),
                 Game.ER => new(File.ReadAllText(@"Resources\EldenRingDictionary.txt"), BHD5.Game.EldenRing),
                 Game.AC6 => new(File.ReadAllText(@"Resources\ArmoredCore6Dictionary.txt"), BHD5.Game.EldenRing),
-                Game.DS2 => throw new NotImplementedException(),
+                Game.DS2 => new(File.ReadAllText(@"Resources\ScholarDictionary.txt"), BHD5.Game.DarkSouls2),
                 _ => throw new ArgumentOutOfRangeException(nameof(game), game, null)
             };
 

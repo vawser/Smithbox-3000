@@ -247,6 +247,7 @@ public class Smithbox
                     if (ImGui.Selectable($"Disable Automatic Load##autoLoadDisable{imGuiID}"))
                     {
                         projectEntry.AutoSelect = false;
+                        projectEntry.Save();
                     }
                     UIHelper.Tooltip("Disable automatic load for this project.");
                 }
@@ -255,6 +256,7 @@ public class Smithbox
                     if (ImGui.Selectable($"Enable Automatic Load##autoLoadEnable{imGuiID}"))
                     {
                         projectEntry.AutoSelect = true;
+                        projectEntry.Save();
                     }
                     UIHelper.Tooltip("Set this project to automatically load when Smithbox starts.");
                 }
@@ -301,7 +303,11 @@ public class Smithbox
                     }
                     else
                     {
-                        Projects.Add(curProject);
+                        // Ignore unsupported projects
+                        if (ProjectUtils.IsSupportedProjectType(curProject.ProjectType))
+                        {
+                            Projects.Add(curProject);
+                        }
                     }
                 }
                 catch (Exception e)
