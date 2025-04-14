@@ -1,11 +1,13 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Smithbox.Core.Scatchpad;
@@ -84,7 +86,46 @@ public class Scratchpad
 
     private void DisplayEditor()
     {
+        ImGui.Begin($"Pad##pad{ID}");
 
+        if (ImGui.Button("Convert"))
+        {
+            // Read
+            var massEditCmds = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Upgrader\massedit.txt";
+
+            var parts = File.ReadAllLines(massEditCmds);
+
+            List<(ulong, string, string)> upgradeEdits = new();
+            for (var i = 0; i < parts.Length; i += 3)
+            {
+                upgradeEdits.Add((ulong.Parse(parts[i].Replace("_", "").Replace("L", "")), parts[i + 1], parts[i + 2]));
+            }
+
+            // Convert
+            var jsonCmds = new ParamUpgraderInfo();
+
+            jsonCmds.UpgradeCommands = new();
+
+            foreach (var entry in upgradeEdits)
+            {
+                var newCmdEntry = new UpgraderMassEditEntry();
+
+                newCmdEntry.Version = $"{entry.Item1}";
+                newCmdEntry.Message = entry.Item2;
+                newCmdEntry.Command = entry.Item3;
+
+                jsonCmds.UpgradeCommands.Add(newCmdEntry);
+            }
+
+            // Write
+            var path = @$"{AppContext.BaseDirectory}\Assets\PARAM\{LocatorUtils.GetGameDirectory(Project)}\Mass Edit.json";
+
+            var json = JsonSerializer.Serialize(jsonCmds, SmithboxSerializerContext.Default.ParamUpgraderInfo);
+
+            File.WriteAllText(path, json);
+        }
+
+        ImGui.End();
     }
 
     private async void Save()

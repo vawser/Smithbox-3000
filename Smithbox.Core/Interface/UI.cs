@@ -29,8 +29,6 @@ public class UI
 
         if (!File.Exists(file))
         {
-            MessageBox.Print("Default interface set.");
-
             Current = new UI();
             Save();
         }
@@ -49,7 +47,7 @@ public class UI
             }
             catch (Exception e)
             {
-                MessageBox.Print("Configuration failed to load, default configuration has been restored.");
+                TaskLogs.AddLog("[Smithbox] Interface Configuration failed to load, default configuration has been restored.");
 
                 Current = new UI();
                 Save();

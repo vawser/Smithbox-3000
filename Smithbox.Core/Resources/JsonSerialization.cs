@@ -26,7 +26,12 @@ namespace Smithbox.Core.Utils;
 
 // Reference Data
 [JsonSerializable(typeof(RowNameStore))]
+[JsonSerializable(typeof(RowNameParam))]
 [JsonSerializable(typeof(RowNameEntry))]
+
+[JsonSerializable(typeof(ParamUpgraderInfo))]
+[JsonSerializable(typeof(OldRegulationEntry))]
+[JsonSerializable(typeof(UpgraderMassEditEntry))]
 internal partial class SmithboxSerializerContext : JsonSerializerContext
 {
 }

@@ -34,8 +34,6 @@ public class ImGuiCFG
 
         if (!File.Exists(file))
         {
-            MessageBox.Print("Default ImGui set.");
-
             Current = new ImGuiCFG();
             Save();
         }
@@ -54,7 +52,7 @@ public class ImGuiCFG
             }
             catch (Exception e)
             {
-                MessageBox.Print("Configuration failed to load, default configuration has been restored.");
+                TaskLogs.AddLog("[Smithbox] ImGui Configuration failed to load, default configuration has been restored.");
 
                 Current = new ImGuiCFG();
                 Save();

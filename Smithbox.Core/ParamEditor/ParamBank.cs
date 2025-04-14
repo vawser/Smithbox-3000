@@ -1,5 +1,6 @@
 ﻿using Andre.Formats;
 using Andre.IO.VFS;
+using HKLib.hk2018.castTest;
 using Microsoft.Extensions.Logging;
 using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
@@ -25,8 +26,6 @@ namespace Smithbox.Core.ParamEditorNS;
 public class ParamBank
 {
     private ParamData DataParent;
-
-    private ParamUpgrade Upgrader;
 
     /// <summary>
     /// This is the source file for the param data
@@ -62,8 +61,6 @@ public class ParamBank
     {
         DataParent = parent;
         SourcePath = sourcePath;
-
-        Upgrader = new(parent);
     }
 
     public bool PendingUpgrade;
@@ -719,7 +716,7 @@ public class ParamBank
             {
                 var data = fs.GetFile(systemParamPath).GetData();
                 using var bnd = BND4.Read(data);
-                FillParamBank(defs, bnd, ref Params, out ParamVersion);
+                FillParamBank(defs, bnd, ref Params, out _);
             }
             catch (Exception e)
             {
@@ -779,7 +776,7 @@ public class ParamBank
             {
                 var data = fs.GetFile(systemParamPath).GetData();
                 using var bnd = BND4.Read(data);
-                FillParamBank(defs, bnd, ref Params, out ParamVersion);
+                FillParamBank(defs, bnd, ref Params, out _);
             }
             catch (Exception e)
             {
@@ -800,7 +797,7 @@ public class ParamBank
             {
                 var data = fs.GetFile(graphicsParamPath).GetData();
                 using var bnd = BND4.Read(data);
-                FillParamBank(defs, bnd, ref Params, out ParamVersion);
+                FillParamBank(defs, bnd, ref Params, out _);
             }
             catch (Exception e)
             {
@@ -821,7 +818,7 @@ public class ParamBank
             {
                 var data = fs.GetFile(eventParamPath).GetData();
                 using var bnd = BND4.Read(data);
-                FillParamBank(defs, bnd, ref Params, out ParamVersion);
+                FillParamBank(defs, bnd, ref Params, out _);
             }
             catch (Exception e)
             {
@@ -1561,39 +1558,47 @@ public class ParamBank
             }
         }
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var sourceFs = DataParent.Project.FileSystem;
+        var gameFs = DataParent.Project.VanillaRealFS;
+        var writeFs = VfsUtils.GetFSForWrites(DataParent.Project);
+
         string param = @"regulation.bin";
 
-        if (!fs.FileExists(param))
+        if (!sourceFs.FileExists(param))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        var data = fs.GetFile(param).GetData().ToArray();
+        var data = sourceFs.GetFile(param).GetData().ToArray();
+
+        // Use the game root version in this case
+        if(!sourceFs.FileExists(param) || PendingUpgrade)
+        {
+            data = gameFs.GetFile(param).GetData().ToArray();
+        }
 
         BND4 regParams = SFUtil.DecryptERRegulation(data);
 
         OverwriteParamsER(regParams);
 
-        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"regulation.bin", regParams, ProjectType.ER);
+        VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, @"regulation.bin", regParams, ProjectType.ER);
 
         var sysParam = @"param\systemparam\systemparam.parambnd.dcx";
 
-        if (!fs.FileExists(sysParam))
+        if (!sourceFs.FileExists(sysParam))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate system param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        if (fs.TryGetFile(sysParam, out var sysParamF))
+        if (sourceFs.TryGetFile(sysParam, out var sysParamF))
         {
             using var sysParams = BND4.Read(sysParamF.GetData());
             OverwriteParamsER(sysParams);
-            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\systemparam\systemparam.parambnd.dcx", sysParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, @"param\systemparam\systemparam.parambnd.dcx", sysParams);
         }
 
         return successfulSave;
@@ -1637,68 +1642,76 @@ public class ParamBank
             }
         }
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var sourceFs = DataParent.Project.FileSystem;
+        var gameFs = DataParent.Project.VanillaRealFS;
+        var writeFs = VfsUtils.GetFSForWrites(DataParent.Project);
+
         string param = @"regulation.bin";
-        if (!fs.FileExists(param))
+        if (!sourceFs.FileExists(param))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        var data = fs.GetFile(param).GetData().ToArray();
+        var data = sourceFs.GetFile(param).GetData().ToArray();
+
+        // Use the game root version in this case
+        if (!sourceFs.FileExists(param) || PendingUpgrade)
+        {
+            data = gameFs.GetFile(param).GetData().ToArray();
+        }
 
         BND4 regParams = SFUtil.DecryptAC6Regulation(data);
         OverwriteParamsAC6(regParams);
-        VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"regulation.bin", regParams, ProjectType.AC6);
+        VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, @"regulation.bin", regParams, ProjectType.AC6);
 
         var sysParam = @"param\systemparam\systemparam.parambnd.dcx";
 
-        if (!fs.FileExists(sysParam))
+        if (!sourceFs.FileExists(sysParam))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate system param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        if (fs.TryGetFile(sysParam, out var sysParamF))
+        if (sourceFs.TryGetFile(sysParam, out var sysParamF))
         {
             using var sysParams = BND4.Read(sysParamF.GetData());
             OverwriteParamsAC6(sysParams);
-            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, sysParam, sysParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, sysParam, sysParams);
         }
 
         var graphicsParam = @"param\graphicsconfig\graphicsconfig.parambnd.dcx";
 
-        if (!fs.FileExists(sysParam))
+        if (!sourceFs.FileExists(sysParam))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate graphics param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        if (fs.TryGetFile(graphicsParam, out var graphicsParamF))
+        if (sourceFs.TryGetFile(graphicsParam, out var graphicsParamF))
         {
             using var graphicsParams = BND4.Read(graphicsParamF.GetData());
             OverwriteParamsAC6(graphicsParams);
-            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, graphicsParam, graphicsParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, graphicsParam, graphicsParams);
         }
 
         var eventParam = @"param\eventparam\eventparam.parambnd.dcx";
 
-        if (!fs.FileExists(eventParam))
+        if (!sourceFs.FileExists(eventParam))
         {
             TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Cannot locate event param files. Save failed.", LogLevel.Error);
 
             return false;
         }
 
-        if (fs.TryGetFile(eventParam, out var eventParamF))
+        if (sourceFs.TryGetFile(eventParam, out var eventParamF))
         {
             using var eventParams = BND4.Read(eventParamF.GetData());
             OverwriteParamsAC6(eventParams);
-            VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, eventParam, eventParams);
+            VfsUtils.WriteWithBackup(DataParent.Project, sourceFs, writeFs, eventParam, eventParams);
         }
 
         return successfulSave;
@@ -1763,59 +1776,6 @@ public class ParamBank
         }
 
         return successfulSave;
-    }
-
-    /// <summary>
-    /// Upgrade task for this Param bank
-    /// </summary>
-    public async Task<bool> Upgrade()
-    {
-        await Task.Delay(1000);
-
-        var successfulUpgrade = true;
-
-        switch (DataParent.Project.ProjectType)
-        {
-            case ProjectType.ER:
-                successfulUpgrade = UpgradeParameters_ER(); break;
-            case ProjectType.AC6:
-                successfulUpgrade = UpgradeParameters_AC6(); break;
-            case ProjectType.ERN:
-                successfulUpgrade = UpgradeParameters_ERN(); break;
-            default: break;
-        }
-
-        return successfulUpgrade;
-    }
-
-    /// <summary>
-    /// Elden Ring
-    /// </summary>
-    private bool UpgradeParameters_ER()
-    {
-        var successfulUpgrade = true;
-
-        return successfulUpgrade;
-    }
-
-    /// <summary>
-    /// Armored Core VI: Fires of Rubicon
-    /// </summary>
-    private bool UpgradeParameters_AC6()
-    {
-        var successfulUpgrade = true;
-
-        return successfulUpgrade;
-    }
-
-    /// <summary>
-    /// Elden Ring: Nightreign
-    /// </summary>
-    private bool UpgradeParameters_ERN()
-    {
-        var successfulUpgrade = true;
-
-        return successfulUpgrade;
     }
 
     /// <summary>
@@ -1928,7 +1888,6 @@ public class ParamBank
                 }
             }
         }
-
 
         TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor] Restored row names from {file}");
     }

@@ -158,8 +158,6 @@ public class CFG
 
         if (!File.Exists(file))
         {
-            MessageBox.Print("Default configuration set.");
-
             Current = new CFG();
             Save();
         }
@@ -178,7 +176,7 @@ public class CFG
             }
             catch (Exception e)
             {
-                MessageBox.Print("Configuration failed to load, default configuration has been restored.");
+                TaskLogs.AddLog("[Smithbox] Configuration failed to load, default configuration has been restored.");
 
                 Current = new CFG();
                 Save();

@@ -1,5 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using Hexa.NET.ImGui.Widgets;
+using Hexa.NET.ImGui.Widgets.Dialogs;
 using Hexa.NET.ImGui.Widgets.Extras.TextEditor;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
@@ -75,11 +76,11 @@ public class ParamEditor
                     Save();
                 }
 
-                if (IsParamUpgradeValid())
+                if (ParamUpgrader.SupportsParamUpgrading(Project) && ParamUpgrader.IsParamUpgradeValid(Project))
                 {
                     if (ImGui.MenuItem("Upgrade"))
                     {
-                        Upgrade();
+                        ParamUpgrader.Start(Project);
                     }
                 }
 
@@ -155,6 +156,19 @@ public class ParamEditor
                 ImGui.EndMenu();
             }
 
+            if (ImGui.BeginMenu("Information"))
+            {
+                var primaryVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.PrimaryBank.ParamVersion);
+                var vanillaVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.VanillaBank.ParamVersion);
+
+                ImGui.Text($"Primary Bank Version: {primaryVersion}");
+                ImGui.Text($"Vanilla Bank Version: {vanillaVersion}");
+
+                ImGui.EndMenu();
+            }
+
+            ParamUpgrader.ParamUpgradeWarning(Project);
+
             ImGui.EndMenuBar();
         }
     }
@@ -166,12 +180,11 @@ public class ParamEditor
     /// </summary>
     private void Shortcuts()
     {
-        if(DetectShortcuts)
+        if (DetectShortcuts)
         {
-            if (Keyboard.KeyPress(Key.P))
+            if (Keyboard.KeyPress(Key.S))
             {
-                // TEST ACTION
-                Project.ParamData.PrimaryBank.RowNameStrip();
+                Save();
             }
         }
     }
@@ -255,33 +268,5 @@ public class ParamEditor
         {
             TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to save primary param bank.");
         }
-    }
-
-    private async void Upgrade()
-    {
-        Task<bool> upgradeTask = Project.ParamData.PrimaryBank.Upgrade();
-        bool upgradeTaskFinished = await upgradeTask;
-
-        if (upgradeTaskFinished)
-        {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Upgraded primary param bank.");
-        }
-        else
-        {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to upgrade primary param bank.");
-        }
-    }
-
-    private bool IsParamUpgradeValid()
-    {
-        if (Project.ParamData.Initialized && Project.IsSelected)
-        {
-            if (Project.ParamData.PrimaryBank.ParamVersion <= Project.ParamData.VanillaBank.ParamVersion)
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

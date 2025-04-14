@@ -20,6 +20,7 @@ public class VfsUtils
     {
         if (curProject.ProjectFS is not EmptyVirtualFileSystem)
             return curProject.ProjectFS;
+
         if (curProject.VanillaRealFS is not EmptyVirtualFileSystem)
             return curProject.VanillaRealFS;
 

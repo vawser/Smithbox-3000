@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.ImGuiDemo;
+using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 using System;
@@ -69,6 +70,8 @@ public class Smithbox
 
         UIHelper.ApplyBaseStyle();
 
+        // Special modals
+        ParamUpgrader.Draw();
         MessageBox.Draw();
         ProjectCreation.Draw();
         EditorSettings.Draw();
@@ -204,7 +207,7 @@ public class Smithbox
     public void DisplayProjectActions()
     {
         var windowWidth = ImGui.GetWindowWidth() * 0.95f;
-        var buttonSize = new Vector2(windowWidth, 32);
+        var buttonSize = new Vector2(windowWidth, 24);
 
         if (ImGui.Button("Add Project", buttonSize))
         {
