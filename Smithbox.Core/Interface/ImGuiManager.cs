@@ -79,6 +79,27 @@
 
             baseFont.AddFontFromFileTTF("Assets/Fonts/SEGMDL2.TTF", fontSize, [(char)0xE700, (char)0xF800]);
 
+            ImGuiFontBuilder japaneseFont = new();
+            japaneseFont.SetOption(cfg =>
+            {
+                cfg.MergeMode = true;
+                cfg.PixelSnapH = true;
+                cfg.OversampleH = 4;
+                cfg.OversampleV = 4;
+            });
+
+            // Add a font with wide Japanese character support
+            japaneseFont.AddFontFromFileTTF(
+                "Assets/Fonts/NotoSansMonoCJKtc-Regular.otf",
+                fontSize,
+                new ReadOnlySpan<uint>(new uint[]
+                {
+                    0x3040, 0x309F, // Hiragana
+                    0x30A0, 0x30FF, // Katakana
+                    0x4E00, 0x9FFF  // Common Kanji
+                })
+            );
+
             ImGuiFontBuilder icontFont = new();
 
             icontFont.SetOption(
