@@ -66,31 +66,32 @@ public class Project
     public Scratchpad Scratchpad;
 
     /// <summary>
-    /// Top-level VFS, contains the others.
+    /// Compound filesystem, contains all the other systems, in the order of precedence
+    /// Project -> Vanilla (VanillaReal -> VanillaBinder)
     /// </summary>
     [JsonIgnore]
-    public VirtualFileSystem FileSystem = EmptyVirtualFileSystem.Instance;
+    public VirtualFileSystem FS = EmptyVirtualFileSystem.Instance;
 
     /// <summary>
-    /// VFS for the project data
+    /// Filesystem for files in the Project directory
     /// </summary>
     [JsonIgnore]
     public VirtualFileSystem ProjectFS = EmptyVirtualFileSystem.Instance;
 
     /// <summary>
-    /// VFS for the vanilla game data (binder file)
+    /// Filesystem for the inner (bindered) files in the Data directory
     /// </summary>
     [JsonIgnore]
     public VirtualFileSystem VanillaBinderFS = EmptyVirtualFileSystem.Instance;
 
     /// <summary>
-    /// VFS for the vanilla game data (direct file)
+    /// Filesystem for the files in the Data directory
     /// </summary>
     [JsonIgnore]
     public VirtualFileSystem VanillaRealFS = EmptyVirtualFileSystem.Instance;
 
     /// <summary>
-    /// VFS for the vanilla game data
+    /// Filesystem for the files in the Data directory (groups Binder and Real) 
     /// </summary>
     [JsonIgnore]
     public VirtualFileSystem VanillaFS = EmptyVirtualFileSystem.Instance;
@@ -381,7 +382,10 @@ public class Project
         VanillaRealFS.Dispose();
         VanillaBinderFS.Dispose();
         VanillaFS.Dispose();
-        FileSystem.Dispose();
+        FS.Dispose();
+
+        // Order of addition to FS determines precendence when getting a file
+        // e.g. ProjectFS is prioritised over VanillaFS
 
         // Project File System
         if (Directory.Exists(ProjectPath))
@@ -423,9 +427,9 @@ public class Project
 
 
         if (fileSystems.Count == 0)
-            FileSystem = EmptyVirtualFileSystem.Instance;
+            FS = EmptyVirtualFileSystem.Instance;
         else
-            FileSystem = new CompundVirtualFileSystem(fileSystems);
+            FS = new CompundVirtualFileSystem(fileSystems);
 
         return true;
     }

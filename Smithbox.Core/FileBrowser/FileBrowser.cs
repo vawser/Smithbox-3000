@@ -93,9 +93,9 @@ public class FileBrowser
             anyFs = true;
         }
 
-        if (anyFs && Project.FileSystem is not EmptyVirtualFileSystem)
+        if (anyFs && Project.FS is not EmptyVirtualFileSystem)
         {
-            roots.Add(new VirtualFileSystemFsEntry(Project, Project.FileSystem, "Full Combined FS"));
+            roots.Add(new VirtualFileSystemFsEntry(Project, Project.FS, "Full Combined FS"));
         }
 
         return true;

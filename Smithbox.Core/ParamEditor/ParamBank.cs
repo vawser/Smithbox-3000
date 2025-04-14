@@ -1100,8 +1100,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
 
         var paramPath = PathUtils.GetGameParam_DES(fs);
 
@@ -1182,8 +1182,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
 
         string param = @"param\GameParam\GameParam.parambnd";
         if (!fs.FileExists(param))
@@ -1234,8 +1234,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project); ;
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project); ;
         string param = @"param\GameParam\GameParam.parambnd.dcx";
 
         if (!fs.FileExists(param))
@@ -1294,8 +1294,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project); ;
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project); ;
         string param = @"enc_regulation.bnd.dcx";
 
         if (!fs.FileExists(param))
@@ -1429,8 +1429,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
         string param = @"Data0.bdt";
         if (!fs.FileExists(param))
         {
@@ -1485,8 +1485,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
         string param = @"param\gameparam\gameparam.parambnd.dcx";
 
         if (!fs.FileExists(param))
@@ -1521,8 +1521,8 @@ public class ParamBank
     {
         var successfulSave = true;
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
         string param = @"param\gameparam\gameparam.parambnd.dcx";
 
         if (!fs.FileExists(param))
@@ -1592,9 +1592,9 @@ public class ParamBank
             }
         }
 
-        var sourceFs = DataParent.Project.FileSystem;
+        var sourceFs = DataParent.Project.FS;
         var gameFs = DataParent.Project.VanillaRealFS;
-        var writeFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var writeFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
 
         string param = @"regulation.bin";
 
@@ -1674,9 +1674,9 @@ public class ParamBank
             }
         }
 
-        var sourceFs = DataParent.Project.FileSystem;
+        var sourceFs = DataParent.Project.FS;
         var gameFs = DataParent.Project.VanillaRealFS;
-        var writeFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var writeFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
 
         string param = @"regulation.bin";
         if (!sourceFs.FileExists(param))
@@ -1772,8 +1772,8 @@ public class ParamBank
             }
         }
 
-        var fs = DataParent.Project.FileSystem;
-        var toFs = VfsUtils.GetFSForWrites(DataParent.Project);
+        var fs = DataParent.Project.FS;
+        var toFs = VfsUtils.GetFilesystemForWrite(DataParent.Project);
         string param = @"regulation.bin";
 
         if (!fs.FileExists(param))

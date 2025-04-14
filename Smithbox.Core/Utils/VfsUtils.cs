@@ -16,7 +16,7 @@ public class VfsUtils
     /// If no suitable VFS is found, throws InvalidOperationException.
     /// </summary>
     /// <returns></returns>
-    public static VirtualFileSystem GetFSForWrites(Project curProject)
+    public static VirtualFileSystem GetFilesystemForWrite(Project curProject)
     {
         if (curProject.ProjectFS is not EmptyVirtualFileSystem)
             return curProject.ProjectFS;
@@ -30,7 +30,7 @@ public class VfsUtils
     public static void WriteWithBackup<T>(Project curProject, string assetPath, T item,
         params object[] writeparms) where T : SoulsFile<T>, new()
     {
-        WriteWithBackup(curProject, curProject.FileSystem, curProject.ProjectFS, assetPath, item,
+        WriteWithBackup(curProject, curProject.FS, curProject.ProjectFS, assetPath, item,
             curProject.ProjectType, writeparms);
     }
 

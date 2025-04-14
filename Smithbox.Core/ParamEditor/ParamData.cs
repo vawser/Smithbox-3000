@@ -104,7 +104,7 @@ public class ParamData
         // Primary Bank
         PrimaryBank = new(this, Project.ProjectPath);
 
-        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FileSystem, Paramdefs);
+        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FS, Paramdefs);
         bool primaryBankLoaded = await primaryBankTask;
         
         if (primaryBankLoaded)
@@ -163,7 +163,7 @@ public class ParamData
         // Primary Bank
         PrimaryBank = new(this, Project.ProjectPath);
 
-        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FileSystem, Paramdefs);
+        Task<bool> primaryBankTask = PrimaryBank.Load(Project.FS, Paramdefs);
         bool primaryBankLoaded = await primaryBankTask;
 
         if (primaryBankLoaded)
