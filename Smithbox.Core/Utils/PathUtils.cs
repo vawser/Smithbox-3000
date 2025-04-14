@@ -36,7 +36,7 @@ public class PathUtils
             return name;
         }
 
-        return "";
+        return name;
     }
 
     public static string GetGameParam_DS1(VirtualFileSystem fs)
@@ -52,7 +52,7 @@ public class PathUtils
         {
             return name;
         }
-        return "";
+        return name;
     }
 
     public static List<string> GetLooseParamsInDir(VirtualFileSystem fs, string dir)

@@ -5,12 +5,14 @@ using Hexa.NET.ImGui.Widgets.Extras.TextEditor;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.Input;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS;
@@ -176,6 +178,8 @@ public class ParamEditor
             ImGui.EndMenuBar();
         }
     }
+
+    
 
     private bool DetectShortcuts = false;
 

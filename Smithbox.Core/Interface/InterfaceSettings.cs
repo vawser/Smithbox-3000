@@ -64,6 +64,14 @@ public static class InterfaceSettings
                 UIHelper.Tooltip("If true, alias text (e.g. the name of the map next to its ID) will wrap if it exceeds the border of the window, rather than being truncated.");
             }
 
+            if (ImGui.CollapsingHeader("Coloring", ImGuiTreeNodeFlags.DefaultOpen))
+            {
+                if (ImGui.Button("Reset Coloring to Default"))
+                {
+                    UI.ResetToDefault();
+                }
+            }
+
             if (ImGui.CollapsingHeader("Font", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 var curFontSize = ImGuiCFG.Current.FontSize;

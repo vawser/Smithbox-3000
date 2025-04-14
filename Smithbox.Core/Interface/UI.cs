@@ -9,6 +9,7 @@ using Smithbox.Core.Interface;
 using Smithbox.Core.Editor;
 using System.Numerics;
 using Smithbox.Core.Utils;
+using System.Reflection;
 
 namespace Smithbox.Core.Interface;
 
@@ -64,7 +65,14 @@ public class UI
 
         File.WriteAllText(file, json);
     }
-    
+    public static void ResetToDefault()
+    {
+        foreach (var field in typeof(UI).GetFields(BindingFlags.Instance | BindingFlags.Public))
+        {
+            field.SetValue(Current, field.GetValue(Default));
+        }
+    }
+
     // Window
     public Vector4 ImGui_MainBg = new Vector4(0.176f, 0.176f, 0.188f, 1.0f);
     public Vector4 ImGui_ChildBg = new Vector4(0.145f, 0.145f, 0.149f, 1.0f);
@@ -83,16 +91,16 @@ public class UI
     public Vector4 ImGui_SliderGrab_Active = new Vector4(1.000f, 1.000f, 1.000f, 1.0f);
 
     // Tab
-    public Vector4 ImGui_Tab = new Vector4(0.176f, 0.176f, 0.188f, 1.0f);
-    public Vector4 ImGui_Tab_Hover = new Vector4(0.110f, 0.592f, 0.918f, 1.0f);
-    public Vector4 ImGui_Tab_Active = new Vector4(0.200f, 0.600f, 1.000f, 1.0f);
-    public Vector4 ImGui_UnfocusedTab = new Vector4(0.176f, 0.176f, 0.188f, 1.0f);
-    public Vector4 ImGui_UnfocusedTab_Active = new Vector4(0.247f, 0.247f, 0.275f, 1.0f);
+    public Vector4 ImGui_Tab = new Vector4(0.152f, 0.183f, 0.288f, 1.0f);
+    public Vector4 ImGui_Tab_Hover = new Vector4(0.182f, 0.214f, 0.332f, 1.0f);
+    public Vector4 ImGui_Tab_Active = new Vector4(0.206f, 0.243f, 0.375f, 1.0f);
+    public Vector4 ImGui_UnfocusedTab = new Vector4(0.152f, 0.183f, 0.288f, 1.0f);
+    public Vector4 ImGui_UnfocusedTab_Active = new Vector4(0.152f, 0.183f, 0.288f, 1.0f);
 
     // Button
-    public Vector4 ImGui_Button = new Vector4(0.176f, 0.176f, 0.188f, 1.0f);
-    public Vector4 ImGui_Button_Hovered = new Vector4(0.247f, 0.247f, 0.275f, 1.0f);
-    public Vector4 ImGui_ButtonActive = new Vector4(0.200f, 0.600f, 1.000f, 1.0f);
+    public Vector4 ImGui_Button = new Vector4(0.152f, 0.183f, 0.288f, 1.0f);
+    public Vector4 ImGui_Button_Hovered = new Vector4(0.182f, 0.214f, 0.332f, 1.0f);
+    public Vector4 ImGui_ButtonActive = new Vector4(0.206f, 0.243f, 0.375f, 1.0f);
 
     // Selection
     public Vector4 ImGui_Selection = new Vector4(0.087f, 0.296f, 0.437f, 1.000f);

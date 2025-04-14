@@ -24,6 +24,13 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(WindowState))]
 [JsonSerializable(typeof(ImGuiCFG))]
 
+// Alias Data
+[JsonSerializable(typeof(AliasResource))]
+[JsonSerializable(typeof(AliasReference))]
+
+[JsonSerializable(typeof(AliasStore))]
+[JsonSerializable(typeof(AliasEntry))]
+
 // Reference Data
 [JsonSerializable(typeof(RowNameStore))]
 [JsonSerializable(typeof(RowNameParam))]
@@ -34,6 +41,19 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(UpgraderMassEditEntry))]
 
 [JsonSerializable(typeof(ParamTypeInfo))]
+
+[JsonSerializable(typeof(ParamCommutativeResource))]
+[JsonSerializable(typeof(ParamCommutativeEntry))]
+
+[JsonSerializable(typeof(ParamCategoryResource))]
+[JsonSerializable(typeof(ParamCategoryEntry))]
+
+[JsonSerializable(typeof(GameOffsetResource))]
+[JsonSerializable(typeof(GameOffsetReference))]
+
+[JsonSerializable(typeof(ProjectEnumResource))]
+[JsonSerializable(typeof(ProjectEnumEntry))]
+[JsonSerializable(typeof(ProjectEnumOption))]
 internal partial class SmithboxSerializerContext : JsonSerializerContext
 {
 }

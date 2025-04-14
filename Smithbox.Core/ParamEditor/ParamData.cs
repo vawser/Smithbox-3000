@@ -17,7 +17,7 @@ public class ParamData
 {
     public Project Project;
 
-    public bool Initialized = false;
+    public bool Initialized;
 
     public ParamUICache UICache;
 
@@ -102,7 +102,7 @@ public class ParamData
         }
 
         // Primary Bank
-        PrimaryBank = new(this, Project.ProjectPath);
+        PrimaryBank = new(this, Project.ProjectPath, "Primary");
 
         Task<bool> primaryBankTask = PrimaryBank.Load(Project.FS, Paramdefs);
         bool primaryBankLoaded = await primaryBankTask;
@@ -118,7 +118,7 @@ public class ParamData
         }
 
         // Vanilla Bank
-        VanillaBank = new(this, Project.DataPath);
+        VanillaBank = new(this, Project.DataPath, "Vanilla");
 
         Task<bool> vanillaBankTask = VanillaBank.Load(Project.VanillaFS, Paramdefs);
         bool vanillaBankLoaded = await vanillaBankTask;
@@ -161,7 +161,7 @@ public class ParamData
         UICache.ClearCaches();
 
         // Primary Bank
-        PrimaryBank = new(this, Project.ProjectPath);
+        PrimaryBank = new(this, Project.ProjectPath, "Primary");
 
         Task<bool> primaryBankTask = PrimaryBank.Load(Project.FS, Paramdefs);
         bool primaryBankLoaded = await primaryBankTask;
@@ -177,7 +177,7 @@ public class ParamData
         }
 
         // Vanilla Bank
-        VanillaBank = new(this, Project.DataPath);
+        VanillaBank = new(this, Project.DataPath, "Vanilla");
 
         Task<bool> vanillaBankTask = VanillaBank.Load(Project.VanillaFS, Paramdefs);
         bool vanillaBankLoaded = await vanillaBankTask;

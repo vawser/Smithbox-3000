@@ -73,6 +73,7 @@ public class Smithbox
         // Special modals
         ParamUpgrader.Draw();
         MessageBox.Draw();
+        ColorPicker.Draw();
         ProjectCreation.Draw();
         EditorSettings.Draw();
         ControlSettings.Draw();
