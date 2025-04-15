@@ -46,6 +46,11 @@ public class ParamData
     /// </summary>
     public Dictionary<string, PARAMDEF> Paramdefs;
 
+    /// <summary>
+    /// Mapping between Filename -> PARAMDEF
+    /// </summary>
+    public Dictionary<string, PARAMDEF> ParamdefsByFilename;
+
     public bool IsParamDefLoaded { get; private set; }
     public bool IsParamMetaLoaded { get; private set; }
     public bool IsPrimaryBankLoaded { get; private set; }
@@ -88,7 +93,7 @@ public class ParamData
         }
 
         // Meta
-        Task<bool> metaTask = LoadParamMeta(Paramdefs);
+        Task<bool> metaTask = LoadParamMeta(Paramdefs, ParamdefsByFilename);
         bool paramMetaLoaded = await metaTask;
 
         if (paramMetaLoaded)
@@ -227,6 +232,7 @@ public class ParamData
         await Task.Delay(1000);
 
         Paramdefs = new Dictionary<string, PARAMDEF>();
+        ParamdefsByFilename = new Dictionary<string, PARAMDEF>();
         ParamTypeInfo = new();
         ParamTypeInfo.Mapping = new();
         ParamTypeInfo.Exceptions = new();
@@ -242,6 +248,7 @@ public class ParamData
         {
             var pdef = PARAMDEF.XmlDeserialize(f, true);
             Paramdefs.Add(pdef.ParamType, pdef);
+            ParamdefsByFilename.Add(f, pdef);
             defPairs.Add((f, pdef));
         }
 
@@ -279,7 +286,7 @@ public class ParamData
         return true;
     }
 
-    public async Task<bool> LoadParamMeta(Dictionary<string, PARAMDEF> defs)
+    public async Task<bool> LoadParamMeta(Dictionary<string, PARAMDEF> defs, Dictionary<string, PARAMDEF> fileNameDefs)
     {
         await Task.Delay(1000);
 
@@ -312,7 +319,7 @@ public class ParamData
             }
         }
 
-        foreach ((var f, PARAMDEF pdef) in defs)
+        foreach ((var f, PARAMDEF pdef) in fileNameDefs)
         {
             ParamMeta meta = new(this);
 

@@ -33,7 +33,7 @@ public class ParamMeta
 
     public List<ParamColorEdit> ColorEditors = new();
 
-    public ConcurrentDictionary<PARAMDEF.Field, ParamFieldMeta> Fields = new();
+    public Dictionary<PARAMDEF.Field, ParamFieldMeta> Fields = new();
 
     /// <summary>
     /// Provides a brief description of the param's usage and behaviour
@@ -253,15 +253,15 @@ public class ParamMeta
 
                     if (pairedNode == null)
                     {
-                        new ParamFieldMeta(this, f);
+                        Fields.Add(f, new ParamFieldMeta(this, f));
                         continue;
                     }
 
-                    new ParamFieldMeta(this, pairedNode, f);
+                    Fields.Add(f, new ParamFieldMeta(this, pairedNode, f));
                 }
                 catch
                 {
-                    new ParamFieldMeta(this, f);
+                    Fields.Add(f, new ParamFieldMeta(this, f));
                 }
             }
 
@@ -295,18 +295,23 @@ public class ParamMeta
 
     public ParamFieldMeta GetField(PARAMDEF.Field def)
     {
-        ParamFieldMeta fieldMeta = Fields[def];
-
-        if (fieldMeta == null)
+        if (Fields.ContainsKey(def))
         {
-            if (DataParent.ParamMeta.ContainsKey(def.Parent))
+            ParamFieldMeta fieldMeta = Fields[def];
+
+            if (fieldMeta == null)
             {
-                var pdef = DataParent.ParamMeta[def.Parent];
-                fieldMeta = new ParamFieldMeta(pdef, def);
+                if (DataParent.ParamMeta.ContainsKey(def.Parent))
+                {
+                    var pdef = DataParent.ParamMeta[def.Parent];
+                    fieldMeta = new ParamFieldMeta(pdef, def);
+                }
             }
+
+            return fieldMeta;
         }
 
-        return fieldMeta;
+        return null;
     }
     private void SetStringXmlProperty(string property, string value, bool sanitise, XmlDocument xml,
         params string[] path)

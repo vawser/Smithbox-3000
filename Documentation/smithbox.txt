@@ -3,3 +3,4 @@
 #--------------------------------------
 -- Add Row Name Export for Community Names: Complete (full output from current params) and Changed Only (check rows against existing names, only replace if different + add new rows).
 -- DS1R param load is not working
+-- DES / BB vanilla bank load not working 

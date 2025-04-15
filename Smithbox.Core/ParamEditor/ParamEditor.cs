@@ -30,6 +30,14 @@ public class ParamEditor
     public ActionManager ActionManager;
     public ParamActions ParamActions;
 
+    public ParamSelection Selection;
+
+    public ParamListView ParamView;
+    public ParamRowView RowView;
+    public ParamFieldView FieldView;
+
+    public bool DetectShortcuts = false;
+
     public ParamEditor(int id, Project projectOwner)
     {
         Project = projectOwner;
@@ -37,6 +45,12 @@ public class ParamEditor
 
         ActionManager = new();
         ParamActions = new(this);
+
+        Selection = new(this);
+
+        ParamView = new(Project, this);
+        RowView = new(Project, this);
+        FieldView = new(Project, this);
     }
 
     public void Draw(string[] cmd)
@@ -50,11 +64,14 @@ public class ParamEditor
 
         if (Project.ParamData.Initialized)
         {
+            FieldView.SetupFieldOrder();
             ParamActions.Draw();
 
             if (Project.IsSelected)
             {
-                DisplayEditor();
+                ParamView.Draw(cmd);
+                RowView.Draw(cmd);
+                FieldView.Draw(cmd);
             }
             else
             {
@@ -179,10 +196,6 @@ public class ParamEditor
         }
     }
 
-    
-
-    private bool DetectShortcuts = false;
-
     /// <summary>
     /// Called after the windows
     /// </summary>
@@ -195,72 +208,6 @@ public class ParamEditor
                 Save();
             }
         }
-    }
-
-    // TEMP
-    private string _selectedParam = "";
-
-    private void DisplayEditor()
-    {
-        DetectShortcuts = false;
-
-        ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
-
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-
-        for(int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)
-        {
-            var entry = Project.ParamData.PrimaryBank.Params.ElementAt(i);
-
-            if (ImGui.Selectable($"{entry.Key}##paramEntry{i}"))
-            {
-                _selectedParam = entry.Key;
-            }
-        }
-
-        ImGui.End();
-
-        ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
-
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-
-        if(_selectedParam != "")
-        {
-            var curParam = Project.ParamData.PrimaryBank.Params[_selectedParam];
-
-            for (int i = 0; i < curParam.Rows.Count; i++)
-            {
-                var curRow = curParam.Rows[i];
-
-                var rowName = $"{i}:{curRow.ID}";
-                if(curRow.Name != null)
-                {
-                    rowName = $"{rowName} {curRow.Name}";
-                }
-
-                if (ImGui.Selectable($"{rowName}##rowEntry{i}"))
-                {
-
-                }
-            }
-        }
-
-        ImGui.End();
-
-        ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
-
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-
-        ImGui.End();
     }
 
     private async void Save()

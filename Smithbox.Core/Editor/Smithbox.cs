@@ -248,9 +248,12 @@ public class Smithbox
         .OrderBy(p =>
         {
             foreach (var kvp in ProjectDisplayConfig.ProjectOrder)
+            {
                 if (kvp.Value == p.ProjectGUID)
+                {
                     return kvp.Key;
-
+                }
+            }
             return int.MaxValue; // Put untracked projects at the end
         })
         .ToList();
@@ -347,6 +350,8 @@ public class Smithbox
         {
             projectEntry.Save();
         }
+
+
 
         CFG.Save();
         UI.Save();
@@ -509,7 +514,9 @@ public class Smithbox
         // Input box
         ImGui.InputTextMultiline("##ScriptInput", ref input, 4096, new Vector2(-1, 120), ImGuiInputTextFlags.AllowTabInput);
 
-        if (ImGui.Button("Run"))
+        var buttonSize = new Vector2(ImGui.GetWindowWidth() * 0.95f, 24);
+
+        if (ImGui.Button("Run", buttonSize))
         {
             _ = Console.EvaluateAsync(input); // fire and forget
             input = string.Empty;

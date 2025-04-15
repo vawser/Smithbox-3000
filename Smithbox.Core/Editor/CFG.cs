@@ -139,6 +139,11 @@ public class CFG
     /// </summary>
     public bool UseIndexMatchForRowNameRestore = true;
 
+    /// <summary>
+    /// If true, then community field names will be used. If false, the internal field names will be used.
+    /// </summary>
+    public bool DisplayCommunityFieldNames = true;
+
 
     //----------------------------------
     /// General
