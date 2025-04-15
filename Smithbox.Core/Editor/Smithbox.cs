@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.ImGuiDemo;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 using System;
@@ -27,6 +28,8 @@ public class Smithbox
 
     private bool HasSetup = false;
 
+    private ProjectDisplay ProjectDisplayConfig;
+
     public Smithbox()
     {
 
@@ -48,6 +51,7 @@ public class Smithbox
         CFG.Load();
         UI.Load();
 
+        LoadProjectDisplayConfig();
         LoadExistingProjects();
 
         ProjectCreation.Setup();
@@ -224,10 +228,20 @@ public class Smithbox
     {
         UIHelper.SimpleHeader("projectListHeader", "Available Projects", "The projects currently available to select from.", UI.Current.ImGui_Highlight_Text);
 
-        for(int i = 0; i < Projects.Count; i++)
+        var displayList = Projects.OrderBy(p =>
         {
-            var projectEntry = Projects[i];
+            foreach (var kvp in ProjectDisplayConfig.ProjectOrder)
+            {
+                if (kvp.Value == p.ProjectGUID)
+                    return kvp.Key;
+            }
 
+            return int.MaxValue;
+        }).ToList();
+
+        for (int i = 0; i < displayList.Count; i++)
+        {
+            var projectEntry = displayList[i];
             var imGuiID = projectEntry.ProjectGUID;
 
             if (ImGui.Selectable($"{projectEntry.ProjectName}##{imGuiID}", SelectedProject == projectEntry))
@@ -282,15 +296,68 @@ public class Smithbox
         ImGuiCFG.Save();
     }
 
+    private void LoadProjectDisplayConfig()
+    {
+        var folder = FolderUtils.GetConfigurationFolder();
+        var file = Path.Combine(folder, "Project Display.json");
+
+        if (!File.Exists(file))
+        {
+            ProjectDisplayConfig = new ProjectDisplay();
+        }
+        else
+        {
+            try
+            {
+                var filestring = File.ReadAllText(file);
+                var options = new JsonSerializerOptions();
+                ProjectDisplayConfig = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.ProjectDisplay);
+
+                if (ProjectDisplayConfig == null)
+                {
+                    throw new Exception("[Smithbox] Failed to read Project Display.json");
+                }
+            }
+            catch (Exception e)
+            {
+                TaskLogs.AddLog("[Smithbox] Failed to load Project Display.json");
+
+                ProjectDisplayConfig = new ProjectDisplay();
+            }
+        }
+    }
+
+    private void SaveProjectDisplayConfig()
+    {
+        var folder = FolderUtils.GetConfigurationFolder();
+        var file = Path.Combine(folder, "Project Display.json");
+
+        var json = JsonSerializer.Serialize(ProjectDisplayConfig, SmithboxSerializerContext.Default.ProjectDisplay);
+
+        File.WriteAllText(file, json);
+    }
+
     private void LoadExistingProjects()
     {
         // Read all the stored project jsons and create an existing Project dict
         var projectJsonList = FolderUtils.GetStoredProjectJsonList();
 
-        foreach (var entry in projectJsonList)
+        var buildProjectOrder = false;
+
+        // If it is not set, create initial order
+        if (ProjectDisplayConfig.ProjectOrder == null)
         {
+            ProjectDisplayConfig.ProjectOrder = new();
+            buildProjectOrder = true;
+        }
+
+        for(int i = 0; i < projectJsonList.Count; i++)
+        {
+            var entry = projectJsonList[i];
+
             if (File.Exists(entry))
             {
+
                 try
                 {
                     var filestring = File.ReadAllText(entry);
@@ -308,6 +375,11 @@ public class Smithbox
                         if (ProjectUtils.IsSupportedProjectType(curProject.ProjectType))
                         {
                             Projects.Add(curProject);
+
+                            if (buildProjectOrder)
+                            {
+                                ProjectDisplayConfig.ProjectOrder.Add(i, curProject.ProjectGUID);
+                            }
                         }
                     }
                 }
@@ -318,7 +390,12 @@ public class Smithbox
             }
         }
 
-        if(Projects.Count > 0)
+        if (buildProjectOrder)
+        {
+            SaveProjectDisplayConfig();
+        }
+
+        if (Projects.Count > 0)
         {
             foreach(var projectEntry in Projects)
             {

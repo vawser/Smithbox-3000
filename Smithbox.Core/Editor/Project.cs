@@ -5,6 +5,7 @@ using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.Resources;
 using Smithbox.Core.Scatchpad;
 using Smithbox.Core.Utils;
 using System;
@@ -138,6 +139,12 @@ public class Project
     [JsonIgnore]
     public ModelEditor PrimaryModelEditor;
 
+    /// <summary>
+    /// Aliases
+    /// </summary>
+    [JsonIgnore]
+    public AliasStore Aliases;
+
     public async void Initialize()
     {
         TaskLogs.AddLog($"[{ProjectName}] Initializing...");
@@ -162,6 +169,19 @@ public class Project
         else
         {
             TaskLogs.AddLog($"[{ProjectName}] Failed to setup virtual filesystem.");
+        }
+
+        // Aliases
+        Task<bool> aliasesTask = SetupAliases();
+        bool aliasesSetup = await aliasesTask;
+
+        if (aliasesSetup)
+        {
+            TaskLogs.AddLog($"[{ProjectName}] Setup aliases.");
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{ProjectName}] Failed to setup aliases.");
         }
 
         // File Browser
@@ -430,6 +450,37 @@ public class Project
             FS = EmptyVirtualFileSystem.Instance;
         else
             FS = new CompundVirtualFileSystem(fileSystems);
+
+        return true;
+    }
+
+    public async Task<bool> SetupAliases()
+    {
+        await Task.Delay(1000);
+
+        Aliases = new();
+
+        var folder = $@"{AppContext.BaseDirectory}\Assets\Aliases\{LocatorUtils.GetGameDirectory(ProjectType)}";
+        var file = Path.Combine(folder, "Aliases.json");
+
+        if (File.Exists(file))
+        {
+            try
+            {
+                var filestring = File.ReadAllText(file);
+                var options = new JsonSerializerOptions();
+                Aliases = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.AliasStore);
+
+                if (Aliases == null)
+                {
+                    throw new Exception("[Smithbox] Failed to read Aliases.json");
+                }
+            }
+            catch (Exception e)
+            {
+                TaskLogs.AddLog("[Smithbox] Failed to load Aliases.json");
+            }
+        }
 
         return true;
     }

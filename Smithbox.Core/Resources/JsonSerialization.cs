@@ -23,6 +23,7 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(Project))]
 [JsonSerializable(typeof(WindowState))]
 [JsonSerializable(typeof(ImGuiCFG))]
+[JsonSerializable(typeof(ProjectDisplay))]
 
 // Alias Data
 [JsonSerializable(typeof(AliasStore))]
