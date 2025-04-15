@@ -35,7 +35,6 @@ public static class ColorPicker
             ImGui.ColorPicker4("colorPicker", (float*)&color, flags);
 
             Color = color;
-            UI.Current.ImGui_Button = color;
 
             ImGui.EndPopup();
         }

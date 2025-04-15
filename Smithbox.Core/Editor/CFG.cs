@@ -57,6 +57,11 @@ public class CFG
     // Interface
     //----------------------------------
     /// <summary>
+    /// If true, the Script Console window is displayed
+    /// </summary>
+    public bool DisplayScriptConsoleWindow = true;
+
+    /// <summary>
     /// If true, the Projects window is displayed
     /// </summary>
     public bool DisplayProjectListWindow = true;
@@ -85,11 +90,6 @@ public class CFG
     /// If true, the Primary Model Editor window is displayed
     /// </summary>
     public bool DisplayPrimaryModelEditor = true;
-
-    /// <summary>
-    /// If true, the Scratchpad window is displayed
-    /// </summary>
-    public bool DisplayScratchpad = true;
 
     /// <summary>
     /// The display scaling to apply to the Interface

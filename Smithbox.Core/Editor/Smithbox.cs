@@ -1,4 +1,6 @@
 ﻿using Hexa.NET.ImGui;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.ImGuiDemo;
@@ -23,16 +25,19 @@ namespace Smithbox.Core.Editor;
 /// </summary>
 public class Smithbox
 {
-    private Project SelectedProject;
-    private List<Project> Projects = new();
+    public Project SelectedProject;
+    public List<Project> Projects = new();
 
-    private bool HasSetup = false;
+    public bool HasSetup = false;
 
-    private ProjectDisplay ProjectDisplayConfig;
+    public ProjectDisplay ProjectDisplayConfig;
+    public ScriptingConsole Console = new();
+
+    public string TestString = "TestMe";
 
     public Smithbox()
     {
-
+        _ = Console.InitializeAsync();
     }
 
     /// <summary>
@@ -104,6 +109,11 @@ public class Smithbox
                     projectEntry.Draw(command);
                 }
             }
+        }
+
+        if (CFG.Current.DisplayScriptConsoleWindow)
+        {
+            DisplayScriptingConsole();
         }
 
         UIHelper.UnapplyBaseStyle();
@@ -188,6 +198,12 @@ public class Smithbox
                     CFG.Current.DisplayProjectWindow = !CFG.Current.DisplayProjectWindow;
                 }
                 UIHelper.Tooltip("Toggle the visibility of the Project window.");
+
+                if (ImGui.MenuItem("Script Console", CFG.Current.DisplayScriptConsoleWindow))
+                {
+                    CFG.Current.DisplayScriptConsoleWindow = !CFG.Current.DisplayScriptConsoleWindow;
+                }
+                UIHelper.Tooltip("Toggle the visibility of the Script Console window.");
 
                 ImGui.EndMenu();
             }
@@ -280,7 +296,6 @@ public class Smithbox
                 ImGui.EndDragDropTarget();
             }
 
-            // Context menu (optional, kept from your original code)
             if (ImGui.BeginPopupContextItem($"ProjectListContextMenu{imGuiID}"))
             {
                 if (project.AutoSelect)
@@ -413,6 +428,8 @@ public class Smithbox
                     }
                     else
                     {
+                        curProject.Source = this;
+
                         // Ignore unsupported projects
                         if (ProjectUtils.IsSupportedProjectType(curProject.ProjectType))
                         {
@@ -458,7 +475,7 @@ public class Smithbox
         var dataPath = ProjectCreation.DataPath;
         var projectType = ProjectCreation.ProjectType;
 
-        var newProject = new Project(guid, projectName, projectPath, dataPath, projectType);
+        var newProject = new Project(this, guid, projectName, projectPath, dataPath, projectType);
 
         ProjectCreation.Reset();
 
@@ -472,5 +489,32 @@ public class Smithbox
             tEntry.IsSelected = false;
         }
         SelectedProject.IsSelected = true;
+    }
+
+    private string input = string.Empty;
+
+    private void DisplayScriptingConsole()
+    {
+        ImGui.Begin("Scripting Console");
+
+        if (ImGui.BeginChild("ScriptLog", new Vector2(0, 300)))
+        {
+            foreach (var line in Console.Logs)
+            {
+                ImGui.TextWrapped(line);
+            }
+            ImGui.EndChild();
+        }
+
+        // Input box
+        ImGui.InputTextMultiline("##ScriptInput", ref input, 4096, new Vector2(-1, 120), ImGuiInputTextFlags.AllowTabInput);
+
+        if (ImGui.Button("Run"))
+        {
+            _ = Console.EvaluateAsync(input); // fire and forget
+            input = string.Empty;
+        }
+
+        ImGui.End();
     }
 }

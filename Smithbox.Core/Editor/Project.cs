@@ -1,12 +1,12 @@
 ﻿using Andre.IO.VFS;
 using Hexa.NET.ImGui;
+using HKLib.hk2018.hkcdStaticMeshTree;
 using Silk.NET.Core.Native;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
-using Smithbox.Core.Scatchpad;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -49,8 +49,9 @@ public class Project
 
     public Project() { }
 
-    public Project(Guid newGuid, string projectName, string projectPath, string dataPath, ProjectType projectType)
+    public Project(Smithbox source, Guid newGuid, string projectName, string projectPath, string dataPath, ProjectType projectType)
     {
+        Source = source;
         ProjectGUID = newGuid;
         ProjectName = projectName;
         ProjectPath = projectPath;
@@ -61,10 +62,10 @@ public class Project
     }
 
     /// <summary>
-    /// Scratchpad
+    /// Base class
     /// </summary>
     [JsonIgnore]
-    public Scratchpad Scratchpad;
+    public Smithbox Source;
 
     /// <summary>
     /// Compound filesystem, contains all the other systems, in the order of precedence
@@ -205,14 +206,6 @@ public class Project
             PrimaryModelEditor = new ModelEditor(0, this);
         }
 
-        // Scratchpad
-#if DEBUG
-        if (FeatureFlags.IncludeScratchpad)
-        {
-            Scratchpad = new Scratchpad(0, this);
-        }
-#endif
-
         IsInitializing = false;
         Initialized = true;
     }
@@ -270,15 +263,6 @@ public class Project
                     PrimaryModelEditor.Draw(cmd);
                 }
             }
-
-            // Scratchpad
-            if (FeatureFlags.IncludeScratchpad)
-            {
-                if (CFG.Current.DisplayScratchpad)
-                {
-                    Scratchpad.Draw(cmd);
-                }
-            }
         }
 
         ImGui.End();
@@ -302,12 +286,6 @@ public class Project
             // Technically not per project, but functionally belongs here
             if (ImGui.BeginMenu("View"))
             {
-                if (ImGui.MenuItem("Projects", CFG.Current.DisplayProjectListWindow))
-                {
-                    CFG.Current.DisplayProjectListWindow = !CFG.Current.DisplayProjectListWindow;
-                }
-                UIHelper.Tooltip("Toggle the visibility of the Projects window.");
-
                 if (FeatureFlags.IncludeFileBrowser)
                 {
                     if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
