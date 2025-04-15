@@ -2053,13 +2053,10 @@ public class ParamBank
             return;
         }
 
-        foreach (ParamBank aux in DataParent.AuxBanks.Values)
-        {
-            if (!aux.Params.ContainsKey(param) || aux.PrimaryDiffCache == null || !aux.PrimaryDiffCache.ContainsKey(param))
-            {
-                continue; // Don't try for now
-            }
+        var aux = DataParent.AuxBank;
 
+        if (aux.Params.ContainsKey(param) && aux.PrimaryDiffCache != null && aux.PrimaryDiffCache.ContainsKey(param))
+        {
             Param.Row[] otherBankRows = aux.Params[param].Rows.Where(cell => cell.ID == row.ID).ToArray();
             RefreshParamRowDiffCache(row, otherBankRows, aux.PrimaryDiffCache[param]);
         }

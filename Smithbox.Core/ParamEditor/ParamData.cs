@@ -25,6 +25,7 @@ public class ParamData
 
     public ParamBank PrimaryBank;
     public ParamBank VanillaBank;
+    public ParamBank AuxBank;
 
     /// <summary>
     /// If param != primary param
@@ -36,7 +37,6 @@ public class ParamData
     /// </summary>
     public Dictionary<string, HashSet<int>> VanillaDiffCache;
 
-    public Dictionary<string, ParamBank> AuxBanks = new();
 
     public string Clipboard_Param = null;
     public List<Param.Row> Clipboard_Rows = new();
@@ -55,6 +55,7 @@ public class ParamData
     public bool IsParamMetaLoaded { get; private set; }
     public bool IsPrimaryBankLoaded { get; private set; }
     public bool IsVanillaBankLoaded { get; private set; }
+    public bool IsAuxBankLoaded { get; private set; }
 
     public ParamTypeInfo ParamTypeInfo;
 
@@ -75,6 +76,7 @@ public class ParamData
         IsParamMetaLoaded = false;
         IsPrimaryBankLoaded = false;
         IsVanillaBankLoaded = false;
+        IsAuxBankLoaded = false;
 
         UICache.ClearCaches();
 
@@ -344,9 +346,9 @@ public class ParamData
     {
         PrimaryBank.RefreshParamDiffCaches(true);
 
-        foreach (KeyValuePair<string, ParamBank> bank in Project.ParamData.AuxBanks)
+        if(IsAuxBankLoaded)
         {
-            bank.Value.RefreshParamDiffCaches(checkAuxVanillaDiff);
+            AuxBank.RefreshParamDiffCaches(checkAuxVanillaDiff);
         }
 
         UICache.ClearCaches();

@@ -36,6 +36,9 @@ public class ParamEditor
     public ParamRowView RowView;
     public ParamFieldView FieldView;
 
+    public ParamFieldDecorator FieldDecorator;
+    public ParamFieldInput FieldInput;
+
     public bool DetectShortcuts = false;
 
     public ParamEditor(int id, Project projectOwner)
@@ -47,6 +50,9 @@ public class ParamEditor
         ParamActions = new(this);
 
         Selection = new(this);
+
+        FieldDecorator = new(Project, this);
+        FieldInput = new(Project, this);
 
         ParamView = new(Project, this);
         RowView = new(Project, this);

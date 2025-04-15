@@ -31,6 +31,16 @@ public class ParamSelection
         return _selectedParam;
     }
 
+    public Param GetSelectedParamFromBank(ParamBank targetBank)
+    {
+        if(targetBank.Params.ContainsKey(_selectedParamName))
+        {
+            return targetBank.Params[_selectedParamName];
+        }
+
+        return null;
+    }
+
     public Param.Row GetSelectedRow(int position = -1)
     {
         return _selectedRow;

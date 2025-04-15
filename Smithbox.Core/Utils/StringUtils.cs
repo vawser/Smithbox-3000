@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,5 +20,29 @@ public class StringUtils
         }
 
         return string.Join(" | ", has);
+    }
+    public static unsafe byte* StringToUtf8(string str)
+    {
+        if (str == null)
+            return null;
+
+        // Encode to UTF-8 with null terminator
+        byte[] utf8Bytes = Encoding.UTF8.GetBytes(str + '\0');
+
+        // Allocate unmanaged memory
+        IntPtr unmanagedPtr = Marshal.AllocHGlobal(utf8Bytes.Length);
+
+        // Copy bytes to unmanaged memory
+        Marshal.Copy(utf8Bytes, 0, unmanagedPtr, utf8Bytes.Length);
+
+        return (byte*)unmanagedPtr.ToPointer();
+    }
+
+    public static unsafe void FreeUtf8(byte* ptr)
+    {
+        if (ptr != null)
+        {
+            Marshal.FreeHGlobal((IntPtr)ptr);
+        }
     }
 }

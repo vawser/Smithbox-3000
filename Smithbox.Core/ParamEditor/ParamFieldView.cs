@@ -1,4 +1,5 @@
-﻿using Hexa.NET.ImGui;
+﻿using Andre.Formats;
+using Hexa.NET.ImGui;
 using HKLib.hk2018.hk;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
@@ -25,6 +26,10 @@ public class ParamFieldView
     private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
     private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
+    private IEnumerable<Column> PrimaryOrderedColumns;
+    private IEnumerable<Column> VanillaOrderedColumns;
+    private IEnumerable<Column> AuxOrderedColumns;
+
     public ParamFieldView(Project curProject, ParamEditor editor)
     {
         ID = editor.ID;
@@ -34,6 +39,8 @@ public class ParamFieldView
 
     public unsafe void Draw(string[] cmd)
     {
+        var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
+
         ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
 
         if (ImGui.IsWindowFocused())
@@ -43,10 +50,28 @@ public class ParamFieldView
 
         if (Editor.Selection.IsFieldSelectionValid())
         {
-            var curParam = Editor.Selection.GetSelectedParam();
-            var curRow = Editor.Selection.GetSelectedRow();
+            Param curParam = Editor.Selection.GetSelectedParam();
+            Row curRow = Editor.Selection.GetSelectedRow();
 
-            var tableColumns = 2;
+            Param vanillaParam = Editor.Selection.GetSelectedParamFromBank(Project.ParamData.VanillaBank);
+            Row vanillaRow = vanillaParam.Rows.Where(e => e.ID == curRow.ID).FirstOrDefault();
+
+            Param auxParam = null;
+            Row auxRow = null;
+
+            if (Project.ParamData.AuxBank != null)
+            {
+                auxParam = Editor.Selection.GetSelectedParamFromBank(Project.ParamData.AuxBank);
+                auxRow = auxParam.Rows.Where(e => e.ID == curRow.ID).FirstOrDefault();
+            }
+
+            var tableColumns = 3;
+
+            if (vanillaRow != null)
+                tableColumns += 2;
+
+            if (auxRow != null)
+                tableColumns += 2;
 
             ParamMeta paramMeta = null;
             ParamFieldMeta fieldMeta = null;
@@ -59,20 +84,56 @@ public class ParamFieldView
             // Row ID and Name
 
             // Fields
-            if (ImGui.BeginTable($"fieldTable_{ID}", tableColumns, ImGuiTableFlags.SizingFixedFit))
+            if (ImGui.BeginTable($"fieldTable_{ID}", tableColumns, tblFlags))
             {
                 ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthFixed);
-                ImGui.TableSetupColumn("Value", ImGuiTableColumnFlags.WidthFixed);
+                ImGui.TableSetupColumn("Primary Value", ImGuiTableColumnFlags.WidthFixed);
+                ImGui.TableSetupColumn("Primary Info", ImGuiTableColumnFlags.WidthFixed);
+
+                if (vanillaRow != null)
+                {
+                    ImGui.TableSetupColumn("Vanilla Value", ImGuiTableColumnFlags.WidthFixed);
+                    ImGui.TableSetupColumn("Vanilla Info", ImGuiTableColumnFlags.WidthFixed);
+                }
+
+                if (auxRow != null)
+                {
+                    ImGui.TableSetupColumn("Aux Value", ImGuiTableColumnFlags.WidthFixed);
+                    ImGui.TableSetupColumn("Aux Info", ImGuiTableColumnFlags.WidthFixed);
+                }
+
+                // Row ID
+                ImGui.TableNextRow();
+                ImGui.TableSetColumnIndex(0);
+
+                ImGui.Text("Row ID");
+                UIHelper.Tooltip("ID of the row");
+
+                ImGui.TableSetColumnIndex(1);
+
+                Editor.FieldInput.DisplayRowIDInput($"rowIdInput", curParam, curRow);
+
+                // Row Name
+                ImGui.TableNextRow();
+                ImGui.TableSetColumnIndex(0);
+
+                ImGui.Text("Row Name");
+                UIHelper.Tooltip("Name of the row");
+
+                ImGui.TableSetColumnIndex(1);
+
+                Editor.FieldInput.DisplayRowNameInput($"rowNameInput", curParam, curRow);
 
                 int dragSourceIndex = -1;
                 int dragTargetIndex = -1;
 
-                var curOrderedColumns = GetOrderedFields(curRow.Columns);
+                if(PrimaryOrderedColumns == null)
+                    PrimaryOrderedColumns = GetOrderedFields(curRow.Columns);
 
                 // Fields
-                for (int i = 0; i < curOrderedColumns.Count(); i++)
+                for (int i = 0; i < PrimaryOrderedColumns.Count(); i++)
                 {
-                    var curField = curOrderedColumns.ElementAt(i);
+                    var curField = PrimaryOrderedColumns.ElementAt(i);
                     var curValue = curField.GetValue(curRow);
 
                     if (paramMeta != null)
@@ -133,7 +194,51 @@ public class ParamFieldView
 
                     ImGui.TableSetColumnIndex(1);
 
-                    ImGui.Text($"{curValue}");
+                    // Primary Value
+                    Editor.FieldInput.DisplayFieldInput($"primaryInput_{i}", curParam, curRow, curField, curValue, fieldMeta);
+
+                    // Primary Info
+                    ImGui.TableSetColumnIndex(2);
+
+                    Editor.FieldDecorator.DisplayFieldInfo($"primaryInfo_{i}", curParam, curRow, curField, curValue, fieldMeta);
+
+                    if (vanillaRow != null)
+                    {
+                        ImGui.TableSetColumnIndex(3);
+
+                        if(VanillaOrderedColumns == null)
+                            VanillaOrderedColumns = GetOrderedFields(vanillaRow.Columns);
+
+                        var vanillaField = VanillaOrderedColumns.ElementAt(i);
+                        var vanillaValue = vanillaField.GetValue(vanillaRow);
+
+                        // Vanilla Value
+                        Editor.FieldInput.DisplayFieldInput($"vanillaInput_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta, true);
+
+                        ImGui.TableSetColumnIndex(4);
+
+                        // Vanilla Info
+                        Editor.FieldDecorator.DisplayFieldInfo($"vanillaInfo_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta);
+                    }
+
+                    if (auxRow != null)
+                    {
+                        ImGui.TableSetColumnIndex(3);
+
+                        if(AuxOrderedColumns == null)
+                            AuxOrderedColumns = GetOrderedFields(auxRow.Columns);
+
+                        var auxField = AuxOrderedColumns.ElementAt(i);
+                        var auxValue = auxField.GetValue(vanillaRow);
+
+                        // Auxiliary Value
+                        Editor.FieldInput.DisplayFieldInput($"auxiliaryInput_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta, true);
+
+                        ImGui.TableSetColumnIndex(4);
+
+                        // Auxiliary Info
+                        Editor.FieldDecorator.DisplayFieldInfo($"auxiliaryInfo_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta);
+                    }
                 }
 
                 if (dragSourceIndex >= 0 && dragTargetIndex >= 0 && dragSourceIndex != dragTargetIndex)
@@ -150,6 +255,10 @@ public class ParamFieldView
                         curEntry.FieldOrder.Add(dragTargetIndex, sourceEntry);
                         curEntry.FieldOrder.Add(dragSourceIndex, targetEntry);
 
+                        PrimaryOrderedColumns = null;
+                        VanillaOrderedColumns = null;
+                        AuxOrderedColumns = null;
+
                         WriteFieldOrder();
                     }
                 }
@@ -161,6 +270,11 @@ public class ParamFieldView
         ImGui.End();
     }
 
+    /// <summary>
+    /// Get the ordered fields based on the Param Field Order file.
+    /// </summary>
+    /// <param name="columns"></param>
+    /// <returns></returns>
     public IEnumerable<Column> GetOrderedFields(IEnumerable<Column> columns)
     {
         if (FieldOrder == null)
@@ -192,6 +306,9 @@ public class ParamFieldView
     private bool InitializedFieldOrder = false;
     private ParamFieldOrder FieldOrder;
 
+    /// <summary>
+    /// Creates a new Param Field Order if a project one does not already exist.
+    /// </summary>
     public void SetupFieldOrder()
     {
         // Blank
@@ -236,6 +353,10 @@ public class ParamFieldView
         InitializedFieldOrder = true;
     }
 
+    /// <summary>
+    /// Reads the Param Field Order from the project .smithbox folder.
+    /// </summary>
+    /// <returns></returns>
     public bool ReadFieldOrder()
     {
         var folder = $@"{Project.ProjectPath}\.smithbox\";
@@ -273,6 +394,9 @@ public class ParamFieldView
         return false;
     }
 
+    /// <summary>
+    /// Writes the Param Field Order out to the project .smithbox folder.
+    /// </summary>
     public void WriteFieldOrder()
     {
         var folder = $@"{Project.ProjectPath}\.smithbox\";
