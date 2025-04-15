@@ -224,45 +224,71 @@ public class Smithbox
     /// <summary>
     /// The list of stored projects.
     /// </summary>
-    public void DisplayProjectList()
+    public unsafe void DisplayProjectList()
     {
         UIHelper.SimpleHeader("projectListHeader", "Available Projects", "The projects currently available to select from.", UI.Current.ImGui_Highlight_Text);
 
-        var displayList = Projects.OrderBy(p =>
+        var orderedProjects = Projects
+        .OrderBy(p =>
         {
             foreach (var kvp in ProjectDisplayConfig.ProjectOrder)
-            {
                 if (kvp.Value == p.ProjectGUID)
                     return kvp.Key;
-            }
 
-            return int.MaxValue;
-        }).ToList();
+            return int.MaxValue; // Put untracked projects at the end
+        })
+        .ToList();
 
-        for (int i = 0; i < displayList.Count; i++)
+        int dragSourceIndex = -1;
+        int dragTargetIndex = -1;
+
+        for (int i = 0; i < orderedProjects.Count; i++)
         {
-            var projectEntry = displayList[i];
-            var imGuiID = projectEntry.ProjectGUID;
+            var project = orderedProjects[i];
+            var imGuiID = project.ProjectGUID;
 
-            if (ImGui.Selectable($"{projectEntry.ProjectName}##{imGuiID}", SelectedProject == projectEntry))
+            // Highlight selectable
+            if (ImGui.Selectable($"{project.ProjectName}##{imGuiID}", SelectedProject == project))
             {
-                SelectedProject = projectEntry;
+                SelectedProject = project;
 
                 foreach (var tEntry in Projects)
-                {
                     tEntry.IsSelected = false;
-                }
+
                 SelectedProject.IsSelected = true;
             }
 
+            // Begin drag
+            if (ImGui.BeginDragDropSource())
+            {
+                int payloadIndex = i;
+                ImGui.SetDragDropPayload("PROJECT_DRAG", &payloadIndex, sizeof(int));
+                ImGui.Text(project.ProjectName);
+                ImGui.EndDragDropSource();
+            }
+
+            // Accept drop
+            if (ImGui.BeginDragDropTarget())
+            {
+                var payload = ImGui.AcceptDragDropPayload("PROJECT_DRAG");
+                if (payload.Handle != null)
+                {
+                    int* droppedIndex = (int*)payload.Data;
+                    dragSourceIndex = *droppedIndex;
+                    dragTargetIndex = i;
+                }
+                ImGui.EndDragDropTarget();
+            }
+
+            // Context menu (optional, kept from your original code)
             if (ImGui.BeginPopupContextItem($"ProjectListContextMenu{imGuiID}"))
             {
-                if(projectEntry.AutoSelect)
+                if (project.AutoSelect)
                 {
                     if (ImGui.Selectable($"Disable Automatic Load##autoLoadDisable{imGuiID}"))
                     {
-                        projectEntry.AutoSelect = false;
-                        projectEntry.Save();
+                        project.AutoSelect = false;
+                        project.Save();
                     }
                     UIHelper.Tooltip("Disable automatic load for this project.");
                 }
@@ -270,14 +296,30 @@ public class Smithbox
                 {
                     if (ImGui.Selectable($"Enable Automatic Load##autoLoadEnable{imGuiID}"))
                     {
-                        projectEntry.AutoSelect = true;
-                        projectEntry.Save();
+                        project.AutoSelect = true;
+                        project.Save();
                     }
                     UIHelper.Tooltip("Set this project to automatically load when Smithbox starts.");
                 }
 
                 ImGui.EndPopup();
             }
+        }
+
+        if (dragSourceIndex >= 0 && dragTargetIndex >= 0 && dragSourceIndex != dragTargetIndex)
+        {
+            var movedProject = orderedProjects[dragSourceIndex];
+            orderedProjects.RemoveAt(dragSourceIndex);
+            orderedProjects.Insert(dragTargetIndex, movedProject);
+
+            // Rebuild order dictionary
+            ProjectDisplayConfig.ProjectOrder.Clear();
+            for (int i = 0; i < orderedProjects.Count; i++)
+            {
+                ProjectDisplayConfig.ProjectOrder[i] = orderedProjects[i].ProjectGUID;
+            }
+
+            SaveProjectDisplayConfig();
         }
     }
 
