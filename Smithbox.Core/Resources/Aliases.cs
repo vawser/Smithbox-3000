@@ -10,19 +10,6 @@ internal class Aliases
 {
 }
 
-public class AliasResource
-{
-    public List<AliasReference> list { get; set; }
-}
-
-public class AliasReference
-{
-    public string id { get; set; }
-    public string name { get; set; }
-    public List<string> tags { get; set; }
-}
-
-
 public class AliasStore
 {
     public List<AliasEntry> Assets { get; set; }

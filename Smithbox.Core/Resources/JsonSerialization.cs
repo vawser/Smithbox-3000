@@ -25,9 +25,6 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(ImGuiCFG))]
 
 // Alias Data
-[JsonSerializable(typeof(AliasResource))]
-[JsonSerializable(typeof(AliasReference))]
-
 [JsonSerializable(typeof(AliasStore))]
 [JsonSerializable(typeof(AliasEntry))]
 
