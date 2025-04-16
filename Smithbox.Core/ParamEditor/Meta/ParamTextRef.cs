@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
-public class ParamFmgRef
+/// <summary>
+/// A text reference: pointing to an entry in a FMG file.
+/// </summary>
+public class ParamTextRef
 {
     public string conditionField;
     public int conditionValue;
     public int offset;
     public string fmg;
 
-    internal ParamFmgRef(ParamMeta curMeta, string refString)
+    internal ParamTextRef(ParamMeta curMeta, string refString)
     {
         var conditionSplit = refString.Split('(', 2, StringSplitOptions.TrimEntries);
         var offsetSplit = conditionSplit[0].Split('+', 2);

@@ -8,6 +8,9 @@ using System.Xml;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// The display name for the param in the param list
+/// </summary>
 public class ParamDisplayName
 {
     public string Param;

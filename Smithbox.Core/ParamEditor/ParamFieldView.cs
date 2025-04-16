@@ -30,7 +30,7 @@ public class ParamFieldView
     /// <summary>
     /// Cache for the columns so they are only rebuilt when the order changes
     /// </summary>
-    private IEnumerable<Column> PrimaryOrderedColumns;
+    public IEnumerable<Column> PrimaryOrderedColumns;
     private IEnumerable<Column> VanillaOrderedColumns;
     private IEnumerable<Column> AuxOrderedColumns;
 
@@ -474,7 +474,7 @@ public class ParamFieldView
 
         if(ImGui.Button($"{Icons.Search}"))
         {
-            FieldVisibility = Editor.SearchEngine.ProcessFieldSearch(curParam, curRow, curMeta);
+            FieldVisibility = Editor.SearchEngine.ProcessFieldVisibility(curParam, curRow, curMeta);
         }
         UIHelper.Tooltip("Filter the field list.");
 
@@ -587,6 +587,23 @@ public class ParamFieldView
 
         UIHelper.Tooltip($"Toggle the display of the field offset column.\nCurrent Mode: {fieldOffsetColumnMode}");
 
+        // Toggle Field Padding
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Hubzilla}"))
+        {
+            CFG.Current.DisplayPaddingFields = !CFG.Current.DisplayPaddingFields;
+
+            // Refresj visibility
+            UpdateFieldVisibility(Editor.Selection._selectedRow);
+        }
+
+        var fieldPaddingMode = "Hidden";
+        if (CFG.Current.DisplayPaddingFields)
+            fieldPaddingMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of padding field.\nCurrent Mode: {fieldPaddingMode}");
+
         // Reset Field Ordering
         ImGui.SameLine();
 
@@ -615,9 +632,68 @@ public class ParamFieldView
     {
         var search = Editor.SearchEngine;
 
+        if (PrimaryOrderedColumns == null)
+            return;
+
         if (search.StoredParam != null && newRow != null && search.StoredMeta != null)
         {
-            FieldVisibility = search.ProcessFieldSearch(search.StoredParam, newRow, search.StoredMeta);
+            FieldVisibility = search.ProcessFieldVisibility(search.StoredParam, newRow, search.StoredMeta);
+        }
+        // Applied for non filtered switches, e.g. no search is present, but row changes
+        else
+        {
+            // Update visibility for padding
+            if (!CFG.Current.DisplayPaddingFields)
+            {
+                var filterResult = new Dictionary<int, bool>();
+
+                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRow != null)
+                {
+                    var curParam = Editor.Selection._selectedParam;
+                    var curMeta = Project.ParamData.GetParamMeta(curParam.AppliedParamdef);
+
+                    for (int i = 0; i < PrimaryOrderedColumns.Count(); i++)
+                    {
+                        var visible = true;
+
+                        var curField = PrimaryOrderedColumns.ElementAt(i);
+                        var curFieldMeta = curMeta.Fields[curField.Def];
+
+                        // Hide padding if it is disabled
+                        if (!CFG.Current.DisplayPaddingFields)
+                        {
+                            if (curFieldMeta.IsPaddingField)
+                            {
+                                visible = false;
+                            }
+                        }
+
+                        filterResult.Add(i, visible);
+                    }
+                }
+
+                FieldVisibility = filterResult;
+            }
+            // Show all on a non-search row switch with no modifiers
+            else
+            {
+                var filterResult = new Dictionary<int, bool>();
+
+                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRow != null)
+                {
+                    var curParam = Editor.Selection._selectedParam;
+                    var curRow = Editor.Selection._selectedRow;
+
+                    for (int i = 0; i < PrimaryOrderedColumns.Count(); i++)
+                    {
+                        var visible = true;
+
+                        filterResult.Add(i, visible);
+                    }
+                }
+
+                FieldVisibility = filterResult;
+            }
         }
     }
 

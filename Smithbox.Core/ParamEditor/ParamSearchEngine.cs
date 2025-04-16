@@ -49,21 +49,32 @@ public class ParamSearchEngine
     /// <param name="curRow"></param>
     /// <param name="curMeta"></param>
     /// <returns></returns>
-    public Dictionary<int, bool> ProcessFieldSearch(Param curParam, Row curRow, ParamMeta curMeta)
+    public Dictionary<int, bool> ProcessFieldVisibility(Param curParam, Row curRow, ParamMeta curMeta)
     {
         StoredParam = curParam;
         StoredMeta = curMeta;
 
         var filterResult = new Dictionary<int, bool>();
 
-        for (int i = 0; i < curRow.Columns.Count(); i++)
+        for (int i = 0; i < Editor.FieldView.PrimaryOrderedColumns.Count(); i++)
         {
             var visible = true;
 
             var curField = curRow.Columns.ElementAt(i);
+            var curFieldMeta = curMeta.Fields[curField.Def];
+
             var curValue = curField.GetValue(curRow);
 
             visible = GetFieldTruth(curRow, curField, curValue, curMeta);
+
+            // Hide padding if it is disabled
+            if(!CFG.Current.DisplayPaddingFields)
+            {
+                if(curFieldMeta.IsPaddingField)
+                {
+                    visible = false;
+                }
+            }
 
             filterResult.Add(i, visible);
         }

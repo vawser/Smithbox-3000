@@ -317,7 +317,7 @@
     AltName="Corporation Texture ID" 
     Wiki="The maker icon to use for this booster."
     Enum="EQUIP_MAKER_TYPE" 
-    TextureRef="Direct/01_common/SB_MakerLogo/Maker/MakerLogo_" />
+    TextureRef="menu/hi/01_common/SB_MakerLogo.dds Maker MakerLogo_" />
     
     <bladeHoming_InitSpeedKMH
     AltName="Blade Homing: Initial Speed"

@@ -10,6 +10,9 @@ using System.Xml;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// An enum set for the field value
+/// </summary>
 public class ParamEnum
 {
     public string Name;

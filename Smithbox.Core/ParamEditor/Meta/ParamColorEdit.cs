@@ -9,6 +9,9 @@ using System.Xml;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// Color edit field
+/// </summary>
 public class ParamColorEdit
 {
     public string Name;

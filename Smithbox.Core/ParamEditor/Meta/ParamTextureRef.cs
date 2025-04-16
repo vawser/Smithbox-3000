@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// A texture reference: pointing to a texture file in the File Browser
+/// </summary>
 public class ParamTextureRef
 {
-    /// <summary>
-    /// The lookup process to use.
-    /// </summary>
-    public string LookupType = "";
-
-    /// <summary>
-    /// The name of the texture container.
-    /// </summary>
-    public string TextureContainer = "";
-
     /// <summary>
     /// The name of the texture file within the texture container.
     /// </summary>
@@ -35,29 +28,17 @@ public class ParamTextureRef
 
     internal ParamTextureRef(ParamMeta curMeta, string refString)
     {
-        var refSplit = refString.Split('/');
+        var refSplit = refString.Split(' ');
 
-        LookupType = refSplit[0];
+        TextureFile = refSplit[0];
 
         if (refSplit.Length > 1)
         {
-            TextureContainer = refSplit[1];
+            TargetField = refSplit[1];
         }
         if (refSplit.Length > 2)
         {
-            TextureFile = refSplit[2];
-        }
-        if (refSplit.Length > 3)
-        {
-            TargetField = refSplit[3];
-        }
-
-        if (LookupType == "Direct")
-        {
-            if (refSplit.Length > 4)
-            {
-                SubTexturePrefix = refSplit[4];
-            }
+            SubTexturePrefix = refSplit[2];
         }
     }
 

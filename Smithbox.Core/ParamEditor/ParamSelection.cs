@@ -97,6 +97,7 @@ public class ParamSelection
 
         // Re-run current field filter on row switch so the field view updates seemlessly
         Editor.FieldView.UpdateFieldVisibility(row);
+        Editor.FieldImageView.UpdateIconPreview(row);
     }
 
     public bool IsRowSelected(int index, Param.Row row)

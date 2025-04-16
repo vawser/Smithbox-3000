@@ -22,6 +22,32 @@ public class ParamFieldDecorator
 
     public void DisplayFieldInfo(string imguiID, Param curParam, Row curRow, Column curField, object curValue, ParamFieldMeta fieldMeta, bool isReadOnly = false)
     {
+        // ParamRef
 
+        // ParamTextRef
+
+        // ParamfileRef
+
+        // ParamTextureRef
+
+        // ParamEnum
+
+        // Project Enum
+
+        // ParamCalcCorrectDef
+
+        // ParamSoulCostDef
+
+        // Virtual Ref
+
+        // Alias: Particle
+
+        // Alias: Sound
+
+        // Alias: Event Flag
+
+        // Alias: Cutscene
+
+        // Alias: Movie
     }
 }

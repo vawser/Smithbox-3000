@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
-public class ParamExternalRef
+/// <summary>
+/// Points to a file reference: includes a jump to the File Browser, selecting the file
+/// </summary>
+public class ParamFileRef
 {
     public string name;
     public List<string> paths;
 
-    internal ParamExternalRef(ParamMeta curMeta, string refString)
+    internal ParamFileRef(ParamMeta curMeta, string refString)
     {
         var parts = refString.Split(",");
         name = parts[0];

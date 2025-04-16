@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// Calculation correction graph
+/// </summary>
 public class ParamCalcCorrectDef
 {
     public string[] adjPoint_maxGrowVal;

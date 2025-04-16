@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Smithbox.Core.ParamEditorNS.Meta;
 
+/// <summary>
+/// The soul cost graph
+/// </summary>
 public class ParamSoulCostDef
 {
     public string adjustment_value;

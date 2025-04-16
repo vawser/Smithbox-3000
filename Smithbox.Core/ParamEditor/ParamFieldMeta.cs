@@ -45,46 +45,46 @@ public class ParamFieldMeta
         XmlAttribute FMGRef = fieldMeta.Attributes["FmgRef"];
         if (FMGRef != null)
         {
-            FmgRef = FMGRef.InnerText.Split(",").Select(x => new ParamFmgRef(MetaParent, x)).ToList();
+            FmgRef = FMGRef.InnerText.Split(",").Select(x => new ParamTextRef(MetaParent, x)).ToList();
         }
 
         XmlAttribute tMapFmgRef = fieldMeta.Attributes["MapFmgRef"];
         if (tMapFmgRef != null)
         {
-            MapFmgRef = new List<ParamFmgRef>
+            MapFmgRef = new List<ParamTextRef>
             {
-                new ParamFmgRef(MetaParent, "m10_02_00_00"),
-                new ParamFmgRef(MetaParent, "m10_04_00_00"),
-                new ParamFmgRef(MetaParent, "m10_10_00_00"),
-                new ParamFmgRef(MetaParent, "m10_14_00_00"),
-                new ParamFmgRef(MetaParent, "m10_15_00_00"),
-                new ParamFmgRef(MetaParent, "m10_16_00_00"),
-                new ParamFmgRef(MetaParent, "m10_17_00_00"),
-                new ParamFmgRef(MetaParent, "m10_18_00_00"),
-                new ParamFmgRef(MetaParent, "m10_19_00_00"),
-                new ParamFmgRef(MetaParent, "m10_23_00_00"),
-                new ParamFmgRef(MetaParent, "m10_25_00_00"),
-                new ParamFmgRef(MetaParent, "m10_27_00_00"),
-                new ParamFmgRef(MetaParent, "m10_29_00_00"),
-                new ParamFmgRef(MetaParent, "m10_31_00_00"),
-                new ParamFmgRef(MetaParent, "m10_32_00_00"),
-                new ParamFmgRef(MetaParent, "m10_33_00_00"),
-                new ParamFmgRef(MetaParent, "m10_34_00_00"),
-                new ParamFmgRef(MetaParent, "m20_10_00_00"),
-                new ParamFmgRef(MetaParent, "m20_11_00_00"),
-                new ParamFmgRef(MetaParent, "m20_21_00_00"),
-                new ParamFmgRef(MetaParent, "m20_24_00_00"),
-                new ParamFmgRef(MetaParent, "m50_35_00_00"),
-                new ParamFmgRef(MetaParent, "m50_36_00_00"),
-                new ParamFmgRef(MetaParent, "m50_37_00_00"),
-                new ParamFmgRef(MetaParent, "m50_38_00_00")
+                new ParamTextRef(MetaParent, "m10_02_00_00"),
+                new ParamTextRef(MetaParent, "m10_04_00_00"),
+                new ParamTextRef(MetaParent, "m10_10_00_00"),
+                new ParamTextRef(MetaParent, "m10_14_00_00"),
+                new ParamTextRef(MetaParent, "m10_15_00_00"),
+                new ParamTextRef(MetaParent, "m10_16_00_00"),
+                new ParamTextRef(MetaParent, "m10_17_00_00"),
+                new ParamTextRef(MetaParent, "m10_18_00_00"),
+                new ParamTextRef(MetaParent, "m10_19_00_00"),
+                new ParamTextRef(MetaParent, "m10_23_00_00"),
+                new ParamTextRef(MetaParent, "m10_25_00_00"),
+                new ParamTextRef(MetaParent, "m10_27_00_00"),
+                new ParamTextRef(MetaParent, "m10_29_00_00"),
+                new ParamTextRef(MetaParent, "m10_31_00_00"),
+                new ParamTextRef(MetaParent, "m10_32_00_00"),
+                new ParamTextRef(MetaParent, "m10_33_00_00"),
+                new ParamTextRef(MetaParent, "m10_34_00_00"),
+                new ParamTextRef(MetaParent, "m20_10_00_00"),
+                new ParamTextRef(MetaParent, "m20_11_00_00"),
+                new ParamTextRef(MetaParent, "m20_21_00_00"),
+                new ParamTextRef(MetaParent, "m20_24_00_00"),
+                new ParamTextRef(MetaParent, "m50_35_00_00"),
+                new ParamTextRef(MetaParent, "m50_36_00_00"),
+                new ParamTextRef(MetaParent, "m50_37_00_00"),
+                new ParamTextRef(MetaParent, "m50_38_00_00")
             };
         }
 
         XmlAttribute TexRef = fieldMeta.Attributes["TextureRef"];
         if (TexRef != null)
         {
-            TextureRef = TexRef.InnerText.Split(",").Select(x => new ParamTextureRef(MetaParent, x)).ToList();
+            TextureRef = new ParamTextureRef(MetaParent, TexRef.InnerText);
         }
 
         XmlAttribute Enum = fieldMeta.Attributes["Enum"];
@@ -121,7 +121,7 @@ public class ParamFieldMeta
         XmlAttribute ExRef = fieldMeta.Attributes["ExtRefs"];
         if (ExRef != null)
         {
-            ExtRefs = ExRef.InnerText.Split(';').Select(x => new ParamExternalRef(MetaParent, x)).ToList();
+            ExtRefs = ExRef.InnerText.Split(';').Select(x => new ParamFileRef(MetaParent, x)).ToList();
         }
 
         XmlAttribute IsInvertedFloat = fieldMeta.Attributes["IsInvertedPercentage"];
@@ -227,17 +227,17 @@ public class ParamFieldMeta
     /// <summary>
     ///     Name of an FMG that a Field may refer to.
     /// </summary>
-    public List<ParamFmgRef> FmgRef { get; set; }
+    public List<ParamTextRef> FmgRef { get; set; }
 
     /// <summary>
     ///     DS2 Map FMG Refs
     /// </summary>
-    public List<ParamFmgRef> MapFmgRef { get; set; }
+    public List<ParamTextRef> MapFmgRef { get; set; }
 
     /// <summary>
     ///     Name of an Texture Container and File that a Field may refer to.
     /// </summary>
-    public List<ParamTextureRef> TextureRef { get; set; }
+    public ParamTextureRef TextureRef { get; set; }
 
     /// <summary>
     ///     Set of generally acceptable values, named
@@ -319,6 +319,6 @@ public class ParamFieldMeta
     /// <summary>
     ///     Path (and subpath) filters for files linked by this field.
     /// </summary>
-    public List<ParamExternalRef> ExtRefs { get; set; }
+    public List<ParamFileRef> ExtRefs { get; set; }
 
 }

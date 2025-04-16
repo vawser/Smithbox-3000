@@ -189,6 +189,16 @@ public class CFG
     /// </summary>
     public float ParamFieldInputWidth = 250f;
 
+    /// <summary>
+    /// If true, the Image Preview window is visible
+    /// </summary>
+    public bool DisplayParamImageView = true;
+
+    /// <summary>
+    /// If true, the padding fields are displayed
+    /// </summary>
+    public bool DisplayPaddingFields = true;
+
 
     //----------------------------------
     /// General
