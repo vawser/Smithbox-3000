@@ -48,7 +48,7 @@ public class ParamFieldView
 
     public bool DetectShortcuts = false;
 
-    public unsafe void Draw(string[] cmd)
+    public unsafe void Draw(Command cmd)
     {
         var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
 
@@ -324,7 +324,7 @@ public class ParamFieldView
                     {
                         ImGui.TableSetColumnIndex(offsetIndex);
 
-                        // Calc
+                        // Calc offset
                     }
 
                     if (displayTypeColumn)
@@ -430,13 +430,13 @@ public class ParamFieldView
         if (DetectShortcuts)
         {
             // Focus Field Search
-            if (Keyboard.KeyPress(Key.F) && Keyboard.KeyPress(Key.LShift))
+            if (Keyboard.KeyPress(Key.F) && Keyboard.IsDown(Key.LShift))
             {
                 FocusFieldSearch = true;
             }
 
             // Clear Field Search
-            if (Keyboard.KeyPress(Key.C) && Keyboard.KeyPress(Key.LShift))
+            if (Keyboard.KeyPress(Key.C) && Keyboard.IsDown(Key.LShift))
             {
                 Editor.SearchEngine.FieldFilterInput = "";
                 FieldVisibility = null;

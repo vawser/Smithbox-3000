@@ -101,7 +101,7 @@ public class FileBrowser
         return true;
     }
 
-    public void Draw(string[] cmd)
+    public void Draw(Command cmd)
     {
         ImGui.Begin($"File Browser##FileBrowser", MainWindowFlags);
 

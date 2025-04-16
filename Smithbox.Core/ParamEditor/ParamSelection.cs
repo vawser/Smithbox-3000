@@ -21,10 +21,6 @@ public class ParamSelection
     public int _selectedFieldIndex;
     public Param.Column _selectedField;
 
-    public string _paramFilterString = "";
-    public string _rowFilterString = "";
-    public string _fieldFilterString = "";
-
     public ParamSelection(ParamEditor editor)
     {
         Editor = editor;

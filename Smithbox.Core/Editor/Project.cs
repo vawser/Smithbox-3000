@@ -210,7 +210,7 @@ public class Project
         Initialized = true;
     }
 
-    public void Draw(string[] cmd)
+    public void Draw(Command cmd)
     {
         ImGui.Begin($"Project##Project", ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove);
 

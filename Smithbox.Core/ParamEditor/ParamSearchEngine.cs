@@ -67,13 +67,13 @@ public class ParamSearchEngine
         {
 
         }
-        // range: [min] [max]
-        else if (FieldFilterInput.Contains("value:"))
+        // range: [min] [max] [^field] 
+        else if (FieldFilterInput.Contains("range:"))
         {
 
         }
         // field: [name]
-        else if (FieldFilterInput.Contains("value:"))
+        else if (FieldFilterInput.Contains("field:"))
         {
 
         }

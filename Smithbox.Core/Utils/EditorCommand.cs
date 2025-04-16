@@ -12,21 +12,37 @@ namespace Smithbox.Core.Utils;
 /// </summary>
 public static class EditorCommand
 {
-    private static readonly ConcurrentQueue<string[]> QueuedCommands = new();
+    private static readonly ConcurrentQueue<Command> QueuedCommands = new();
 
-    public static void AddCommand(string cmd)
+    public static void AddCommand(Command cmd)
     {
-        QueuedCommands.Enqueue(cmd.Split(":"));
+        QueuedCommands.Enqueue(cmd);
     }
 
-    public static void AddCommand(IEnumerable<string> cmd)
+    public static void AddCommand(IEnumerable<Command> cmd)
     {
-        QueuedCommands.Enqueue(cmd.ToArray());
+        foreach (var c in cmd)
+        {
+            QueuedCommands.Enqueue(c);
+        }
     }
 
-    public static string[] GetNextCommand()
+    public static Command GetNextCommand()
     {
         QueuedCommands.TryDequeue(out var cmd);
         return cmd;
     }
 }
+
+public class Command
+{
+    public EditorTarget Editor { get; set; }
+    public string[] Instructions { get; set; }
+}
+
+public enum EditorTarget
+{
+    ParamEditor,
+    ModelEditor
+}
+

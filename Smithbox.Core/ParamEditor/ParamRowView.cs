@@ -1,5 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ public class ParamRowView
         Editor = editor;
     }
 
-    public void Draw(string[] cmd)
+    public void Draw(Command cmd)
     {
         ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
 
