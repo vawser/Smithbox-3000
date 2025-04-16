@@ -324,7 +324,12 @@ public class ParamFieldView
                     {
                         ImGui.TableSetColumnIndex(offsetIndex);
 
-                        // Calc offset
+                        var offset = GetFieldOffset(curField);
+                        if(offset != null)
+                        {
+                            ImGui.Text($"0x{offset}");
+                            UIHelper.Tooltip($"The data offset for this field.");
+                        }
                     }
 
                     if (displayTypeColumn)
@@ -334,7 +339,7 @@ public class ParamFieldView
                         var typeName = StringUtils.TruncateWithEllipsis($"{curField.Def.InternalType}", CFG.Current.ParamFieldColumnTruncationLength);
 
                         ImGui.Text($"{typeName}");
-                        UIHelper.Tooltip($"{curField.Def.InternalType}");
+                        UIHelper.Tooltip($"The internal type for this field.\n\n{curField.Def.InternalType}");
                     }
 
                     // Primary Info
@@ -783,6 +788,28 @@ public class ParamFieldView
         var json = JsonSerializer.Serialize(FieldOrder, SmithboxSerializerContext.Default.ParamFieldOrder);
 
         File.WriteAllText(file, json);
+    }
+
+    private string GetFieldOffset(Column curColumn)
+    {
+        if (curColumn == null)
+        {
+            return null;
+        }
+
+        if (curColumn.Def.BitSize == -1)
+        {
+            return curColumn.GetByteOffset().ToString("x");
+        }
+
+        var offS = curColumn.GetBitOffset();
+
+        if (curColumn.Def.BitSize == 1)
+        {
+            return $"{curColumn.GetByteOffset().ToString("x")} [{offS}]";
+        }
+
+        return $"{curColumn.GetByteOffset().ToString("x")} [{offS}-{offS + curColumn.Def.BitSize - 1}]";
     }
 }
 
