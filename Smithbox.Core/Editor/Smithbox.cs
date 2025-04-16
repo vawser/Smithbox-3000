@@ -33,8 +33,6 @@ public class Smithbox
     public ProjectDisplay ProjectDisplayConfig;
     public ScriptingConsole Console = new();
 
-    public string TestString = "TestMe";
-
     public Smithbox()
     {
         _ = Console.InitializeAsync();
@@ -84,6 +82,7 @@ public class Smithbox
         MessageBox.Draw();
         ColorPicker.Draw();
         ProjectCreation.Draw();
+        ProjectSettings.Draw();
         EditorSettings.Draw();
         ControlSettings.Draw();
         InterfaceSettings.Draw();
@@ -301,23 +300,9 @@ public class Smithbox
 
             if (ImGui.BeginPopupContextItem($"ProjectListContextMenu{imGuiID}"))
             {
-                if (project.AutoSelect)
+                if(ImGui.MenuItem($"Open Project Settings##projectSettings_{imGuiID}"))
                 {
-                    if (ImGui.Selectable($"Disable Automatic Load##autoLoadDisable{imGuiID}"))
-                    {
-                        project.AutoSelect = false;
-                        project.Save();
-                    }
-                    UIHelper.Tooltip("Disable automatic load for this project.");
-                }
-                else
-                {
-                    if (ImGui.Selectable($"Enable Automatic Load##autoLoadEnable{imGuiID}"))
-                    {
-                        project.AutoSelect = true;
-                        project.Save();
-                    }
-                    UIHelper.Tooltip("Set this project to automatically load when Smithbox starts.");
+                    ProjectSettings.Show(this, SelectedProject);
                 }
 
                 ImGui.EndPopup();

@@ -252,6 +252,9 @@ public class ParamEditor
     /// <param name="cmd"></param>
     private void ProcessCommand(Command cmd)
     {
+        if (cmd == null)
+            return;
+
         if (cmd.Editor is EditorTarget.ParamEditor)
         {
             var instructions = cmd.Instructions;
