@@ -5,5 +5,5 @@
 -- DS1R param load is not working
 -- DES / BB vanilla bank load not working 
 -- Add param reference stuff
--- Add param field search
+-- Add param reference stuff
 -- Add field offset column info

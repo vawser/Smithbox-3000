@@ -94,6 +94,9 @@ public class ParamSelection
         // Reset field
         _selectedFieldIndex = -1;
         _selectedField = null;
+
+        // Re-run current field filter on row switch so the field view updates seemlessly
+        Editor.FieldView.UpdateFieldVisibility(row);
     }
 
     public bool IsRowSelected(int index, Param.Row row)

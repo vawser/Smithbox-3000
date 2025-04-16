@@ -34,7 +34,7 @@ public static class ModEngineUtils
 
                 if (i != dlls.Length - 1)
                 {
-                    // Add the comma for all bu the last
+                    // Add the comma for all but the last
                     dllInput = $"{dllInput}, ";
                 }
             }

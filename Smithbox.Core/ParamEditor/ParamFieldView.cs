@@ -37,7 +37,7 @@ public class ParamFieldView
     /// <summary>
     /// Visibility state for the fields (based on index)
     /// </summary>
-    private Dictionary<int, bool> FieldVisibility;
+    public Dictionary<int, bool> FieldVisibility;
 
     public ParamFieldView(Project curProject, ParamEditor editor)
     {
@@ -407,10 +407,7 @@ public class ParamFieldView
                         curEntry.FieldOrder.Add(dragTargetIndex, sourceEntry);
                         curEntry.FieldOrder.Add(dragSourceIndex, targetEntry);
 
-                        PrimaryOrderedColumns = null;
-                        VanillaOrderedColumns = null;
-                        AuxOrderedColumns = null;
-
+                        InvalidateColumns();
                         WriteFieldOrder();
                     }
                 }
@@ -446,7 +443,7 @@ public class ParamFieldView
 
     public void DisplayHeader(Param curParam, Row curRow, ParamMeta curMeta)
     {
-        // Filter
+        // Search Builder
         var searchWidth = ImGui.GetWindowWidth() * 0.5f;
 
         if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
@@ -455,6 +452,7 @@ public class ParamFieldView
         }
         UIHelper.Tooltip("View the search term builder.");
 
+        // Search Bar
         ImGui.SameLine();
 
         if (FocusFieldSearch)
@@ -466,14 +464,16 @@ public class ParamFieldView
         ImGui.SetNextItemWidth(searchWidth);
         ImGui.InputText($"##fieldSearch_{ID}", ref Editor.SearchEngine.FieldFilterInput, 128);
 
+        // Search
         ImGui.SameLine();
 
         if(ImGui.Button($"{Icons.Search}"))
         {
-            Editor.SearchEngine.ProcessFieldSearch(curParam, curRow, curMeta);
+            FieldVisibility = Editor.SearchEngine.ProcessFieldSearch(curParam, curRow, curMeta);
         }
         UIHelper.Tooltip("Filter the field list.");
 
+        // Clear
         ImGui.SameLine();
 
         if (ImGui.Button($"{Icons.Times}"))
@@ -483,54 +483,113 @@ public class ParamFieldView
         }
         UIHelper.Tooltip("Clear the field list filter.");
 
+        // Regex Match Mode
         ImGui.SameLine();
 
-        // Quick Toggles
-        if (ImGui.Button($"{Icons.AddressBook}"))
+        if (ImGui.Button($"{Icons.Eye}"))
         {
-            CFG.Current.DisplayVanillaColumns = !CFG.Current.DisplayVanillaColumns;
+            Editor.SearchEngine.IsRegexLenient = !Editor.SearchEngine.IsRegexLenient;
         }
-        UIHelper.Tooltip("Toggle the display of the vanilla columns.");
 
-        ImGui.SameLine();
+        var regexMode = "Strict";
+        if (Editor.SearchEngine.IsRegexLenient)
+            regexMode = "Lenient";
 
-        if (ImGui.Button($"{Icons.AddressBookO}"))
-        {
-            CFG.Current.DisplayAuxColumns = !CFG.Current.DisplayAuxColumns;
-        }
-        UIHelper.Tooltip("Toggle the display of the auxiliary columns.");
+        UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
 
+        // Toggle Community Field Names
         ImGui.SameLine();
 
         if (ImGui.Button($"{Icons.Book}"))
         {
             CFG.Current.DisplayCommunityFieldNames = !CFG.Current.DisplayCommunityFieldNames;
         }
-        UIHelper.Tooltip("Toggle field name display type between Internal and Community.");
 
+        var communityFieldNameMode = "Internal";
+        if (CFG.Current.DisplayCommunityFieldNames)
+            communityFieldNameMode = "Community";
+
+        UIHelper.Tooltip($"Toggle field name display type between Internal and Community.\nCurrent Mode: {communityFieldNameMode}");
+
+        // Toggle Vanilla Columns
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.AddressBook}"))
+        {
+            CFG.Current.DisplayVanillaColumns = !CFG.Current.DisplayVanillaColumns;
+        }
+
+        var vanillaColumnMode = "Hidden";
+        if (CFG.Current.DisplayVanillaColumns)
+            vanillaColumnMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of the vanilla columns.\nCurrent Mode: {vanillaColumnMode}");
+
+        // Toggle Auxiliary Columns
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.AddressBookO}"))
+        {
+            CFG.Current.DisplayAuxColumns = !CFG.Current.DisplayAuxColumns;
+        }
+
+
+        var auxColumnMode = "Hidden";
+        if (CFG.Current.DisplayAuxColumns)
+            auxColumnMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of the auxiliary columns.\nCurrent Mode: {auxColumnMode}");
+
+        // Toggle Information Columns
         ImGui.SameLine();
 
         if (ImGui.Button($"{Icons.InfoCircle}"))
         {
             CFG.Current.DisplayInformationColumn = !CFG.Current.DisplayInformationColumn;
         }
-        UIHelper.Tooltip("Toggle the display of the field type column.");
 
+        var infoColumnMode = "Hidden";
+        if (CFG.Current.DisplayInformationColumn)
+            infoColumnMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of the field information column.\nCurrent Mode: {infoColumnMode}");
+
+        // Toggle Field Type Column
         ImGui.SameLine();
 
         if (ImGui.Button($"{Icons.Cog}"))
         {
             CFG.Current.DisplayTypeColumn = !CFG.Current.DisplayTypeColumn;
         }
-        UIHelper.Tooltip("Toggle the display of the field type column.");
 
+        var fieldTypeColumnMode = "Hidden";
+        if (CFG.Current.DisplayTypeColumn)
+            fieldTypeColumnMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of the field type column.\nCurrent Mode: {fieldTypeColumnMode}");
+
+        // Toggle Field Offset Column
         ImGui.SameLine();
 
         if (ImGui.Button($"{Icons.MapSigns}"))
         {
             CFG.Current.DisplayOffsetColumn = !CFG.Current.DisplayOffsetColumn;
         }
-        UIHelper.Tooltip("Toggle the display of the field offset column.");
+
+        var fieldOffsetColumnMode = "Hidden";
+        if (CFG.Current.DisplayOffsetColumn)
+            fieldOffsetColumnMode = "Visible";
+
+        UIHelper.Tooltip($"Toggle the display of the field offset column.\nCurrent Mode: {fieldOffsetColumnMode}");
+
+        // Reset Field Ordering
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Bars}"))
+        {
+            ResetCurrentFieldOrder();
+        }
+        UIHelper.Tooltip($"Reset the field ordering for this set of fields.");
     }
 
     /// <summary>
@@ -541,6 +600,20 @@ public class ParamFieldView
         PrimaryOrderedColumns = null;
         VanillaOrderedColumns = null;
         AuxOrderedColumns = null;
+    }
+
+    /// <summary>
+    /// Updates the field visibility dictionary on row change
+    /// </summary>
+    /// <param name="newRow"></param>
+    public void UpdateFieldVisibility(Row newRow)
+    {
+        var search = Editor.SearchEngine;
+
+        if (search.StoredParam != null && newRow != null && search.StoredMeta != null)
+        {
+            FieldVisibility = search.ProcessFieldSearch(search.StoredParam, newRow, search.StoredMeta);
+        }
     }
 
     /// <summary>
@@ -624,6 +697,35 @@ public class ParamFieldView
         }
 
         InitializedFieldOrder = true;
+    }
+
+    /// <summary>
+    /// Reset the field ordering for the currently selected field set
+    /// </summary>
+    public void ResetCurrentFieldOrder()
+    {
+        var currentParam = Editor.Selection._selectedParamName;
+        var currentOrder = FieldOrder.Entries[currentParam];
+
+        var currentRow = Editor.Selection._selectedRow;
+
+        var fieldOrder = new ParamFieldOrderEntry();
+
+        for (int i = 0; i < currentRow.Columns.Count(); i++)
+        {
+            var curField = currentRow.Columns.ElementAt(i);
+
+            if (fieldOrder.FieldOrder == null)
+                fieldOrder.FieldOrder = new();
+
+            fieldOrder.FieldOrder.Add(i, curField.Def.InternalName);
+        }
+
+        FieldOrder.Entries[currentParam] = fieldOrder;
+
+        InvalidateColumns();
+
+        WriteFieldOrder();
     }
 
     /// <summary>
