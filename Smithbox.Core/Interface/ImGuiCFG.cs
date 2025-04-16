@@ -65,6 +65,11 @@ public class ImGuiCFG
         var folder = FolderUtils.GetConfigurationFolder();
         var file = Path.Combine(folder, "ImGui.json");
 
+        if(!Directory.Exists(folder))
+        {
+            Directory.CreateDirectory(folder);
+        }
+
         var json = JsonSerializer.Serialize(Current, SmithboxSerializerContext.Default.ImGuiCFG);
 
         File.WriteAllText(file, json);

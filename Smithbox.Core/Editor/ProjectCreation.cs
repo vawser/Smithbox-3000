@@ -1,7 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using HKLib.hk2018.hk.RPC;
 using Smithbox.Core.Interface;
-using Smithbox.Core.Interface.ImGuiDemo;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -23,13 +22,6 @@ public static class ProjectCreation
     public static string DataPath = "";
     public static ProjectType ProjectType = ProjectType.None;
 
-    private static OpenFileDialog FileDialog;
-
-    public static void Setup()
-    {
-        FileDialog = new OpenFileDialog();
-    }
-
     public static void Reset()
     {
         ProjectName = "";
@@ -45,11 +37,6 @@ public static class ProjectCreation
 
     public static void Draw()
     {
-        if (FileDialog != null)
-        {
-            FileDialog.Draw();
-        }
-
         if (Display)
         {
             Open = true;
@@ -106,7 +93,15 @@ public static class ProjectCreation
 
                 if(ImGui.Button("Select##projectPathSelect"))
                 {
-                    //FileDialog.Show();
+                    using (var fbd = new FolderBrowserDialog())
+                    {
+                        DialogResult result = fbd.ShowDialog();
+
+                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        {
+                            ProjectPath = fbd.SelectedPath;
+                        }
+                    }
                 }
 
                 // Data Path
@@ -126,7 +121,15 @@ public static class ProjectCreation
 
                 if (ImGui.Button("Select##dataPathSelect"))
                 {
-                    //FileDialog.Show();
+                    using (var fbd = new FolderBrowserDialog())
+                    {
+                        DialogResult result = fbd.ShowDialog();
+
+                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        {
+                            DataPath = fbd.SelectedPath;
+                        }
+                    }
                 }
 
                 // Project Type

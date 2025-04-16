@@ -25,6 +25,11 @@ public class CFG
     /// </summary>
     public bool EnableVerboseLogging = true;
 
+    /// <summary>
+    /// The path to the user's Mod Engine 2 exe
+    /// </summary>
+    public string ModEngineInstall = "";
+
     //----------------------------------
     // Viewport
     //----------------------------------

@@ -105,7 +105,15 @@ public static class ProjectSettings
 
                 if (ImGui.Button("Select##projectPathSelect"))
                 {
-                    //FileDialog.Show();
+                    using (var fbd = new FolderBrowserDialog())
+                    {
+                        DialogResult result = fbd.ShowDialog();
+
+                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        {
+                            ProjectPath = fbd.SelectedPath;
+                        }
+                    }
                 }
 
                 // Data Path
@@ -125,7 +133,15 @@ public static class ProjectSettings
 
                 if (ImGui.Button("Select##dataPathSelect"))
                 {
-                    //FileDialog.Show();
+                    using (var fbd = new FolderBrowserDialog())
+                    {
+                        DialogResult result = fbd.ShowDialog();
+
+                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        {
+                            DataPath = fbd.SelectedPath;
+                        }
+                    }
                 }
 
                 // Automatic Load

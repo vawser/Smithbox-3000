@@ -57,8 +57,6 @@ public class Smithbox
         LoadProjectDisplayConfig();
         LoadExistingProjects();
 
-        ProjectCreation.Setup();
-
         // Set culture to invariant so we don't get funny issues due to localization
         Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -79,7 +77,6 @@ public class Smithbox
 
         // Special modals
         ParamUpgrader.Draw();
-        MessageBox.Draw();
         ColorPicker.Draw();
         ProjectCreation.Draw();
         ProjectSettings.Draw();
@@ -303,6 +300,14 @@ public class Smithbox
                 if(ImGui.MenuItem($"Open Project Settings##projectSettings_{imGuiID}"))
                 {
                     ProjectSettings.Show(this, SelectedProject);
+                }
+
+                if (CFG.Current.ModEngineInstall != "")
+                {
+                    if (ImGui.MenuItem($"Launch Mod##launchMod{imGuiID}"))
+                    {
+                        ModEngineUtils.LaunchMod(SelectedProject);
+                    }
                 }
 
                 ImGui.EndPopup();

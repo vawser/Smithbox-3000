@@ -56,6 +56,34 @@ public static class EditorSettings
                 UIHelper.Tooltip("If true, berbose logging will be displayed in the general logger.");
             }
 
+            if (ImGui.CollapsingHeader("Mod Engine", ImGuiTreeNodeFlags.DefaultOpen))
+            {
+                ImGui.InputText("Executable Path##modEnginePath", ref CFG.Current.ModEngineInstall, 255);
+                UIHelper.Tooltip("Select the modengine2_launcher.exe within your ModEngine2 install folder.");
+
+                ImGui.SameLine();
+
+                if (ImGui.Button("Select##modEnginePathSelect"))
+                {
+                    using (var dialog = new OpenFileDialog())
+                    {
+                        DialogResult result = dialog.ShowDialog();
+
+                        if (result == DialogResult.OK)
+                        {
+                            if(dialog.FileName.Contains("modengine2_launcher.exe"))
+                            {
+                                CFG.Current.ModEngineInstall = dialog.FileName;
+                            }
+                            else
+                            {
+                                MessageBox.Show("The file you selected was not modengine2_launcher.exe");
+                            }
+                        }
+                    }
+                }
+            }
+
             if (FeatureFlags.IncludeParamEditor)
             {
                 if(ImGui.CollapsingHeader("Param Editor", ImGuiTreeNodeFlags.DefaultOpen))

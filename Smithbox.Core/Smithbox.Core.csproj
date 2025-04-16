@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <UseWindowsForms>true</UseWindowsForms>
         
 		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
 		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
@@ -19,6 +20,7 @@
 		<PackageReference Include="Hexa.NET.Utilities" Version="2.2.1" />
 		<PackageReference Include="Hexa.NET.Math" Version="2.0.6" />
 		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+		<PackageReference Include="Tomlyn" Version="0.19.0" />
 	</ItemGroup>
 
 	<ItemGroup>
