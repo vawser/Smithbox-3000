@@ -23,8 +23,6 @@ public class ParamFieldInput
     private Project Project;
     private ParamEditor Editor;
 
-    private const float InputWidth = 300f;
-
     public ParamFieldInput(Project curProject, ParamEditor editor)
     {
         Project = curProject;
@@ -33,6 +31,7 @@ public class ParamFieldInput
 
     public void DisplayRowIDInput(string imguiID, Param curParam, Row curRow)
     {
+        var inputWidth = CFG.Current.ParamFieldInputWidth;
         var inputFlags = ImGuiInputTextFlags.None;
 
         var wasChanged = false;
@@ -40,7 +39,7 @@ public class ParamFieldInput
         var newValue = curRow.ID;
         var fieldType = curRow.ID.GetType();
 
-        ImGui.SetNextItemWidth(InputWidth);
+        ImGui.SetNextItemWidth(inputWidth);
 
         // Signed Integer
         if (fieldType == typeof(int))
@@ -66,6 +65,7 @@ public class ParamFieldInput
     }
     public void DisplayRowNameInput(string imguiID, Param curParam, Row curRow)
     {
+        var inputWidth = CFG.Current.ParamFieldInputWidth;
         var inputFlags = ImGuiInputTextFlags.None;
 
         var wasChanged = false;
@@ -73,7 +73,7 @@ public class ParamFieldInput
         var newValue = curRow.Name;
         var fieldType = curRow.Name.GetType();
 
-        ImGui.SetNextItemWidth(InputWidth);
+        ImGui.SetNextItemWidth(inputWidth);
 
         // String
         if (fieldType == typeof(string))
@@ -100,6 +100,8 @@ public class ParamFieldInput
 
     public unsafe void DisplayFieldInput(string imguiID, Param curParam, Row curRow, Column curField, object curValue, ParamFieldMeta fieldMeta, bool isReadOnly = false)
     {
+        var inputWidth = CFG.Current.ParamFieldInputWidth;
+
         var wasChanged = false;
         var commitChange = false;
         var newValue = curValue;
@@ -111,39 +113,7 @@ public class ParamFieldInput
             inputFlags = ImGuiInputTextFlags.ReadOnly;
         }
 
-        // Override Bool (for non bool types that act like bools)
-        if (fieldMeta.IsBool)
-        {
-            dynamic tempValue = curValue;
-            bool checkValue = tempValue > 0;
-
-            if (isReadOnly)
-            {
-                ImGui.BeginDisabled();
-                ImGui.Checkbox($"##valueBool_{imguiID}", ref checkValue);
-                ImGui.EndDisabled();
-
-                ImGui.SameLine();
-            }
-            else
-            {
-                if (ImGui.Checkbox($"##valueBool_{imguiID}", ref checkValue))
-                {
-                    try
-                    {
-                        newValue = Convert.ChangeType(checkValue ? 1 : 0, curValue.GetType());
-                        wasChanged = true;
-                    }
-                    catch (Exception ex) { }
-                }
-
-                ImGui.SameLine();
-            }
-
-            commitChange = ImGui.IsItemDeactivatedAfterEdit();
-        }
-
-        ImGui.SetNextItemWidth(InputWidth);
+        ImGui.SetNextItemWidth(inputWidth);
 
         // Long
         if (fieldType == typeof(long))
@@ -367,6 +337,39 @@ public class ParamFieldInput
                 }
             }
         }
+
+        // Override Bool (for non bool types that act like bools)
+        if (fieldMeta != null && fieldMeta.IsBool)
+        {
+            dynamic tempValue = curValue;
+            bool checkValue = tempValue > 0;
+
+            if (isReadOnly)
+            {
+                ImGui.SameLine();
+
+                ImGui.BeginDisabled();
+                ImGui.Checkbox($"##valueBool_{imguiID}", ref checkValue);
+                ImGui.EndDisabled();
+            }
+            else
+            {
+                ImGui.SameLine();
+
+                if (ImGui.Checkbox($"##valueBool_{imguiID}", ref checkValue))
+                {
+                    try
+                    {
+                        newValue = Convert.ChangeType(checkValue ? 1 : 0, curValue.GetType());
+                        wasChanged = true;
+                    }
+                    catch (Exception ex) { }
+                }
+            }
+
+            commitChange = ImGui.IsItemDeactivatedAfterEdit();
+        }
+
 
         commitChange |= ImGui.IsItemDeactivatedAfterEdit();
 

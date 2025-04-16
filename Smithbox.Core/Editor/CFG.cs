@@ -144,6 +144,41 @@ public class CFG
     /// </summary>
     public bool DisplayCommunityFieldNames = true;
 
+    /// <summary>
+    /// If true, then the vanilla field columns is displayed
+    /// </summary>
+    public bool DisplayVanillaColumns = true;
+
+    /// <summary>
+    /// If true, then the aux field columns is displayed
+    /// </summary>
+    public bool DisplayAuxColumns = true;
+
+    /// <summary>
+    /// If true, then the field offset columns is displayed
+    /// </summary>
+    public bool DisplayOffsetColumn = true;
+
+    /// <summary>
+    /// If true, then the field type columns is displayed
+    /// </summary>
+    public bool DisplayTypeColumn = true;
+
+    /// <summary>
+    /// If true, then the field type columns is displayed
+    /// </summary>
+    public bool DisplayInformationColumn = true;
+
+    /// <summary>
+    /// The length of string after which the column text is truncated
+    /// </summary>
+    public int ParamFieldColumnTruncationLength = 30;
+
+    /// <summary>
+    /// The width of the ImGui input widgets in the field column
+    /// </summary>
+    public float ParamFieldInputWidth = 250f;
+
 
     //----------------------------------
     /// General

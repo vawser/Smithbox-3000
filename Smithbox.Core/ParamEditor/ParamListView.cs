@@ -20,6 +20,8 @@ public class ParamListView
     private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
     private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
+    public bool DetectShortcuts = false;
+
     public ParamListView(Project curProject, ParamEditor editor)
     {
         ID = editor.ID;
@@ -33,7 +35,7 @@ public class ParamListView
 
         if (ImGui.IsWindowFocused())
         {
-            Editor.DetectShortcuts = true;
+            DetectShortcuts = true;
         }
 
         for (int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)

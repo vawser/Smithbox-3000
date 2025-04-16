@@ -1,13 +1,14 @@
 ﻿using Andre.Formats;
 using Hexa.NET.ImGui;
-using HKLib.hk2018.hk;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -26,9 +27,17 @@ public class ParamFieldView
     private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
     private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
+    /// <summary>
+    /// Cache for the columns so they are only rebuilt when the order changes
+    /// </summary>
     private IEnumerable<Column> PrimaryOrderedColumns;
     private IEnumerable<Column> VanillaOrderedColumns;
     private IEnumerable<Column> AuxOrderedColumns;
+
+    /// <summary>
+    /// Visibility state for the fields (based on index)
+    /// </summary>
+    private Dictionary<int, bool> FieldVisibility;
 
     public ParamFieldView(Project curProject, ParamEditor editor)
     {
@@ -37,15 +46,24 @@ public class ParamFieldView
         Editor = editor;
     }
 
+    public bool DetectShortcuts = false;
+
     public unsafe void Draw(string[] cmd)
     {
         var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
+
+        // Done here so if they are changed during the middle of a frame, ImGui doesn't freak out
+        var displayVanillaColumns = CFG.Current.DisplayVanillaColumns;
+        var displayAuxColumns = CFG.Current.DisplayAuxColumns;
+        var displayOffsetColumn = CFG.Current.DisplayOffsetColumn;
+        var displayTypeColumn = CFG.Current.DisplayTypeColumn;
+        var displayInfoColumn = CFG.Current.DisplayInformationColumn;
 
         ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
 
         if (ImGui.IsWindowFocused())
         {
-            Editor.DetectShortcuts = true;
+            DetectShortcuts = true;
         }
 
         if (Editor.Selection.IsFieldSelectionValid())
@@ -65,13 +83,40 @@ public class ParamFieldView
                 auxRow = auxParam.Rows.Where(e => e.ID == curRow.ID).FirstOrDefault();
             }
 
-            var tableColumns = 3;
+            var tableColumns = 2;
 
-            if (vanillaRow != null)
-                tableColumns += 2;
+            if(displayInfoColumn)
+            {
+                tableColumns += 1;
+            }
 
-            if (auxRow != null)
-                tableColumns += 2;
+            if (displayOffsetColumn)
+            {
+                tableColumns += 1;
+            }
+
+            if (displayTypeColumn)
+            {
+                tableColumns += 1;
+            }
+
+            if (vanillaRow != null && displayVanillaColumns)
+            {
+                tableColumns += 1;
+                if (displayInfoColumn)
+                {
+                    tableColumns += 1;
+                }
+            }
+
+            if (auxRow != null && displayAuxColumns)
+            {
+                tableColumns += 1;
+                if (displayInfoColumn)
+                {
+                    tableColumns += 1;
+                }
+            }
 
             ParamMeta paramMeta = null;
             ParamFieldMeta fieldMeta = null;
@@ -81,25 +126,42 @@ public class ParamFieldView
                 paramMeta = Project.ParamData.GetParamMeta(curParam.AppliedParamdef);
             }
 
-            // Row ID and Name
+            // Handle shortcuts
+            Shortcuts(curParam, curRow, paramMeta);
+
+            // Header Area
+            DisplayHeader(curParam, curRow, paramMeta);
+
+            ImGui.BeginChild("fieldTableArea");
 
             // Fields
             if (ImGui.BeginTable($"fieldTable_{ID}", tableColumns, tblFlags))
             {
                 ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthFixed);
                 ImGui.TableSetupColumn("Primary Value", ImGuiTableColumnFlags.WidthFixed);
-                ImGui.TableSetupColumn("Primary Info", ImGuiTableColumnFlags.WidthFixed);
 
-                if (vanillaRow != null)
+                if (displayInfoColumn)
                 {
-                    ImGui.TableSetupColumn("Vanilla Value", ImGuiTableColumnFlags.WidthFixed);
-                    ImGui.TableSetupColumn("Vanilla Info", ImGuiTableColumnFlags.WidthFixed);
+                    ImGui.TableSetupColumn("Primary Info", ImGuiTableColumnFlags.WidthFixed);
                 }
 
-                if (auxRow != null)
+                if (vanillaRow != null && displayVanillaColumns)
+                {
+                    ImGui.TableSetupColumn("Vanilla Value", ImGuiTableColumnFlags.WidthFixed);
+                    if (displayInfoColumn)
+                    {
+                        ImGui.TableSetupColumn("Vanilla Info", ImGuiTableColumnFlags.WidthFixed);
+                    }
+                }
+
+                if (auxRow != null && displayAuxColumns)
                 {
                     ImGui.TableSetupColumn("Aux Value", ImGuiTableColumnFlags.WidthFixed);
-                    ImGui.TableSetupColumn("Aux Info", ImGuiTableColumnFlags.WidthFixed);
+
+                    if (displayInfoColumn)
+                    {
+                        ImGui.TableSetupColumn("Aux Info", ImGuiTableColumnFlags.WidthFixed);
+                    }
                 }
 
                 // Row ID
@@ -133,6 +195,19 @@ public class ParamFieldView
                 // Fields
                 for (int i = 0; i < PrimaryOrderedColumns.Count(); i++)
                 {
+                    // Visibility State
+                    if (FieldVisibility != null)
+                    {
+                        if(FieldVisibility.ContainsKey(i))
+                        {
+                            // Skip this field if it set to not be visible
+                            if (FieldVisibility[i] == false)
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
                     var curField = PrimaryOrderedColumns.ElementAt(i);
                     var curValue = curField.GetValue(curRow);
 
@@ -153,14 +228,18 @@ public class ParamFieldView
 
                     var isSelected = Editor.Selection.IsFieldSelected(i, curField);
 
-                    if (ImGui.Selectable($"{displayName}##fieldEntry{i}", isSelected))
+                    // Truncate the name if it exceeds 40 characters, to avoid a pointlessly wide column
+                    var finalName = StringUtils.TruncateWithEllipsis(displayName, CFG.Current.ParamFieldColumnTruncationLength);
+
+                    if (ImGui.Selectable($"{finalName}##fieldEntry{i}", isSelected))
                     {
                         Editor.Selection.SelectField(i, curField);
                     }
 
                     if (fieldMeta != null)
                     {
-                        UIHelper.Tooltip($"{fieldMeta.Wiki}");
+                        var text = $"{displayName}\n\n{fieldMeta.Wiki}";
+                        UIHelper.Tooltip($"{text}");
                     }
 
                     // Begin drag
@@ -192,19 +271,84 @@ public class ParamFieldView
                         ImGui.EndDragDropTarget();
                     }
 
-                    ImGui.TableSetColumnIndex(1);
+                    // NOTE: a bit fiddly, but this handles the column arrangement nicely
+                    // Name = 0
+                    var primaryValueIndex = 1;
+                    var offsetIndex = 2;
+                    var typeIndex = 2;
+
+                    if (displayOffsetColumn)
+                    {
+                        typeIndex = 3;
+                    }
+
+                    // Prefix offset here accounts for the Type and Offset columns that can appear before the name column
+                    var prefixOffset = 0;
+
+                    if(displayOffsetColumn)
+                    {
+                        prefixOffset += 1;
+                    }
+
+                    if(displayTypeColumn)
+                    {
+                        prefixOffset += 1;
+                    }
+
+                    var primaryInfoIndex = 2 + prefixOffset;
+                    var vanillaInputIndex = 3 + prefixOffset;
+                    var vanillaInfoIndex = 4 + prefixOffset;
+                    var auxInputIndex = 5 + prefixOffset;
+                    var auxInfoIndex = 6 + prefixOffset;
+
+                    // If info columns are displayed, shift vanilla and aux input back
+                    if (!displayInfoColumn)
+                    {
+                        vanillaInputIndex = 2 + prefixOffset;
+                        auxInputIndex = 3 + prefixOffset; 
+                    }
+
+                    // If vanilla columns aren't displayed, shift aux input/info back
+                    if (!displayVanillaColumns)
+                    {
+                        auxInputIndex = 3 + prefixOffset;
+                        auxInfoIndex = 4 + prefixOffset;
+                    }
+
+                    ImGui.TableSetColumnIndex(primaryValueIndex);
 
                     // Primary Value
                     Editor.FieldInput.DisplayFieldInput($"primaryInput_{i}", curParam, curRow, curField, curValue, fieldMeta);
 
-                    // Primary Info
-                    ImGui.TableSetColumnIndex(2);
-
-                    Editor.FieldDecorator.DisplayFieldInfo($"primaryInfo_{i}", curParam, curRow, curField, curValue, fieldMeta);
-
-                    if (vanillaRow != null)
+                    if (displayOffsetColumn)
                     {
-                        ImGui.TableSetColumnIndex(3);
+                        ImGui.TableSetColumnIndex(offsetIndex);
+
+                        // Calc
+                    }
+
+                    if (displayTypeColumn)
+                    {
+                        ImGui.TableSetColumnIndex(typeIndex);
+
+                        var typeName = StringUtils.TruncateWithEllipsis($"{curField.Def.InternalType}", CFG.Current.ParamFieldColumnTruncationLength);
+
+                        ImGui.Text($"{typeName}");
+                        UIHelper.Tooltip($"{curField.Def.InternalType}");
+                    }
+
+                    // Primary Info
+                    if (displayInfoColumn)
+                    {
+                        ImGui.TableSetColumnIndex(primaryInfoIndex);
+
+                        Editor.FieldDecorator.DisplayFieldInfo($"primaryInfo_{i}", curParam, curRow, curField, curValue, fieldMeta);
+                    }
+
+                    // Vanilla Columns
+                    if (vanillaRow != null && displayVanillaColumns)
+                    {
+                        ImGui.TableSetColumnIndex(vanillaInputIndex);
 
                         if(VanillaOrderedColumns == null)
                             VanillaOrderedColumns = GetOrderedFields(vanillaRow.Columns);
@@ -215,29 +359,37 @@ public class ParamFieldView
                         // Vanilla Value
                         Editor.FieldInput.DisplayFieldInput($"vanillaInput_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta, true);
 
-                        ImGui.TableSetColumnIndex(4);
 
-                        // Vanilla Info
-                        Editor.FieldDecorator.DisplayFieldInfo($"vanillaInfo_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta);
+                        if (displayInfoColumn)
+                        {
+                            ImGui.TableSetColumnIndex(vanillaInfoIndex);
+
+                            // Vanilla Info
+                            Editor.FieldDecorator.DisplayFieldInfo($"vanillaInfo_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta);
+                        }
                     }
 
-                    if (auxRow != null)
+                    // Aux Columns
+                    if (auxRow != null && displayAuxColumns)
                     {
-                        ImGui.TableSetColumnIndex(3);
+                        ImGui.TableSetColumnIndex(auxInputIndex);
 
                         if(AuxOrderedColumns == null)
                             AuxOrderedColumns = GetOrderedFields(auxRow.Columns);
 
                         var auxField = AuxOrderedColumns.ElementAt(i);
-                        var auxValue = auxField.GetValue(vanillaRow);
+                        var auxValue = auxField.GetValue(auxRow);
 
                         // Auxiliary Value
                         Editor.FieldInput.DisplayFieldInput($"auxiliaryInput_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta, true);
 
-                        ImGui.TableSetColumnIndex(4);
+                        if (displayInfoColumn)
+                        {
+                            ImGui.TableSetColumnIndex(auxInfoIndex);
 
-                        // Auxiliary Info
-                        Editor.FieldDecorator.DisplayFieldInfo($"auxiliaryInfo_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta);
+                            // Auxiliary Info
+                            Editor.FieldDecorator.DisplayFieldInfo($"auxiliaryInfo_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta);
+                        }
                     }
                 }
 
@@ -262,12 +414,133 @@ public class ParamFieldView
                         WriteFieldOrder();
                     }
                 }
-
                 ImGui.EndTable();
             }
+
+            ImGui.EndChild();
         }
 
         ImGui.End();
+    }
+
+    private bool FocusFieldSearch = false;
+
+    public void Shortcuts(Param curParam, Row curRow, ParamMeta curMeta)
+    {
+        if (DetectShortcuts)
+        {
+            // Focus Field Search
+            if (Keyboard.KeyPress(Key.F) && Keyboard.KeyPress(Key.LShift))
+            {
+                FocusFieldSearch = true;
+            }
+
+            // Clear Field Search
+            if (Keyboard.KeyPress(Key.C) && Keyboard.KeyPress(Key.LShift))
+            {
+                Editor.SearchEngine.FieldFilterInput = "";
+                FieldVisibility = null;
+            }
+        }
+    }
+
+    public void DisplayHeader(Param curParam, Row curRow, ParamMeta curMeta)
+    {
+        // Filter
+        var searchWidth = ImGui.GetWindowWidth() * 0.5f;
+
+        if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
+        {
+            Editor.SearchEngine.DisplaySearchTermBuilder = true;
+        }
+        UIHelper.Tooltip("View the search term builder.");
+
+        ImGui.SameLine();
+
+        if (FocusFieldSearch)
+        {
+            FocusFieldSearch = false;
+            ImGui.SetKeyboardFocusHere();
+        }
+
+        ImGui.SetNextItemWidth(searchWidth);
+        ImGui.InputText($"##fieldSearch_{ID}", ref Editor.SearchEngine.FieldFilterInput, 128);
+
+        ImGui.SameLine();
+
+        if(ImGui.Button($"{Icons.Search}"))
+        {
+            Editor.SearchEngine.ProcessFieldSearch(curParam, curRow, curMeta);
+        }
+        UIHelper.Tooltip("Filter the field list.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Times}"))
+        {
+            Editor.SearchEngine.FieldFilterInput = "";
+            FieldVisibility = null;
+        }
+        UIHelper.Tooltip("Clear the field list filter.");
+
+        ImGui.SameLine();
+
+        // Quick Toggles
+        if (ImGui.Button($"{Icons.AddressBook}"))
+        {
+            CFG.Current.DisplayVanillaColumns = !CFG.Current.DisplayVanillaColumns;
+        }
+        UIHelper.Tooltip("Toggle the display of the vanilla columns.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.AddressBookO}"))
+        {
+            CFG.Current.DisplayAuxColumns = !CFG.Current.DisplayAuxColumns;
+        }
+        UIHelper.Tooltip("Toggle the display of the auxiliary columns.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Book}"))
+        {
+            CFG.Current.DisplayCommunityFieldNames = !CFG.Current.DisplayCommunityFieldNames;
+        }
+        UIHelper.Tooltip("Toggle field name display type between Internal and Community.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.InfoCircle}"))
+        {
+            CFG.Current.DisplayInformationColumn = !CFG.Current.DisplayInformationColumn;
+        }
+        UIHelper.Tooltip("Toggle the display of the field type column.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Cog}"))
+        {
+            CFG.Current.DisplayTypeColumn = !CFG.Current.DisplayTypeColumn;
+        }
+        UIHelper.Tooltip("Toggle the display of the field type column.");
+
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.MapSigns}"))
+        {
+            CFG.Current.DisplayOffsetColumn = !CFG.Current.DisplayOffsetColumn;
+        }
+        UIHelper.Tooltip("Toggle the display of the field offset column.");
+    }
+
+    /// <summary>
+    /// Reset the ordering columns
+    /// </summary>
+    public void InvalidateColumns()
+    {
+        PrimaryOrderedColumns = null;
+        VanillaOrderedColumns = null;
+        AuxOrderedColumns = null;
     }
 
     /// <summary>

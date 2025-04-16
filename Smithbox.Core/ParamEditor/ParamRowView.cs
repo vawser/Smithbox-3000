@@ -19,6 +19,8 @@ public class ParamRowView
     private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
     private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
+    public bool DetectShortcuts = false;
+
     public ParamRowView(Project curProject, ParamEditor editor)
     {
         ID = editor.ID;
@@ -32,7 +34,7 @@ public class ParamRowView
 
         if (ImGui.IsWindowFocused())
         {
-            Editor.DetectShortcuts = true;
+            DetectShortcuts = true;
         }
 
         if (Editor.Selection._selectedParam != null)

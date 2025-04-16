@@ -38,6 +38,7 @@ public class ParamEditor
 
     public ParamFieldDecorator FieldDecorator;
     public ParamFieldInput FieldInput;
+    public ParamSearchEngine SearchEngine;
 
     public bool DetectShortcuts = false;
 
@@ -53,6 +54,7 @@ public class ParamEditor
 
         FieldDecorator = new(Project, this);
         FieldInput = new(Project, this);
+        SearchEngine = new(Project, this);
 
         ParamView = new(Project, this);
         RowView = new(Project, this);
@@ -78,6 +80,7 @@ public class ParamEditor
                 ParamView.Draw(cmd);
                 RowView.Draw(cmd);
                 FieldView.Draw(cmd);
+                SearchEngine.Draw();
             }
             else
             {
@@ -207,7 +210,8 @@ public class ParamEditor
     /// </summary>
     private void Shortcuts()
     {
-        if (DetectShortcuts)
+        // Editor-level shortcuts
+        if (ParamView.DetectShortcuts || RowView.DetectShortcuts || FieldView.DetectShortcuts)
         {
             if (Keyboard.KeyPress(Key.S))
             {
