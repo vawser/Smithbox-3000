@@ -6,13 +6,7 @@ Smithbox is a modding tool for Elden Ring, Armored Core VI, Sekiro, Dark Souls 3
 [![Smithbox Discord](https://img.shields.io/badge/Discord%20-%237289DA.svg?&logo=discord&logoColor=white)](https://discord.gg/5p9bRKkK4J)
 
 ## Key Features
-- Map Editor: a visual editor for editing maps.
 - Param Editor: a table editor for editing parameters, which contain most of the data that defines each game.
-- Model Editor: a model editor for viewing and editing models. Similar to the FLVER Editor.
-- Text Editor: an editor for editing text localization.
-- Gparam Editor: an editor for quickly creating and editing GPARAM files.
-- Time Act Editor: an editor for editing TAE files, which control the events that occur during animations.
-- Texture Viewer: a simple to use viewer for looking and extracting textures.
 
 ## Requirements
 * Windows 7/8/8.1/10/11 (64-bit only)
