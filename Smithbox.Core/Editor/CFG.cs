@@ -30,6 +30,11 @@ public class CFG
     /// </summary>
     public string ModEngineInstall = "";
 
+    /// <summary>
+    /// The dll arguments to use with the Mod Engine 2 launch
+    /// </summary>
+    public string ModEngineDlls = "";
+
     //----------------------------------
     // Viewport
     //----------------------------------

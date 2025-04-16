@@ -82,6 +82,9 @@ public static class EditorSettings
                         }
                     }
                 }
+
+                ImGui.InputText("DLL Entries##modEngineDllEntries", ref CFG.Current.ModEngineDlls, 255);
+                UIHelper.Tooltip("The relative paths of the DLLs to include in the 'Launch Mod' action. Separate them by a space if using multiple.");
             }
 
             if (FeatureFlags.IncludeParamEditor)

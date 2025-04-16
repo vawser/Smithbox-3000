@@ -21,13 +21,34 @@ public static class ModEngineUtils
         var modEngineInstallFolderPath = Path.GetDirectoryName(CFG.Current.ModEngineInstall);
         var modTomlPath = @$"{modEngineInstallFolderPath}\smithbox_launch_config.toml";
 
+        var dllInput = "";
+        if (CFG.Current.ModEngineDlls != "")
+        {
+            var dlls = CFG.Current.ModEngineDlls.Split(" ");
+
+            for (int i = 0; i < dlls.Length; i++)
+            {
+                var curEntry = dlls[i];
+
+                dllInput = $"{dllInput}\"{curEntry}\"";
+
+                if (i != dlls.Length - 1)
+                {
+                    // Add the comma for all bu the last
+                    dllInput = $"{dllInput}, ";
+                }
+            }
+        }
+
         var looseParams = "false";
         if (CFG.Current.UseLooseParams)
             looseParams = "true";
 
         string tomlString = $@"[modengine]
 debug = false
-external_dlls = []
+external_dlls = [
+    {dllInput}
+]
 
 [extension.mod_loader]
 enabled = true
@@ -49,19 +70,25 @@ enabled = false";
 
             var inputStr = $"'-t' '{projectType}' '-c' '{tomlPath}'".Replace("'", "\"");
 
-            TaskLogs.AddLog(inputStr);
-
-            ProcessStartInfo psi = new ProcessStartInfo
+            bool isRunning = Process.GetProcessesByName("Steam.exe").Any();
+            if (isRunning)
             {
-                FileName = CFG.Current.ModEngineInstall,
-                Arguments = inputStr,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                CreateNoWindow = true
-            };
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = CFG.Current.ModEngineInstall,
+                    Arguments = inputStr,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                };
 
-            Process.Start(psi);
+                Process.Start(psi);
+            }
+            else
+            {
+                MessageBox.Show("Steam is not currently running. Start Steam.");
+            }
         }
     }
 }
