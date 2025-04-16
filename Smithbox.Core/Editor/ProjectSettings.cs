@@ -190,12 +190,35 @@ public static class ProjectSettings
                 {
                     Open = false;
 
-                    var filename = @$"{AppContext.BaseDirectory}\.smithbox\{TargetProject.ProjectGUID}.json";
+                    // Delete the project file
+                    var filename = @$"{AppContext.BaseDirectory}\.smithbox\Projects\{TargetProject.ProjectGUID}.json";
                     if(File.Exists(filename))
                     {
                         File.Delete(filename);
                     }
 
+                    // Remove the project from the ordering file and retain sequential ids
+                    var curOrderEntry = BaseEditor.ProjectDisplayConfig.ProjectOrder.Where(e => e.Value == TargetProject.ProjectGUID).FirstOrDefault();
+
+                    var existingOrder = BaseEditor.ProjectDisplayConfig.ProjectOrder;
+                    var newOrder = new Dictionary<int, Guid>();
+
+                    var count = 0;
+                    for(int i = 0; i < existingOrder.Count; i++)
+                    {
+                        var curGuid = existingOrder[i];
+                        if(curGuid != TargetProject.ProjectGUID)
+                        {
+                            newOrder.Add(count, curGuid);
+                            count++;
+                        }
+                    }
+
+                    BaseEditor.ProjectDisplayConfig.ProjectOrder = newOrder;
+
+                    BaseEditor.SaveProjectDisplayConfig();
+
+                    // Unload the project editor stuff
                     BaseEditor.SelectedProject = null;
                     BaseEditor.Projects.Remove(TargetProject);
                 }

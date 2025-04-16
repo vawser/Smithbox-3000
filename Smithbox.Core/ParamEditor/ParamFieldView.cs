@@ -675,6 +675,9 @@ public class ParamFieldView
         var folder = $@"{Project.ProjectPath}\.smithbox\";
         var file = Path.Combine(folder, "Param Field Order.json");
 
+        if(!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+
         var json = JsonSerializer.Serialize(FieldOrder, SmithboxSerializerContext.Default.ParamFieldOrder);
 
         File.WriteAllText(file, json);

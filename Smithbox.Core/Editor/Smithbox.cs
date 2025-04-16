@@ -374,7 +374,7 @@ public class Smithbox
         }
     }
 
-    private void SaveProjectDisplayConfig()
+    public void SaveProjectDisplayConfig()
     {
         var folder = FolderUtils.GetConfigurationFolder();
         var file = Path.Combine(folder, "Project Display.json");
