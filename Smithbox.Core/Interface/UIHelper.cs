@@ -121,26 +121,6 @@ public static class UIHelper
         }
     }
 
-    public static void WrappedText(string text)
-    {
-        var size = ImGui.GetWindowSize();
-
-        ImGui.PushTextWrapPos(size.X);
-        ImGui.TextUnformatted(text);
-        ImGui.PopTextWrapPos();
-    }
-
-    public static void WrappedTextColored(Vector4 color, string text)
-    {
-        var size = ImGui.GetWindowSize();
-
-        ImGui.PushTextWrapPos(size.X);
-        ImGui.PushStyleColor(ImGuiCol.Text, color);
-        ImGui.TextUnformatted(text);
-        ImGui.PopStyleColor();
-        ImGui.PopTextWrapPos();
-    }
-
     public static void ShowWideHoverTooltip(string desc)
     {
         if (ImGui.IsItemHovered())
@@ -220,6 +200,30 @@ public static class UIHelper
             UIHelper.Tooltip(tooltip);
 
             ImGui.EndTable();
+        }
+    }
+
+    public static void WrappedText(string text)
+    {
+        if (text != "")
+        {
+            ImGui.SameLine();
+
+            ImGui.PushTextWrapPos();
+            ImGui.Text(text);
+            ImGui.PopTextWrapPos();
+        }
+    }
+
+    public static void WrappedTextColored(string text, Vector4 color)
+    {
+        if (text != "")
+        {
+            ImGui.SameLine();
+
+            ImGui.PushTextWrapPos();
+            ImGui.TextColored(color, @$"{text}");
+            ImGui.PopTextWrapPos();
         }
     }
 }

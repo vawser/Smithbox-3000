@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2023 Juna Meinhold")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A .NET wrapper for the ImPlot library. (0.17)")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.17.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9e0040bdf4dea36fe19d281be2c037118ed544")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586057a01e01fb3a3547f8a590f192439b128802")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImPlot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImPlot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.17.0")]

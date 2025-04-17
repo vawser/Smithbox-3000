@@ -1,0 +1,260 @@
+{
+  "ImGui_MainBg": {
+    "X": 0.176,
+    "Y": 0.176,
+    "Z": 0.188,
+    "W": 1
+  },
+  "ImGui_ChildBg": {
+    "X": 0.145,
+    "Y": 0.145,
+    "Z": 0.149,
+    "W": 1
+  },
+  "ImGui_PopupBg": {
+    "X": 0.106,
+    "Y": 0.106,
+    "Z": 0.11,
+    "W": 1
+  },
+  "ImGui_Border": {
+    "X": 0.247,
+    "Y": 0.247,
+    "Z": 0.275,
+    "W": 1
+  },
+  "ImGui_TitleBarBg": {
+    "X": 0.176,
+    "Y": 0.176,
+    "Z": 0.188,
+    "W": 1
+  },
+  "ImGui_TitleBarBg_Active": {
+    "X": 0.176,
+    "Y": 0.176,
+    "Z": 0.188,
+    "W": 1
+  },
+  "ImGui_MenuBarBg": {
+    "X": 0.176,
+    "Y": 0.176,
+    "Z": 0.188,
+    "W": 1
+  },
+  "ImGui_ScrollbarBg": {
+    "X": 0.243,
+    "Y": 0.243,
+    "Z": 0.249,
+    "W": 1
+  },
+  "ImGui_ScrollbarGrab": {
+    "X": 0.408,
+    "Y": 0.408,
+    "Z": 0.408,
+    "W": 1
+  },
+  "ImGui_ScrollbarGrab_Hover": {
+    "X": 0.635,
+    "Y": 0.635,
+    "Z": 0.635,
+    "W": 1
+  },
+  "ImGui_ScrollbarGrab_Active": {
+    "X": 1,
+    "Y": 1,
+    "Z": 1,
+    "W": 1
+  },
+  "ImGui_SliderGrab": {
+    "X": 0.635,
+    "Y": 0.635,
+    "Z": 0.635,
+    "W": 1
+  },
+  "ImGui_SliderGrab_Active": {
+    "X": 1,
+    "Y": 1,
+    "Z": 1,
+    "W": 1
+  },
+  "ImGui_Tab": {
+    "X": 0.152,
+    "Y": 0.183,
+    "Z": 0.288,
+    "W": 1
+  },
+  "ImGui_Tab_Hover": {
+    "X": 0.182,
+    "Y": 0.214,
+    "Z": 0.332,
+    "W": 1
+  },
+  "ImGui_Tab_Active": {
+    "X": 0.206,
+    "Y": 0.243,
+    "Z": 0.375,
+    "W": 1
+  },
+  "ImGui_UnfocusedTab": {
+    "X": 0.152,
+    "Y": 0.183,
+    "Z": 0.288,
+    "W": 1
+  },
+  "ImGui_UnfocusedTab_Active": {
+    "X": 0.152,
+    "Y": 0.183,
+    "Z": 0.288,
+    "W": 1
+  },
+  "ImGui_Button": {
+    "X": 0.152,
+    "Y": 0.183,
+    "Z": 0.288,
+    "W": 1
+  },
+  "ImGui_Button_Hovered": {
+    "X": 0.182,
+    "Y": 0.214,
+    "Z": 0.332,
+    "W": 1
+  },
+  "ImGui_ButtonActive": {
+    "X": 0.206,
+    "Y": 0.243,
+    "Z": 0.375,
+    "W": 1
+  },
+  "ImGui_Selection": {
+    "X": 0.087,
+    "Y": 0.296,
+    "Z": 0.437,
+    "W": 1
+  },
+  "ImGui_Selection_Hover": {
+    "X": 0.247,
+    "Y": 0.247,
+    "Z": 0.275,
+    "W": 1
+  },
+  "ImGui_Selection_Active": {
+    "X": 0.161,
+    "Y": 0.55,
+    "Z": 0.939,
+    "W": 1
+  },
+  "ImGui_Input_Background": {
+    "X": 0.2,
+    "Y": 0.2,
+    "Z": 0.216,
+    "W": 1
+  },
+  "ImGui_Input_Background_Hover": {
+    "X": 0.247,
+    "Y": 0.247,
+    "Z": 0.275,
+    "W": 1
+  },
+  "ImGui_Input_Background_Active": {
+    "X": 0.2,
+    "Y": 0.2,
+    "Z": 0.216,
+    "W": 1
+  },
+  "ImGui_Input_CheckMark": {
+    "X": 1,
+    "Y": 1,
+    "Z": 1,
+    "W": 1
+  },
+  "ImGui_Input_Conflict_Background": {
+    "X": 0.25,
+    "Y": 0.2,
+    "Z": 0.2,
+    "W": 1
+  },
+  "ImGui_Input_Vanilla_Background": {
+    "X": 0.2,
+    "Y": 0.22,
+    "Z": 0.2,
+    "W": 1
+  },
+  "ImGui_Input_Default_Background": {
+    "X": 0.18,
+    "Y": 0.18,
+    "Z": 0.196,
+    "W": 1
+  },
+  "ImGui_Input_AuxVanilla_Background": {
+    "X": 0.2,
+    "Y": 0.2,
+    "Z": 0.35,
+    "W": 1
+  },
+  "ImGui_Input_DiffCompare_Background": {
+    "X": 0.2,
+    "Y": 0.2,
+    "Z": 0.35,
+    "W": 1
+  },
+  "ImGui_MultipleInput_Background": {
+    "X": 0,
+    "Y": 0.5,
+    "Z": 0,
+    "W": 0.1
+  },
+  "ImGui_ErrorInput_Background": {
+    "X": 0.8,
+    "Y": 0.2,
+    "Z": 0.2,
+    "W": 1
+  },
+  "ImGui_Default_Text_Color": {
+    "X": 0.9,
+    "Y": 0.9,
+    "Z": 0.9,
+    "W": 1
+  },
+  "ImGui_Warning_Text_Color": {
+    "X": 1,
+    "Y": 0,
+    "Z": 0,
+    "W": 1
+  },
+  "ImGui_Benefit_Text_Color": {
+    "X": 0,
+    "Y": 1,
+    "Z": 0,
+    "W": 1
+  },
+  "ImGui_Invalid_Text_Color": {
+    "X": 1,
+    "Y": 0.3,
+    "Z": 0.3,
+    "W": 1
+  },
+  "ImGui_Highlight_Text": {
+    "X": 1,
+    "Y": 1,
+    "Z": 0,
+    "W": 1
+  },
+  "ImGui_Logger_Information_Color": {
+    "X": 0,
+    "Y": 1,
+    "Z": 0,
+    "W": 1
+  },
+  "ImGui_Logger_Warning_Color": {
+    "X": 1,
+    "Y": 0,
+    "Z": 0,
+    "W": 1
+  },
+  "ImGui_Logger_Error_Color": {
+    "X": 1,
+    "Y": 0.5,
+    "Z": 0.5,
+    "W": 1
+  }
+}

@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hexa.NET.ImGui.Backends.GLFW</name>
+    </assembly>
+    <members>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOpenGLNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Byte)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOpenGL(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOpenGL(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForVulkanNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Byte)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForVulkan(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForVulkan(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOtherNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Byte)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOther(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitForOther(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InstallCallbacksNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InstallCallbacks(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InstallCallbacks(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.RestoreCallbacksNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.RestoreCallbacks(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.RestoreCallbacks(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SetCallbacksChainForAllWindowsNative(System.Byte)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SetCallbacksChainForAllWindows(System.Boolean)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.WindowFocusCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.WindowFocusCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.WindowFocusCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorEnterCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorEnterCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorEnterCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorPosCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorPosCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CursorPosCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MouseButtonCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MouseButtonCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MouseButtonCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.ScrollCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.ScrollCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.ScrollCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Double,System.Double)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.KeyCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.KeyCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.KeyCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CharCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow*,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CharCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.CharCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWwindow@,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MonitorCallbackNative(Hexa.NET.ImGui.Backends.GLFW.GLFWmonitor*,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MonitorCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWmonitorPtr,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.MonitorCallback(Hexa.NET.ImGui.Backends.GLFW.GLFWmonitor@,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.SleepNative(System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.Sleep(System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.InitApi(HexaGen.Runtime.INativeContext)">
+            <summary>
+            Initializes the function table, automatically called. Do not call manually, only after <see cref="M:Hexa.NET.ImGui.Backends.GLFW.ImGuiImplGLFW.FreeApi"/>.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.GLFW.GLFWmonitor">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.GLFW.GLFWmonitorPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.GLFWmonitorPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.GLFWmonitorPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.GLFW.GLFWwindow">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.GLFW.GLFWwindowPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

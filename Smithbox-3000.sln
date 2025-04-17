@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexa.NET.ImNodes", "Hexa.NE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexa.NET.ImPlot", "Hexa.NET.ImPlot\Hexa.NET.ImPlot.csproj", "{EE66DB89-A45C-45C4-A23B-99EF0BED4350}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smithbox.Program", "Smithbox.Program\Smithbox.Program.csproj", "{539452FB-6300-470C-8C46-E40BBF1C67BE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smithbox.Core", "Smithbox.Core\Smithbox.Core.csproj", "{F9DA1313-55D8-406E-AE82-09A5C7BA532A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexa.NET.ImGuiNodeEditor", "Hexa.NET.ImGuiNodeEditor\Hexa.NET.ImGuiNodeEditor.csproj", "{885ABFD2-1091-4D9E-92AA-E174FBF2E35E}"
@@ -53,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexa.NET.ImGui.Widgets", "H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexa.NET.ImGui.Widgets.Extras", "Hexa.NET.ImGui.Widgets.Extras\Hexa.NET.ImGui.Widgets.Extras.csproj", "{EEDC1DF3-F89B-510D-3AA3-A57F7C7FDE5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smithbox.Program.DX11", "Smithbox.Program.DX11\Smithbox.Program.DX11.csproj", "{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,12 +84,6 @@ Global
 		{EE66DB89-A45C-45C4-A23B-99EF0BED4350}.NodeEditor|Any CPU.Build.0 = Release|Any CPU
 		{EE66DB89-A45C-45C4-A23B-99EF0BED4350}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE66DB89-A45C-45C4-A23B-99EF0BED4350}.Release|Any CPU.Build.0 = Release|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.NodeEditor|Any CPU.ActiveCfg = Release|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.NodeEditor|Any CPU.Build.0 = Release|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{539452FB-6300-470C-8C46-E40BBF1C67BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9DA1313-55D8-406E-AE82-09A5C7BA532A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9DA1313-55D8-406E-AE82-09A5C7BA532A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9DA1313-55D8-406E-AE82-09A5C7BA532A}.NodeEditor|Any CPU.ActiveCfg = Release|Any CPU
@@ -210,6 +204,12 @@ Global
 		{EEDC1DF3-F89B-510D-3AA3-A57F7C7FDE5B}.NodeEditor|Any CPU.Build.0 = Debug|Any CPU
 		{EEDC1DF3-F89B-510D-3AA3-A57F7C7FDE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEDC1DF3-F89B-510D-3AA3-A57F7C7FDE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.NodeEditor|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.NodeEditor|Any CPU.Build.0 = Debug|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72F44BB-9CAF-EB9D-BD6D-2C32FE1B3079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

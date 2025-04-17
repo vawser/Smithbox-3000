@@ -1,0 +1,2606 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hexa.NET.ImGui.Backends</name>
+    </assembly>
+    <members>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.InitNative(Hexa.NET.ImGui.Backends.Android.ANativeWindow*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.Init(Hexa.NET.ImGui.Backends.Android.ANativeWindowPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.Init(Hexa.NET.ImGui.Backends.Android.ANativeWindow@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.HandleInputEventNative(Hexa.NET.ImGui.Backends.Android.AInputEvent*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.HandleInputEvent(Hexa.NET.ImGui.Backends.Android.AInputEventPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.HandleInputEvent(Hexa.NET.ImGui.Backends.Android.AInputEvent@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ImGuiImplAndroid.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Android.AInputEvent">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Android.AInputEventPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.AInputEventPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.AInputEventPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Android.ANativeWindow">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Android.ANativeWindowPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ANativeWindowPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Android.ANativeWindowPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.InitNative(Hexa.NET.ImGui.Backends.D3D10.ID3D10Device*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.Init(Hexa.NET.ImGui.Backends.D3D10.ID3D10DevicePtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.Init(Hexa.NET.ImGui.Backends.D3D10.ID3D10Device@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.RenderDrawData(Hexa.NET.ImGui.ImDrawData@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.CreateDeviceObjectsNative">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.CreateDeviceObjects">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.InvalidateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.InvalidateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ImGuiImplD3D10.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D10.ID3D10Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D10.ID3D10DevicePtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ID3D10DevicePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D10.ID3D10DevicePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.InitNative(Hexa.NET.ImGui.Backends.D3D11.ID3D11Device*,Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContext*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.Init(Hexa.NET.ImGui.Backends.D3D11.ID3D11DevicePtr,Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContextPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.Init(Hexa.NET.ImGui.Backends.D3D11.ID3D11Device@,Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContextPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.Init(Hexa.NET.ImGui.Backends.D3D11.ID3D11DevicePtr,Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContext@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.Init(Hexa.NET.ImGui.Backends.D3D11.ID3D11Device@,Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContext@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.RenderDrawData(Hexa.NET.ImGui.ImDrawData@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.InvalidateDeviceObjectsNative">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.InvalidateDeviceObjects">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.CreateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.CreateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ImGuiImplD3D11.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D11.ID3D11Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D11.ID3D11DevicePtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ID3D11DevicePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ID3D11DevicePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContextPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContextPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D11.ID3D11DeviceContextPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.SrvDescriptorAllocFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.SrvDescriptorFreeFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.InitNative(Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo*)">
+            <summary>
+            cmd_list is the command list that the implementation will use to render imgui draw lists.<br/>
+            Before calling the render function, caller must prepare cmd_list by resetting it and setting the appropriate<br/>
+            render target and descriptor heap that contains font_srv_cpu_desc_handle/font_srv_gpu_desc_handle.<br/>
+            font_srv_cpu_desc_handle and font_srv_gpu_desc_handle are handles to a single SRV descriptor to use for the internal font texture.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.Init(Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr)">
+            <summary>
+            cmd_list is the command list that the implementation will use to render imgui draw lists.<br/>
+            Before calling the render function, caller must prepare cmd_list by resetting it and setting the appropriate<br/>
+            render target and descriptor heap that contains font_srv_cpu_desc_handle/font_srv_gpu_desc_handle.<br/>
+            font_srv_cpu_desc_handle and font_srv_gpu_desc_handle are handles to a single SRV descriptor to use for the internal font texture.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.Init(Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo@)">
+            <summary>
+            cmd_list is the command list that the implementation will use to render imgui draw lists.<br/>
+            Before calling the render function, caller must prepare cmd_list by resetting it and setting the appropriate<br/>
+            render target and descriptor heap that contains font_srv_cpu_desc_handle/font_srv_gpu_desc_handle.<br/>
+            font_srv_cpu_desc_handle and font_srv_gpu_desc_handle are handles to a single SRV descriptor to use for the internal font texture.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*,Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandList*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandListPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandListPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandList@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandList@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.InvalidateDeviceObjectsNative">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.InvalidateDeviceObjects">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.CreateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.CreateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplD3D12.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.D3D12CpuDescriptorHandle">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.D3D12CpuDescriptorHandle.Ptr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.D3D12CpuDescriptorHandle.#ctor(System.UInt64)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.D3D12GpuDescriptorHandle">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.D3D12GpuDescriptorHandle.Ptr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.D3D12GpuDescriptorHandle.#ctor(System.UInt64)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12CommandQueue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12CommandQueuePtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12CommandQueuePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12CommandQueuePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12DescriptorHeap">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12DescriptorHeapPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12DescriptorHeapPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12DescriptorHeapPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12DevicePtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12DevicePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12DevicePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandList">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandListPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandListPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ID3D12GraphicsCommandListPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.CommandQueue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.NumFramesInFlight">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.RTVFormat">
+            <summary>
+            RenderTarget format.<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.DSVFormat">
+            <summary>
+            DepthStencilView format.<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.UserData">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.SrvDescriptorHeap">
+            <summary>
+            Allocating SRV descriptors for textures is up to the application, so we provide callbacks.<br/>
+            (current version of the backend will only allocate one descriptor, future versions will need to allocate more)<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.SrvDescriptorAllocFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.SrvDescriptorFreeFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.LegacySingleSrvCpuDescriptor">
+            <summary>
+            To facilitate transition from single descriptor to allocator callback, you may use those.<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.LegacySingleSrvGpuDescriptor">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfo.#ctor(Hexa.NET.ImGui.Backends.D3D12.ID3D12DevicePtr,Hexa.NET.ImGui.Backends.D3D12.ID3D12CommandQueuePtr,System.Int32,System.UInt32,System.UInt32,System.Void*,Hexa.NET.ImGui.Backends.D3D12.ID3D12DescriptorHeapPtr,,,Hexa.NET.ImGui.Backends.D3D12.D3D12CpuDescriptorHandle,Hexa.NET.ImGui.Backends.D3D12.D3D12GpuDescriptorHandle)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.CommandQueue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.NumFramesInFlight">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.RTVFormat">
+            <summary>
+            RenderTarget format.<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.DSVFormat">
+            <summary>
+            DepthStencilView format.<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.UserData">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.SrvDescriptorHeap">
+            <summary>
+            Allocating SRV descriptors for textures is up to the application, so we provide callbacks.<br/>
+            (current version of the backend will only allocate one descriptor, future versions will need to allocate more)<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.SrvDescriptorAllocFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.SrvDescriptorFreeFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.LegacySingleSrvCpuDescriptor">
+            <summary>
+            To facilitate transition from single descriptor to allocator callback, you may use those.<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.D3D12.ImGuiImplDX12InitInfoPtr.LegacySingleSrvGpuDescriptor">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.InitNative(Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.Init(Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9Ptr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.Init(Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.RenderDrawData(Hexa.NET.ImGui.ImDrawData@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.CreateDeviceObjectsNative">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.CreateDeviceObjects">
+            <summary>
+            Use if you want to reset your rendering device without losing Dear ImGui state.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.InvalidateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.InvalidateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.ImGuiImplD3D9.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9Ptr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9Ptr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.D3D9.IDirect3DDevice9Ptr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.InitApi(HexaGen.Runtime.INativeContext)">
+            <summary>
+            Initializes the function table, automatically called. Do not call manually, only after <see cref="M:Hexa.NET.ImGui.Backends.ImGuiImpl.FreeApi"/>.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.ImGuiImpl.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.InitNative(Hexa.NET.ImGui.Backends.Metal.MTLDevice*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.Init(Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.Init(Hexa.NET.ImGui.Backends.Metal.MTLDevice@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.NewFrameNative(Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptor*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.NewFrame(Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptorPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.NewFrame(Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptor@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*,Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer*,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer@,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer@,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer@,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer@,Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateFontsTextureNative(Hexa.NET.ImGui.Backends.Metal.MTLDevice*)">
+            <summary>
+            Called by Init/NewFrame/Shutdown<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateFontsTexture(Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr)">
+            <summary>
+            Called by Init/NewFrame/Shutdown<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateFontsTexture(Hexa.NET.ImGui.Backends.Metal.MTLDevice@)">
+            <summary>
+            Called by Init/NewFrame/Shutdown<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.DestroyFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.DestroyFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateDeviceObjectsNative(Hexa.NET.ImGui.Backends.Metal.MTLDevice*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateDeviceObjects(Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.CreateDeviceObjects(Hexa.NET.ImGui.Backends.Metal.MTLDevice@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.DestroyDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.DestroyDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.ImGuiImplMetal.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLCommandBuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLCommandBufferPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLDevice">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLDevicePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoder">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLRenderCommandEncoderPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptor">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptorPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptorPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Metal.MTLRenderPassDescriptorPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.InitNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.Init">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.RenderDrawData(Hexa.NET.ImGui.ImDrawData@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.CreateFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.CreateFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.DestroyFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.DestroyFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.CreateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.CreateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.DestroyDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.DestroyDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL2.ImGuiImplOpenGL2.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.InitNative(System.Byte*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.Init(System.Byte*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.Init(System.Byte@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.Init(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.Init(System.String)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.RenderDrawData(Hexa.NET.ImGui.ImDrawData@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.CreateFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.CreateFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.DestroyFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.DestroyFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.CreateDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.CreateDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.DestroyDeviceObjectsNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.DestroyDeviceObjects">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OpenGL3.ImGuiImplOpenGL3.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.InitNative(System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.Init(System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.NewFrameNative(System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.NewFrame(System.Void*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.OSX.ImGuiImplOSX.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.CheckVkResultFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.PFNVkVoidFunction">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.InitNative(Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo*)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.Init(Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.Init(Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo@)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.RenderDrawDataNative(Hexa.NET.ImGui.ImDrawData*,Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer,Hexa.NET.ImGui.Backends.Vulkan.VkPipeline)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.RenderDrawData(Hexa.NET.ImGui.ImDrawDataPtr,Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer,Hexa.NET.ImGui.Backends.Vulkan.VkPipeline)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.RenderDrawData(Hexa.NET.ImGui.ImDrawData@,Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer,Hexa.NET.ImGui.Backends.Vulkan.VkPipeline)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.CreateFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.CreateFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.DestroyFontsTextureNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.DestroyFontsTexture">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.SetMinImageCountNative(System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.SetMinImageCount(System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.AddTextureNative(Hexa.NET.ImGui.Backends.Vulkan.VkSampler,Hexa.NET.ImGui.Backends.Vulkan.VkImageView,Hexa.NET.ImGui.Backends.Vulkan.VkImageLayout)">
+            <summary>
+            Register a texture (VkDescriptorSet == ImTextureID)<br/>
+            FIXME: This is experimental in the sense that we are unsure how to best design/tackle this problem<br/>
+            Please post to https://github.com/ocornut/imgui/pull/914 if you have suggestions.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.AddTexture(Hexa.NET.ImGui.Backends.Vulkan.VkSampler,Hexa.NET.ImGui.Backends.Vulkan.VkImageView,Hexa.NET.ImGui.Backends.Vulkan.VkImageLayout)">
+            <summary>
+            Register a texture (VkDescriptorSet == ImTextureID)<br/>
+            FIXME: This is experimental in the sense that we are unsure how to best design/tackle this problem<br/>
+            Please post to https://github.com/ocornut/imgui/pull/914 if you have suggestions.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.RemoveTextureNative(Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorSet)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.RemoveTexture(Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorSet)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.LoadFunctionsNative(Hexa.NET.ImGui.Backends.Vulkan.PFNVkVoidFunction,System.Void*)">
+            <summary>
+            Optional: load Vulkan functions with a custom function loader<br/>
+            This is only useful with IMGUI_IMPL_VULKAN_NO_PROTOTYPES / VK_NO_PROTOTYPES<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.LoadFunctions(Hexa.NET.ImGui.Backends.Vulkan.PFNVkVoidFunction,System.Void*)">
+            <summary>
+            Optional: load Vulkan functions with a custom function loader<br/>
+            This is only useful with IMGUI_IMPL_VULKAN_NO_PROTOTYPES / VK_NO_PROTOTYPES<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HCreateOrResizeWindowNative(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow*,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Helpers<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HCreateOrResizeWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Helpers<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HCreateOrResizeWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow@,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Helpers<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HCreateOrResizeWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks@,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Helpers<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HCreateOrResizeWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow@,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks@,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Helpers<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HDestroyWindowNative(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow*,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HDestroyWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HDestroyWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow@,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HDestroyWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HDestroyWindow(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow@,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectSurfaceFormatNative(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,System.UInt32*,System.Int32,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectSurfaceFormat(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,System.UInt32*,System.Int32,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectSurfaceFormat(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,System.UInt32@,System.Int32,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectPresentModeNative(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR*,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectPresentMode(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR*,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HSelectPresentMode(Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR@,System.Int32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HGetMinImageCountFromPresentModeNative(Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.HGetMinImageCountFromPresentMode(Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkan.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkCommandPool">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkCommandPool.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkCommandPool.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorPool">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorPool.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorPool.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorSet">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorSet.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorSet.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkDevice">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDevice.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkDevice.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkFence">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkFence.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkFence.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkFramebuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkFramebuffer.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkFramebuffer.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkImage">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImage.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImage.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkImageLayout">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImageLayout.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImageLayout.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkImageView">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImageView.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkImageView.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkInstance">
+            <summary>
+            Forward declarations for Vulkan types<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkInstance.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkInstance.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkPipeline">
+            <summary>
+            Pipeline and layout types<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPipeline.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPipeline.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineCache">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineCache.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineCache.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkQueue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkQueue.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkQueue.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkRenderPass">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkRenderPass.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkRenderPass.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkSampler">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSampler.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSampler.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkSemaphore">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSemaphore.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSemaphore.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceFormatKHR">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceFormatKHR.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceFormatKHR.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkSwapchainKHR">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSwapchainKHR.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkSwapchainKHR.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame">
+            <summary>
+            -------------------------------------------------------------------------<br/>
+            Internal / Miscellaneous Vulkan Helpers<br/>
+            (Used by example's main.cpp. Used by multi-viewport features. PROBABLY NOT used by your own engine/app.)<br/>
+            -------------------------------------------------------------------------<br/>
+            You probably do NOT need to use or care about those functions.<br/>
+            Those functions only exist because:<br/>
+            1) they facilitate the readability and maintenance of the multiple main.cpp examples files.<br/>
+            2) the multi-viewport / platform window implementation needs them internally.<br/>
+            Generally we avoid exposing any kind of superfluous high-level helpers in the bindings,<br/>
+            but it is too much code to duplicate everywhere so we exceptionally expose them.<br/>
+            Your engine/app will likely _already_ have code to setup all that stuff (swap chain, render pass, frame buffers, etc.).<br/>
+            You may read this code to learn about Vulkan, but it is recommended you use you own custom tailored code to do equivalent work.<br/>
+            (The ImGui_ImplVulkanH_XXX functions do not interact with any of the state used by the regular ImGui_ImplVulkan_XXX functions)<br/>
+            -------------------------------------------------------------------------<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.CommandPool">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.CommandBuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.Fence">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.Backbuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.BackbufferView">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.Framebuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrame.#ctor(Hexa.NET.ImGui.Backends.Vulkan.VkCommandPool,Hexa.NET.ImGui.Backends.Vulkan.VkCommandBuffer,Hexa.NET.ImGui.Backends.Vulkan.VkFence,Hexa.NET.ImGui.Backends.Vulkan.VkImage,Hexa.NET.ImGui.Backends.Vulkan.VkImageView,Hexa.NET.ImGui.Backends.Vulkan.VkFramebuffer)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr">
+            <summary>
+            -------------------------------------------------------------------------<br/>
+            Internal / Miscellaneous Vulkan Helpers<br/>
+            (Used by example's main.cpp. Used by multi-viewport features. PROBABLY NOT used by your own engine/app.)<br/>
+            -------------------------------------------------------------------------<br/>
+            You probably do NOT need to use or care about those functions.<br/>
+            Those functions only exist because:<br/>
+            1) they facilitate the readability and maintenance of the multiple main.cpp examples files.<br/>
+            2) the multi-viewport / platform window implementation needs them internally.<br/>
+            Generally we avoid exposing any kind of superfluous high-level helpers in the bindings,<br/>
+            but it is too much code to duplicate everywhere so we exceptionally expose them.<br/>
+            Your engine/app will likely _already_ have code to setup all that stuff (swap chain, render pass, frame buffers, etc.).<br/>
+            You may read this code to learn about Vulkan, but it is recommended you use you own custom tailored code to do equivalent work.<br/>
+            (The ImGui_ImplVulkanH_XXX functions do not interact with any of the state used by the regular ImGui_ImplVulkan_XXX functions)<br/>
+            -------------------------------------------------------------------------<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.CommandPool">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.CommandBuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.Fence">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.Backbuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.BackbufferView">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr.Framebuffer">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphores">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphores.ImageAcquiredSemaphore">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphores.RenderCompleteSemaphore">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphores.#ctor(Hexa.NET.ImGui.Backends.Vulkan.VkSemaphore,Hexa.NET.ImGui.Backends.Vulkan.VkSemaphore)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphoresPtr">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphoresPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphoresPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphoresPtr.ImageAcquiredSemaphore">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphoresPtr.RenderCompleteSemaphore">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow">
+            <summary>
+            Helper structure to hold the data needed by one rendering context into one OS window<br/>
+            (Used by example's main.cpp. Used by multi-viewport features. Probably NOT used by your own engine/app.)<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.Width">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.Height">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.Swapchain">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.Surface">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.SurfaceFormat">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.PresentMode">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.RenderPass">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.UseDynamicRendering">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.ClearEnable">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.ClearValue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.FrameIndex" -->
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.ImageCount">
+            <summary>
+            Number of simultaneous in-flight frames (returned by vkGetSwapchainImagesKHR, usually derived from min_image_count)<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.SemaphoreCount">
+            <summary>
+            Number of simultaneous in-flight frames + 1, to be able to use it in vkAcquireNextImageKHR<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.SemaphoreIndex">
+            <summary>
+            Current set of swapchain wait semaphores we're using (needs to be distinct from per frame data)<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.Frames">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.FrameSemaphores">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindow.#ctor(System.Int32,System.Int32,Hexa.NET.ImGui.Backends.Vulkan.VkSwapchainKHR,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceKHR,Hexa.NET.ImGui.Backends.Vulkan.VkSurfaceFormatKHR,Hexa.NET.ImGui.Backends.Vulkan.VkPresentModeKHR,Hexa.NET.ImGui.Backends.Vulkan.VkRenderPass,System.Boolean,System.Boolean,Hexa.NET.ImGui.Backends.Vulkan.VkClearValue,System.UInt32,System.UInt32,System.UInt32,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFramePtr,Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHFrameSemaphores*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr">
+            <summary>
+            Helper structure to hold the data needed by one rendering context into one OS window<br/>
+            (Used by example's main.cpp. Used by multi-viewport features. Probably NOT used by your own engine/app.)<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Width">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Height">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Swapchain">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Surface">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.SurfaceFormat">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.PresentMode">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.RenderPass">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.UseDynamicRendering">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.ClearEnable">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.ClearValue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.FrameIndex" -->
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.ImageCount">
+            <summary>
+            Number of simultaneous in-flight frames (returned by vkGetSwapchainImagesKHR, usually derived from min_image_count)<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.SemaphoreCount">
+            <summary>
+            Number of simultaneous in-flight frames + 1, to be able to use it in vkAcquireNextImageKHR<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.SemaphoreIndex">
+            <summary>
+            Current set of swapchain wait semaphores we're using (needs to be distinct from per frame data)<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.Frames">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanHWindowPtr.FrameSemaphores">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo">
+            <summary>
+            Initialization data, for ImGui_ImplVulkan_Init()<br/>
+            - VkDescriptorPool should be created with VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT,<br/>
+            and must contain a pool size large enough to hold an ImGui VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER descriptor.<br/>
+            - When using dynamic rendering, set UseDynamicRendering=true and fill PipelineRenderingCreateInfo structure.<br/>
+            [Please zero-clear before use!]<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.Instance">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.PhysicalDevice">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.QueueFamily">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.Queue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.DescriptorPool">
+            <summary>
+            See requirements in note above<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.RenderPass">
+            <summary>
+            Ignored if using dynamic rendering<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.MinImageCount">
+            <summary>
+            >= 2<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.ImageCount">
+            <summary>
+            >= MinImageCount<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.MSAASamples">
+            <summary>
+            0 defaults to VK_SAMPLE_COUNT_1_BIT<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.PipelineCache">
+            <summary>
+            (Optional)<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.Subpass">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.UseDynamicRendering">
+            <summary>
+            (Optional) Dynamic Rendering<br/>
+            Need to explicitly enable VK_KHR_dynamic_rendering extension to use this, even for Vulkan 1.3.<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.PipelineRenderingCreateInfo">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.Allocator">
+            <summary>
+            (Optional) Allocation, Debugging<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.CheckVkResultFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.MinAllocationSize">
+            <summary>
+            Minimum allocation size. Set to 1024*1024 to satisfy zealous best practices validation layer and waste a little memory.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfo.#ctor(Hexa.NET.ImGui.Backends.Vulkan.VkInstance,Hexa.NET.ImGui.Backends.Vulkan.VkPhysicalDevice,Hexa.NET.ImGui.Backends.Vulkan.VkDevice,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkQueue,Hexa.NET.ImGui.Backends.Vulkan.VkDescriptorPool,Hexa.NET.ImGui.Backends.Vulkan.VkRenderPass,System.UInt32,System.UInt32,System.UInt32,Hexa.NET.ImGui.Backends.Vulkan.VkPipelineCache,System.UInt32,System.Boolean,Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo,Hexa.NET.ImGui.Backends.Vulkan.VkAllocationCallbacks*,,System.UInt64)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr">
+            <summary>
+            Initialization data, for ImGui_ImplVulkan_Init()<br/>
+            - VkDescriptorPool should be created with VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT,<br/>
+            and must contain a pool size large enough to hold an ImGui VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER descriptor.<br/>
+            - When using dynamic rendering, set UseDynamicRendering=true and fill PipelineRenderingCreateInfo structure.<br/>
+            [Please zero-clear before use!]<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Instance">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.PhysicalDevice">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Device">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.QueueFamily">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Queue">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.DescriptorPool">
+            <summary>
+            See requirements in note above<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.RenderPass">
+            <summary>
+            Ignored if using dynamic rendering<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.MinImageCount">
+            <summary>
+            >= 2<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.ImageCount">
+            <summary>
+            >= MinImageCount<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.MSAASamples">
+            <summary>
+            0 defaults to VK_SAMPLE_COUNT_1_BIT<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.PipelineCache">
+            <summary>
+            (Optional)<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Subpass">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.UseDynamicRendering">
+            <summary>
+            (Optional) Dynamic Rendering<br/>
+            Need to explicitly enable VK_KHR_dynamic_rendering extension to use this, even for Vulkan 1.3.<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.PipelineRenderingCreateInfo">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.Allocator">
+            <summary>
+            (Optional) Allocation, Debugging<br/>
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.CheckVkResultFn">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="P:Hexa.NET.ImGui.Backends.Vulkan.ImGuiImplVulkanInitInfoPtr.MinAllocationSize">
+            <summary>
+            Minimum allocation size. Set to 1024*1024 to satisfy zealous best practices validation layer and waste a little memory.<br/>
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue">
+            <summary>
+            Clear value structure<br/>
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion.Depth">
+            <summary>
+            Depth value<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion.Stencil">
+            <summary>
+            Stencil value<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion.#ctor(System.Single,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.Color_0">
+            <summary>
+            For color attachments<br/>
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencil">
+            <summary>
+            For depth/stencil attachments<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.#ctor(System.Single*,Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.#ctor(System.Span{System.Single},Hexa.NET.ImGui.Backends.Vulkan.VkClearValue.DepthStencilUnion)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="T:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.SType">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.PNext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.ViewMask">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.ColorAttachmentCount">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.PColorAttachmentFormats">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.DepthAttachmentFormat">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="F:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.StencilAttachmentFormat">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Vulkan.VkPipelineRenderingCreateInfo.#ctor(System.UInt32,System.Void*,System.UInt32,System.UInt32,System.UInt32*,System.UInt32,System.UInt32)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.InitNative(System.IntPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.Init(System.IntPtr)">
+            <summary>
+            Follow "Getting Started" link and check examples/ folder to learn about using backends!<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.InitForOpenGLNative(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.InitForOpenGL(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.ShutdownNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.Shutdown">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.NewFrameNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.NewFrame">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.WndProcHandlerNative(System.IntPtr,System.UInt32,System.UIntPtr,System.IntPtr)">
+            <summary>
+            Win32 message handler your application need to call.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.WndProcHandler(System.IntPtr,System.UInt32,System.UIntPtr,System.IntPtr)">
+            <summary>
+            Win32 message handler your application need to call.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.EnableDpiAwarenessNative">
+            <summary>
+            DPI-related helpers (optional)<br/>
+            - Use to enable DPI awareness without having to create an application manifest.<br/>
+            - Your own app may already do this via a manifest or explicit calls. This is mostly useful for our examples/ apps.<br/>
+            - In theory we could call simple functions from Windows SDK such as SetProcessDPIAware(), SetProcessDpiAwareness(), etc.<br/>
+            but most of the functions provided by Microsoft require Windows 8.1/10+ SDK at compile time and Windows 8/10+ at runtime,<br/>
+            neither we want to require the user to have. So we dynamically select and load those functions to avoid dependencies.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.EnableDpiAwareness">
+            <summary>
+            DPI-related helpers (optional)<br/>
+            - Use to enable DPI awareness without having to create an application manifest.<br/>
+            - Your own app may already do this via a manifest or explicit calls. This is mostly useful for our examples/ apps.<br/>
+            - In theory we could call simple functions from Windows SDK such as SetProcessDPIAware(), SetProcessDpiAwareness(), etc.<br/>
+            but most of the functions provided by Microsoft require Windows 8.1/10+ SDK at compile time and Windows 8/10+ at runtime,<br/>
+            neither we want to require the user to have. So we dynamically select and load those functions to avoid dependencies.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetDpiScaleForHwndNative(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetDpiScaleForHwnd(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetDpiScaleForMonitorNative(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetDpiScaleForMonitor(System.IntPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.EnableAlphaCompositingNative(System.IntPtr)">
+            <summary>
+            Transparency related helpers (optional) [experimental]<br/>
+            - Use to enable alpha compositing transparency with the desktop.<br/>
+            - Use together with e.g. clearing your framebuffer with zero-alpha.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.EnableAlphaCompositing(System.IntPtr)">
+            <summary>
+            Transparency related helpers (optional) [experimental]<br/>
+            - Use to enable alpha compositing transparency with the desktop.<br/>
+            - Use together with e.g. clearing your framebuffer with zero-alpha.<br/>
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.SetCurrentContextNative(Hexa.NET.ImGui.ImGuiContext*)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.SetCurrentContext(Hexa.NET.ImGui.ImGuiContextPtr)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.SetCurrentContext(Hexa.NET.ImGui.ImGuiContext@)">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetCurrentContextNative">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+        <member name="M:Hexa.NET.ImGui.Backends.Win32.ImGuiImplWin32.GetCurrentContext">
+            <summary>
+            To be documented.
+            </summary>
+        </member>
+    </members>
+</doc>
