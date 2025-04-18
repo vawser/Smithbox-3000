@@ -80,6 +80,7 @@ public class Smithbox
         ColorPicker.Draw();
         ProjectCreation.Draw();
         ProjectSettings.Draw();
+        ProjectAliasEditor.Draw();
         EditorSettings.Draw();
         ControlSettings.Draw();
         InterfaceSettings.Draw();
@@ -302,6 +303,11 @@ public class Smithbox
                     ProjectSettings.Show(this, SelectedProject);
                 }
 
+                if (ImGui.MenuItem($"Open Project Aliases##projectAliases_{imGuiID}"))
+                {
+                    ProjectAliasEditor.Show(this, SelectedProject);
+                }
+
                 if (CFG.Current.ModEngineInstall != "")
                 {
                     if (ImGui.MenuItem($"Launch Mod##launchMod{imGuiID}"))
@@ -490,6 +496,9 @@ public class Smithbox
 
     private void DisplayScriptingConsole()
     {
+        if (!FeatureFlags.IncludeScriptingConsole)
+            return;
+
         ImGui.Begin("Scripting Console");
 
         if (ImGui.BeginChild("ScriptLog", new Vector2(0, 300)))

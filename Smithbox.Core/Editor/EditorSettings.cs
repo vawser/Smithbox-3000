@@ -94,7 +94,12 @@ public static class EditorSettings
                     // Prioritize Loose Params
                     ImGui.Checkbox("Prioritize Loose Params##useLooseParams", ref CFG.Current.UseLooseParams);
                     UIHelper.Tooltip("If true, then loose params will be prioritized over packed params.");
-                    
+
+                    ImGui.InputInt("Field Name Column Width##paramFieldWidth", ref CFG.Current.ParamFieldColumnTruncationLength);
+                    UIHelper.Tooltip("The width of the param field name column.");
+
+                    ImGui.DragFloat("Field Input Column Width##paramFieldInputWidth", ref CFG.Current.ParamFieldInputWidth);
+                    UIHelper.Tooltip("The width of the param field input column.");
                 }
             }
 

@@ -51,6 +51,8 @@ public class Project
         ProjectType = projectType;
         ImportedParamRowNames = false;
         EnableParamRowStrip = false;
+
+        ActionManager = new ActionManager();
     }
 
     /// <summary>
@@ -144,9 +146,17 @@ public class Project
     [JsonIgnore]
     public ShoeboxLayoutContainer ShoeboxLayouts;
 
+    /// <summary>
+    /// Action manager for project-level changes (e.g. aliases)
+    /// </summary>
+    [JsonIgnore]
+    public ActionManager ActionManager;
+
     public async void Initialize()
     {
         TaskLogs.AddLog($"[{ProjectName}] Initializing...");
+
+        ActionManager = new();
 
         // DLLs
         Task<bool> dllGrabTask = SetupDLLs();
@@ -452,14 +462,24 @@ public class Project
 
         Aliases = new();
 
-        var folder = $@"{AppContext.BaseDirectory}\Assets\Aliases\{LocatorUtils.GetGameDirectory(ProjectType)}";
-        var file = Path.Combine(folder, "Aliases.json");
+        var sourceFolder = $@"{AppContext.BaseDirectory}\Assets\Aliases\{LocatorUtils.GetGameDirectory(ProjectType)}";
+        var sourceFile = Path.Combine(sourceFolder, "Aliases.json");
 
-        if (File.Exists(file))
+        var projectFolder = $@"{ProjectPath}\.smithbox\Assets\Aliases\{LocatorUtils.GetGameDirectory(ProjectType)}";
+        var projectFile = Path.Combine(projectFolder, "Aliases.json");
+
+        var targetFile = sourceFile;
+
+        if (File.Exists(projectFile))
+        {
+            targetFile = projectFile;
+        }
+
+        if (File.Exists(targetFile))
         {
             try
             {
-                var filestring = File.ReadAllText(file);
+                var filestring = File.ReadAllText(targetFile);
                 var options = new JsonSerializerOptions();
                 Aliases = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.AliasStore);
 

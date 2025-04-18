@@ -61,18 +61,21 @@ public class ParamSearchEngine
             var visible = true;
 
             var curField = curRow.Columns.ElementAt(i);
-            var curFieldMeta = curMeta.Fields[curField.Def];
-
-            var curValue = curField.GetValue(curRow);
-
-            visible = GetFieldTruth(curRow, curField, curValue, curMeta);
-
-            // Hide padding if it is disabled
-            if(!CFG.Current.DisplayPaddingFields)
+            if (curMeta.Fields.ContainsKey(curField.Def))
             {
-                if(curFieldMeta.IsPaddingField)
+                var curFieldMeta = curMeta.Fields[curField.Def];
+
+                var curValue = curField.GetValue(curRow);
+
+                visible = GetFieldTruth(curRow, curField, curValue, curMeta);
+
+                // Hide padding if it is disabled
+                if (!CFG.Current.DisplayPaddingFields)
                 {
-                    visible = false;
+                    if (curFieldMeta.IsPaddingField)
+                    {
+                        visible = false;
+                    }
                 }
             }
 

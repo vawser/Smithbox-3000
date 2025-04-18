@@ -4876,7 +4876,6 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\ThrustersSfxIdParam.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\TutorialActJudgeParam.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\TutorialParam.xml
-C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\UnlockParam.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\WepAbsorpPosParam.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\WetAspectParam.xml
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\WhiteSignCoolTimeParam.xml
@@ -7358,3 +7357,4 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9.0-windows\Smithbox.Program.DX11.pdb
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9.0-windows\Smithbox.Program.DX11.genruntimeconfig.cache
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9.0-windows\ref\Smithbox.Program.DX11.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\GameDataUnlockParam.xml

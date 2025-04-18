@@ -217,7 +217,7 @@ public class ParamEditor
         // Editor-level shortcuts
         if (ParamView.DetectShortcuts || RowView.DetectShortcuts || FieldView.DetectShortcuts || FieldImageView.DetectShortcuts)
         {
-            if (Keyboard.KeyPress(Key.S))
+            if (Keyboard.KeyPress(Key.S) && Keyboard.IsDown(Key.LCtrl))
             {
                 Save();
             }

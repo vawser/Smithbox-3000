@@ -347,7 +347,7 @@ public class ParamFieldView
                     {
                         ImGui.TableSetColumnIndex(primaryInfoIndex);
 
-                        Editor.FieldDecorator.DisplayFieldInfo($"primaryInfo_{i}", curParam, curRow, curField, curValue, fieldMeta);
+                        Editor.FieldDecorator.DisplayFieldInfo($"primaryInfo_{i}", Project.ParamData.PrimaryBank, curParam, curRow, curField, curValue, fieldMeta);
                     }
 
                     // Vanilla Columns
@@ -370,7 +370,7 @@ public class ParamFieldView
                             ImGui.TableSetColumnIndex(vanillaInfoIndex);
 
                             // Vanilla Info
-                            Editor.FieldDecorator.DisplayFieldInfo($"vanillaInfo_{i}", vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta);
+                            Editor.FieldDecorator.DisplayFieldInfo($"vanillaInfo_{i}", Project.ParamData.VanillaBank, vanillaParam, vanillaRow, vanillaField, vanillaValue, fieldMeta);
                         }
                     }
 
@@ -393,7 +393,7 @@ public class ParamFieldView
                             ImGui.TableSetColumnIndex(auxInfoIndex);
 
                             // Auxiliary Info
-                            Editor.FieldDecorator.DisplayFieldInfo($"auxiliaryInfo_{i}", auxParam, auxRow, auxField, auxValue, fieldMeta);
+                            Editor.FieldDecorator.DisplayFieldInfo($"auxiliaryInfo_{i}", Project.ParamData.AuxBank, auxParam, auxRow, auxField, auxValue, fieldMeta);
                         }
                     }
                 }

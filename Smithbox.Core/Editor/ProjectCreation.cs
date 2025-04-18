@@ -14,7 +14,6 @@ namespace Smithbox.Core.Editor;
 public static class ProjectCreation
 {
     private static bool Display = false;
-    private static bool Open = false;
     public static bool Create = false;
 
     public static string ProjectName = "";
@@ -37,13 +36,6 @@ public static class ProjectCreation
 
     public static void Draw()
     {
-        if (Display)
-        {
-            Open = true;
-            ImGui.OpenPopup("Project Creation");
-            Display = false;
-        }
-
         var inputWidth = 400.0f;
 
         var viewport = ImGui.GetMainViewport();
@@ -53,157 +45,160 @@ public static class ProjectCreation
 
         ImGui.SetNextWindowSize(new Vector2(640, 240), ImGuiCond.Always);
 
-        if (ImGui.BeginPopupModal("Project Creation", ref Open, ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
+        if (Display)
         {
-            if (ImGui.BeginTable($"projectCreationTable", 3, ImGuiTableFlags.SizingFixedFit))
+            if (ImGui.Begin("Project Creation##projectCreationWindow", ref Display, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
             {
-                ImGui.TableSetupColumn("Title", ImGuiTableColumnFlags.WidthFixed);
-                ImGui.TableSetupColumn("Input", ImGuiTableColumnFlags.WidthFixed);
-                ImGui.TableSetupColumn("Action", ImGuiTableColumnFlags.WidthStretch);
-
-                // Project Name
-                ImGui.TableNextRow();
-                ImGui.TableSetColumnIndex(0);
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Name");
-                UIHelper.Tooltip("The name of the project.");
-
-                ImGui.TableSetColumnIndex(1);
-
-                ImGui.SetNextItemWidth(inputWidth);
-                ImGui.InputText("##projectNameInput", ref ProjectName, 255);
-
-                ImGui.TableSetColumnIndex(2);
-
-                // Project Path
-                ImGui.TableNextRow();
-                ImGui.TableSetColumnIndex(0);
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Project Directory");
-                UIHelper.Tooltip("The location of the project.");
-
-                ImGui.TableSetColumnIndex(1);
-
-                ImGui.SetNextItemWidth(inputWidth);
-                ImGui.InputText("##projectPathInput", ref ProjectPath, 255);
-
-                ImGui.TableSetColumnIndex(2);
-
-                if(ImGui.Button("Select##projectPathSelect"))
+                if (ImGui.BeginTable($"projectCreationTable", 3, ImGuiTableFlags.SizingFixedFit))
                 {
-                    using (var fbd = new FolderBrowserDialog())
+                    ImGui.TableSetupColumn("Title", ImGuiTableColumnFlags.WidthFixed);
+                    ImGui.TableSetupColumn("Input", ImGuiTableColumnFlags.WidthFixed);
+                    ImGui.TableSetupColumn("Action", ImGuiTableColumnFlags.WidthStretch);
+
+                    // Project Name
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Name");
+                    UIHelper.Tooltip("The name of the project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+                    ImGui.InputText("##projectNameInput", ref ProjectName, 255);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Project Path
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Project Directory");
+                    UIHelper.Tooltip("The location of the project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+                    ImGui.InputText("##projectPathInput", ref ProjectPath, 255);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    if (ImGui.Button("Select##projectPathSelect"))
                     {
-                        DialogResult result = fbd.ShowDialog();
-
-                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        using (var fbd = new FolderBrowserDialog())
                         {
-                            ProjectPath = fbd.SelectedPath;
-                        }
-                    }
-                }
+                            DialogResult result = fbd.ShowDialog();
 
-                // Data Path
-                ImGui.TableNextRow();
-                ImGui.TableSetColumnIndex(0);
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Data Directory");
-                UIHelper.Tooltip("The location of the game data.\nSelect the game executable.");
-
-                ImGui.TableSetColumnIndex(1);
-
-                ImGui.SetNextItemWidth(inputWidth);
-                ImGui.InputText("##dataPathInput", ref DataPath, 255);
-
-                ImGui.TableSetColumnIndex(2);
-
-                if (ImGui.Button("Select##dataPathSelect"))
-                {
-                    using (var fbd = new FolderBrowserDialog())
-                    {
-                        DialogResult result = fbd.ShowDialog();
-
-                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                        {
-                            DataPath = fbd.SelectedPath;
-                        }
-                    }
-                }
-
-                // Project Type
-                ImGui.TableNextRow();
-                ImGui.TableSetColumnIndex(0);
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text("Project Type");
-                UIHelper.Tooltip("The game this project is targeting.");
-
-                ImGui.TableSetColumnIndex(1);
-
-                ImGui.SetNextItemWidth(inputWidth);
-                if (ImGui.BeginCombo("##projectTypePicker", ProjectType.GetDisplayName()))
-                {
-                    foreach (var entry in Enum.GetValues<ProjectType>())
-                    {
-                        var type = (ProjectType)entry;
-
-                        if (ProjectUtils.IsSupportedProjectType(type))
-                        {
-                            if (ImGui.Selectable(type.GetDisplayName()))
+                            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                             {
-                                ProjectType = type;
+                                ProjectPath = fbd.SelectedPath;
                             }
                         }
                     }
-                    ImGui.EndCombo();
-                }
 
-                ImGui.TableSetColumnIndex(2);
+                    // Data Path
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
 
-                ImGui.EndTable();
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Data Directory");
+                    UIHelper.Tooltip("The location of the game data.\nSelect the game executable.");
 
-                if(!AllowCreation())
-                {
-                    ImGui.Separator();
+                    ImGui.TableSetColumnIndex(1);
 
-                    ImGui.Text(GetCreationBlockedTooltip());
+                    ImGui.SetNextItemWidth(inputWidth);
+                    ImGui.InputText("##dataPathInput", ref DataPath, 255);
 
-                    ImGui.Separator();
-                }
+                    ImGui.TableSetColumnIndex(2);
 
-                var buttonSize = new Vector2(310, 32);
-
-                // Create
-                if (AllowCreation())
-                {
-                    if (ImGui.Button("Create##createProjectCreation", buttonSize))
+                    if (ImGui.Button("Select##dataPathSelect"))
                     {
-                        Open = false;
-                        Create = true;
+                        using (var fbd = new FolderBrowserDialog())
+                        {
+                            DialogResult result = fbd.ShowDialog();
+
+                            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                            {
+                                DataPath = fbd.SelectedPath;
+                            }
+                        }
+                    }
+
+                    // Project Type
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Project Type");
+                    UIHelper.Tooltip("The game this project is targeting.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+                    if (ImGui.BeginCombo("##projectTypePicker", ProjectType.GetDisplayName()))
+                    {
+                        foreach (var entry in Enum.GetValues<ProjectType>())
+                        {
+                            var type = (ProjectType)entry;
+
+                            if (ProjectUtils.IsSupportedProjectType(type))
+                            {
+                                if (ImGui.Selectable(type.GetDisplayName()))
+                                {
+                                    ProjectType = type;
+                                }
+                            }
+                        }
+                        ImGui.EndCombo();
+                    }
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    ImGui.EndTable();
+
+                    if (!AllowCreation())
+                    {
+                        ImGui.Separator();
+
+                        ImGui.Text(GetCreationBlockedTooltip());
+
+                        ImGui.Separator();
+                    }
+
+                    var buttonSize = new Vector2(310, 32);
+
+                    // Create
+                    if (AllowCreation())
+                    {
+                        if (ImGui.Button("Create##createProjectCreation", buttonSize))
+                        {
+                            Display = false;
+                            Create = true;
+                        }
+                    }
+                    else
+                    {
+                        ImGui.BeginDisabled();
+                        if (ImGui.Button("Create##createProjectCreation", buttonSize))
+                        {
+                        }
+                        ImGui.EndDisabled();
+                    }
+
+                    ImGui.SameLine();
+
+                    // Cancel
+                    if (ImGui.Button("Cancel##cancelProjectCreation", buttonSize))
+                    {
+                        Display = false;
                     }
                 }
-                else
-                {
-                    ImGui.BeginDisabled();
-                    if (ImGui.Button("Create##createProjectCreation", buttonSize))
-                    {
-                    }
-                    ImGui.EndDisabled();
-                }
 
-                ImGui.SameLine();
 
-                // Cancel
-                if (ImGui.Button("Cancel##cancelProjectCreation", buttonSize))
-                {
-                    Open = false;
-                }
+                ImGui.End();
             }
-
-
-            ImGui.EndPopup();
         }
     }
 

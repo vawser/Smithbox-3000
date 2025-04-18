@@ -25,7 +25,7 @@
   "RepackLooseDS2Params": false,
   "UseIndexMatchForRowNameRestore": true,
   "DisplayCommunityFieldNames": true,
-  "DisplayVanillaColumns": true,
+  "DisplayVanillaColumns": false,
   "DisplayAuxColumns": true,
   "DisplayOffsetColumn": false,
   "DisplayTypeColumn": false,
