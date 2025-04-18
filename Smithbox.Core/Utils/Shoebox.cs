@@ -30,7 +30,8 @@ public class ShoeboxLayoutContainer
     {
         try
         {
-            var binder = BND4.Read(filepath);
+            var layoutBinder = Project.FS.GetFile(filepath).GetData();
+            var binder = BND4.Read(layoutBinder);
 
             ContainerName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(filepath));
 

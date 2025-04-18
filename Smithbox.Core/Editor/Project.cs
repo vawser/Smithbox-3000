@@ -5,7 +5,6 @@ using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
-using Smithbox.Core.TextureEditorNS;
 using Smithbox.Core.Utils;
 using System.Diagnostics;
 using System.Numerics;
@@ -145,12 +144,6 @@ public class Project
     [JsonIgnore]
     public ShoeboxLayoutContainer ShoeboxLayouts;
 
-    /// <summary>
-    /// Texture Editor
-    /// </summary>
-    [JsonIgnore]
-    public TextureEditor TextureEditor;
-
     public async void Initialize()
     {
         TaskLogs.AddLog($"[{ProjectName}] Initializing...");
@@ -224,12 +217,6 @@ public class Project
             PrimaryModelEditor = new ModelEditor(0, this);
         }
 
-        // Texture Editor
-        if (FeatureFlags.IncludeTextureEditor)
-        {
-            TextureEditor = new TextureEditor(0, this);
-        }
-
         IsInitializing = false;
         Initialized = true;
     }
@@ -285,15 +272,6 @@ public class Project
                 if (CFG.Current.DisplayPrimaryModelEditor)
                 {
                     PrimaryModelEditor.Draw(cmd);
-                }
-            }
-
-            // Texture Editor
-            if (FeatureFlags.IncludeTextureEditor)
-            {
-                if (CFG.Current.DisplayTextureEditor)
-                {
-                    TextureEditor.Draw(cmd);
                 }
             }
         }
@@ -504,7 +482,7 @@ public class Project
 
         if (ProjectType is ProjectType.ER or ProjectType.AC6)
         {
-            string sourcePath = $@"menu\hi\01_common.sblytbnd.dcx";
+            string sourcePath = $@"menu/hi/01_common.sblytbnd.dcx";
 
             if (FS.FileExists(sourcePath))
             {

@@ -29,7 +29,8 @@
     <disableParam_NT AltName="Disable Param - Network Test" Wiki="Parameters marked with  are excluded in the NT version package." IsBool="" />
     <disableParamReserve1 AltName="" Padding=""/>
     <disableParamReserve2 AltName="" Padding=""/>
-    <iconId AltName="Icon ID" Wiki="Menu icon ID" TextureRef="Direct/01_common/SB_Icon_00/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_01/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_02/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_02_A/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_02_B/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_03/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_03_A/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_04/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_05/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_06/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_07_dlc/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_07_dlc_A/iconId/MENU_ItemIcon_,Direct/01_common/SB_Icon_08_dlc/iconId/MENU_ItemIcon_" /> />
+    <iconId AltName="Icon ID" Wiki="Menu icon ID" 
+    TextureRef="menu/hi/01_common/SB_Icon|_00|_01|_02|_03|_03|_03_A|_04|_05|_06|_07_dlc|_07_dlc_A|_08_dlc| iconId MENU_ItemIcon_" />
     <rank AltName="Rank" Wiki="Magic stone rank" />
     <sortGroupId AltName="Sort Group ID" Wiki="Sort item type ID. In the sort Item type order, the same ID is displayed together as the same group." Enum="DISPLAY_CATEGORY_ID" />
     <spEffectId0 AltName="SpEffect ID [0]" Wiki="Special effect ID00" Refs="SpEffectParam" />

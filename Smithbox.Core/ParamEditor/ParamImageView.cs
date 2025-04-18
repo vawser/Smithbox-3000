@@ -48,22 +48,19 @@ public class ParamImageView
                     DetectShortcuts = true;
                 }
 
-                if (TargetColumns != null)
+                foreach(var entry in CurrentTextureReferences)
                 {
-                    for(int i = 0; i < TargetColumns.Count; i++)
+                    var curColumn = entry.Key;
+                    var curFieldMeta = entry.Value.FieldMeta;
+
+                    var displayName = TargetRow[curColumn].Def.InternalName;
+                    if (CFG.Current.DisplayCommunityFieldNames)
                     {
-                        var curColumn = TargetColumns[i];
-                        var curFieldMeta = CurrentFieldMetas[i];
-
-                        var displayName = TargetRow[curColumn].Def.InternalName;
-                        if (CFG.Current.DisplayCommunityFieldNames)
-                        {
-                            displayName = curFieldMeta.AltName;
-                        }
-
-                        var iconValue = TargetRow[curColumn].Value;
-                        ImGui.Text($"{displayName}: {iconValue}");
+                        displayName = curFieldMeta.AltName;
                     }
+
+                    var iconValue = TargetRow[curColumn].Value;
+                    ImGui.Text($"{displayName}: {iconValue}");
                 }
 
                 ImGui.End();
@@ -74,9 +71,7 @@ public class ParamImageView
     private Row TargetRow;
     private bool DisplayIcon = false;
 
-    private List<ParamFieldMeta> CurrentFieldMetas;
-    private List<Column> TargetColumns;
-    private List<byte[]> TargetTextureDatas;
+    private Dictionary<Column, TextureReference> CurrentTextureReferences;
 
     public void UpdateIconPreview(Row curRow)
     {
@@ -87,8 +82,7 @@ public class ParamImageView
         TargetRow = curRow;
         DisplayIcon = false;
 
-        TargetColumns = new();
-        CurrentFieldMetas = new();
+        CurrentTextureReferences = new();
 
         if (curParam.AppliedParamdef != null)
         {
@@ -101,23 +95,42 @@ public class ParamImageView
         {
             if (paramMeta != null)
             {
-                var tempFieldMeta = paramMeta.GetField(curColumn.Def);
+                var tMeta = paramMeta.GetField(curColumn.Def);
 
-                if (tempFieldMeta != null)
+                if (tMeta != null)
                 {
-                    if (tempFieldMeta.TextureRef != null)
+                    if (tMeta.TextureRef != null)
                     {
                         DisplayIcon = true;
-                        TargetColumns.Add(curColumn);
-                        CurrentFieldMetas.Add(tempFieldMeta);
+                        var newTextureReference = new TextureReference();
 
-                        // Build ImGui.Texture here, and then store it, then in Draw() render it
+                        newTextureReference.FieldMeta = tMeta;
+                        newTextureReference.TargetField = tMeta.TextureRef.TargetField;
+                        newTextureReference.SubTexturePrefix = tMeta.TextureRef.SubTexturePrefix;
+                        newTextureReference.TextureFilePaths = tMeta.TextureRef.TextureFileNames;
 
-                        //var textureRef = tempFieldMeta.TextureRef;
-                        //var textureData = Project.FS.GetFile(textureRef.TextureFile).GetData().ToArray();
+                        newTextureReference.Textures = new();
+
+                        foreach (var entry in tMeta.TextureRef.TextureFileNames)
+                        {
+                            var textureData = Project.FS.GetFile(entry).GetData().ToArray();
+                            newTextureReference.Textures.Add(textureData);
+                        }
+
+                        CurrentTextureReferences.Add(curColumn, newTextureReference);
                     }
                 }
             }
         }
     }
+}
+
+public class TextureReference
+{
+    public string TargetField { get; set; }
+    public string SubTexturePrefix { get; set; }
+    public ParamFieldMeta FieldMeta { get; set; }
+
+    public List<string> TextureFilePaths { get; set; }
+    public List<byte[]> Textures { get; set; }
 }
