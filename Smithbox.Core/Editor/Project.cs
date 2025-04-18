@@ -411,14 +411,17 @@ public class Project
         if (Directory.Exists(DataPath))
         {
             VanillaRealFS = new RealVirtualFileSystem(DataPath, false);
-            fileSystems.Add(ProjectFS);
+            fileSystems.Add(VanillaRealFS);
 
             var andreGame = ProjectType.AsAndreGame();
 
             if (andreGame != null)
             {
-                VanillaBinderFS = ArchiveBinderVirtualFileSystem.FromGameFolder(DataPath, andreGame.Value);
-                fileSystems.Add(VanillaBinderFS);
+                if (!ProjectType.IsLooseGame())
+                {
+                    VanillaBinderFS = ArchiveBinderVirtualFileSystem.FromGameFolder(DataPath, andreGame.Value);
+                    fileSystems.Add(VanillaBinderFS);
+                }
 
                 VanillaFS = new CompundVirtualFileSystem([VanillaRealFS, VanillaBinderFS]);
             }

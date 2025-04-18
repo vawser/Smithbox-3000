@@ -66,16 +66,28 @@ public static class ProjectTypeMethods
     public static Game? AsAndreGame(this ProjectType p)
         => p switch
         {
-            //ProjectType.DES => Game.DES,
+            ProjectType.DES => Game.DES,
             ProjectType.DS1 => Game.DS1,
             ProjectType.DS1R => Game.DS1R,
             ProjectType.DS2S => Game.DS2S,
             ProjectType.DS3 => Game.DS3,
-            //ProjectType.BB => Game.BB,
+            ProjectType.BB => Game.BB,
             ProjectType.SDT => Game.SDT,
             ProjectType.ER => Game.ER,
             ProjectType.AC6 => Game.AC6,
-            //ProjectType.DS2 => Game.DS2,
+            ProjectType.DS2 => Game.DS2,
             _ => null
         };
+
+    public static bool IsLooseGame(this ProjectType p)
+    {
+        switch (p)
+        {
+            case ProjectType.DES:
+            case ProjectType.BB:
+                return true;
+        }
+
+        return false;
+    }
 }
