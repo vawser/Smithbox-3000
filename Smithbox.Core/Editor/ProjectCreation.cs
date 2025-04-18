@@ -145,7 +145,7 @@ public static class ProjectCreation
                 ImGui.SetNextItemWidth(inputWidth);
                 if (ImGui.BeginCombo("##projectTypePicker", ProjectType.GetDisplayName()))
                 {
-                    foreach (var entry in Enum.GetValues(typeof(ProjectType)))
+                    foreach (var entry in Enum.GetValues<ProjectType>())
                     {
                         var type = (ProjectType)entry;
 

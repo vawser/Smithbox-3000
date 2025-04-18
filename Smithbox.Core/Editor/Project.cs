@@ -1,23 +1,16 @@
 ﻿using Andre.IO.VFS;
 using Hexa.NET.ImGui;
-using HKLib.hk2018.hkcdStaticMeshTree;
-using Silk.NET.Core.Native;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
+using Smithbox.Core.TextureEditorNS;
 using Smithbox.Core.Utils;
-using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Smithbox.Core.Editor;
 
@@ -146,6 +139,18 @@ public class Project
     [JsonIgnore]
     public AliasStore Aliases;
 
+    /// <summary>
+    /// Shoebox Layouts
+    /// </summary>
+    [JsonIgnore]
+    public ShoeboxLayoutContainer ShoeboxLayouts;
+
+    /// <summary>
+    /// Texture Editor
+    /// </summary>
+    [JsonIgnore]
+    public TextureEditor TextureEditor;
+
     public async void Initialize()
     {
         TaskLogs.AddLog($"[{ProjectName}] Initializing...");
@@ -185,6 +190,19 @@ public class Project
             TaskLogs.AddLog($"[{ProjectName}] Failed to setup aliases.");
         }
 
+        // Image Shoebox
+        Task<bool> shoeboxTask = SetupShoeboxLayouts();
+        bool shoeboxSetup = await shoeboxTask;
+
+        if (aliasesSetup)
+        {
+            TaskLogs.AddLog($"[{ProjectName}] Setup shoebox layouts.");
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{ProjectName}] Failed to setup shoebox layouts.");
+        }
+
         // File Browser
         if (FeatureFlags.IncludeFileBrowser)
         {
@@ -204,6 +222,12 @@ public class Project
         if (FeatureFlags.IncludeModelEditor)
         {
             PrimaryModelEditor = new ModelEditor(0, this);
+        }
+
+        // Texture Editor
+        if (FeatureFlags.IncludeTextureEditor)
+        {
+            TextureEditor = new TextureEditor(0, this);
         }
 
         IsInitializing = false;
@@ -261,6 +285,15 @@ public class Project
                 if (CFG.Current.DisplayPrimaryModelEditor)
                 {
                     PrimaryModelEditor.Draw(cmd);
+                }
+            }
+
+            // Texture Editor
+            if (FeatureFlags.IncludeTextureEditor)
+            {
+                if (CFG.Current.DisplayTextureEditor)
+                {
+                    TextureEditor.Draw(cmd);
                 }
             }
         }
@@ -457,6 +490,31 @@ public class Project
             catch (Exception e)
             {
                 TaskLogs.AddLog("[Smithbox] Failed to load Aliases.json");
+            }
+        }
+
+        return true;
+    }
+
+    public async Task<bool> SetupShoeboxLayouts()
+    {
+        await Task.Delay(1000);
+
+        ShoeboxLayouts = new(this);
+
+        if (ProjectType is ProjectType.ER or ProjectType.AC6)
+        {
+            string sourcePath = $@"menu\hi\01_common.sblytbnd.dcx";
+
+            if (FS.FileExists(sourcePath))
+            {
+                ShoeboxLayouts.LoadLayouts(sourcePath);
+                ShoeboxLayouts.BuildTextureDictionary();
+            }
+            else
+            {
+                var filename = Path.GetFileNameWithoutExtension(sourcePath);
+                TaskLogs.AddLog($"Failed to load Shoebox Layout: {filename} at {sourcePath}");
             }
         }
 

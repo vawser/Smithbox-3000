@@ -15,6 +15,7 @@
   "DisplayPrimaryParamEditor": true,
   "DisplaySecondaryParamEditor": false,
   "DisplayPrimaryModelEditor": true,
+  "DisplayTextureEditor": true,
   "InterfaceDisplayScale": 1,
   "ScalebyDPI": true,
   "WrapAliasDisplay": false,

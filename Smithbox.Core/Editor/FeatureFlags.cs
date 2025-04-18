@@ -15,4 +15,5 @@ public class FeatureFlags
     public static bool IncludeFileBrowser = true;
     public static bool IncludeParamEditor = true;
     public static bool IncludeModelEditor = true;
+    public static bool IncludeTextureEditor = true;
 }

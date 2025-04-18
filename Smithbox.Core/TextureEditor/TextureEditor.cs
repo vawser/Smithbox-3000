@@ -1,7 +1,5 @@
-﻿using Andre.IO.VFS;
-using Hexa.NET.ImGui;
-using Smithbox.Core.Editor;
-using Smithbox.Core.FileBrowserNS.Entries;
+﻿using Smithbox.Core.Editor;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
@@ -11,17 +9,23 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Hexa.NET.ImGui;
+using Hexa.NET.Mathematics;
+using Smithbox_Core;
+using Hexa.NET.ImGuizmo;
+using Silk.NET.SDL;
+using Andre.IO.VFS;
+using Smithbox.Core.FileBrowserNS.Entries;
 
-namespace Smithbox.Core.FileBrowserNS;
+namespace Smithbox.Core.TextureEditorNS;
 
-// Credit to GoogleBen (https://github.com/googleben/Smithbox/tree/VFS)
-public class FileBrowser
+public class TextureEditor
 {
     private Project Project;
 
     // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar; //| ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.None;
 
     public int ID = 0;
 
@@ -32,7 +36,7 @@ public class FileBrowser
 
     public bool Initialized = false;
 
-    public FileBrowser(int id, Project projectOwner)
+    public TextureEditor(int id, Project projectOwner)
     {
         Project = projectOwner;
         ID = id;
@@ -44,17 +48,17 @@ public class FileBrowser
         if (Initialized)
             return;
 
-        // Param Defs
+        // VFS Roots
         Task<bool> vfsRootsTask = LoadVfsRoots();
         bool vfsRootsLoaded = await vfsRootsTask;
 
         if (vfsRootsLoaded)
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:File Browser] Loaded VFS roots.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Texture Editor] Loaded VFS roots.");
         }
         else
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:File Browser] Failed to load VFS roots.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Texture Editor] Failed to load VFS roots.");
         }
 
         Initialized = true;
@@ -103,9 +107,9 @@ public class FileBrowser
 
     public void Draw(Command cmd)
     {
-        ImGui.Begin($"File Browser##FileBrowser", MainWindowFlags);
+        ImGui.Begin($"Texture Editor##TextureEditor", MainWindowFlags);
 
-        uint dockspaceID = ImGui.GetID("FileBrowserDockspace");
+        uint dockspaceID = ImGui.GetID("TextureEditorDockspace");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
 
         Menubar();
@@ -113,15 +117,15 @@ public class FileBrowser
 
         ImGui.End();
 
-        ImGui.Begin($"Browser List##BrowserList", SubWindowFlags);
+        ImGui.Begin($"Texture List##TextureList", SubWindowFlags);
 
-        DisplayFileBrowser();
+        DisplayTextureList();
 
         ImGui.End();
 
-        ImGui.Begin($"Item Viewer##ItemViewer", SubWindowFlags);
+        ImGui.Begin($"Texture Viewer##TextureViewer", SubWindowFlags);
 
-        DisplayItemViewer();
+        DisplayTextureViewer();
 
         ImGui.End();
     }
@@ -148,7 +152,7 @@ public class FileBrowser
         }
     }
 
-    private void DisplayFileBrowser()
+    private void DisplayTextureList()
     {
         if (roots.Count == 0)
         {
@@ -159,11 +163,11 @@ public class FileBrowser
 
         foreach (var root in roots)
         {
-            Traverse(root, $"File Browser");
+            Traverse(root, $"Texture List");
         }
     }
 
-    private void DisplayItemViewer()
+    private void DisplayTextureViewer()
     {
         if (selected == null)
         {
@@ -291,10 +295,10 @@ public class FileBrowser
         bool aIsVfsDir = a is VirtualFileSystemDirectoryFsEntry;
         bool bIsVfsDir = b is VirtualFileSystemDirectoryFsEntry;
 
-        if (aIsVfsDir && !bIsVfsDir) 
+        if (aIsVfsDir && !bIsVfsDir)
             return -1;
 
-        if (bIsVfsDir && !aIsVfsDir) 
+        if (bIsVfsDir && !aIsVfsDir)
             return 1;
 
         return string.Compare(a.Name, b.Name, StringComparison.CurrentCulture);
