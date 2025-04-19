@@ -1,9 +1,25 @@
 #--------------------------------------
 # TODO
 #--------------------------------------
--- DS2 param load throwing lots of paramdef errors
--- Implement texture loading (e.g. icon preview)
--- Add param reference stuff
--- Add Row Name Export for Community Names: Complete (full output from current params) and Changed Only (check rows against existing names, only replace if different + add new rows).
+1. Param Row manipulations: Add, Remove, Visual Re-order, Actual Re-order - Needs to support multi-select
+2. Param meta elements: Param Enum, etc.
+3. Row Name Import/Export actions for user (import and export functions already exist)
+4. Data Import/Export actions (use JSON instead of CSV, perhaps gate CSV tools behind setting)
+5. Row and Param filters
+6. Hot reload support
+7. All the tool window stuff for the Param Editor
+8. Texture Load support
+9. Field selection context actions
+10. Row selection context actions
+11. Param selection context actions
 
+#--------------------------------------
+# WILL NOT ADD
+#--------------------------------------
+-- Pins: re-ordering will now be visual only, better solution than pins.
+-- Pin Groups: see above.
 
+#--------------------------------------
+# Nitpicks
+#--------------------------------------
+-- Original DS2 param load throwing lots of paramdef errors (low priority since original DS2 isn't really modded)

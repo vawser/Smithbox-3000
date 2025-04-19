@@ -43,6 +43,7 @@ public class ParamFieldDecorator
         // Handled in ParamImageView as they are displayed in a separate window
 
         // ParamEnum
+        ParamEnumRef(imguiID, targetBank, curParam, curRow, curField, curValue, fieldMeta, isReadOnly);
 
         // ProjectEnum
 
@@ -172,6 +173,25 @@ public class ParamFieldDecorator
             // r.offset
             // r.fmg
         }
+    }
+
+    /// <summary>
+    /// Param Enum Reference
+    /// </summary>
+    /// <param name="imguiID"></param>
+    /// <param name="targetBank"></param>
+    /// <param name="curParam"></param>
+    /// <param name="curRow"></param>
+    /// <param name="curField"></param>
+    /// <param name="curValue"></param>
+    /// <param name="fieldMeta"></param>
+    /// <param name="isReadOnly"></param>
+    public void ParamEnumRef(string imguiID, ParamBank targetBank, Param curParam, Row curRow, Column curField, object curValue, ParamFieldMeta fieldMeta, bool isReadOnly = false)
+    {
+        if (fieldMeta.EnumType == null || curRow == null)
+            return;
+
+        var enumName = fieldMeta.EnumType.Name;
     }
 
     /// <summary>

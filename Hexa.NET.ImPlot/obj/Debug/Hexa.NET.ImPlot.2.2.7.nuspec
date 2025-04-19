@@ -11,7 +11,7 @@
     <description>A .NET wrapper for the ImPlot library. (0.17)</description>
     <copyright>Copyright (c) 2023 Juna Meinhold</copyright>
     <tags>ImPlot UI Immidate GUI Plot Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows macOS Android Bindings Wrapper Native</tags>
-    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="0ea2018e0380bcd7e4b5c67708e24b0e3f89880c" />
+    <repository type="git" url="https://github.com/HexaEngine/Hexa.NET.ImGui" commit="19060a30f9c3c338178a1b6c4def68aa9c1bd582" />
     <dependencies>
       <group targetFramework="net6.0">
         <dependency id="Hexa.NET.ImGui" version="2.2.7" exclude="Build,Analyzers" />

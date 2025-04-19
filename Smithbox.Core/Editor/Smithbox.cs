@@ -347,8 +347,6 @@ public class Smithbox
             projectEntry.Save();
         }
 
-
-
         CFG.Save();
         UI.Save();
         ImGuiCFG.Save();

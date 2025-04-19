@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hexa.NET.ImGuiNodeEditor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586057a01e01fb3a3547f8a590f192439b128802")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19060a30f9c3c338178a1b6c4def68aa9c1bd582")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImGuiNodeEditor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImGuiNodeEditor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

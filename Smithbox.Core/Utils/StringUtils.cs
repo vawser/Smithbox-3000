@@ -45,6 +45,7 @@ public class StringUtils
             Marshal.FreeHGlobal((IntPtr)ptr);
         }
     }
+
     public static string TruncateWithEllipsis(string input, int maxLength = 80)
     {
         if (string.IsNullOrEmpty(input) || input.Length <= maxLength)
