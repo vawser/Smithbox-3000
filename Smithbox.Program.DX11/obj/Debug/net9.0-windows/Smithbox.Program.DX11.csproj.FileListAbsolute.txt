@@ -7358,3 +7358,14 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9.0-windows\Smithbox.Program.DX11.genruntimeconfig.cache
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\obj\Debug\net9.0-windows\ref\Smithbox.Program.DX11.dll
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\PARAM\AC6\Meta\GameDataUnlockParam.xml
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\AC6-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\BB-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DES-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DS1-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DS1R-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DS2-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DS2S-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\DS3-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\ER-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\ERN-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\SDT-File-Dictionary.json

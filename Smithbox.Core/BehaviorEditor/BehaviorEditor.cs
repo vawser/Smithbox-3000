@@ -50,7 +50,7 @@ public class BehaviorEditor
         if (Initialized)
             return;
 
-        Project.BehaviorData.Initialize();
+        // TODO: use Project.FileDictionary to build list of behbnds
 
         Initialized = true;
     }

@@ -94,6 +94,13 @@ public class Project
     public VirtualFileSystem VanillaFS = EmptyVirtualFileSystem.Instance;
 
     /// <summary>
+    /// The file dictionary used by this project.
+    /// Used to build file lists without explicit lookups, since we are using VFS
+    /// </summary>
+    [JsonIgnore]
+    public FileDictionary FileDictionary;
+
+    /// <summary>
     /// File Browser
     /// </summary>
     [JsonIgnore]
@@ -479,6 +486,61 @@ public class Project
             FS = EmptyVirtualFileSystem.Instance;
         else
             FS = new CompundVirtualFileSystem(fileSystems);
+
+        var folder = @$"{AppContext.BaseDirectory}\Assets\File Dictionaries\";
+        var file = "";
+
+        // Build the file dictionary JSON objects here
+        switch (ProjectType)
+        {
+            case ProjectType.DES: 
+                file = "DES-File-Dictionary.json"; break;
+            case ProjectType.DS1:
+                file = "DS1-File-Dictionary.json"; break;
+            case ProjectType.DS1R:
+                file = "DS1R-File-Dictionary.json"; break;
+            case ProjectType.DS2:
+                file = "DS2-File-Dictionary.json"; break;
+            case ProjectType.DS2S:
+                file = "DS2S-File-Dictionary.json"; break;
+            case ProjectType.DS3:
+                file = "DS3-File-Dictionary.json"; break;
+            case ProjectType.BB:
+                file = "BB-File-Dictionary.json"; break;
+            case ProjectType.SDT:
+                file = "SDT-File-Dictionary.json"; break;
+            case ProjectType.ER:
+                file = "ER-File-Dictionary.json"; break;
+            case ProjectType.AC6:
+                file = "AC6-File-Dictionary.json"; break;
+            case ProjectType.ERN:
+                file = "ERN-File-Dictionary.json"; break;
+            default: break;
+        }
+
+        var filepath = $"{folder}{file}";
+
+        FileDictionary = new();
+        FileDictionary.Entries = new();
+
+        if (File.Exists(filepath))
+        {
+            try
+            {
+                var filestring = File.ReadAllText(filepath);
+                var options = new JsonSerializerOptions();
+                FileDictionary = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.FileDictionary);
+
+                if (FileDictionary == null)
+                {
+                    throw new Exception("JsonConvert returned null");
+                }
+            }
+            catch (Exception e)
+            {
+                TaskLogs.AddLog("[Smithbox] Failed to load file dictionary.");
+            }
+        }
 
         return true;
     }

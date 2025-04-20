@@ -1,4 +1,5 @@
-﻿using Hexa.NET.ImGui;
+﻿using DotNext;
+using Hexa.NET.ImGui;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static Hexa.NET.Utilities.IO.FileUtils.Win;
 
 namespace Smithbox.Core.Editor;
 

@@ -57,6 +57,9 @@ namespace Smithbox.Core.Utils;
 [JsonSerializable(typeof(ProjectEnumResource))]
 [JsonSerializable(typeof(ProjectEnumEntry))]
 [JsonSerializable(typeof(ProjectEnumOption))]
+
+[JsonSerializable(typeof(FileDictionary))]
+[JsonSerializable(typeof(FileDictionaryEntry))]
 internal partial class SmithboxSerializerContext : JsonSerializerContext
 {
 }
