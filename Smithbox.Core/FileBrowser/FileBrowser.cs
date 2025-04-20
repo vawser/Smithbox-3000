@@ -44,7 +44,7 @@ public class FileBrowser
         if (Initialized)
             return;
 
-        // Param Defs
+        // VFS Roots
         Task<bool> vfsRootsTask = LoadVfsRoots();
         bool vfsRootsLoaded = await vfsRootsTask;
 
@@ -101,7 +101,7 @@ public class FileBrowser
         return true;
     }
 
-    public void Draw(Command cmd)
+    public void Draw()
     {
         ImGui.Begin($"File Browser##FileBrowser", MainWindowFlags);
 

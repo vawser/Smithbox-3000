@@ -99,7 +99,12 @@ public class CFG
     /// <summary>
     /// If true, the Primary Model Editor window is displayed
     /// </summary>
-    public bool DisplayPrimaryModelEditor = true;
+    public bool DisplayModelEditor = true;
+
+    /// <summary>
+    /// If true, the Behavior Editor window is displayed
+    /// </summary>
+    public bool DisplayBehaviorEditor = true;
 
     /// <summary>
     /// The display scaling to apply to the Interface

@@ -67,7 +67,7 @@ public class ModelEditor
         SourceViewport = new(e.Width, e.Height);
     }
 
-    public void Draw(Command cmd)
+    public void Draw()
     {
         ImGui.Begin($"Model Editor##ModelEditor{ID}", MainWindowFlags);
 

@@ -57,7 +57,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
                 if (isDvdbnd)
                 {
-                    TaskLogs.AddLog($"[File Browser] Binder file {fileName} appears to be a dvdbnd bdt", LogLevel.Debug);
+                    TaskLogs.AddVerboseLog($"[File Browser] Binder file {fileName} appears to be a dvdbnd bdt", LogLevel.Debug);
 
                     string bhdPath = path.Replace(".bdt", ".bhd");
 
@@ -68,7 +68,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
                     if (!vfs.FileExists(bhdPath))
                     {
-                        TaskLogs.AddLog($"[File Browser] Couldn't find bhd for bdt file {fileName}", LogLevel.Warning);
+                        TaskLogs.AddVerboseLog($"[File Browser] Couldn't find bhd for bdt file {fileName}", LogLevel.Warning);
                         return null;
                     }
 
@@ -83,7 +83,7 @@ public abstract class SoulsFileFsEntry : FsEntry
 
             if (getBhdData == null)
             {
-                TaskLogs.AddLog($"[File Browser] Could not find corresponding bhd for bdt \"{fileName}\"!", LogLevel.Warning);
+                TaskLogs.AddVerboseLog($"[File Browser] Could not find corresponding bhd for bdt \"{fileName}\"!", LogLevel.Warning);
                 return null;
             }
 

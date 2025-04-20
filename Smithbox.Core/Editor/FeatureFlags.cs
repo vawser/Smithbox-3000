@@ -14,6 +14,7 @@ public class FeatureFlags
     /// </summary>
     public static bool IncludeFileBrowser = true;
     public static bool IncludeParamEditor = true;
-    public static bool IncludeModelEditor = false;
-    public static bool IncludeScriptingConsole = false;
+    public static bool IncludeModelEditor = true;
+    public static bool IncludeScriptingConsole = true;
+    public static bool IncludeBehaviorEditor = true;
 }

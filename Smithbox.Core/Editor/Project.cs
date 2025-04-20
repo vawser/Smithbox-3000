@@ -1,5 +1,6 @@
 ﻿using Andre.IO.VFS;
 using Hexa.NET.ImGui;
+using Smithbox.Core.BehaviorEditorNS;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
@@ -129,10 +130,19 @@ public class Project
     public ParamData ParamData;
 
     /// <summary>
-    /// Model Editor Editor
+    /// Model Editor
     /// </summary>
     [JsonIgnore]
-    public ModelEditor PrimaryModelEditor;
+    public ModelEditor ModelEditor;
+
+    /// <summary>
+    /// Behavior Editor
+    /// </summary>
+    [JsonIgnore]
+    public BehaviorData BehaviorData;
+
+    [JsonIgnore]
+    public BehaviorEditor BehaviorEditor;
 
     /// <summary>
     /// Aliases
@@ -224,7 +234,15 @@ public class Project
         // Model Editor
         if (FeatureFlags.IncludeModelEditor)
         {
-            PrimaryModelEditor = new ModelEditor(0, this);
+            ModelEditor = new ModelEditor(0, this);
+        }
+
+        // Model Editor
+        if (FeatureFlags.IncludeBehaviorEditor)
+        {
+            BehaviorData = new(this);
+
+            BehaviorEditor = new BehaviorEditor(0, this);
         }
 
         IsInitializing = false;
@@ -256,7 +274,7 @@ public class Project
             {
                 if (CFG.Current.DisplayFileBrowser)
                 {
-                    FileBrowser.Draw(cmd);
+                    FileBrowser.Draw();
                 }
             }
 
@@ -267,21 +285,30 @@ public class Project
 
                 if (CFG.Current.DisplayPrimaryParamEditor)
                 {
-                    PrimaryParamEditor.Draw(cmd);
+                    PrimaryParamEditor.Draw();
                 }
 
                 if (CFG.Current.DisplaySecondaryParamEditor)
                 {
-                    SecondaryParamEditor.Draw(cmd);
+                    SecondaryParamEditor.Draw();
                 }
             }
 
             // Model Editor
             if (FeatureFlags.IncludeModelEditor)
             {
-                if (CFG.Current.DisplayPrimaryModelEditor)
+                if (CFG.Current.DisplayModelEditor)
                 {
-                    PrimaryModelEditor.Draw(cmd);
+                    ModelEditor.Draw();
+                }
+            }
+
+            // Behavior Editor
+            if (FeatureFlags.IncludeBehaviorEditor)
+            {
+                if (CFG.Current.DisplayBehaviorEditor)
+                {
+                    BehaviorEditor.Draw();
                 }
             }
         }

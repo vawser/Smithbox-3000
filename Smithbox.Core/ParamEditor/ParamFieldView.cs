@@ -48,7 +48,7 @@ public class ParamFieldView
 
     public bool DetectShortcuts = false;
 
-    public unsafe void Draw(Command cmd)
+    public unsafe void Draw()
     {
         var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
 

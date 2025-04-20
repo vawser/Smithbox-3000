@@ -63,14 +63,13 @@ public class ParamEditor
         FieldImageView = new(Project, this);
     }
 
-    public void Draw(Command cmd)
+    public void Draw()
     {
         ImGui.Begin($"Param Editor##ParamEditor{ID}", MainWindowFlags);
 
         uint dockspaceID = ImGui.GetID($"ParamEditorDockspace{ID}");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
 
-        ProcessCommand(cmd);
         Menubar();
 
         if (Project.ParamData.Initialized)
@@ -80,9 +79,9 @@ public class ParamEditor
 
             if (Project.IsSelected)
             {
-                ParamView.Draw(cmd);
-                RowView.Draw(cmd);
-                FieldView.Draw(cmd);
+                ParamView.Draw();
+                RowView.Draw();
+                FieldView.Draw();
                 SearchEngine.Draw();
                 FieldImageView.Draw();
             }
@@ -246,40 +245,6 @@ public class ParamEditor
         else
         {
             TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to save primary param bank.");
-        }
-    }
-
-    /// <summary>
-    /// Editor Command handling
-    /// </summary>
-    /// <param name="cmd"></param>
-    private void ProcessCommand(Command cmd)
-    {
-        if (cmd == null)
-            return;
-
-        if (cmd.Editor is EditorTarget.ParamEditor)
-        {
-            var instructions = cmd.Instructions;
-            var action = instructions[0];
-
-            if (action == "select")
-            {
-                var location = instructions[1];
-
-                if (location == "param")
-                {
-
-                }
-                if (location == "row")
-                {
-
-                }
-                if (location == "field")
-                {
-
-                }
-            }
         }
     }
 }

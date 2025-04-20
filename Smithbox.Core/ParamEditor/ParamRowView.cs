@@ -29,7 +29,7 @@ public class ParamRowView
         Editor = editor;
     }
 
-    public void Draw(Command cmd)
+    public void Draw()
     {
         ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
 

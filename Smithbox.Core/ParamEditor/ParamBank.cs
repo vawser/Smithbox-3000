@@ -45,7 +45,7 @@ public class ParamBank
     /// </summary>
     public Param EnemyParam;
 
-    public bool IsParamBankLoaded { get; private set; }
+    public bool IsBankLoaded { get; private set; }
 
     public ulong ParamVersion;
 
@@ -70,7 +70,7 @@ public class ParamBank
     {
         get
         {
-            if (!IsParamBankLoaded)
+            if (!IsBankLoaded)
             {
                 return null;
             }
@@ -88,7 +88,7 @@ public class ParamBank
     {
         get
         {
-            if (!IsParamBankLoaded)
+            if (!IsBankLoaded)
             {
                 return null;
             }
@@ -174,7 +174,7 @@ public class ParamBank
             default: break;
         }
 
-        IsParamBankLoaded = true;
+        IsBankLoaded = true;
 
         return successfulLoad;
     }
@@ -1959,7 +1959,7 @@ public class ParamBank
 
     private Dictionary<string, HashSet<int>> GetParamDiff(ParamBank otherBank)
     {
-        if (IsParamBankLoaded || otherBank == null || otherBank.IsParamBankLoaded)
+        if (IsBankLoaded || otherBank == null || otherBank.IsBankLoaded)
         {
             return null;
         }

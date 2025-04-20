@@ -30,7 +30,7 @@ public class ParamListView
         Editor = editor;
     }
 
-    public void Draw(Command cmd)
+    public void Draw()
     {
         ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
 

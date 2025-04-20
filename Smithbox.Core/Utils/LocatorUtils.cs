@@ -46,4 +46,16 @@ public class LocatorUtils
                 throw new Exception("Game type not set");
         }
     }
+
+    public static List<string> GetBehaviorBinders(bool ignoreProject = false)
+    {
+        List<string> ret = new List<string>();
+
+        var paramDir = @"\chr";
+        var paramExt = @".behbnd.dcx";
+
+        ret = LocatorUtils.GetAssetFiles(paramDir, paramExt, ignoreProject);
+
+        return ret;
+    }
 }
