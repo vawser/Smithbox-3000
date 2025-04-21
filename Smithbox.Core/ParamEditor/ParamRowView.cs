@@ -1,5 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,20 @@ public class ParamRowView
             DetectShortcuts = true;
         }
 
+        var selectMode = SelectMode.ClearAndSelect;
+
+        // Append
+        if(ImGui.IsKeyDown(ImGuiKey.LeftShift))
+        {
+            selectMode = SelectMode.SelectAppend;
+        }
+
+        // Range Append
+        if (ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+        {
+            selectMode = SelectMode.SelectRangeAppend;
+        }
+
         if (Editor.Selection._selectedParam != null)
         {
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
@@ -56,7 +71,14 @@ public class ParamRowView
 
                 if (ImGui.Selectable($"{rowName}##rowEntry{i}", isSelected))
                 {
-                    Editor.Selection.SelectRow(i, curRow);
+                    Editor.Selection.SelectRow(i, curRow, selectMode);
+                }
+
+                // Select All
+                if (Keyboard.KeyPress(Key.A) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+                {
+                    selectMode = SelectMode.SelectAll;
+                    Editor.Selection.SelectRow(i, curRow, selectMode);
                 }
             }
         }

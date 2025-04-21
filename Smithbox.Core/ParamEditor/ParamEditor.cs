@@ -51,7 +51,7 @@ public class ParamEditor
         ActionManager = new();
         ParamActions = new(this);
 
-        Selection = new(this);
+        Selection = new(Project, this);
 
         FieldDecorator = new(Project, this);
         FieldInput = new(Project, this);

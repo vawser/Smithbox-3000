@@ -594,8 +594,12 @@ public class ParamFieldView
         {
             CFG.Current.DisplayPaddingFields = !CFG.Current.DisplayPaddingFields;
 
-            // Refresj visibility
-            UpdateFieldVisibility(Editor.Selection._selectedRow);
+            // Refresh visibility
+            if(Editor.Selection._selectedRows.Count > 0)
+            {
+                // Just use the first row for this
+                UpdateFieldVisibility(Editor.Selection._selectedRows[0].Row);
+            }
         }
 
         var fieldPaddingMode = "Hidden";
@@ -612,6 +616,12 @@ public class ParamFieldView
             ResetCurrentFieldOrder();
         }
         UIHelper.Tooltip($"Reset the field ordering for this set of fields.");
+
+        if (Editor.Selection.IsMultipleRowsSelected())
+        {
+            // Note if multiple rows are selected
+            ImGui.TextColored(UI.Current.ImGui_Highlight_Text, "Multiple rows are selected, edits will be applied to all of them.");
+        }
     }
 
     /// <summary>
@@ -647,7 +657,7 @@ public class ParamFieldView
             {
                 var filterResult = new Dictionary<int, bool>();
 
-                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRow != null)
+                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRows.Count > 0)
                 {
                     var curParam = Editor.Selection._selectedParam;
                     var curMeta = Project.ParamData.GetParamMeta(curParam.AppliedParamdef);
@@ -679,10 +689,9 @@ public class ParamFieldView
             {
                 var filterResult = new Dictionary<int, bool>();
 
-                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRow != null)
+                if (Editor.Selection._selectedParam != null && Editor.Selection._selectedRows.Count > 0)
                 {
                     var curParam = Editor.Selection._selectedParam;
-                    var curRow = Editor.Selection._selectedRow;
 
                     for (int i = 0; i < PrimaryOrderedColumns.Count(); i++)
                     {
@@ -788,18 +797,23 @@ public class ParamFieldView
         var currentParam = Editor.Selection._selectedParamName;
         var currentOrder = FieldOrder.Entries[currentParam];
 
-        var currentRow = Editor.Selection._selectedRow;
+        var currentRows = Editor.Selection._selectedRows;
 
         var fieldOrder = new ParamFieldOrderEntry();
 
-        for (int i = 0; i < currentRow.Columns.Count(); i++)
+        if (currentRows.Count > 0)
         {
-            var curField = currentRow.Columns.ElementAt(i);
+            var currentRow = currentRows[0].Row;
 
-            if (fieldOrder.FieldOrder == null)
-                fieldOrder.FieldOrder = new();
+            for (int i = 0; i < currentRow.Columns.Count(); i++)
+            {
+                var curField = currentRow.Columns.ElementAt(i);
 
-            fieldOrder.FieldOrder.Add(i, curField.Def.InternalName);
+                if (fieldOrder.FieldOrder == null)
+                    fieldOrder.FieldOrder = new();
+
+                fieldOrder.FieldOrder.Add(i, curField.Def.InternalName);
+            }
         }
 
         FieldOrder.Entries[currentParam] = fieldOrder;

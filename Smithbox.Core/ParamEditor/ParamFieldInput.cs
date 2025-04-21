@@ -58,9 +58,27 @@ public class ParamFieldInput
         // Apply action
         if (commitChange && wasChanged)
         {
-            var changeAction = new ParamRowChange(curRow, curRow.ID, newValue, RowChangeType.ID);
+            // Apply change to all selected rows if multiple rows are selected.
+            if (Editor.Selection.IsMultipleRowsSelected())
+            {
+                var actions = new List<AtomicAction>();
 
-            Editor.ActionManager.ExecuteAction(changeAction);
+                foreach (var entry in Editor.Selection._selectedRows)
+                {
+                    var tRow = entry.Row;
+
+                    actions.Add(new ParamRowChange(tRow, tRow.ID, newValue, RowChangeType.ID));
+                }
+
+                var compoundAction = new CompoundAction(actions);
+                Editor.ActionManager.ExecuteAction(compoundAction);
+            }
+            else
+            {
+                var changeAction = new ParamRowChange(curRow, curRow.ID, newValue, RowChangeType.ID);
+
+                Editor.ActionManager.ExecuteAction(changeAction);
+            }
         }
     }
     public void DisplayRowNameInput(string imguiID, Param curParam, Row curRow)
@@ -92,9 +110,27 @@ public class ParamFieldInput
         // Apply action
         if (commitChange && wasChanged)
         {
-            var changeAction = new ParamRowChange(curRow, curRow.Name, newValue, RowChangeType.Name);
+            // Apply change to all selected rows if multiple rows are selected.
+            if (Editor.Selection.IsMultipleRowsSelected())
+            {
+                var actions = new List<AtomicAction>();
 
-            Editor.ActionManager.ExecuteAction(changeAction);
+                foreach (var entry in Editor.Selection._selectedRows)
+                {
+                    var tRow = entry.Row;
+
+                    actions.Add(new ParamRowChange(tRow, tRow.Name, newValue, RowChangeType.Name));
+                }
+
+                var compoundAction = new CompoundAction(actions);
+                Editor.ActionManager.ExecuteAction(compoundAction);
+            }
+            else
+            {
+                var changeAction = new ParamRowChange(curRow, curRow.Name, newValue, RowChangeType.Name);
+
+                Editor.ActionManager.ExecuteAction(changeAction);
+            }
         }
     }
 
@@ -376,9 +412,29 @@ public class ParamFieldInput
         // Apply action
         if(commitChange && wasChanged)
         {
-            var changeAction = new ParamFieldChange(curRow, curField, curValue, newValue);
+            // Apply change to all selected rows if multiple rows are selected.
+            if (Editor.Selection.IsMultipleRowsSelected())
+            {
+                var actions = new List<AtomicAction>();
 
-            Editor.ActionManager.ExecuteAction(changeAction);
+                foreach(var entry in Editor.Selection._selectedRows)
+                {
+                    var tRow = entry.Row;
+                    var tField = tRow.Columns.Where(e => e.Def.InternalName == curField.Def.InternalName).FirstOrDefault();
+                    var tValue = tField.GetValue(tRow);
+
+                    actions.Add(new ParamFieldChange(tRow, tField, tValue, newValue));
+                }
+
+                var compoundAction = new CompoundAction(actions);
+                Editor.ActionManager.ExecuteAction(compoundAction);
+            }
+            else
+            {
+                var changeAction = new ParamFieldChange(curRow, curField, curValue, newValue);
+
+                Editor.ActionManager.ExecuteAction(changeAction);
+            }
         }
     }
 
