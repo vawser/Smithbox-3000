@@ -1,5 +1,7 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Interface;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 using System;
@@ -34,10 +36,13 @@ public class ParamListView
     {
         ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
+        UpdateShortcutDetectionState();
+
+        DisplayHeader();
+
+        ImGui.BeginChild("paramListArea");
+
+        UpdateShortcutDetectionState();
 
         for (int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)
         {
@@ -51,7 +56,102 @@ public class ParamListView
             }
         }
 
+        ImGui.EndChild();
+
         ImGui.End();
+
+        Shortcuts();
+    }
+
+    private bool FocusParamSearch = false;
+
+    public void Shortcuts()
+    {
+        if (DetectShortcuts)
+        {
+            // Focus Param Search
+            if (Keyboard.KeyPress(Key.F) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                FocusParamSearch = true;
+            }
+
+            // Clear Param Search
+            if (Keyboard.KeyPress(Key.G) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                Editor.SearchEngine.ParamFilterInput = "";
+                // TODO: update param visibility
+            }
+        }
+    }
+
+    private void DisplayHeader()
+    {
+        // Search Builder
+        var searchWidth = ImGui.GetWindowWidth() * 0.5f;
+
+        if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
+        {
+            Editor.SearchEngine.WindowPosition = ImGui.GetCursorScreenPos();
+            Editor.SearchEngine.ParamSearch_DisplayTermBuilder = true;
+        }
+        UIHelper.Tooltip("View the search term builder.");
+
+        // Search Bar
+        ImGui.SameLine();
+
+        if (FocusParamSearch)
+        {
+            FocusParamSearch = false;
+            ImGui.SetKeyboardFocusHere();
+        }
+
+        ImGui.SetNextItemWidth(searchWidth);
+        ImGui.InputText($"##paramSearch_{ID}", ref Editor.SearchEngine.ParamFilterInput, 128);
+
+        // Search
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Search}"))
+        {
+            // TODO: update param visibility
+        }
+        UIHelper.Tooltip("Filter the param list.");
+
+        // Clear
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Times}"))
+        {
+            Editor.SearchEngine.ParamFilterInput = "";
+            // TODO: update param visibility
+        }
+        UIHelper.Tooltip("Clear the param list filter.");
+
+        // Regex Match Mode
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Eye}"))
+        {
+            Editor.SearchEngine.ParamSearch_IsRegexLenient = !Editor.SearchEngine.ParamSearch_IsRegexLenient;
+        }
+
+        var regexMode = "Strict";
+        if (Editor.SearchEngine.ParamSearch_IsRegexLenient)
+            regexMode = "Lenient";
+
+        UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
+    }
+
+    private void UpdateShortcutDetectionState()
+    {
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+        else
+        {
+            DetectShortcuts = false;
+        }
     }
 }
 

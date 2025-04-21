@@ -61,10 +61,7 @@ public class ParamFieldView
 
         ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
+        UpdateShortcutDetectionState();
 
         if (Editor.Selection.IsFieldSelectionValid())
         {
@@ -126,13 +123,12 @@ public class ParamFieldView
                 paramMeta = Project.ParamData.GetParamMeta(curParam.AppliedParamdef);
             }
 
-            // Handle shortcuts
-            Shortcuts(curParam, curRow, paramMeta);
-
             // Header Area
             DisplayHeader(curParam, curRow, paramMeta);
 
             ImGui.BeginChild("fieldTableArea");
+
+            UpdateShortcutDetectionState();
 
             // Fields
             if (ImGui.BeginTable($"fieldTable_{ID}", tableColumns, tblFlags))
@@ -420,6 +416,9 @@ public class ParamFieldView
             }
 
             ImGui.EndChild();
+
+            // Handle shortcuts
+            Shortcuts(curParam, curRow, paramMeta);
         }
 
         ImGui.End();
@@ -432,16 +431,17 @@ public class ParamFieldView
         if (DetectShortcuts)
         {
             // Focus Field Search
-            if (Keyboard.KeyPress(Key.F) && Keyboard.IsDown(Key.LShift))
+            if (Keyboard.KeyPress(Key.F) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
             {
                 FocusFieldSearch = true;
             }
 
             // Clear Field Search
-            if (Keyboard.KeyPress(Key.C) && Keyboard.IsDown(Key.LShift))
+            if (Keyboard.KeyPress(Key.G) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
             {
                 Editor.SearchEngine.FieldFilterInput = "";
                 FieldVisibility = null;
+                UpdateFieldVisibility(Editor.Selection.GetSelectedRow());
             }
         }
     }
@@ -454,7 +454,7 @@ public class ParamFieldView
         if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
         {
             Editor.SearchEngine.WindowPosition = ImGui.GetCursorScreenPos();
-            Editor.SearchEngine.DisplayFieldSearchTermBuilder = true;
+            Editor.SearchEngine.FieldSearch_DisplayTermBuilder = true;
         }
         UIHelper.Tooltip("View the search term builder.");
 
@@ -494,11 +494,11 @@ public class ParamFieldView
 
         if (ImGui.Button($"{Icons.Eye}"))
         {
-            Editor.SearchEngine.IsRegexLenient = !Editor.SearchEngine.IsRegexLenient;
+            Editor.SearchEngine.FieldSearch_IsRegexLenient = !Editor.SearchEngine.FieldSearch_IsRegexLenient;
         }
 
         var regexMode = "Strict";
-        if (Editor.SearchEngine.IsRegexLenient)
+        if (Editor.SearchEngine.FieldSearch_IsRegexLenient)
             regexMode = "Lenient";
 
         UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
@@ -599,7 +599,7 @@ public class ParamFieldView
             if(Editor.Selection._selectedRows.Count > 0)
             {
                 // Just use the first row for this
-                UpdateFieldVisibility(Editor.Selection._selectedRows[0].Row);
+                UpdateFieldVisibility(Editor.Selection.GetSelectedRow());
             }
         }
 
@@ -901,6 +901,18 @@ public class ParamFieldView
         }
 
         return $"{curColumn.GetByteOffset().ToString("x")} [{offS}-{offS + curColumn.Def.BitSize - 1}]";
+    }
+
+    private void UpdateShortcutDetectionState()
+    {
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+        else
+        {
+            DetectShortcuts = false;
+        }
     }
 }
 

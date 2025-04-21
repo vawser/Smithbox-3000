@@ -1,10 +1,12 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,41 +36,20 @@ public class ParamRowView
     {
         ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
+        UpdateShortcutDetectionState();
 
         if (Editor.Selection._selectedParam != null)
         {
-            var selectMode = SelectMode.ClearAndSelect;
-
-            // Append
-            if (DetectShortcuts && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
-            {
-                selectMode = SelectMode.SelectAppend;
-            }
-
-            // Range Append
-            if (DetectShortcuts && ImGui.IsKeyDown(ImGuiKey.LeftShift))
-            {
-                selectMode = SelectMode.SelectRangeAppend;
-            }
-
-            // Actions
-            if (DetectShortcuts && Keyboard.KeyPress(Key.D) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
-            {
-                // Duplicate select
-            }
-
-            if (DetectShortcuts && Keyboard.KeyPress(Key.Delete) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
-            {
-                // Delete select
-            }
-
             DisplayHeader();
 
             ImGui.BeginChild("rowListArea");
+
+            CurrentRowSelectionMode = SelectMode.ClearAndSelect;
+
+            // Must stay in this order
+            UpdateShortcutDetectionState();
+            ListShortcuts();
+
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
 
             for (int i = 0; i < curParam.Rows.Count; i++)
@@ -85,26 +66,147 @@ public class ParamRowView
 
                 if (ImGui.Selectable($"{rowName}##rowEntry{i}", isSelected))
                 {
-                    Editor.Selection.SelectRow(i, curRow, selectMode);
+                    Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
                 }
 
-                // Select All
-                if (DetectShortcuts && Keyboard.KeyPress(Key.A) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+                if (CurrentRowSelectionMode is SelectMode.SelectAll)
                 {
-                    selectMode = SelectMode.SelectAll;
-                    Editor.Selection.SelectRow(i, curRow, selectMode);
+                    Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
                 }
             }
 
             ImGui.EndChild();
         }
 
-
         ImGui.End();
+
+        Shortcuts();
+    }
+
+    private SelectMode CurrentRowSelectionMode;
+    private bool FocusRowSearch = false;
+
+    public void Shortcuts()
+    {
+        if (DetectShortcuts)
+        {
+            // Focus Row Search
+            if (Keyboard.KeyPress(Key.F) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                FocusRowSearch = true;
+            }
+
+            // Clear Row Search
+            if (Keyboard.KeyPress(Key.G) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                Editor.SearchEngine.RowFilterInput = "";
+                // TODO: update row visibility
+            }
+        }
+    }
+    public void ListShortcuts()
+    {
+        if (DetectShortcuts)
+        {
+            // Append
+            if (ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                CurrentRowSelectionMode = SelectMode.SelectAppend;
+            }
+
+            // Range Append
+            if (ImGui.IsKeyDown(ImGuiKey.LeftShift))
+            {
+                CurrentRowSelectionMode = SelectMode.SelectRangeAppend;
+            }
+
+            // Select All
+            if (DetectShortcuts && Keyboard.KeyPress(Key.A) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                CurrentRowSelectionMode = SelectMode.SelectAll;
+            }
+
+            // Duplicate
+            if (DetectShortcuts && Keyboard.KeyPress(Key.D) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                // Duplicate selection
+            }
+
+            // Delete
+            if (DetectShortcuts && Keyboard.KeyPress(Key.Delete) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                // Delete selection
+            }
+        }
     }
 
     private void DisplayHeader()
     {
+        // Search Builder
+        var searchWidth = ImGui.GetWindowWidth() * 0.5f;
 
+        if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
+        {
+            Editor.SearchEngine.WindowPosition = ImGui.GetCursorScreenPos();
+            Editor.SearchEngine.RowSearch_DisplayTermBuilder = true;
+        }
+        UIHelper.Tooltip("View the search term builder.");
+
+        // Search Bar
+        ImGui.SameLine();
+
+        if (FocusRowSearch)
+        {
+            FocusRowSearch = false;
+            ImGui.SetKeyboardFocusHere();
+        }
+
+        ImGui.SetNextItemWidth(searchWidth);
+        ImGui.InputText($"##rowSearch_{ID}", ref Editor.SearchEngine.RowFilterInput, 128);
+
+        // Search
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Search}"))
+        {
+            // TODO: update row visibility
+        }
+        UIHelper.Tooltip("Filter the row list.");
+
+        // Clear
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Times}"))
+        {
+            Editor.SearchEngine.RowFilterInput = "";
+            // TODO: update row visibility
+        }
+        UIHelper.Tooltip("Clear the row list filter.");
+
+        // Regex Match Mode
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Eye}"))
+        {
+            Editor.SearchEngine.RowSearch_IsRegexLenient = !Editor.SearchEngine.RowSearch_IsRegexLenient;
+        }
+
+        var regexMode = "Strict";
+        if (Editor.SearchEngine.RowSearch_IsRegexLenient)
+            regexMode = "Lenient";
+
+        UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
+    }
+
+    private void UpdateShortcutDetectionState()
+    {
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+        else
+        {
+            DetectShortcuts = false;
+        }
     }
 }

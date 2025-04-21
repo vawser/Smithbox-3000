@@ -16,12 +16,6 @@ public class ParamSearchEngine
     private Project Project;
     private ParamEditor Editor;
 
-    public string ParamFilterInput = "";
-    public string RowFilterInput = "";
-    public string FieldFilterInput = "";
-
-    public bool IsRegexLenient = false;
-
     public ParamSearchEngine(Project curProject, ParamEditor editor)
     {
         Project = curProject;
@@ -30,7 +24,15 @@ public class ParamSearchEngine
 
     public void Draw()
     {
-        if(DisplayFieldSearchTermBuilder)
+        if(ParamSearch_DisplayTermBuilder)
+        {
+            ParamSearchTermBuilder();
+        }
+        if (RowSearch_DisplayTermBuilder)
+        {
+            RowSearchTermBuilder();
+        }
+        if (FieldSearch_DisplayTermBuilder)
         {
             FieldSearchTermBuilder();
         }
@@ -38,14 +40,75 @@ public class ParamSearchEngine
 
     public Vector2 WindowPosition = new Vector2();
 
-    public bool DisplayFieldSearchTermBuilder = false;
-    private FieldValueOperator FieldOperator = FieldValueOperator.Equals;
-    private string FieldValue = "";
+    /// <summary>
+    /// Params
+    /// </summary>
+    public string ParamFilterInput = "";
 
-    private string FieldRangeMinValue = "";
-    private string FieldRangeMaxValue = "";
+    public bool ParamSearch_DisplayTermBuilder = false;
+    public bool ParamSearch_IsRegexLenient = false;
 
-    private string FieldName = "";
+    private void ParamSearchTermBuilder()
+    {
+        var flags = ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize;
+        var buttonSize = new Vector2(500, 24);
+
+        ImGui.SetNextWindowPos(WindowPosition);
+        if (ImGui.Begin("Search Term Builder##paramSearchTermBuilder", ref ParamSearch_DisplayTermBuilder, flags))
+        {
+
+            // Cancel
+            if (ImGui.Button("Cancel##cancelParamSearchTermBuilder", buttonSize))
+            {
+                ParamSearch_DisplayTermBuilder = false;
+            }
+            UIHelper.Tooltip("Close the term builder.");
+
+            ImGui.End();
+        }
+    }
+
+    /// <summary>
+    /// Rows
+    /// </summary>
+    public string RowFilterInput = "";
+
+    public bool RowSearch_DisplayTermBuilder = false;
+    public bool RowSearch_IsRegexLenient = false;
+
+    private void RowSearchTermBuilder()
+    {
+        var flags = ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize;
+        var buttonSize = new Vector2(500, 24);
+
+        ImGui.SetNextWindowPos(WindowPosition);
+        if (ImGui.Begin("Search Term Builder##rowSearchTermBuilder", ref RowSearch_DisplayTermBuilder, flags))
+        {
+
+            // Cancel
+            if (ImGui.Button("Cancel##cancelRowSearchTermBuilder", buttonSize))
+            {
+                RowSearch_DisplayTermBuilder = false;
+            }
+            UIHelper.Tooltip("Close the term builder.");
+
+            ImGui.End();
+        }
+    }
+
+    /// <summary>
+    /// Fields
+    /// </summary>
+    public string FieldFilterInput = "";
+
+    public bool FieldSearch_DisplayTermBuilder = false;
+    public bool FieldSearch_IsRegexLenient = false;
+
+    private FieldValueOperator FieldSearch_TermOperator = FieldValueOperator.Equals;
+    private string FieldSearch_TermValue = "";
+    private string FieldSearch_TermMinValue = "";
+    private string FieldSearch_TermMaxValue = "";
+    private string FieldSearch_TermName = "";
 
     private void FieldSearchTermBuilder()
     {
@@ -53,20 +116,20 @@ public class ParamSearchEngine
         var buttonSize = new Vector2(500, 24);
 
         ImGui.SetNextWindowPos(WindowPosition);
-        if (ImGui.Begin("Search Term Builder##fieldSearchTermBuilder", ref DisplayFieldSearchTermBuilder, flags))
+        if (ImGui.Begin("Search Term Builder##fieldSearchTermBuilder", ref FieldSearch_DisplayTermBuilder, flags))
         {
             // Value
             ImGui.Text("value:");
             UIHelper.Tooltip("Used to filter the fields by value.");
 
             ImGui.SameLine();
-            if (ImGui.BeginCombo("##valueOperators", $"{FieldOperator.GetDisplayName()}"))
+            if (ImGui.BeginCombo("##valueOperators", $"{FieldSearch_TermOperator.GetDisplayName()}"))
             {
                 foreach (var entry in Enum.GetValues<FieldValueOperator>())
                 {
                     if (ImGui.Selectable(entry.GetDisplayName()))
                     {
-                        FieldOperator = entry;
+                        FieldSearch_TermOperator = entry;
                     }
                 }
 
@@ -75,7 +138,7 @@ public class ParamSearchEngine
             UIHelper.Tooltip("The comparison to use.");
 
             ImGui.SameLine();
-            ImGui.InputText("##valueInput", ref FieldValue, 255);
+            ImGui.InputText("##valueInput", ref FieldSearch_TermValue, 255);
             UIHelper.Tooltip("The value to use.");
             ImGui.SameLine();
 
@@ -83,7 +146,7 @@ public class ParamSearchEngine
             {
                 var operatorStr = "";
 
-                switch(FieldOperator)
+                switch(FieldSearch_TermOperator)
                 {
                     case FieldValueOperator.Equals:
                         operatorStr = "=";
@@ -105,9 +168,9 @@ public class ParamSearchEngine
                         break;
                 }
 
-                FieldFilterInput = $"value: {operatorStr} {FieldValue}";
+                FieldFilterInput = $"value: {operatorStr} {FieldSearch_TermValue}";
 
-                DisplayFieldSearchTermBuilder = false;
+                FieldSearch_DisplayTermBuilder = false;
             }
             UIHelper.Tooltip("Apply this term.");
 
@@ -116,19 +179,19 @@ public class ParamSearchEngine
             UIHelper.Tooltip("Used to filter the fields by a value range.");
 
             ImGui.SameLine();
-            ImGui.InputText("##valueRangeMinInput", ref FieldRangeMinValue, 255);
+            ImGui.InputText("##valueRangeMinInput", ref FieldSearch_TermMinValue, 255);
             UIHelper.Tooltip("The minimum value to check against.");
 
             ImGui.SameLine();
-            ImGui.InputText("##valueRangeMaxInput", ref FieldRangeMaxValue, 255);
+            ImGui.InputText("##valueRangeMaxInput", ref FieldSearch_TermMaxValue, 255);
             UIHelper.Tooltip("The maximum value to check against.");
 
             ImGui.SameLine();
             if (ImGui.Button($"{Icons.Check}##applyValueRangeInput"))
             {
-                FieldFilterInput = $"range: {FieldRangeMinValue} {FieldRangeMaxValue}";
+                FieldFilterInput = $"range: {FieldSearch_TermMinValue} {FieldSearch_TermMaxValue}";
 
-                DisplayFieldSearchTermBuilder = false;
+                FieldSearch_DisplayTermBuilder = false;
             }
             UIHelper.Tooltip("Apply this term.");
 
@@ -137,22 +200,22 @@ public class ParamSearchEngine
             UIHelper.Tooltip("Used to filter the fields by name. Supports regular expressions.");
 
             ImGui.SameLine();
-            ImGui.InputText("##fieldNameInput", ref FieldName, 255);
+            ImGui.InputText("##fieldNameInput", ref FieldSearch_TermName, 255);
             UIHelper.Tooltip("The field name to check for. Supports regular expressions.");
 
             ImGui.SameLine();
             if (ImGui.Button($"{Icons.Check}##applyFieldNameInput"))
             {
-                FieldFilterInput = $"field: {FieldName}";
+                FieldFilterInput = $"field: {FieldSearch_TermName}";
 
-                DisplayFieldSearchTermBuilder = false;
+                FieldSearch_DisplayTermBuilder = false;
             }
             UIHelper.Tooltip("Apply this term.");
 
             // Cancel
             if (ImGui.Button("Cancel##cancelFieldTermBuilder", buttonSize))
             {
-                DisplayFieldSearchTermBuilder = false;
+                FieldSearch_DisplayTermBuilder = false;
             }
             UIHelper.Tooltip("Close the term builder.");
 
@@ -275,7 +338,7 @@ public class ParamSearchEngine
 
             Regex reg = new Regex(input, RegexOptions.IgnoreCase);
 
-            if (IsRegexLenient)
+            if (FieldSearch_IsRegexLenient)
             {
                 reg = new Regex($@"^{input}$");
             }
@@ -294,7 +357,7 @@ public class ParamSearchEngine
 
             Regex reg = new Regex(input, RegexOptions.IgnoreCase);
 
-            if (IsRegexLenient)
+            if (FieldSearch_IsRegexLenient)
             {
                 reg = new Regex($@"^{input}$");
             }
