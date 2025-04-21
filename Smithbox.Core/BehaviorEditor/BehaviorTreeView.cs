@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static HKLib.hk2018.hkaiUserEdgeUtils;
 
 namespace Smithbox.Core.BehaviorEditorNS;
 
@@ -25,76 +26,29 @@ public class BehaviorTreeView
 
     public void Draw()
     {
-        var havokRoot = Project.BehaviorData.PrimaryBank.CurrentHavokRoot;
-
-        if (havokRoot != null)
+        foreach(var entry in Project.BehaviorData.Categories)
         {
-            BuildCmsgList(havokRoot);
-            //DrawObjectTree($"Root", havokRoot);
+            var name = entry.Key;
+            var objects = entry.Value;
 
-            for (int i = 0; i < CmsgEntries.Count; i++)
+            if (ImGui.CollapsingHeader(name))
             {
-                var curEntry = CmsgEntries[i];
+                for (int i = 0; i < objects.Count; i++)
+                {
+                    var curEntry = objects[i];
 
-                DrawObjectTree($"Root##root{i}", curEntry);
+                    var displayName = BehaviorUtils.GetObjectFieldValue(curEntry, "m_name");
+
+                    // Special cases
+                    if(curEntry.GetType() == typeof(hkbClipGenerator))
+                    {
+                        displayName = BehaviorUtils.GetObjectFieldValue(curEntry, "m_animationName");
+                    }
+
+                    DrawObjectTree($"{displayName}##root{name}{i}", curEntry);
+                }
             }
         }
-    }
-
-    private List<object> CmsgEntries;
-
-    private bool SetupCmsgList = false;
-
-    public void BuildCmsgList(hkRootLevelContainer root)
-    {
-        if (SetupCmsgList)
-            return;
-
-        CmsgEntries = new();
-
-        TraverseObjectTree(root, CmsgEntries, typeof(CustomManualSelectorGenerator));
-
-        SetupCmsgList = true;
-    }
-
-    public void TraverseObjectTree(object? obj, List<object> entries, Type targetType, HashSet<object>? visited = null)
-    {
-        if (obj == null)
-        {
-            return;
-        }
-
-        visited ??= new HashSet<object>();
-        if (!visited.Add(obj))
-        {
-            return;
-        }
-
-        Type type = obj.GetType();
-        bool isLeaf = type.IsPrimitive || type == typeof(string) || type.IsEnum;
-
-        if(obj.GetType() == targetType)
-        {
-            entries.Add(obj);
-        }
-
-        if (obj is IList list)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                TraverseObjectTree(list[i], entries, targetType, visited);
-            }
-        }
-        else
-        {
-            foreach (var prop in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
-            {
-                object? value = prop.GetValue(obj);
-                TraverseObjectTree(value, entries, targetType, visited);
-            }
-        }
-
-        visited.Remove(obj);
     }
 
     public void DrawObjectTree(string label, object? obj, HashSet<object>? visited = null)

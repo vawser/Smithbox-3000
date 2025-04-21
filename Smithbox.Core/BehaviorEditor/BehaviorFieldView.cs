@@ -17,7 +17,7 @@ public class BehaviorFieldView
 
     public bool _showFieldsWindow = false; // Flag to control Fields window visibility
     public NodeRepresentation? _selectedNode = null; // Currently selected node for editing
-
+        
     public BehaviorFieldView(Project curProject, BehaviorEditor editor)
     {
         Editor = editor;

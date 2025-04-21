@@ -1,8 +1,11 @@
-﻿using Smithbox.Core.ParamEditorNS;
+﻿using HKLib.hk2018;
+using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 

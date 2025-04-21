@@ -48,6 +48,8 @@ public class BehaviorBank
                         {
                             CurrentHavokRoot = (hkRootLevelContainer)serializer.Read(memoryStream);
                         }
+
+                        DataParent.BuildCategories(CurrentHavokRoot);
                     }
                 }
             }

@@ -210,7 +210,7 @@ public static class TaskLogs
                         contents = contents + $"{entry.FormattedMessage}\n";
                     }
 
-                    // TODO: copy to clipboard
+                    Clipboard.SetText(contents);
                 }
 
                 ImGui.BeginChild("##actionLogItems");
@@ -300,7 +300,7 @@ public static class TaskLogs
                         contents = contents + $"{entry.FormattedMessage}\n";
                     }
 
-                    // TODO: copy to clipboard
+                    Clipboard.SetText(contents);
                 }
 
                 ImGui.BeginChild("##warningLogItems");

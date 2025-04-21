@@ -1,18 +1,10 @@
 ﻿using Hexa.NET.ImGui;
 using Hexa.NET.ImNodes;
 using HKLib.hk2018;
-using HKLib.hk2018.castTest;
-using Microsoft.AspNetCore.Components.Forms;
 using Smithbox.Core.Editor;
-using Smithbox.Core.Interface.NodeEditor;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Smithbox.Core.BehaviorEditorNS;
 
@@ -29,7 +21,7 @@ public class BehaviorNodeView
     public object? _lastRoot = null;
     public readonly Dictionary<object, NodeRepresentation> _objectNodeMap = new(new ReferenceEqualityComparer());
     public readonly CachedNodeGraph _cachedGraph = new();
-    public const int MaxDepth = 2;
+    public const int MaxDepth = 5;
     public object? _selectedRoot = null;
     public bool _needsRebuild = false;
     public readonly Stack<object> _rootHistory = new();
@@ -112,6 +104,15 @@ public class BehaviorNodeView
             return;
         }
 
+        var displayName = label;
+
+        var objType = obj.GetType();
+        FieldInfo nameField = objType.GetField("m_name");
+        if (nameField != null)
+        {
+            displayName = $"{displayName}\n{(string)nameField.GetValue(obj)}";
+        }
+
         int nodeId = GetNextId();
         int inputId = GetNextId();
         int outputId = GetNextId();
@@ -121,7 +122,7 @@ public class BehaviorNodeView
             NodeId = nodeId,
             InputPinId = inputId,
             OutputPinId = outputId,
-            Title = label,
+            Title = displayName,
             Instance = obj
         };
 
@@ -130,8 +131,8 @@ public class BehaviorNodeView
             _levelNodeCounts[depth] = 0;
 
         int indexInLevel = _levelNodeCounts[depth]++;
-        float x = indexInLevel * 500f;
-        float y = depth * 400f;
+        float x = depth * 300f;
+        float y = indexInLevel * 60f;
 
         ImNodes.SetNodeEditorSpacePos(nodeId, new System.Numerics.Vector2(x, y));
 
@@ -179,22 +180,10 @@ public class BehaviorNodeView
         ImGui.Text(node.Title);
 
         // Edit button to open Fields window
-        if (ImGui.Button("Edit"))
+        if (ImGui.IsItemClicked())
         {
             Editor.FieldView._selectedNode = node; // Set the node to be edited
             Editor.FieldView._showFieldsWindow = true; // Show the Fields window
-        }
-
-        ImGui.SameLine();
-
-        if (ImGui.Button("View as Root"))
-        {
-            if (_selectedRoot != node.Instance)
-            {
-                _rootHistory.Push(_selectedRoot!); // Save current root
-                _selectedRoot = node.Instance;
-                _needsRebuild = true;
-            }
         }
 
         // Link the input and output pins
