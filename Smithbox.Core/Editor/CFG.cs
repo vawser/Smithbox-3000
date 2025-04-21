@@ -67,11 +67,6 @@ public class CFG
     // Interface
     //----------------------------------
     /// <summary>
-    /// If true, the Script Console window is displayed
-    /// </summary>
-    public bool DisplayScriptConsoleWindow = true;
-
-    /// <summary>
     /// If true, the Projects window is displayed
     /// </summary>
     public bool DisplayProjectListWindow = true;
@@ -204,6 +199,13 @@ public class CFG
     /// </summary>
     public bool DisplayPaddingFields = true;
 
+    //----------------------------------
+    // Model Editor
+    //----------------------------------
+
+    //----------------------------------
+    // Behavior Editor
+    //----------------------------------
 
     //----------------------------------
     /// General

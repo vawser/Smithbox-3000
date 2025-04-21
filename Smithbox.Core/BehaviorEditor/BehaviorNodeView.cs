@@ -37,9 +37,29 @@ public class BehaviorNodeView
 
     public void Draw()
     {
+        Menubar();
+
         if (_selectedRoot != null)
         {
             DrawHavokNodeGraph(_selectedRoot);
+        }
+    }
+
+    private void Menubar()
+    {
+        if (ImGui.BeginMenuBar())
+        {
+            if (ImGui.BeginMenu("View"))
+            {
+                if (ImGui.MenuItem("Save"))
+                {
+
+                }
+
+                ImGui.EndMenu();
+            }
+
+            ImGui.EndMenuBar();
         }
     }
 

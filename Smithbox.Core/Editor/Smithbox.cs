@@ -33,11 +33,10 @@ public class Smithbox
     public bool HasSetup = false;
 
     public ProjectDisplay ProjectDisplayConfig;
-    public ScriptingConsole Console = new();
 
     public Smithbox()
     {
-        _ = Console.InitializeAsync();
+
     }
 
     /// <summary>
@@ -108,11 +107,6 @@ public class Smithbox
                     projectEntry.Draw(command);
                 }
             }
-        }
-
-        if (CFG.Current.DisplayScriptConsoleWindow)
-        {
-            DisplayScriptingConsole();
         }
 
         UIHelper.UnapplyBaseStyle();
@@ -197,12 +191,6 @@ public class Smithbox
                     CFG.Current.DisplayProjectWindow = !CFG.Current.DisplayProjectWindow;
                 }
                 UIHelper.Tooltip("Toggle the visibility of the Project window.");
-
-                if (ImGui.MenuItem("Script Console", CFG.Current.DisplayScriptConsoleWindow))
-                {
-                    CFG.Current.DisplayScriptConsoleWindow = !CFG.Current.DisplayScriptConsoleWindow;
-                }
-                UIHelper.Tooltip("Toggle the visibility of the Script Console window.");
 
                 ImGui.EndMenu();
             }
@@ -490,37 +478,5 @@ public class Smithbox
             tEntry.IsSelected = false;
         }
         SelectedProject.IsSelected = true;
-    }
-
-    private string input = string.Empty;
-
-    private void DisplayScriptingConsole()
-    {
-        if (!FeatureFlags.IncludeScriptingConsole)
-            return;
-
-        ImGui.Begin("Scripting Console");
-
-        if (ImGui.BeginChild("ScriptLog", new Vector2(0, 300)))
-        {
-            foreach (var line in Console.Logs)
-            {
-                ImGui.TextWrapped(line);
-            }
-            ImGui.EndChild();
-        }
-
-        // Input box
-        ImGui.InputTextMultiline("##ScriptInput", ref input, 4096, new Vector2(-1, 120), ImGuiInputTextFlags.AllowTabInput);
-
-        var buttonSize = new Vector2(ImGui.GetWindowWidth() * 0.95f, 24);
-
-        if (ImGui.Button("Run", buttonSize))
-        {
-            _ = Console.EvaluateAsync(input); // fire and forget
-            input = string.Empty;
-        }
-
-        ImGui.End();
     }
 }
