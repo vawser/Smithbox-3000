@@ -42,13 +42,13 @@ public class ParamRowView
         var selectMode = SelectMode.ClearAndSelect;
 
         // Append
-        if(ImGui.IsKeyDown(ImGuiKey.LeftShift))
+        if(ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
         {
             selectMode = SelectMode.SelectAppend;
         }
 
         // Range Append
-        if (ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+        if (ImGui.IsKeyDown(ImGuiKey.LeftShift))
         {
             selectMode = SelectMode.SelectRangeAppend;
         }

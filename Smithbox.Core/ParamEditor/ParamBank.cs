@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Silk.NET.SDL;
 using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
+using Smithbox.Core.ParamEditorNS.Meta;
 using Smithbox.Core.Resources;
 using Smithbox.Core.Utils;
 using SoulsFormats;
@@ -29,6 +30,8 @@ public class ParamBank
     private ParamData DataParent;
 
     private string BankName = "Undefined";
+
+    public bool EditLock = false;
 
     /// <summary>
     /// This is the source file for the param data
@@ -1900,6 +1903,9 @@ public class ParamBank
 
             foreach (KeyValuePair<string, Param> p in Params)
             {
+                if (!storeDict.ContainsKey(p.Key))
+                    continue;
+
                 var rowNames = storeDict[p.Key];
                 var rowNameDict = rowNames.Entries.ToDictionary(e => e.Index);
 
@@ -2079,4 +2085,249 @@ public class ParamBank
 
         return true;
     }
+
+    public async void ImportRowNames(ImportRowNameType importType, ImportRowNameSourceType sourceType, string filepath = "")
+    {
+        EditLock = true;
+
+        Task<bool> importRowNameTask = ImportRowNamesTask(importType, sourceType, filepath);
+        bool rowNamesImported = await importRowNameTask;
+
+        if (rowNamesImported)
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Imported row names.");
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Failed to import row names.");
+        }
+
+        EditLock = false;
+    }
+
+    public async Task<bool> ImportRowNamesTask(ImportRowNameType importType, ImportRowNameSourceType sourceType, string filepath = "")
+    {
+        await Task.Delay(1000);
+
+        var sourceFilepath = filepath;
+        var folder = @$"{AppContext.BaseDirectory}/Assets/PARAM/{LocatorUtils.GetGameDirectory(DataParent.Project)}";
+
+        switch (sourceType)
+        {
+            case ImportRowNameSourceType.Community:
+                sourceFilepath = Path.Combine(folder, "Community Row Names.json");
+                break;
+            case ImportRowNameSourceType.Developer:
+                sourceFilepath = Path.Combine(folder, "Developer Row Names.json");
+                break;
+        }
+
+        if (!File.Exists(sourceFilepath))
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Failed to find {sourceFilepath}");
+            return false;
+        }
+
+        RowNameStore store = null;
+
+        try
+        {
+            var filestring = File.ReadAllText(sourceFilepath);
+            var options = new JsonSerializerOptions();
+            store = JsonSerializer.Deserialize(filestring, SmithboxSerializerContext.Default.RowNameStore);
+
+            if (store == null)
+            {
+                throw new Exception($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] JsonConvert returned null.");
+            }
+        }
+        catch (Exception e)
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Failed to load {sourceFilepath} for row name import.", LogLevel.Error);
+        }
+
+        if (store == null)
+            return false;
+
+        var storeDict = store.Params.ToDictionary(e => e.Name);
+
+        foreach (KeyValuePair<string, Param> p in Params)
+        {
+            if (!storeDict.ContainsKey(p.Key))
+                continue;
+
+            var rowNames = storeDict[p.Key];
+            var rowNameDict = rowNames.Entries.ToDictionary(e => e.Index);
+
+            for (var i = 0; i < p.Value.Rows.Count; i++)
+            {
+                if (importType is ImportRowNameType.Index)
+                {
+                    p.Value.Rows[i].Name = rowNameDict[i].Name;
+                }
+                else if(importType is ImportRowNameType.ID)
+                {
+                    // ID may not be unique, so we will manually loop here
+                    foreach (var entry in rowNames.Entries)
+                    {
+                        if (entry.ID == p.Value.Rows[i].ID)
+                        {
+                            p.Value.Rows[i].Name = entry.Name;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public async void ExportRowNames(ExportRowNameType exportType, string filepath, string paramName = "")
+    {
+        Task<bool> exportRowNameTask = ExportRowNamesTask(exportType, filepath, paramName);
+        bool rowNamesExported = await exportRowNameTask;
+
+        if (rowNamesExported)
+        {
+            // JSON
+            if (exportType is ExportRowNameType.JSON)
+            {
+                var outputName = $"{DataParent.Project.ProjectName} -- Row Names.json";
+
+                if (paramName != "")
+                {
+                    outputName = $"{DataParent.Project.ProjectName} -- {paramName} -- Row Names.json";
+                }
+
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Exported row names to {outputName}");
+            }
+
+            // Text
+            if (exportType is ExportRowNameType.Text)
+            {
+                var outputName = $"{DataParent.Project.ProjectName} -- Row Names.txt";
+
+                if (paramName != "")
+                {
+                    outputName = $"{DataParent.Project.ProjectName} -- {paramName} -- Row Names.txt";
+                }
+
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Exported row names to {outputName}");
+            }
+        }
+        else
+        {
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Failed to export row names.");
+        }
+    }
+
+    public async Task<bool> ExportRowNamesTask(ExportRowNameType exportType, string filepath, string paramName = "")
+    {
+        await Task.Delay(1000);
+
+        var store = new RowNameStore();
+        store.Params = new();
+
+        foreach (KeyValuePair<string, Param> p in Params)
+        {
+            if(paramName != "")
+            {
+                if (p.Key != paramName)
+                    continue;
+            }
+
+            var paramEntry = new RowNameParam();
+            paramEntry.Name = p.Key;
+            paramEntry.Entries = new();
+
+            for (int i = 0; i < p.Value.Rows.Count; i++)
+            {
+                var row = p.Value.Rows[i];
+
+                // Store
+                var rowEntry = new RowNameEntry();
+
+                rowEntry.Index = i;
+                rowEntry.ID = row.ID;
+                rowEntry.Name = row.Name;
+
+                paramEntry.Entries.Add(rowEntry);
+            }
+
+            store.Params.Add(paramEntry);
+        }
+
+        // JSON
+        if (exportType is ExportRowNameType.JSON)
+        {
+            var outputName = $"{DataParent.Project.ProjectName} -- Row Names.json";
+
+            if (paramName != "")
+            {
+                outputName = $"{DataParent.Project.ProjectName} -- {paramName} -- Row Names.json";
+            }
+
+            var file = Path.Combine(filepath, outputName);
+
+            var json = JsonSerializer.Serialize(store, SmithboxSerializerContext.Default.RowNameStore);
+
+            File.WriteAllText(file, json);
+
+            TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Param Editor:{BankName}] Exported row names to {file}");
+        }
+
+        // Text
+        if (exportType is ExportRowNameType.Text)
+        {
+            var outputName = $"{DataParent.Project.ProjectName} -- Row Names.txt";
+
+            if (paramName != "")
+            {
+                outputName = $"{DataParent.Project.ProjectName} -- {paramName} -- Row Names.txt";
+            }
+
+            var file = Path.Combine(filepath, outputName);
+
+            var textOuput = "";
+
+            foreach (var entry in store.Params)
+            {
+                if (paramName != "")
+                {
+                    if(entry.Name != paramName)
+                        continue;
+                }
+                textOuput = $"{textOuput}\n##{entry.Name}";
+
+                foreach(var row in entry.Entries)
+                {
+                    textOuput = $"{textOuput}\n{row.ID};{row.Name}";
+                }
+            }
+
+
+            File.WriteAllText(file, textOuput);
+        }
+
+        return true;
+    }
+}
+
+public enum ImportRowNameType
+{
+    Index,
+    ID
+}
+
+public enum ImportRowNameSourceType
+{
+    Community,
+    Developer,
+    External
+}
+
+public enum ExportRowNameType
+{
+    JSON,
+    Text
 }

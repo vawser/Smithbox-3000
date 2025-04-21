@@ -1,7 +1,4 @@
 ﻿using Hexa.NET.ImGui;
-using Hexa.NET.ImGui.Widgets;
-using Hexa.NET.ImGui.Widgets.Dialogs;
-using Hexa.NET.ImGui.Widgets.Extras.TextEditor;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.Input;
@@ -143,46 +140,16 @@ public class ParamEditor
                         ActionManager.RedoAction();
                     }
                 }
+                ImGui.EndMenu();
+            }
 
-                ImGui.Separator();
-
-                if (ImGui.MenuItem("Duplicate Row"))
+            if (ImGui.BeginMenu("Data"))
+            {
+                if (Project.ParamData.Initialized)
                 {
-                    ParamActions.DuplicateRow();
+                    RowNameOptions();
+                    ParamDataOptions();
                 }
-                UIHelper.Tooltip($"Duplicates current selection.");
-
-                if (ImGui.BeginMenu("Duplicate Row to Commutative Param", ParamActions.IsCommutativeParam()))
-                {
-                    ParamActions.DisplayCommutativeDuplicateMenu();
-
-                    ImGui.EndMenu();
-                }
-                UIHelper.Tooltip($"Duplicates current selection to a commutative param.");
-
-                if (ImGui.MenuItem("Remove Row"))
-                {
-                    ParamActions.DeleteRow();
-                }
-                UIHelper.Tooltip($"Deletes current selection.");
-
-                if (ImGui.MenuItem("Copy Row"))
-                {
-                    ParamActions.CopyRow();
-                }
-                UIHelper.Tooltip($"Copy current selection to clipboard.");
-
-                if (ImGui.MenuItem("Paste Row"))
-                {
-                    ParamActions.PasteRow();
-                }
-                UIHelper.Tooltip($"Paste current selection into current param.");
-
-                if (ImGui.MenuItem("Go to Selected Row"))
-                {
-                    ParamActions.GoToRow();
-                }
-                UIHelper.Tooltip($"Go to currently selected row.");
 
                 ImGui.EndMenu();
             }
@@ -194,7 +161,7 @@ public class ParamEditor
                     var primaryVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.PrimaryBank.ParamVersion);
 
                     ImGui.Text($"Primary Bank Version: {primaryVersion}");
-                
+
                     var vanillaVersion = ParamUtils.ParseRegulationVersion(Project.ParamData.VanillaBank.ParamVersion);
 
                     ImGui.Text($"Vanilla Bank Version: {vanillaVersion}");
@@ -245,6 +212,157 @@ public class ParamEditor
         else
         {
             TaskLogs.AddLog($"[{Project.ProjectName}:Param Editor] Failed to save primary param bank.");
+        }
+    }
+
+    private void RowNameOptions()
+    {
+        if (ImGui.BeginMenu("Row Names"))
+        {
+            if (ImGui.BeginMenu("Import"))
+            {
+                if (ImGui.BeginMenu("Community Names"))
+                {
+                    if (ImGui.MenuItem($"By Index"))
+                    {
+                        Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.Index, ImportRowNameSourceType.Community);
+                    }
+                    UIHelper.Tooltip("This will import the community names, matching via row index. Warning: this will not function as desired if you have edited the row order.");
+
+                    if (ImGui.MenuItem($"By ID"))
+                    {
+                        Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.ID, ImportRowNameSourceType.Community);
+                    }
+                    UIHelper.Tooltip("This will import the developer names, matching via row ID.");
+
+                    ImGui.EndMenu();
+                }
+
+                // Only these projects have Developer Names
+                if (Project.ProjectType is ProjectType.AC6 or ProjectType.BB)
+                {
+                    if (ImGui.BeginMenu("Developer Names"))
+                    {
+                        if (ImGui.MenuItem($"By Index"))
+                        {
+                            Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.Index, ImportRowNameSourceType.Developer);
+                        }
+                        UIHelper.Tooltip("This will import the community names, matching via row index. Warning: this will not function as desired if you have edited the row order.");
+
+                        if (ImGui.MenuItem($"By ID"))
+                        {
+                            Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.ID, ImportRowNameSourceType.Developer);
+                        }
+                        UIHelper.Tooltip("This will import the developer names, matching via row ID.");
+
+                        ImGui.EndMenu();
+                    }
+                }
+
+                if (ImGui.BeginMenu("From File"))
+                {
+                    if (ImGui.MenuItem($"By Index"))
+                    {
+                        var filePath = PathUtils.GetFileSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.Index, ImportRowNameSourceType.External, filePath);
+                        }
+                    }
+                    UIHelper.Tooltip("This will import the external names, matching via row index. Warning: this will not function as desired if you have edited the row order.");
+
+                    if (ImGui.MenuItem($"By ID"))
+                    {
+                        var filePath = PathUtils.GetFileSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ImportRowNames(ImportRowNameType.ID, ImportRowNameSourceType.External, filePath);
+                        }
+                    }
+                    UIHelper.Tooltip("This will import the external names, matching via row ID.");
+
+                    ImGui.EndMenu();
+                }
+
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Export"))
+            {
+                if (ImGui.BeginMenu("JSON"))
+                {
+                    if (ImGui.MenuItem("All"))
+                    {
+                        var filePath = PathUtils.GetFolderSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ExportRowNames(ExportRowNameType.JSON, filePath);
+                        }
+                    }
+                    UIHelper.Tooltip("Export the row names for your project to the selected folder.");
+
+
+                    if (ImGui.MenuItem("Selected Param"))
+                    {
+                        var filePath = PathUtils.GetFolderSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ExportRowNames(ExportRowNameType.JSON, filePath, Selection._selectedParamName);
+                        }
+                    }
+                    UIHelper.Tooltip("Export the row names for the currently selected param to the selected folder.");
+
+                    ImGui.EndMenu();
+                }
+                UIHelper.Tooltip("Export file will use the JSON storage format.");
+
+                if (ImGui.BeginMenu("Text"))
+                {
+                    if (ImGui.MenuItem("All"))
+                    {
+                        var filePath = PathUtils.GetFolderSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ExportRowNames(ExportRowNameType.Text, filePath);
+                        }
+                    }
+                    UIHelper.Tooltip("Export the row names for your project to the selected folder.");
+
+
+                    if (ImGui.MenuItem("Selected Param"))
+                    {
+                        var filePath = PathUtils.GetFolderSelection();
+
+                        if (filePath != "")
+                        {
+                            Project.ParamData.PrimaryBank.ExportRowNames(ExportRowNameType.Text, filePath, Selection._selectedParamName);
+                        }
+                    }
+                    UIHelper.Tooltip("Export the row names for the currently selected param to the selected folder.");
+
+                    ImGui.EndMenu();
+                }
+                UIHelper.Tooltip("Export file will use the Text storage format. This format cannot be imported back in.");
+
+                ImGui.EndMenu();
+            }
+
+            ImGui.EndMenu();
+        }
+    }
+
+    private void ParamDataOptions()
+    {
+
+        if (ImGui.BeginMenu("Param Data"))
+        {
+
+            ImGui.EndMenu();
         }
     }
 }

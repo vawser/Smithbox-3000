@@ -113,8 +113,12 @@ public class ParamImageView
 
                         foreach (var entry in tMeta.TextureRef.TextureFileNames)
                         {
-                            var textureData = Project.FS.GetFile(entry).GetData().ToArray();
-                            newTextureReference.Textures.Add(textureData);
+                            var file = Project.FS.GetFile(entry);
+                            if (file != null)
+                            {
+                                var textureData = file.GetData().ToArray();
+                                newTextureReference.Textures.Add(textureData);
+                            }
                         }
 
                         CurrentTextureReferences.Add(curColumn, newTextureReference);

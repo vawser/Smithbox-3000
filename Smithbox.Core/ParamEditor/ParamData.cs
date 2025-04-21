@@ -143,7 +143,9 @@ public class ParamData
         // Primary Bank: Import Row Names
         if(!Project.ImportedParamRowNames)
         {
-            Project.PrimaryParamEditor.ParamActions.ImportDefaultParamRowNames(PrimaryBank);
+            PrimaryBank.ImportRowNames(ImportRowNameType.Index, ImportRowNameSourceType.Community);
+            Project.ImportedParamRowNames = true;
+            Project.Save();
         }
 
         // Primary Bank: Stripped Param Row Restore
@@ -202,7 +204,9 @@ public class ParamData
         // Primary Bank: Import Row Names
         if (!Project.ImportedParamRowNames)
         {
-            Project.PrimaryParamEditor.ParamActions.ImportDefaultParamRowNames(PrimaryBank);
+            PrimaryBank.ImportRowNames(ImportRowNameType.Index, ImportRowNameSourceType.Community);
+            Project.ImportedParamRowNames = true;
+            Project.Save();
         }
 
         // Primary Bank: Stripped Param Row Restore

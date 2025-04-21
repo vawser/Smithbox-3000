@@ -4,7 +4,7 @@
   "ProjectPath": "G:\\Modding\\Elden Ring\\Projects\\ER-Test\\mod",
   "DataPath": "F:\\SteamLibrary\\steamapps\\common\\ELDEN RING\\Game",
   "ProjectType": 8,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
   "AutoSelect": true
 }

@@ -9,6 +9,38 @@ namespace Smithbox.Core.Utils;
 
 public class PathUtils
 {
+    public static string GetFolderSelection()
+    {
+        var filePath = "";
+        using (var fbd = new FolderBrowserDialog())
+        {
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                filePath = fbd.SelectedPath;
+            }
+        }
+
+        return filePath;
+    }
+
+    public static string GetFileSelection()
+    {
+        var filePath = "";
+        using (var fbd = new OpenFileDialog())
+        {
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.FileName))
+            {
+                filePath = fbd.FileName;
+            }
+        }
+
+        return filePath;
+    }
+
     public static string GetGameParam_DES(VirtualFileSystem fs)
     {
         var name = $@"param\gameparam\gameparamna.parambnd.dcx";

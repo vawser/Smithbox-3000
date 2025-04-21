@@ -99,15 +99,7 @@ public static class ProjectSettings
 
                     if (ImGui.Button("Select##projectPathSelect"))
                     {
-                        using (var fbd = new FolderBrowserDialog())
-                        {
-                            DialogResult result = fbd.ShowDialog();
-
-                            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                            {
-                                ProjectPath = fbd.SelectedPath;
-                            }
-                        }
+                        ProjectPath = PathUtils.GetFolderSelection();
                     }
 
                     // Data Path
@@ -116,7 +108,7 @@ public static class ProjectSettings
 
                     ImGui.AlignTextToFramePadding();
                     ImGui.Text("Data Directory");
-                    UIHelper.Tooltip("The location of the game data.\nSelect the game executable.");
+                    UIHelper.Tooltip("The location of the game data.\nSelect the game executable directory.");
 
                     ImGui.TableSetColumnIndex(1);
 
@@ -127,15 +119,7 @@ public static class ProjectSettings
 
                     if (ImGui.Button("Select##dataPathSelect"))
                     {
-                        using (var fbd = new FolderBrowserDialog())
-                        {
-                            DialogResult result = fbd.ShowDialog();
-
-                            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                            {
-                                DataPath = fbd.SelectedPath;
-                            }
-                        }
+                        DataPath = PathUtils.GetFolderSelection();
                     }
 
                     // Automatic Load
