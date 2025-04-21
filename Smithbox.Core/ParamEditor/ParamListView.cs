@@ -36,13 +36,11 @@ public class ParamListView
     {
         ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
 
-        UpdateShortcutDetectionState();
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         DisplayHeader();
 
         ImGui.BeginChild("paramListArea");
-
-        UpdateShortcutDetectionState();
 
         for (int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)
         {
@@ -140,18 +138,6 @@ public class ParamListView
             regexMode = "Lenient";
 
         UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
-    }
-
-    private void UpdateShortcutDetectionState()
-    {
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-        else
-        {
-            DetectShortcuts = false;
-        }
     }
 }
 

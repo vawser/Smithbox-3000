@@ -61,7 +61,7 @@ public class ParamFieldView
 
         ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
 
-        UpdateShortcutDetectionState();
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         if (Editor.Selection.IsFieldSelectionValid())
         {
@@ -127,8 +127,6 @@ public class ParamFieldView
             DisplayHeader(curParam, curRow, paramMeta);
 
             ImGui.BeginChild("fieldTableArea");
-
-            UpdateShortcutDetectionState();
 
             // Fields
             if (ImGui.BeginTable($"fieldTable_{ID}", tableColumns, tblFlags))
@@ -901,18 +899,6 @@ public class ParamFieldView
         }
 
         return $"{curColumn.GetByteOffset().ToString("x")} [{offS}-{offS + curColumn.Def.BitSize - 1}]";
-    }
-
-    private void UpdateShortcutDetectionState()
-    {
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-        else
-        {
-            DetectShortcuts = false;
-        }
     }
 }
 

@@ -36,7 +36,7 @@ public class ParamRowView
     {
         ImGui.Begin($"Rows##ParamRowList{ID}", SubWindowFlags);
 
-        UpdateShortcutDetectionState();
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         if (Editor.Selection._selectedParam != null)
         {
@@ -46,8 +46,6 @@ public class ParamRowView
 
             CurrentRowSelectionMode = SelectMode.ClearAndSelect;
 
-            // Must stay in this order
-            UpdateShortcutDetectionState();
             ListShortcuts();
 
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
@@ -196,17 +194,5 @@ public class ParamRowView
             regexMode = "Lenient";
 
         UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
-    }
-
-    private void UpdateShortcutDetectionState()
-    {
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-        else
-        {
-            DetectShortcuts = false;
-        }
     }
 }

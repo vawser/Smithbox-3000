@@ -47,10 +47,7 @@ public class BehaviorEditor
     {
         ImGui.Begin($"Behavior Editor##Behavior Editor", MainWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         uint dockspaceID = ImGui.GetID("BehaviorEditorDockspace");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);

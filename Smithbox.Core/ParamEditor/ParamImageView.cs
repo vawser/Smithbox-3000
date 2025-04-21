@@ -43,12 +43,9 @@ public class ParamImageView
             {
                 ImGui.Begin($"Image Preview##ImagePreview{ID}", MainWindowFlags);
 
-                if (ImGui.IsWindowFocused())
-                {
-                    DetectShortcuts = true;
-                }
+                DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
-                foreach(var entry in CurrentTextureReferences)
+                foreach (var entry in CurrentTextureReferences)
                 {
                     var curColumn = entry.Key;
                     var curFieldMeta = entry.Value.FieldMeta;

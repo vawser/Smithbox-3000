@@ -71,6 +71,8 @@ public class ModelEditor
     {
         ImGui.Begin($"Model Editor##ModelEditor{ID}", MainWindowFlags);
 
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
+
         uint dockspaceID = ImGui.GetID($"ModelEditorDockspace{ID}");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
 
