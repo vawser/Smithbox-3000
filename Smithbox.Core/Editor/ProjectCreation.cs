@@ -167,7 +167,7 @@ public static class ProjectCreation
                         ImGui.Separator();
                     }
 
-                    var buttonSize = new Vector2(310, 32);
+                    var buttonSize = new Vector2(310, 24);
 
                     // Create
                     if (AllowCreation())

@@ -31,14 +31,32 @@ public static class StructExtensions
 
     public static string GetDisplayName(this Enum enumValue)
     {
-        return enumValue.GetAttribute<DisplayAttribute>().Name;
+        var attribute = enumValue.GetAttribute<DisplayAttribute>();
+        if (attribute != null && attribute.Name != null)
+        {
+            return attribute.Name;
+        }
+
+        return $"{enumValue}";
     }
     public static string GetShortName(this Enum enumValue)
     {
-        return enumValue.GetAttribute<DisplayAttribute>().ShortName;
+        var attribute = enumValue.GetAttribute<DisplayAttribute>();
+        if (attribute != null && attribute.ShortName != null)
+        {
+            return attribute.ShortName;
+        }
+
+        return $"{enumValue}";
     }
     public static string GetDescription(this Enum enumValue)
     {
-        return enumValue.GetAttribute<DisplayAttribute>().Description;
+        var attribute = enumValue.GetAttribute<DisplayAttribute>();
+        if (attribute != null && attribute.Description != null)
+        {
+            return attribute.Description;
+        }
+
+        return $"{enumValue}";
     }
 }

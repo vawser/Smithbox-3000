@@ -1,11 +1,11 @@
 ﻿using Andre.Formats;
+using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Smithbox.Core.Interface;
+using Smithbox.Core.Utils;
+using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using static Andre.Formats.Param;
 using static SoulsFormats.PARAMDEF;
 
@@ -28,14 +28,152 @@ public class ParamSearchEngine
         Editor = editor;
     }
 
-    public bool DisplaySearchTermBuilder = false;
-
     public void Draw()
     {
-        if(DisplaySearchTermBuilder)
+        if(DisplayFieldSearchTermBuilder)
         {
-
+            FieldSearchTermBuilder();
         }
+    }
+
+    public Vector2 WindowPosition = new Vector2();
+
+    public bool DisplayFieldSearchTermBuilder = false;
+    private FieldValueOperator FieldOperator = FieldValueOperator.Equals;
+    private string FieldValue = "";
+
+    private string FieldRangeMinValue = "";
+    private string FieldRangeMaxValue = "";
+
+    private string FieldName = "";
+
+    private void FieldSearchTermBuilder()
+    {
+        var flags = ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.AlwaysAutoResize;
+        var buttonSize = new Vector2(500, 24);
+
+        ImGui.SetNextWindowPos(WindowPosition);
+        if (ImGui.Begin("Search Term Builder##fieldSearchTermBuilder", ref DisplayFieldSearchTermBuilder, flags))
+        {
+            // Value
+            ImGui.Text("value:");
+            UIHelper.Tooltip("Used to filter the fields by value.");
+
+            ImGui.SameLine();
+            if (ImGui.BeginCombo("##valueOperators", $"{FieldOperator.GetDisplayName()}"))
+            {
+                foreach (var entry in Enum.GetValues<FieldValueOperator>())
+                {
+                    if (ImGui.Selectable(entry.GetDisplayName()))
+                    {
+                        FieldOperator = entry;
+                    }
+                }
+
+                ImGui.EndCombo();
+            }
+            UIHelper.Tooltip("The comparison to use.");
+
+            ImGui.SameLine();
+            ImGui.InputText("##valueInput", ref FieldValue, 255);
+            UIHelper.Tooltip("The value to use.");
+            ImGui.SameLine();
+
+            if (ImGui.Button($"{Icons.Check}##applyValueInput"))
+            {
+                var operatorStr = "";
+
+                switch(FieldOperator)
+                {
+                    case FieldValueOperator.Equals:
+                        operatorStr = "=";
+                        break;
+                    case FieldValueOperator.LessThan:
+                        operatorStr = "<";
+                        break;
+                    case FieldValueOperator.GreaterThan:
+                        operatorStr = ">";
+                        break;
+                    case FieldValueOperator.LessThanOrEquals:
+                        operatorStr = "<=";
+                        break;
+                    case FieldValueOperator.GreaterThanOrEquals:
+                        operatorStr = ">=";
+                        break;
+                    case FieldValueOperator.Contains:
+                        operatorStr = "";
+                        break;
+                }
+
+                FieldFilterInput = $"value: {operatorStr} {FieldValue}";
+
+                DisplayFieldSearchTermBuilder = false;
+            }
+            UIHelper.Tooltip("Apply this term.");
+
+            // Range
+            ImGui.Text("range:");
+            UIHelper.Tooltip("Used to filter the fields by a value range.");
+
+            ImGui.SameLine();
+            ImGui.InputText("##valueRangeMinInput", ref FieldRangeMinValue, 255);
+            UIHelper.Tooltip("The minimum value to check against.");
+
+            ImGui.SameLine();
+            ImGui.InputText("##valueRangeMaxInput", ref FieldRangeMaxValue, 255);
+            UIHelper.Tooltip("The maximum value to check against.");
+
+            ImGui.SameLine();
+            if (ImGui.Button($"{Icons.Check}##applyValueRangeInput"))
+            {
+                FieldFilterInput = $"range: {FieldRangeMinValue} {FieldRangeMaxValue}";
+
+                DisplayFieldSearchTermBuilder = false;
+            }
+            UIHelper.Tooltip("Apply this term.");
+
+            // Field
+            ImGui.Text("field:");
+            UIHelper.Tooltip("Used to filter the fields by name. Supports regular expressions.");
+
+            ImGui.SameLine();
+            ImGui.InputText("##fieldNameInput", ref FieldName, 255);
+            UIHelper.Tooltip("The field name to check for. Supports regular expressions.");
+
+            ImGui.SameLine();
+            if (ImGui.Button($"{Icons.Check}##applyFieldNameInput"))
+            {
+                FieldFilterInput = $"field: {FieldName}";
+
+                DisplayFieldSearchTermBuilder = false;
+            }
+            UIHelper.Tooltip("Apply this term.");
+
+            // Cancel
+            if (ImGui.Button("Cancel##cancelFieldTermBuilder", buttonSize))
+            {
+                DisplayFieldSearchTermBuilder = false;
+            }
+            UIHelper.Tooltip("Close the term builder.");
+
+            ImGui.End();
+        }
+    }
+
+    public enum FieldValueOperator
+    {
+        [Display(Name = "Equal to")]
+        Equals,
+        [Display(Name = "Less than")]
+        LessThan,
+        [Display(Name = "Greater than")]
+        GreaterThan,
+        [Display(Name = "Equal or less than")]
+        LessThanOrEquals,
+        [Display(Name = "Equal or greater than")]
+        GreaterThanOrEquals,
+        [Display(Name = "Contains")]
+        Contains
     }
 
     // These are the parameters used for the latest search, set for the field visibility update on row change

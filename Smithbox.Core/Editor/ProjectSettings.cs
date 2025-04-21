@@ -165,7 +165,7 @@ public static class ProjectSettings
                         ImGui.Separator();
                     }
 
-                    var buttonSize = new Vector2(200, 32);
+                    var buttonSize = new Vector2(200, 24);
 
                     // Update
                     if (AllowUpdate())

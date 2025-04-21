@@ -453,7 +453,8 @@ public class ParamFieldView
 
         if (ImGui.Button($"{Icons.ArrowCircleLeft}"))
         {
-            Editor.SearchEngine.DisplaySearchTermBuilder = true;
+            Editor.SearchEngine.WindowPosition = ImGui.GetCursorScreenPos();
+            Editor.SearchEngine.DisplayFieldSearchTermBuilder = true;
         }
         UIHelper.Tooltip("View the search term builder.");
 

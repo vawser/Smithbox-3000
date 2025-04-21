@@ -94,7 +94,7 @@ public static class ProjectAliasEditor
                 }
                 ImGui.EndChild();
 
-                var buttonSize = new Vector2(440, 32);
+                var buttonSize = new Vector2(440, 24);
 
                 // Commit
                 if (ImGui.Button("Commit##updateProjectAliases", buttonSize))
@@ -219,7 +219,7 @@ public static class ProjectAliasEditor
 
         if(source.Count == 0)
         {
-            var buttonSize = new Vector2(sectionWidth - 5, 32);
+            var buttonSize = new Vector2(sectionWidth - 5, 24);
 
             if (ImGui.Button("Add##addAliasEntry", buttonSize))
             {
