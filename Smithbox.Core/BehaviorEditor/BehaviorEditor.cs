@@ -23,12 +23,12 @@ public class BehaviorEditor
     public BehaviorFieldView FieldView;
 
     // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar; //| ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.None;
+    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
+    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
     public int ID = 0;
 
-    public bool Initialized = false;
+    public bool DetectShortcuts = false;
 
     public BehaviorEditor(int id, Project projectOwner)
     {
@@ -41,23 +41,16 @@ public class BehaviorEditor
         TreeView = new(Project, this);
         NodeView = new(Project, this);
         FieldView = new(Project, this);
-
-        Initialize();
-    }
-
-    public async void Initialize()
-    {
-        if (Initialized)
-            return;
-
-        // TODO: use Project.FileDictionary to build list of behbnds
-
-        Initialized = true;
     }
 
     public void Draw()
     {
         ImGui.Begin($"Behavior Editor##Behavior Editor", MainWindowFlags);
+
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
 
         uint dockspaceID = ImGui.GetID("BehaviorEditorDockspace");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
@@ -69,11 +62,21 @@ public class BehaviorEditor
 
         ImGui.Begin($"Behavior List##BehaviorList", SubWindowFlags);
 
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+
         DisplayBehaviorList();
 
         ImGui.End();
 
         ImGui.Begin($"Havok Objects##BehaviorTreeView", SubWindowFlags);
+
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
 
         TreeView.Draw();
 
@@ -81,11 +84,21 @@ public class BehaviorEditor
 
         ImGui.Begin($"Nodes##BehaviorNodeView", SubWindowFlags);
 
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
+
         NodeView.Draw();
 
         ImGui.End();
 
         ImGui.Begin($"Fields##BehaviorFieldView", SubWindowFlags);
+
+        if (ImGui.IsWindowFocused())
+        {
+            DetectShortcuts = true;
+        }
 
         FieldView.Draw();
 
@@ -94,7 +107,18 @@ public class BehaviorEditor
 
     private void DisplayBehaviorList()
     {
+        for(int i = 0; i < Project.BehaviorData.BehaviorFiles.Entries.Count; i++)
+        {
+            var curEntry = Project.BehaviorData.BehaviorFiles.Entries[i];
 
+            var isSelected = Selection.IsFileSelected(i, curEntry.Filename);
+
+            if (ImGui.Selectable($"{curEntry.Filename}##fileEntry{i}", isSelected))
+            {
+                Selection.SelectFile(i, curEntry.Filename);
+                Project.BehaviorData.LoadBinder(curEntry.Filename, curEntry.Path, Project.BehaviorData.PrimaryBank);
+            }
+        }
     }
 
     private void Menubar()

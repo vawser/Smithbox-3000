@@ -1309,6 +1309,35 @@
           "bin/placeholder/HKLib.dll": {}
         }
       },
+      "HKLib.Reflection/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "HKLib": "1.0.0",
+          "System.Text.Json": "8.0.5"
+        },
+        "compile": {
+          "bin/placeholder/HKLib.Reflection.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HKLib.Reflection.dll": {}
+        }
+      },
+      "HKLib.Serialization/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "HKLib": "1.0.0",
+          "HKLib.Reflection": "1.0.0",
+          "System.Text.Json": "8.0.5"
+        },
+        "compile": {
+          "bin/placeholder/HKLib.Serialization.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HKLib.Serialization.dll": {}
+        }
+      },
       "HKX2/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -1333,6 +1362,7 @@
           "Andre.SoapstoneLib": "1.0.0",
           "Andre.SoulsFormats": "1.0.0",
           "HKLib": "1.0.0",
+          "HKLib.Serialization": "1.0.0",
           "HKX2": "1.0.0",
           "Hexa.NET.DebugDraw": "2.3.2",
           "Hexa.NET.ImGui": "2.2.7",
@@ -3627,6 +3657,16 @@
       "type": "project",
       "path": "../Havok/HKLib/HKLib.csproj",
       "msbuildProject": "../Havok/HKLib/HKLib.csproj"
+    },
+    "HKLib.Reflection/1.0.0": {
+      "type": "project",
+      "path": "../Havok/HKLib.Reflection/HKLib.Reflection.csproj",
+      "msbuildProject": "../Havok/HKLib.Reflection/HKLib.Reflection.csproj"
+    },
+    "HKLib.Serialization/1.0.0": {
+      "type": "project",
+      "path": "../Havok/HKLib.Serialization/HKLib.Serialization.csproj",
+      "msbuildProject": "../Havok/HKLib.Serialization/HKLib.Serialization.csproj"
     },
     "HKX2/1.0.0": {
       "type": "project",

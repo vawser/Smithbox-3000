@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HKLib.Reflection")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586057a01e01fb3a3547f8a590f192439b128802")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+334db0110f392c36817ae77a570c80b20c2422e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("HKLib.Reflection")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HKLib.Reflection")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

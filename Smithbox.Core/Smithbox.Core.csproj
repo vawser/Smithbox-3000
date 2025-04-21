@@ -29,6 +29,7 @@
 		<ProjectReference Include="..\Andre\Andre.IO\Andre.IO.csproj" />
 		<ProjectReference Include="..\Andre\SoapstoneLib\SoapstoneLib\Andre.SoapstoneLib.csproj" />
 		<ProjectReference Include="..\Andre\SoulsFormats\SoulsFormats\Andre.SoulsFormats.csproj" />
+		<ProjectReference Include="..\Havok\HKLib.Serialization\HKLib.Serialization.csproj" />
 		<ProjectReference Include="..\Havok\HKLib\HKLib.csproj" />
 		<ProjectReference Include="..\Havok\HKX2\HKX2\HKX2.csproj" />
 		<ProjectReference Include="..\Hexa.NET.ImGui.Backends.SDL2\Hexa.NET.ImGui.Backends.SDL2.csproj" />

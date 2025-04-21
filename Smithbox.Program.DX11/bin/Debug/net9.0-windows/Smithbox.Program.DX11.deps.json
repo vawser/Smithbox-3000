@@ -879,6 +879,31 @@
           }
         }
       },
+      "HKLib.Reflection/1.0.0": {
+        "dependencies": {
+          "HKLib": "1.0.0",
+          "System.Text.Json": "9.0.0"
+        },
+        "runtime": {
+          "HKLib.Reflection.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HKLib.Serialization/1.0.0": {
+        "dependencies": {
+          "HKLib": "1.0.0",
+          "HKLib.Reflection": "1.0.0",
+          "System.Text.Json": "9.0.0"
+        },
+        "runtime": {
+          "HKLib.Serialization.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "HKX2/1.0.0": {
         "dependencies": {
           "Andre.SoulsFormats": "1.0.0",
@@ -899,6 +924,7 @@
           "Andre.SoapstoneLib": "1.0.0",
           "Andre.SoulsFormats": "1.0.0",
           "HKLib": "1.0.0",
+          "HKLib.Serialization": "1.0.0",
           "HKX2": "1.0.0",
           "Hexa.NET.DebugDraw": "2.3.2",
           "Hexa.NET.ImGui": "2.2.7",
@@ -1388,6 +1414,16 @@
       "sha512": ""
     },
     "HKLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HKLib.Reflection/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HKLib.Serialization/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

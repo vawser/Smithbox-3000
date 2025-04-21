@@ -1,7 +1,12 @@
-﻿using Smithbox.Core.Editor;
+﻿using HKLib.hk2018;
+using HKLib.Serialization.hk2018.Binary;
+using Smithbox.Core.Editor;
+using Smithbox.Core.Utils;
+using SoulsFormats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,16 +16,42 @@ public class BehaviorBank
 {
     private BehaviorData DataParent;
 
-    private string BankName = "Undefined";
+    public string BankName = "Undefined";
 
-    public bool IsBankLoaded { get; private set; }
+    public Dictionary<string, BND4> Binders = new();
 
-    public Dictionary<string, byte[]> BehaviorFiles = new();
+    public BinderFile CurrentBinderFile;
+    public hkRootLevelContainer CurrentHavokRoot;
 
     public BehaviorBank(BehaviorData parent, string bankName)
     {
         DataParent = parent;
         BankName = bankName;
+    }
+
+    public void LoadBehaviorFile(string binderName)
+    {
+        if(Binders.ContainsKey(binderName))
+        {
+            var binder = Binders[binderName];
+
+            foreach(var file in binder.Files)
+            {
+                if(file.Name.Contains("Behaviors"))
+                {
+                    if(file.Name.Contains(binderName))
+                    {
+                        CurrentBinderFile = file;
+
+                        HavokBinarySerializer serializer = new HavokBinarySerializer();
+                        using (MemoryStream memoryStream = new MemoryStream(file.Bytes.ToArray()))
+                        {
+                            CurrentHavokRoot = (hkRootLevelContainer)serializer.Read(memoryStream);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>

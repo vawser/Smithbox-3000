@@ -244,7 +244,7 @@ public class Project
             ModelEditor = new ModelEditor(0, this);
         }
 
-        // Model Editor
+        // Behavio rEditor
         if (FeatureFlags.IncludeBehaviorEditor)
         {
             BehaviorData = new(this);
@@ -541,6 +541,8 @@ public class Project
                 TaskLogs.AddLog("[Smithbox] Failed to load file dictionary.");
             }
         }
+
+        // TODO: add check for project-unique files, and add them to the FileDictionary so we can point to project-unique files
 
         return true;
     }

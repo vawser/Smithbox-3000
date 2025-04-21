@@ -7369,3 +7369,9 @@ C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\ER-File-Dictionary.json
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\ERN-File-Dictionary.json
 C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Assets\File Dictionaries\SDT-File-Dictionary.json
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Res\HavokTypeRegistry20180100.xml
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\Res\HavokTypeRegistry20190100.xml
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\HKLib.Reflection.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\HKLib.Serialization.dll
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\HKLib.Reflection.pdb
+C:\Users\benja\Programming\C#\Smithbox-3000\Smithbox.Program.DX11\bin\Debug\net9.0-windows\HKLib.Serialization.pdb

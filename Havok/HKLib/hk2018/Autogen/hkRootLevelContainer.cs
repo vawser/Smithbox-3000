@@ -16,7 +16,5 @@ public class hkRootLevelContainer : IHavokObject
         public hkReferencedObject? m_variant;
 
     }
-
-
 }
 
