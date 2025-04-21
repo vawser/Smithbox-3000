@@ -50,26 +50,32 @@ public class ParamRowView
 
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
 
-            for (int i = 0; i < curParam.Rows.Count; i++)
+            ImGuiListClipper clipper = new ImGuiListClipper();
+            clipper.Begin(curParam.Rows.Count);
+
+            while (clipper.Step())
             {
-                var curRow = curParam.Rows[i];
-
-                var rowName = $"{i}:{curRow.ID}";
-                if (curRow.Name != null)
+                for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
                 {
-                    rowName = $"{rowName} {curRow.Name}";
-                }
+                    var curRow = curParam.Rows[i];
 
-                var isSelected = Editor.Selection.IsRowSelected(i, curRow);
+                    var rowName = $"{i}:{curRow.ID}";
+                    if (curRow.Name != null)
+                    {
+                        rowName += $" {curRow.Name}";
+                    }
 
-                if (ImGui.Selectable($"{rowName}##rowEntry{i}", isSelected))
-                {
-                    Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
-                }
+                    bool isSelected = Editor.Selection.IsRowSelected(i, curRow);
 
-                if (CurrentRowSelectionMode is SelectMode.SelectAll)
-                {
-                    Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
+                    if (ImGui.Selectable($"{rowName}##rowEntry{i}", isSelected))
+                    {
+                        Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
+                    }
+
+                    if (CurrentRowSelectionMode is SelectMode.SelectAll)
+                    {
+                        Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
+                    }
                 }
             }
 
