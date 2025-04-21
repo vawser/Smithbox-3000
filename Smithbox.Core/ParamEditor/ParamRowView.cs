@@ -39,22 +39,36 @@ public class ParamRowView
             DetectShortcuts = true;
         }
 
-        var selectMode = SelectMode.ClearAndSelect;
-
-        // Append
-        if(ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
-        {
-            selectMode = SelectMode.SelectAppend;
-        }
-
-        // Range Append
-        if (ImGui.IsKeyDown(ImGuiKey.LeftShift))
-        {
-            selectMode = SelectMode.SelectRangeAppend;
-        }
-
         if (Editor.Selection._selectedParam != null)
         {
+            var selectMode = SelectMode.ClearAndSelect;
+
+            // Append
+            if (DetectShortcuts && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                selectMode = SelectMode.SelectAppend;
+            }
+
+            // Range Append
+            if (DetectShortcuts && ImGui.IsKeyDown(ImGuiKey.LeftShift))
+            {
+                selectMode = SelectMode.SelectRangeAppend;
+            }
+
+            // Actions
+            if (DetectShortcuts && Keyboard.KeyPress(Key.D) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                // Duplicate select
+            }
+
+            if (DetectShortcuts && Keyboard.KeyPress(Key.Delete) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+            {
+                // Delete select
+            }
+
+            DisplayHeader();
+
+            ImGui.BeginChild("rowListArea");
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
 
             for (int i = 0; i < curParam.Rows.Count; i++)
@@ -75,14 +89,22 @@ public class ParamRowView
                 }
 
                 // Select All
-                if (Keyboard.KeyPress(Key.A) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
+                if (DetectShortcuts && Keyboard.KeyPress(Key.A) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
                 {
                     selectMode = SelectMode.SelectAll;
                     Editor.Selection.SelectRow(i, curRow, selectMode);
                 }
             }
+
+            ImGui.EndChild();
         }
 
+
         ImGui.End();
+    }
+
+    private void DisplayHeader()
+    {
+
     }
 }

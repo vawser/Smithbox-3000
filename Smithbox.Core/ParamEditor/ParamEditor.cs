@@ -358,9 +358,30 @@ public class ParamEditor
 
     private void ParamDataOptions()
     {
-
         if (ImGui.BeginMenu("Param Data"))
         {
+            if (ImGui.BeginMenu("Export"))
+            {
+                if (ImGui.BeginMenu("JSON"))
+                {
+                    if (ImGui.MenuItem("All"))
+                    {
+
+                    }
+                    UIHelper.Tooltip("Export the param data for your project to the selected folder.");
+
+
+                    if (ImGui.MenuItem("Selected Param"))
+                    {
+
+                    }
+                    UIHelper.Tooltip("Export the param data for the currently selected param to the selected folder.");
+
+                    ImGui.EndMenu();
+                }
+
+                ImGui.EndMenu();
+            }
 
             ImGui.EndMenu();
         }
