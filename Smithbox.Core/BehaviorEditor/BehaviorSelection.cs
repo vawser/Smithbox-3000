@@ -1,4 +1,5 @@
 ﻿using HKLib.hk2018;
+using Smithbox.Core.Editor;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
 using System;
@@ -13,13 +14,17 @@ namespace Smithbox.Core.BehaviorEditorNS;
 
 public class BehaviorSelection
 {
+    public Project Project;
     public BehaviorEditor Editor;
 
     public int _selectedFileIndex;
     public string _selectedFileName;
 
-    public BehaviorSelection(BehaviorEditor editor)
+    // TODO: move the node selection stuff into here
+
+    public BehaviorSelection(Project curProject, BehaviorEditor editor)
     {
+        Project = curProject;
         Editor = editor;
     }
 

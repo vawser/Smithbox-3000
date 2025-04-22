@@ -21,6 +21,7 @@ public class BehaviorEditor
     public BehaviorTreeView TreeView;
     public BehaviorNodeView NodeView;
     public BehaviorFieldView FieldView;
+    public BehaviorFieldInput FieldInput;
 
     // Defined here so we can remove NoMove when setting up the imgui.ini
     private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
@@ -37,7 +38,9 @@ public class BehaviorEditor
 
         ActionManager = new();
 
-        Selection = new(this);
+        FieldInput = new(Project, this);
+
+        Selection = new(Project, this);
         TreeView = new(Project, this);
         NodeView = new(Project, this);
         FieldView = new(Project, this);
@@ -59,10 +62,7 @@ public class BehaviorEditor
 
         ImGui.Begin($"Behavior List##BehaviorList", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         DisplayBehaviorList();
 
@@ -70,32 +70,17 @@ public class BehaviorEditor
 
         ImGui.Begin($"Havok Objects##BehaviorTreeView", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-
         TreeView.Draw();
 
         ImGui.End();
 
         ImGui.Begin($"Nodes##BehaviorNodeView", SubWindowFlags);
 
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
-
         NodeView.Draw();
 
         ImGui.End();
 
         ImGui.Begin($"Fields##BehaviorFieldView", SubWindowFlags);
-
-        if (ImGui.IsWindowFocused())
-        {
-            DetectShortcuts = true;
-        }
 
         FieldView.Draw();
 
@@ -104,7 +89,11 @@ public class BehaviorEditor
 
     private void DisplayBehaviorList()
     {
-        for(int i = 0; i < Project.BehaviorData.BehaviorFiles.Entries.Count; i++)
+        DisplayHeader();
+
+        ImGui.BeginChild("behaviorSelectionList");
+
+        for (int i = 0; i < Project.BehaviorData.BehaviorFiles.Entries.Count; i++)
         {
             var curEntry = Project.BehaviorData.BehaviorFiles.Entries[i];
 
@@ -116,6 +105,12 @@ public class BehaviorEditor
                 Project.BehaviorData.LoadBinder(curEntry.Filename, curEntry.Path, Project.BehaviorData.PrimaryBank);
             }
         }
+
+        ImGui.EndChild();
+    }
+    public void DisplayHeader()
+    {
+
     }
 
     private void Menubar()

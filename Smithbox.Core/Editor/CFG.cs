@@ -206,6 +206,10 @@ public class CFG
     //----------------------------------
     // Behavior Editor
     //----------------------------------
+    /// <summary>
+    /// The width of the ImGui input widgets in the field column
+    /// </summary>
+    public float BehaviorFieldInputWidth = 250f;
 
     //----------------------------------
     /// General

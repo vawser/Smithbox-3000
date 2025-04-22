@@ -1,9 +1,13 @@
 ﻿using Hexa.NET.ImGui;
+using HKLib.hk2018.hk;
+using Smithbox.Core.Actions;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface.NodeEditor;
+using Smithbox.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +21,9 @@ public class BehaviorFieldView
 
     public bool _showFieldsWindow = false; // Flag to control Fields window visibility
     public NodeRepresentation? _selectedNode = null; // Currently selected node for editing
-        
+
+    public bool DetectShortcuts = false;
+
     public BehaviorFieldView(Project curProject, BehaviorEditor editor)
     {
         Editor = editor;
@@ -25,44 +31,47 @@ public class BehaviorFieldView
     }
     public void Draw()
     {
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
+
+        DisplayHeader();
+
         // In your main drawing loop or Draw method
         if (_showFieldsWindow && _selectedNode != null)
         {
-            // Show editable fields for the selected node
-            Type nodeType = _selectedNode.Instance.GetType();
+            ImGui.BeginChild("fieldTableArea");
 
-            foreach (var field in nodeType.GetFields(BindingFlags.Public | BindingFlags.Instance))
+            var tblFlags = ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders;
+
+            if (ImGui.BeginTable($"fieldTable", 2, tblFlags))
             {
-                object? value = field.GetValue(_selectedNode.Instance);
-                string fieldName = field.Name;
+                ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthFixed);
+                ImGui.TableSetupColumn("Value", ImGuiTableColumnFlags.WidthFixed);
 
-                // Edit the field based on its type (here we support int, string, float as an example)
-                if (value is int intValue)
+                var nodeType = _selectedNode.Instance.GetType();
+
+                FieldInfo[] array = nodeType.GetFields(BindingFlags.Public | BindingFlags.Instance);
+                for (int i = 0; i < array.Length; i++)
                 {
-                    int newValue = intValue;
-                    if (ImGui.InputInt(fieldName, ref newValue))
-                    {
-                        field.SetValue(_selectedNode.Instance, newValue);
-                    }
+                    FieldInfo? field = array[i];
+
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.Text($"{field.Name}");
+
+                    ImGui.TableSetColumnIndex(1);
+                    Editor.FieldInput.DisplayFieldInput(_selectedNode, i, field);
                 }
-                else if (value is float floatValue)
-                {
-                    float newValue = floatValue;
-                    if (ImGui.InputFloat(fieldName, ref newValue))
-                    {
-                        field.SetValue(_selectedNode.Instance, newValue);
-                    }
-                }
-                else if (value is string stringValue)
-                {
-                    string newValue = stringValue;
-                    if (ImGui.InputText(fieldName, ref newValue, 255))
-                    {
-                        field.SetValue(_selectedNode.Instance, newValue);
-                    }
-                }
-                // Add more field types as needed (e.g., bool, enum, etc.)
+
+                ImGui.EndTable();
             }
+
+            ImGui.EndChild();
         }
+    }
+
+    public void DisplayHeader()
+    {
+
     }
 }

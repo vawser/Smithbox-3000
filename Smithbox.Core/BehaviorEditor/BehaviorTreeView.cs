@@ -1,6 +1,7 @@
 ﻿using Hexa.NET.ImGui;
 using HKLib.hk2018;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ public class BehaviorTreeView
     public Project Project;
     public BehaviorEditor Editor;
 
+    public bool DetectShortcuts = false;
+
     public BehaviorTreeView(Project curProject, BehaviorEditor editor)
     {
         Editor = editor;
@@ -26,7 +29,13 @@ public class BehaviorTreeView
 
     public void Draw()
     {
-        foreach(var entry in Project.BehaviorData.Categories)
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
+
+        DisplayHeader();
+
+        ImGui.BeginChild("behaviorTreeArea");
+
+        foreach (var entry in Project.BehaviorData.Categories)
         {
             var name = entry.Key;
             var objects = entry.Value;
@@ -49,6 +58,13 @@ public class BehaviorTreeView
                 }
             }
         }
+
+        ImGui.EndChild();
+    }
+
+    public void DisplayHeader()
+    {
+
     }
 
     public void DrawObjectTree(string label, object? obj, HashSet<object>? visited = null)

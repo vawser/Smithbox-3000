@@ -2,6 +2,7 @@
 using Hexa.NET.ImNodes;
 using HKLib.hk2018;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Utils;
 using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -29,6 +30,8 @@ public class BehaviorNodeView
 
     private int GetNextId() => _nextId++;
 
+    public bool DetectShortcuts = false;
+
     public BehaviorNodeView(Project projectOwner, BehaviorEditor behEditor)
     {
         Project = projectOwner;
@@ -37,6 +40,8 @@ public class BehaviorNodeView
 
     public void Draw()
     {
+        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
+
         Menubar();
 
         if (_selectedRoot != null)
