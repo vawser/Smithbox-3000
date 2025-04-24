@@ -42,21 +42,21 @@ public class CollisionFieldInput
         ImGui.SetNextItemWidth(inputWidth);
 
         // Long
-        if (field.FieldType == typeof(ulong))
-        {
-            var tempValue = (ulong)curValue;
-            var stringValue = $@"{tempValue}";
+        //if (field.FieldType == typeof(ulong))
+        //{
+        //    var tempValue = (ulong)curValue;
+        //    var stringValue = $@"{tempValue}";
 
-            if (ImGui.InputText($"##value_{imguiID}", ref stringValue, 128, inputFlags))
-            {
-                var result = ulong.TryParse(stringValue, out tempValue);
-                if (result)
-                {
-                    newValue = tempValue;
-                    wasChanged = true;
-                }
-            }
-        }
+        //    if (ImGui.InputText($"##value_{imguiID}", ref stringValue, 128, inputFlags))
+        //    {
+        //        var result = ulong.TryParse(stringValue, out tempValue);
+        //        if (result)
+        //        {
+        //            newValue = tempValue;
+        //            wasChanged = true;
+        //        }
+        //    }
+        //}
 
         // Signed Long
         if (field.FieldType == typeof(long))

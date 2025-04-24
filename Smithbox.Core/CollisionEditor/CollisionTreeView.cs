@@ -77,7 +77,7 @@ public class CollisionTreeView
                 // When clicked, set the selected root to this object
                 if (ImGui.IsItemClicked(ImGuiMouseButton.Left))
                 {
-                    Editor.Selection.SelectedObject = (HKLib.hk2018.IHavokObject)obj;
+                    Editor.Selection.SelectedObject = obj;
                     Editor.NodeView._selectedRoot = obj;
                     Editor.NodeView._needsRebuild = true;
                 }

@@ -203,7 +203,7 @@ public class CollisionNodeView
         // Edit button to open Fields window
         if (ImGui.IsItemClicked())
         {
-            Editor.Selection.SelectedObject = (IHavokObject)node.Instance;
+            Editor.Selection.SelectedObject = node.Instance;
         }
 
         // Link the input and output pins

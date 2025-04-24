@@ -25,7 +25,7 @@ public class CollisionSelection
     public HavokBinarySerializer _selectedSerializer;
     public hkRootLevelContainer _selectedHavokRoot;
 
-    public IHavokObject SelectedObject;
+    public object SelectedObject;
 
     public CollisionSelection(Project curProject, CollisionEditor editor)
     {
