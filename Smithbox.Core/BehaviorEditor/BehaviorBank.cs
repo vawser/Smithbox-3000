@@ -1,5 +1,7 @@
 ﻿using HKLib.hk2018;
+using HKLib.hk2018.hk;
 using HKLib.Serialization.hk2018.Binary;
+using HKLib.Serialization.hk2018.Binary.Util;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Utils;
 using SoulsFormats;
@@ -20,6 +22,7 @@ public class BehaviorBank
 
     public Dictionary<string, BND4> Binders = new();
 
+    public string CurrentBinderName;
     public BinderFile CurrentBinderFile;
     public hkRootLevelContainer CurrentHavokRoot;
 
@@ -33,6 +36,7 @@ public class BehaviorBank
     {
         if(Binders.ContainsKey(binderName))
         {
+            CurrentBinderName = binderName;
             var binder = Binders[binderName];
 
             foreach(var file in binder.Files)
@@ -76,11 +80,49 @@ public class BehaviorBank
             case ProjectType.BB:
             case ProjectType.SDT:
             case ProjectType.ER:
+                return SaveBehavior_ER();
             case ProjectType.AC6:
             case ProjectType.ERN:
             default: break;
         }
 
         return successfulSave;
+    }
+
+    public bool SaveBehavior_ER()
+    {
+        if(Binders.ContainsKey(CurrentBinderName))
+        {
+            var curBinder = Binders[CurrentBinderName];
+
+            foreach (var file in curBinder.Files)
+            {
+                if (file.Name.Contains("Behaviors"))
+                {
+                    if (file.Name.Contains(CurrentBinderName))
+                    {
+                        HavokBinarySerializer serializer = new HavokBinarySerializer();
+                        using (MemoryStream memoryStream = new MemoryStream(CurrentBinderFile.Bytes.ToArray()))
+                        {
+                            serializer.Write(CurrentHavokRoot, memoryStream);
+                        }
+                    }
+                }
+            }
+
+            var binderData = curBinder.Write();
+
+            var folder = @$"{DataParent.Project.ProjectPath}\chr\";
+            if(!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            var outputPath = @$"{folder}\{CurrentBinderName}.behbnd.dcx";
+
+            File.WriteAllBytes(outputPath, binderData);
+        }
+
+        return true;
     }
 }

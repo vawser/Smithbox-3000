@@ -42,5 +42,8 @@ public class BehaviorSelection
     {
         _selectedFileIndex = index;
         _selectedFileName = fileName;
+
+        // Undo/Redo is reset on file switch
+        Editor.ActionManager.Clear();
     }
 }

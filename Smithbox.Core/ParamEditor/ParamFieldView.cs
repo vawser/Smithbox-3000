@@ -63,7 +63,8 @@ public class ParamFieldView
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
-        if (Editor.Selection.IsFieldSelectionValid())
+        // Only display once a param and row have been selected
+        if (Editor.Selection.IsFieldDisplayValid())
         {
             Param curParam = Editor.Selection.GetSelectedParam();
             Row curRow = Editor.Selection.GetSelectedRow();
@@ -80,6 +81,7 @@ public class ParamFieldView
                 auxRow = auxParam.Rows.Where(e => e.ID == curRow.ID).FirstOrDefault();
             }
 
+            // Determine the number of table columns dynamically, based on the active columns
             var tableColumns = 2;
 
             if(displayInfoColumn)
@@ -134,6 +136,7 @@ public class ParamFieldView
                 ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthFixed);
                 ImGui.TableSetupColumn("Primary Value", ImGuiTableColumnFlags.WidthFixed);
 
+                // Display the table columns dynamically, based on the active columns
                 if (displayInfoColumn)
                 {
                     ImGui.TableSetupColumn("Primary Info", ImGuiTableColumnFlags.WidthFixed);
@@ -213,6 +216,7 @@ public class ParamFieldView
                     ImGui.TableNextRow();
                     ImGui.TableSetColumnIndex(0);
 
+                    // Build field display name
                     var displayName = curField.Def.InternalName;
 
                     if (fieldMeta != null && CFG.Current.DisplayCommunityFieldNames)
@@ -225,18 +229,20 @@ public class ParamFieldView
                     // Truncate the name if it exceeds 40 characters, to avoid a pointlessly wide column
                     var finalName = StringUtils.TruncateWithEllipsis(displayName, CFG.Current.ParamFieldColumnTruncationLength);
 
+                    // UI Element
                     if (ImGui.Selectable($"{finalName}##fieldEntry{i}", isSelected))
                     {
                         Editor.Selection.SelectField(i, curField);
                     }
 
+                    // Field Description
                     if (fieldMeta != null)
                     {
                         var text = $"{displayName}\n\n{fieldMeta.Wiki}";
                         UIHelper.Tooltip($"{text}");
                     }
 
-                    // Begin drag
+                    // Field Re-order: Drag start
                     if (ImGui.BeginDragDropSource())
                     {
                         int payloadIndex = i;
@@ -252,7 +258,7 @@ public class ParamFieldView
                         ImGui.EndDragDropSource();
                     }
 
-                    // Accept drop
+                    // Field Re-order: Drag drop
                     if (ImGui.BeginDragDropTarget())
                     {
                         var payload = ImGui.AcceptDragDropPayload("FIELD_DRAG");
@@ -265,7 +271,7 @@ public class ParamFieldView
                         ImGui.EndDragDropTarget();
                     }
 
-                    // NOTE: a bit fiddly, but this handles the column arrangement nicely
+                    // Determine the column indexes dynamically to account for the active columns.
                     // Name = 0
                     var primaryValueIndex = 1;
                     var offsetIndex = 2;
@@ -326,6 +332,7 @@ public class ParamFieldView
                         }
                     }
 
+                    // Field Type
                     if (displayTypeColumn)
                     {
                         ImGui.TableSetColumnIndex(typeIndex);
@@ -392,6 +399,7 @@ public class ParamFieldView
                     }
                 }
 
+                // Process Drag and Drop
                 if (dragSourceIndex >= 0 && dragTargetIndex >= 0 && dragSourceIndex != dragTargetIndex)
                 {
                     if (FieldOrder.Entries.ContainsKey(Editor.Selection._selectedParamName))
@@ -644,6 +652,7 @@ public class ParamFieldView
         if (PrimaryOrderedColumns == null)
             return;
 
+        // Apply stored search if a search has already been ran. This means the field visibility updates correctly when the user switches the row selection
         if (search.StoredParam != null && newRow != null && search.StoredMeta != null)
         {
             FieldVisibility = search.ProcessFieldVisibility(search.StoredParam, newRow, search.StoredMeta);

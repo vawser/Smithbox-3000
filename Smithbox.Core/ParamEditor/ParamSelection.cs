@@ -61,7 +61,7 @@ public class ParamSelection
         return _selectedField;
     }
 
-    public bool IsFieldSelectionValid()
+    public bool IsFieldDisplayValid()
     {
         if (Editor.Selection._selectedParam != null && GetSelectedRow() != null)
             return true;
@@ -130,7 +130,6 @@ public class ParamSelection
             var lastRowId = lastRow.Row.ID;
             var curRowID = row.ID;
 
-            // 1 - 1000
             if (curRowID < lastRowId)
             {
                 for (int i = 0; i < _selectedParam.Rows.Count; i++)
@@ -147,7 +146,6 @@ public class ParamSelection
                     }
                 }
             }
-            // 1000 - 1
             else if (curRowID > lastRowId)
             {
                 for (int i = 0; i < _selectedParam.Rows.Count; i++)

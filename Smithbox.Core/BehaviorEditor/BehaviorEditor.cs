@@ -1,5 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Interface.Input;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Utils;
 using System;
@@ -61,8 +62,6 @@ public class BehaviorEditor
         ImGui.End();
 
         ImGui.Begin($"Behavior List##BehaviorList", SubWindowFlags);
-
-        DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
         DisplayBehaviorList();
 
@@ -163,11 +162,25 @@ public class BehaviorEditor
 
     private void Shortcuts()
     {
-        if (ImGui.IsWindowHovered())
+        if (DetectShortcuts)
         {
+            if (Keyboard.KeyPress(Key.S) && Keyboard.IsDown(Key.LCtrl))
+            {
+                Save();
+            }
 
+            if (Keyboard.KeyPress(Key.Z) && Keyboard.IsDown(Key.LCtrl))
+            {
+                ActionManager.UndoAction();
+            }
+
+            if (Keyboard.KeyPress(Key.R) && Keyboard.IsDown(Key.LCtrl))
+            {
+                ActionManager.RedoAction();
+            }
         }
     }
+
     private async void Save()
     {
         Task<bool> saveTask = Project.BehaviorData.PrimaryBank.Save();
@@ -175,11 +188,11 @@ public class BehaviorEditor
 
         if (saveTaskFinished)
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Saved behavior file.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Saved behavior file: {Project.BehaviorData.PrimaryBank.CurrentBinderName}");
         }
         else
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Failed to save behavior file.");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Failed to save behavior file: {Project.BehaviorData.PrimaryBank.CurrentBinderName}");
         }
     }
 }
