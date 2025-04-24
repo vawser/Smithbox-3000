@@ -4,6 +4,7 @@ using Smithbox.Core.BehaviorEditorNS;
 using Smithbox.Core.CollisionEditorNS;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
+using Smithbox.Core.MapEditorNS;
 using Smithbox.Core.ModelEditorNS;
 using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
@@ -138,6 +139,15 @@ public class Project
     public ParamData ParamData;
 
     /// <summary>
+    /// Map Editor
+    /// </summary>
+    [JsonIgnore]
+    public MapData MapData;
+
+    [JsonIgnore]
+    public MapEditor MapEditor;
+
+    /// <summary>
     /// Model Editor
     /// </summary>
     [JsonIgnore]
@@ -251,6 +261,14 @@ public class Project
             SecondaryParamEditor = new ParamEditor(1, this);
         }
 
+        // Map Editor
+        if (FeatureFlags.IncludeMapEditor)
+        {
+            MapData = new(this);
+
+            MapEditor = new MapEditor(0, this);
+        }
+
         // Model Editor
         if (FeatureFlags.IncludeModelEditor)
         {
@@ -321,6 +339,15 @@ public class Project
                 if (CFG.Current.DisplaySecondaryParamEditor)
                 {
                     SecondaryParamEditor.Draw();
+                }
+            }
+
+            // Map Editor
+            if (FeatureFlags.IncludeMapEditor)
+            {
+                if (CFG.Current.DisplayMapEditor)
+                {
+                    MapEditor.Draw();
                 }
             }
 

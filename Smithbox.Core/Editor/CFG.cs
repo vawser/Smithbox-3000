@@ -97,6 +97,11 @@ public class CFG
     public bool DisplaySecondaryParamEditor = true;
 
     /// <summary>
+    /// If true, the Map Editor window is displayed
+    /// </summary>
+    public bool DisplayMapEditor = true;
+
+    /// <summary>
     /// If true, the Model Editor window is displayed
     /// </summary>
     public bool DisplayModelEditor = true;

@@ -1,5 +1,6 @@
 ﻿using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
+using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using System.Numerics;
@@ -97,6 +98,16 @@ public class BehaviorEditor
                 Selection.SelectFile(i, curEntry.Filename);
 
                 Project.BehaviorData.PrimaryBank.LoadBinder(curEntry.Filename, curEntry.Path);
+            }
+
+            if (Project.Aliases.Characters.Any(e => e.ID.ToLower() == curEntry.Filename.ToLower()))
+            {
+                var nameEntry = Project.Aliases.Characters.Where(e => e.ID.ToLower() == curEntry.Filename.ToLower()).FirstOrDefault();
+
+                if (nameEntry != null)
+                {
+                    UIHelper.DisplayAlias(nameEntry.Name);
+                }
             }
         }
 

@@ -28,6 +28,7 @@ public class ModelFileList
         DisplayCategory("Equipment", Project.ModelData.EquipPartFiles.Entries);
         DisplayCategory("Map Parts", Project.ModelData.MapPartFiles.Entries);
     }
+
     public void DisplayCategory(string categoryName, List<FileDictionaryEntry> entries)
     {
         if (entries.Count > 0)
