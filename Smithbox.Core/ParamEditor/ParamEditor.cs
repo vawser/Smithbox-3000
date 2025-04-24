@@ -18,10 +18,6 @@ public class ParamEditor
 {
     private Project Project;
 
-    // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
-
     public int ID = 0;
 
     public ActionManager ActionManager;
@@ -62,7 +58,7 @@ public class ParamEditor
 
     public void Draw()
     {
-        ImGui.Begin($"Param Editor##ParamEditor{ID}", MainWindowFlags);
+        ImGui.Begin($"Param Editor##ParamEditor{ID}", Project.Source.MainWindowFlags);
 
         uint dockspaceID = ImGui.GetID($"ParamEditorDockspace{ID}");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);

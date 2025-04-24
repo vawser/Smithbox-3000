@@ -67,6 +67,11 @@ public class CFG
     // Interface
     //----------------------------------
     /// <summary>
+    /// If true, the windows can be moved.
+    /// </summary>
+    public bool AllowInterfaceMovement = false;
+
+    /// <summary>
     /// If true, the Projects window is displayed
     /// </summary>
     public bool DisplayProjectListWindow = true;

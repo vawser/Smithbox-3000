@@ -36,34 +36,8 @@ public class BehaviorData
         BehaviorFiles.Entries = Project.FileDictionary.Entries.Where(e => e.Extension == "behbnd").ToList();
     }
 
-    /// <summary>
-    /// Loads the binder contain the hkx files if it hasn't already
-    /// </summary>
-    /// <param name="filename"></param>
-    /// <param name="filepath"></param>
-    /// <param name="targetBank"></param>
-    public void LoadBinder(string filename, string filepath, BehaviorBank targetBank)
-    {
-        if (!PrimaryBank.Binders.ContainsKey(filename))
-        {
-            try
-            {
-                var binderData = Project.FS.ReadFileOrThrow(filepath);
-                var curBinder = BND4.Read(binderData);
-
-                PrimaryBank.Binders.Add(filename, curBinder);
-            }
-            catch (Exception ex)
-            {
-                TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor:{targetBank.BankName}] Failed to load {filepath}", LogLevel.Warning);
-            }
-        }
-
-        PrimaryBank.LoadBehaviorFile(filename);
-    }
-
     // Categories
-    private Dictionary<string, Type> ER_HavokCategories = new Dictionary<string, Type>()
+    private Dictionary<string, Type> HavokCategories_Behavior_ER = new Dictionary<string, Type>()
     {
         {  "hkbStateMachine", typeof(hkbStateMachine) },
         {  "hkbScriptGenerator", typeof(hkbScriptGenerator) },
@@ -114,15 +88,59 @@ public class BehaviorData
         // {  "CustomTransitionEffect", typeof(CustomTransitionEffect) },
         // {  "hkbHoldFromBlendingTransitionEffect", typeof(hkbHoldFromBlendingTransitionEffect) },
         // {  "hkPropertyBag", typeof(hkPropertyBag) },
-    };  
+    };
+
+    private Dictionary<string, Type> HavokCategories_Information_ER = new Dictionary<string, Type>()
+    {
+        {  "hkbProjectData", typeof(hkbProjectData) },
+        {  "hkbProjectStringData", typeof(hkbProjectStringData) }
+    };
+
+    private Dictionary<string, Type> HavokCategories_Character_ER = new Dictionary<string, Type>()
+    {
+        {  "hkbCharacterData", typeof(hkbCharacterData) },
+        {  "hkbCharacterControllerSetup", typeof(hkbCharacterControllerSetup) },
+        {  "hkbRigidBodySetup", typeof(hkbRigidBodySetup) },
+        {  "hkbCharacterStringData", typeof(hkbCharacterStringData) },
+        {  "hkbAssetBundleStringData", typeof(hkbAssetBundleStringData) },
+        {  "hkbFootIkDriverInfo", typeof(hkbFootIkDriverInfo) },
+        {  "hkbHandIkDriverInfo", typeof(hkbHandIkDriverInfo) },
+        {  "hkbMirroredSkeletonInfo", typeof(hkbMirroredSkeletonInfo) }
+
+        // {  "hkbRoleAttribute", typeof(hkbRoleAttribute) },
+        // {  "hkbVariableBindingSet", typeof(hkbVariableBindingSet) },
+        // {  "hkbVariableInfo", typeof(hkbVariableInfo) },
+        // {  "hkbVariableBounds", typeof(hkbVariableBounds) },
+        // {  "hkbVariableValue", typeof(hkbVariableValue) },
+        // {  "hkbVariableValueSet", typeof(hkbVariableValueSet) }
+    };
 
     public Dictionary<string, List<object>> Categories = new();
 
-    public void BuildCategories(hkRootLevelContainer root)
+    // For getting the type list
+    private List<Type> visitedTypes = new();
+
+    public void BuildCategories(HavokCategoryType categoryType, hkRootLevelContainer root)
     {
         Categories.Clear();
 
-        foreach(var entry in ER_HavokCategories)
+        var categoryDict = new Dictionary<string, Type>();
+
+        switch(categoryType)
+        {
+            case HavokCategoryType.None: return;
+            case HavokCategoryType.Information:
+                categoryDict = HavokCategories_Information_ER;
+                break;
+            case HavokCategoryType.Character:
+                categoryDict = HavokCategories_Character_ER;
+                break;
+            case HavokCategoryType.Behavior:
+                categoryDict = HavokCategories_Behavior_ER;
+                break;
+        }
+
+        foreach(var entry in categoryDict)
         {
             var category = entry.Key;
             var havokType = entry.Value;
@@ -130,6 +148,11 @@ public class BehaviorData
             var newCategory = new List<object>();
             TraverseObjectTree(root, newCategory, havokType);
             Categories.Add(category, newCategory);
+        }
+
+        foreach(var entry in visitedTypes)
+        {
+            TaskLogs.AddLog($"{entry}");
         }
     }
 
@@ -148,6 +171,11 @@ public class BehaviorData
 
         Type type = obj.GetType();
         bool isLeaf = type.IsPrimitive || type == typeof(string) || type.IsEnum;
+
+        if(!visitedTypes.Contains(type))
+        {
+            visitedTypes.Add(type);
+        }
 
         if (obj.GetType() == targetType)
         {

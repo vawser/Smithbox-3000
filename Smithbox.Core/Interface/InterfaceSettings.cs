@@ -62,6 +62,10 @@ public static class InterfaceSettings
                 // Word Wrap Aliases
                 ImGui.Checkbox("Word Wrap Aliases##wordWrapAliases", ref CFG.Current.WrapAliasDisplay);
                 UIHelper.Tooltip("If true, alias text (e.g. the name of the map next to its ID) will wrap if it exceeds the border of the window, rather than being truncated.");
+
+                // Allow Window Movement
+                ImGui.Checkbox("Allow Window Movement##allowWindowMovement", ref CFG.Current.AllowInterfaceMovement);
+                UIHelper.Tooltip("If true, the user can drag the windows around.");
             }
 
             if (ImGui.CollapsingHeader("Coloring", ImGuiTreeNodeFlags.DefaultOpen))

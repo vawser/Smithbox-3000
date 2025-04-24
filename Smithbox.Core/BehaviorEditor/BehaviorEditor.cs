@@ -24,10 +24,6 @@ public class BehaviorEditor
     public BehaviorFieldView FieldView;
     public BehaviorFieldInput FieldInput;
 
-    // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
-
     public int ID = 0;
 
     public bool DetectShortcuts = false;
@@ -49,7 +45,7 @@ public class BehaviorEditor
 
     public void Draw()
     {
-        ImGui.Begin($"Behavior Editor##Behavior Editor", MainWindowFlags);
+        ImGui.Begin($"Behavior Editor##Behavior Editor", Project.Source.MainWindowFlags);
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
@@ -61,36 +57,40 @@ public class BehaviorEditor
 
         ImGui.End();
 
-        ImGui.Begin($"Behavior List##BehaviorList", SubWindowFlags);
+        ImGui.Begin($"Binders##BehaviorFileList", Project.Source.SubWindowFlags);
 
-        DisplayBehaviorList();
+        DisplayBinderList();
 
         ImGui.End();
 
-        ImGui.Begin($"Havok Objects##BehaviorTreeView", SubWindowFlags);
+        ImGui.Begin($"Binder Files##BehaviorInternalFileList", Project.Source.SubWindowFlags);
+
+        DisplayBinderFileList();
+
+        ImGui.End();
+
+        ImGui.Begin($"Havok Objects##BehaviorTreeView", Project.Source.SubWindowFlags);
 
         TreeView.Draw();
 
         ImGui.End();
 
-        ImGui.Begin($"Nodes##BehaviorNodeView", SubWindowFlags);
+        ImGui.Begin($"Nodes##BehaviorNodeView", Project.Source.SubWindowFlags);
 
         NodeView.Draw();
 
         ImGui.End();
 
-        ImGui.Begin($"Fields##BehaviorFieldView", SubWindowFlags);
+        ImGui.Begin($"Fields##BehaviorFieldView", Project.Source.SubWindowFlags);
 
         FieldView.Draw();
 
         ImGui.End();
     }
 
-    private void DisplayBehaviorList()
+    private void DisplayBinderList()
     {
-        DisplayHeader();
-
-        ImGui.BeginChild("behaviorSelectionList");
+        ImGui.BeginChild("behaviorBinderList");
 
         for (int i = 0; i < Project.BehaviorData.BehaviorFiles.Entries.Count; i++)
         {
@@ -101,16 +101,39 @@ public class BehaviorEditor
             if (ImGui.Selectable($"{curEntry.Filename}##fileEntry{i}", isSelected))
             {
                 Selection.SelectFile(i, curEntry.Filename);
-                Project.BehaviorData.LoadBinder(curEntry.Filename, curEntry.Path, Project.BehaviorData.PrimaryBank);
+
+                Project.BehaviorData.PrimaryBank.LoadBinder(curEntry.Filename, curEntry.Path);
             }
         }
 
         ImGui.EndChild();
     }
-    public void DisplayHeader()
+    private void DisplayBinderFileList()
     {
+        ImGui.BeginChild("behaviorBinderFileList");
 
+        if(Project.BehaviorData.PrimaryBank.Binders.ContainsKey(Selection._selectedFileName))
+        {
+            var targetBinder = Project.BehaviorData.PrimaryBank.Binders[Selection._selectedFileName];
+
+            for(int i = 0; i < targetBinder.Files.Count; i++)
+            {
+                var curEntry = targetBinder.Files[i];
+                var displayName = BehaviorUtils.GetInternalFileTitle(curEntry.Name);
+                var isSelected = Selection.IsInternalFileSelected(i, curEntry.Name);
+
+                if (ImGui.Selectable($"{displayName}##internalFileEntry{i}", isSelected))
+                {
+                    Selection.SelectInternalFile(i, curEntry.Name);
+
+                    Project.BehaviorData.PrimaryBank.LoadInternalFile();
+                }
+            }
+        }
+
+        ImGui.EndChild();
     }
+
 
     private void Menubar()
     {
@@ -188,11 +211,11 @@ public class BehaviorEditor
 
         if (saveTaskFinished)
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Saved behavior file: {Project.BehaviorData.PrimaryBank.CurrentBinderName}");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Saved behavior file: {Selection._selectedFileName}");
         }
         else
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Failed to save behavior file: {Project.BehaviorData.PrimaryBank.CurrentBinderName}");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Failed to save behavior file: {Selection._selectedFileName}");
         }
     }
 }

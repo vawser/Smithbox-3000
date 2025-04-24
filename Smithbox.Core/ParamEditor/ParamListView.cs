@@ -19,10 +19,6 @@ public class ParamListView
 
     private int ID;
 
-    // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
-
     public bool DetectShortcuts = false;
 
     public ParamListView(Project curProject, ParamEditor editor)
@@ -34,7 +30,7 @@ public class ParamListView
 
     public void Draw()
     {
-        ImGui.Begin($"Params##ParamList{ID}", SubWindowFlags);
+        ImGui.Begin($"Params##ParamList{ID}", Project.Source.SubWindowFlags);
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 

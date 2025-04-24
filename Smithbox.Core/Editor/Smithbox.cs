@@ -34,10 +34,10 @@ public class Smithbox
 
     public ProjectDisplay ProjectDisplayConfig;
 
-    public Smithbox()
-    {
+    public ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
+    public ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
 
-    }
+    public Smithbox() { }
 
     /// <summary>
     /// Setup the program, creating folders, initializing generic banks, etc.
@@ -71,6 +71,17 @@ public class Smithbox
     public void Draw()
     {
         var command = EditorCommand.GetNextCommand();
+
+        if(CFG.Current.AllowInterfaceMovement)
+        {
+            MainWindowFlags = ImGuiWindowFlags.MenuBar;
+            SubWindowFlags = ImGuiWindowFlags.None;
+        }
+        else
+        {
+            MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
+            SubWindowFlags = ImGuiWindowFlags.NoMove;
+        }
 
         RenderDockspace();
 

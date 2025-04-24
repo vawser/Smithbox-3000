@@ -2,6 +2,7 @@
 using HKLib.hk2018.hk;
 using HKLib.Serialization.hk2018.Binary;
 using HKLib.Serialization.hk2018.Binary.Util;
+using Microsoft.Extensions.Logging;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Utils;
 using SoulsFormats;
@@ -20,12 +21,7 @@ public class BehaviorBank
 
     public string BankName = "Undefined";
 
-    public Dictionary<string, BND4> Binders = new();
-
-    public string CurrentBinderName;
-    public HavokBinarySerializer Serializer;
-    public BinderFile CurrentBinderFile;
-    public hkRootLevelContainer CurrentHavokRoot;
+    public Dictionary<string, BinderContents> Binders = new();
 
     public BehaviorBank(BehaviorData parent, string bankName)
     {
@@ -33,31 +29,60 @@ public class BehaviorBank
         BankName = bankName;
     }
 
-    public void LoadBehaviorFile(string binderName)
+    /// <summary>
+    /// Load the external file
+    /// </summary>
+    public void LoadBinder(string filename, string filepath)
     {
-        if(Binders.ContainsKey(binderName))
+        // Read binder if it hasn't already been loaded
+        if (!Binders.ContainsKey(filename))
         {
-            CurrentBinderName = binderName;
-            var binder = Binders[binderName];
-
-            foreach(var file in binder.Files)
+            try
             {
-                if(file.Name.Contains("Behaviors"))
-                {
-                    if(file.Name.Contains(binderName))
-                    {
-                        CurrentBinderFile = file;
-                        Serializer = new HavokBinarySerializer();
-                        using (MemoryStream memoryStream = new MemoryStream(file.Bytes.ToArray()))
-                        {
-                            CurrentHavokRoot = (hkRootLevelContainer)Serializer.Read(memoryStream);
-                        }
+                var binderData = DataParent.Project.FS.ReadFileOrThrow(filepath);
+                var curBinder = BND4.Read(binderData);
 
-                        DataParent.BuildCategories(CurrentHavokRoot);
-                    }
+                var newBinderContents = new BinderContents();
+                newBinderContents.Name = filename;
+
+                var fileList = new List<BinderFile>();
+                foreach (var file in curBinder.Files)
+                {
+                    fileList.Add(file);
                 }
+
+                newBinderContents.Binder = curBinder;
+                newBinderContents.Files = fileList;
+
+                Binders.Add(filename, newBinderContents);
+            }
+            catch (Exception ex)
+            {
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Behavior Editor:{BankName}] Failed to load {filepath}", LogLevel.Warning);
             }
         }
+    }
+
+    private string SearchFolder = @"Behaviors\";
+
+    /// <summary>
+    /// Load the internal file
+    /// </summary>
+    public void LoadInternalFile()
+    {
+        var selection = DataParent.Project.BehaviorEditor.Selection;
+
+        if (!Binders.ContainsKey(selection._selectedFileName))
+            return;
+
+        var binder = Binders[selection._selectedFileName];
+
+        var internalFile = binder.Files.Where(e => e.Name == selection._selectedInternalFileName).FirstOrDefault();
+
+        if (internalFile == null)
+            return;
+
+        selection.SelectHavokRoot(internalFile);
     }
 
     /// <summary>
@@ -91,38 +116,31 @@ public class BehaviorBank
 
     public bool SaveBehavior_ER()
     {
-        if(Binders.ContainsKey(CurrentBinderName))
+        var selection = DataParent.Project.BehaviorEditor.Selection;
+
+        if (!Binders.ContainsKey(selection._selectedFileName))
+            return false;
+
+        var binder = Binders[selection._selectedFileName];
+
+        var internalFile = binder.Files.Where(e => e.Name == selection._selectedInternalFileName).FirstOrDefault();
+
+        if (internalFile == null)
+            return false;
+
+        using (MemoryStream memoryStream = new MemoryStream(internalFile.Bytes.ToArray()))
         {
-            var curBinder = Binders[CurrentBinderName];
-
-            foreach (var file in curBinder.Files)
-            {
-                if (file.Name.Contains("Behaviors"))
-                {
-                    if (file.Name.Contains(CurrentBinderName))
-                    {
-                        using (MemoryStream memoryStream = new MemoryStream(CurrentBinderFile.Bytes.ToArray()))
-                        {
-                            Serializer.Write(CurrentHavokRoot, memoryStream);
-                            file.Bytes = memoryStream.ToArray();
-                        }
-                    }
-                }
-            }
-
-            var binderData = curBinder.Write();
-
-            var folder = @$"{DataParent.Project.ProjectPath}\chr\";
-            if(!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-
-            var outputPath = @$"{folder}\{CurrentBinderName}.behbnd.dcx";
-
-            File.WriteAllBytes(outputPath, binderData);
+            selection._selectedSerializer.Write(selection._selectedHavokRoot, memoryStream);
+            internalFile.Bytes = memoryStream.ToArray();
         }
 
         return true;
     }
+}
+
+public class BinderContents
+{
+    public string Name { get; set; }
+    public BND4 Binder { get; set; }
+    public List<BinderFile> Files { get; set; }
 }

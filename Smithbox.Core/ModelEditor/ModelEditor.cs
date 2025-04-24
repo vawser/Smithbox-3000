@@ -21,10 +21,6 @@ public class ModelEditor
 {
     private Project Project;
 
-    // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
-
     public int ID = 0;
 
     public ActionManager ActionManager;
@@ -69,7 +65,7 @@ public class ModelEditor
 
     public void Draw()
     {
-        ImGui.Begin($"Model Editor##ModelEditor{ID}", MainWindowFlags);
+        ImGui.Begin($"Model Editor##ModelEditor{ID}", Project.Source.MainWindowFlags);
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
@@ -160,7 +156,7 @@ public class ModelEditor
     {
         // IMPORTANT: If you want to render your scene through the window, set the background color to transparent, make sure to calculate the viewport after it to avoid misalignment
         ImGui.PushStyleColor(ImGuiCol.WindowBg, Vector4.Zero);
-        if (!ImGui.Begin($"Viewport##modelEditorViewport{ID}", MainWindowFlags))
+        if (!ImGui.Begin($"Viewport##modelEditorViewport{ID}", Project.Source.MainWindowFlags))
         {
             ImGui.PopStyleColor(1);
             ImGui.End();

@@ -23,10 +23,6 @@ public class ParamFieldView
 
     private int ID;
 
-    // Defined here so we can remove NoMove when setting up the imgui.ini
-    private ImGuiWindowFlags MainWindowFlags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoMove;
-    private ImGuiWindowFlags SubWindowFlags = ImGuiWindowFlags.NoMove;
-
     /// <summary>
     /// Cache for the columns so they are only rebuilt when the order changes
     /// </summary>
@@ -59,7 +55,7 @@ public class ParamFieldView
         var displayTypeColumn = CFG.Current.DisplayTypeColumn;
         var displayInfoColumn = CFG.Current.DisplayInformationColumn;
 
-        ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", SubWindowFlags);
+        ImGui.Begin($"Fields##ParamRowFieldEditor{ID}", Project.Source.SubWindowFlags);
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
