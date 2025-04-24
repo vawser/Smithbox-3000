@@ -18,7 +18,7 @@ using System.Reflection;
 			Hexa.NET.ImGui.Widgets is a comprehensive library of custom widgets for the ImGui graphical user interface library. This package includes a variety of pre-built widgets that enhance the functionality and usability of ImGui in your .NET applications. Each widget is designed to be easy to integrate, with consistent styling and behavior. This library is an extension of the Hexa.NET.ImGui wrapper, providing additional UI components for a seamless user experience.
 		")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.2.12")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be3269f51e927ca75219a124efbdf30ec561e6dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d2f27bfb038061dcbdf73fe499d5c151997a91d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hexa.NET.ImGui.Widgets")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hexa.NET.ImGui.Widgets")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.2.12")]

@@ -60,7 +60,7 @@ public class BehaviorFieldView
                     ImGui.Text($"{field.Name}");
 
                     ImGui.TableSetColumnIndex(1);
-                    Editor.FieldInput.DisplayFieldInput(_selectedNode, i, field);
+                    Editor.FieldInput.DisplayFieldInput(_selectedNode.Instance, i, field);
                 }
 
                 ImGui.EndTable();

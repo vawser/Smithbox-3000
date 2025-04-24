@@ -24,14 +24,14 @@ public class BehaviorFieldInput
     }
 
 
-    public unsafe void DisplayFieldInput(NodeRepresentation selectedNode, int index, FieldInfo field)
+    public unsafe void DisplayFieldInput(object data, int index, FieldInfo field)
     {
         var inputWidth = CFG.Current.BehaviorFieldInputWidth;
 
         var imguiID = $"field{index}";
         var inputFlags = ImGuiInputTextFlags.None;
 
-        object? curValue = field.GetValue(selectedNode.Instance);
+        object? curValue = field.GetValue(data);
         string fieldName = field.Name;
 
         var wasChanged = false;
@@ -41,6 +41,23 @@ public class BehaviorFieldInput
         ImGui.SetNextItemWidth(inputWidth);
 
         // Long
+        if (field.FieldType == typeof(ulong))
+        {
+            var tempValue = (ulong)curValue;
+            var stringValue = $@"{tempValue}";
+
+            if (ImGui.InputText($"##value_{imguiID}", ref stringValue, 128, inputFlags))
+            {
+                var result = ulong.TryParse(stringValue, out tempValue);
+                if (result)
+                {
+                    newValue = tempValue;
+                    wasChanged = true;
+                }
+            }
+        }
+
+        // Signed Long
         if (field.FieldType == typeof(long))
         {
             var tempValue = (long)curValue;
@@ -241,12 +258,101 @@ public class BehaviorFieldInput
             }
         }
 
+        // TODO: change this to select the target object, rather than displaying its fields in a tree view
+        if (!field.FieldType.IsPrimitive && 
+            field.FieldType != typeof(string) && 
+            !field.FieldType.IsEnum && 
+            !field.FieldType.IsArray && 
+            !typeof(System.Collections.IEnumerable).IsAssignableFrom(field.FieldType))
+        {
+            if (curValue != null)
+            {
+                if (ImGui.TreeNode($"{fieldName}##class_{imguiID}"))
+                {
+                    var nestedFields = field.FieldType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                    int subIndex = 0;
+                    foreach (var nestedField in nestedFields)
+                    {
+                        if (nestedField.IsPublic)
+                        {
+                            DisplayFieldInput(curValue, subIndex++, nestedField);
+                        }
+                    }
+
+                    ImGui.TreePop();
+                }
+            }
+            else
+            {
+                ImGui.Text($"{fieldName}: null");
+            }
+        }
+
+        // TODO: handle list/arrays
+        if (typeof(System.Collections.IEnumerable).IsAssignableFrom(field.FieldType) && field.FieldType != typeof(string))
+        {
+            if (curValue is System.Collections.IList list)
+            {
+                if (ImGui.TreeNode($"{fieldName}##list_{imguiID}"))
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        var item = list[i];
+
+                        if (item != null)
+                        {
+                            var itemType = item.GetType();
+                            var itemFields = itemType.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                            if (ImGui.TreeNode($"[{i}]##item_{imguiID}_{i}"))
+                            {
+                                int subIndex = 0;
+                                foreach (var itemField in itemFields)
+                                {
+                                    if (itemField.IsPublic)
+                                    {
+                                        DisplayFieldInput(item, subIndex++, itemField);
+                                    }
+                                }
+                                ImGui.TreePop();
+                            }
+                        }
+                        else
+                        {
+                            ImGui.Text($"[{i}] = null");
+                        }
+                    }
+
+                    ImGui.TreePop();
+                }
+            }
+            else
+            {
+                ImGui.Text($"{fieldName}: (not IList)");
+            }
+        }
+
+        // TODO: handle enums
+        if (field.FieldType.IsEnum)
+        {
+            var enumNames = Enum.GetNames(field.FieldType);
+            var enumValues = Enum.GetValues(field.FieldType);
+            int currentIndex = Array.IndexOf(enumValues, curValue);
+
+            if (ImGui.Combo($"##value_{imguiID}", ref currentIndex, enumNames, enumNames.Length))
+            {
+                newValue = enumValues.GetValue(currentIndex);
+                wasChanged = true;
+            }
+        }
+
         commitChange = ImGui.IsItemDeactivatedAfterEdit();
 
         // Apply action
         if (commitChange && wasChanged)
         {
-            var changeAction = new BehaviorFieldChange(field, selectedNode.Instance, curValue, newValue);
+            var changeAction = new BehaviorFieldChange(field, data, curValue, newValue);
             Editor.ActionManager.ExecuteAction(changeAction);
         }
     }
