@@ -1,38 +1,33 @@
 ﻿using HKLib.hk2018;
-using HKLib.hk2018.hk;
 using HKLib.Serialization.hk2018.Binary;
+using Smithbox.Core.BehaviorEditorNS;
 using Smithbox.Core.Editor;
-using Smithbox.Core.ParamEditorNS;
-using Smithbox.Core.Resources;
 using SoulsFormats;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smithbox.Core.BehaviorEditorNS;
+namespace Smithbox.Core.CollisionEditorNS;
 
-public class BehaviorSelection
+public class CollisionSelection
 {
     public Project Project;
-    public BehaviorEditor Editor;
+    public CollisionEditor Editor;
 
     public int _selectedFileIndex = -1;
     public string _selectedFileName = "";
 
     public int _selectedInternalFileIndex = -1;
     public string _selectedInternalFileName = "";
-    public HavokCategoryType _selectedInternalFileCategory = HavokCategoryType.None;
 
     public HavokBinarySerializer _selectedSerializer;
     public hkRootLevelContainer _selectedHavokRoot;
 
     public IHavokObject SelectedObject;
 
-    public BehaviorSelection(Project curProject, BehaviorEditor editor)
+    public CollisionSelection(Project curProject, CollisionEditor editor)
     {
         Project = curProject;
         Editor = editor;
@@ -55,7 +50,6 @@ public class BehaviorSelection
 
         _selectedInternalFileIndex = -1;
         _selectedInternalFileName = "";
-        _selectedInternalFileCategory = HavokCategoryType.None;
 
         _selectedSerializer = null;
         _selectedHavokRoot = null;
@@ -78,18 +72,26 @@ public class BehaviorSelection
     {
         _selectedInternalFileIndex = index;
         _selectedInternalFileName = fileName;
-
-        _selectedInternalFileCategory = BehaviorUtils.GetInternalFileCategoryType(fileName);
     }
 
-    public void SelectHavokRoot(BinderFile curFile)
+    public void SelectHavokRoot(BinderFile compendiumFile, BinderFile curFile)
     {
         _selectedSerializer = new HavokBinarySerializer();
-        using (MemoryStream memoryStream = new MemoryStream(curFile.Bytes.ToArray()))
+
+        // Decompress the files
+        var decompCompendiumFile = DCX.Decompress(compendiumFile.Bytes.ToArray());
+        var decompCurFile = DCX.Decompress(curFile.Bytes.ToArray());
+
+        using (MemoryStream memoryStream = new MemoryStream(decompCompendiumFile.ToArray()))
+        {
+            _selectedSerializer.LoadCompendium(memoryStream);
+        }
+
+        using (MemoryStream memoryStream = new MemoryStream(decompCurFile.ToArray()))
         {
             _selectedHavokRoot = (hkRootLevelContainer)_selectedSerializer.Read(memoryStream);
         }
 
-        Project.BehaviorData.BuildCategories(_selectedInternalFileCategory, _selectedHavokRoot);
+        Project.CollisionData.BuildCategories(_selectedHavokRoot);
     }
 }

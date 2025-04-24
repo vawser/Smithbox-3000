@@ -4,25 +4,26 @@ using Smithbox.Core.Interface.Input;
 using Smithbox.Core.Utils;
 using System.Numerics;
 
-namespace Smithbox.Core.BehaviorEditorNS;
+namespace Smithbox.Core.CollisionEditorNS;
 
-public class BehaviorEditor
+public class CollisionEditor
 {
     private Project Project;
 
     public ActionManager ActionManager;
-    public BehaviorSelection Selection;
+    public CollisionSelection Selection;
 
-    public BehaviorTreeView TreeView;
-    public BehaviorNodeView NodeView;
-    public BehaviorFieldView FieldView;
-    public BehaviorFieldInput FieldInput;
+    public CollisionTreeView TreeView;
+    public CollisionNodeView NodeView;
+    public CollisionViewport ViewportView;
+    public CollisionFieldView FieldView;
+    public CollisionFieldInput FieldInput;
 
     public int ID = 0;
 
     public bool DetectShortcuts = false;
 
-    public BehaviorEditor(int id, Project projectOwner)
+    public CollisionEditor(int id, Project projectOwner)
     {
         Project = projectOwner;
         ID = id;
@@ -34,16 +35,17 @@ public class BehaviorEditor
         Selection = new(Project, this);
         TreeView = new(Project, this);
         NodeView = new(Project, this);
+        ViewportView = new(Project, this);
         FieldView = new(Project, this);
     }
 
     public void Draw()
     {
-        ImGui.Begin($"Behavior Editor##Behavior Editor", Project.Source.MainWindowFlags);
+        ImGui.Begin($"Collision Editor##CollisionEditor", Project.Source.MainWindowFlags);
 
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
-        uint dockspaceID = ImGui.GetID("BehaviorEditorDockspace");
+        uint dockspaceID = ImGui.GetID("CollisionEditorDockspace");
         ImGui.DockSpace(dockspaceID, Vector2.Zero, ImGuiDockNodeFlags.PassthruCentralNode);
 
         Menubar();
@@ -51,31 +53,37 @@ public class BehaviorEditor
 
         ImGui.End();
 
-        ImGui.Begin($"Binders##BehaviorFileList", Project.Source.SubWindowFlags);
+        ImGui.Begin($"Binders##CollisionFileList", Project.Source.SubWindowFlags);
 
         DisplayBinderList();
 
         ImGui.End();
 
-        ImGui.Begin($"Binder Files##BehaviorInternalFileList", Project.Source.SubWindowFlags);
+        ImGui.Begin($"Binder Files##CollisionInternalFileList", Project.Source.SubWindowFlags);
 
         DisplayBinderFileList();
 
         ImGui.End();
 
-        ImGui.Begin($"Havok Objects##BehaviorTreeView", Project.Source.SubWindowFlags);
+        ImGui.Begin($"Havok Objects##CollisionTreeView", Project.Source.SubWindowFlags);
 
         TreeView.Draw();
 
         ImGui.End();
 
-        ImGui.Begin($"Nodes##BehaviorNodeView", Project.Source.SubWindowFlags);
+        ImGui.Begin($"Nodes##CollisionNodeView", Project.Source.SubWindowFlags);
 
         NodeView.Draw();
 
         ImGui.End();
 
-        ImGui.Begin($"Fields##BehaviorFieldView", Project.Source.SubWindowFlags);
+        ImGui.Begin($"Viewport##CollisionViewport", Project.Source.SubWindowFlags);
+
+        ViewportView.Draw();
+
+        ImGui.End();
+
+        ImGui.Begin($"Fields##CollisionFieldView", Project.Source.SubWindowFlags);
 
         FieldView.Draw();
 
@@ -84,11 +92,11 @@ public class BehaviorEditor
 
     private void DisplayBinderList()
     {
-        ImGui.BeginChild("behaviorBinderList");
+        ImGui.BeginChild("collisionBinderList");
 
-        for (int i = 0; i < Project.BehaviorData.BehaviorFiles.Entries.Count; i++)
+        for (int i = 0; i < Project.CollisionData.CollisionFiles.Entries.Count; i++)
         {
-            var curEntry = Project.BehaviorData.BehaviorFiles.Entries[i];
+            var curEntry = Project.CollisionData.CollisionFiles.Entries[i];
 
             var isSelected = Selection.IsFileSelected(i, curEntry.Filename);
 
@@ -96,38 +104,42 @@ public class BehaviorEditor
             {
                 Selection.SelectFile(i, curEntry.Filename);
 
-                Project.BehaviorData.PrimaryBank.LoadBinder(curEntry.Filename, curEntry.Path);
+                Project.CollisionData.PrimaryBank.LoadBinder(curEntry.Filename, curEntry.Path);
             }
         }
 
         ImGui.EndChild();
     }
+
     private void DisplayBinderFileList()
     {
-        ImGui.BeginChild("behaviorBinderFileList");
+        ImGui.BeginChild("collisionBinderFileList");
 
-        if(Project.BehaviorData.PrimaryBank.Binders.ContainsKey(Selection._selectedFileName))
+        if (Project.CollisionData.PrimaryBank.Binders.ContainsKey(Selection._selectedFileName))
         {
-            var targetBinder = Project.BehaviorData.PrimaryBank.Binders[Selection._selectedFileName];
+            var targetBinder = Project.CollisionData.PrimaryBank.Binders[Selection._selectedFileName];
 
-            for(int i = 0; i < targetBinder.Files.Count; i++)
+            for (int i = 0; i < targetBinder.Files.Count; i++)
             {
                 var curEntry = targetBinder.Files[i];
-                var displayName = BehaviorUtils.GetInternalFileTitle(curEntry.Name);
+                var displayName = curEntry.Name;
                 var isSelected = Selection.IsInternalFileSelected(i, curEntry.Name);
+
+                // Ignore the compendium file
+                if (curEntry.Name.Contains(".compendium"))
+                    continue;
 
                 if (ImGui.Selectable($"{displayName}##internalFileEntry{i}", isSelected))
                 {
                     Selection.SelectInternalFile(i, curEntry.Name);
 
-                    Project.BehaviorData.PrimaryBank.LoadInternalFile();
+                    Project.CollisionData.PrimaryBank.LoadInternalFile();
                 }
             }
         }
 
         ImGui.EndChild();
     }
-
 
     private void Menubar()
     {
@@ -200,16 +212,16 @@ public class BehaviorEditor
 
     private async void Save()
     {
-        Task<bool> saveTask = Project.BehaviorData.PrimaryBank.Save();
+        Task<bool> saveTask = Project.CollisionData.PrimaryBank.Save();
         bool saveTaskFinished = await saveTask;
 
         if (saveTaskFinished)
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Saved behavior file: {Selection._selectedFileName}");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Collision Editor] Saved collision file: {Selection._selectedFileName}");
         }
         else
         {
-            TaskLogs.AddLog($"[{Project.ProjectName}:Behavior Editor] Failed to save behavior file: {Selection._selectedFileName}");
+            TaskLogs.AddLog($"[{Project.ProjectName}:Collision Editor] Failed to save collision file: {Selection._selectedFileName}");
         }
     }
 }

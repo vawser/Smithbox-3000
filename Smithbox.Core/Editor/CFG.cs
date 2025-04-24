@@ -97,7 +97,7 @@ public class CFG
     public bool DisplaySecondaryParamEditor = true;
 
     /// <summary>
-    /// If true, the Primary Model Editor window is displayed
+    /// If true, the Model Editor window is displayed
     /// </summary>
     public bool DisplayModelEditor = true;
 
@@ -105,6 +105,11 @@ public class CFG
     /// If true, the Behavior Editor window is displayed
     /// </summary>
     public bool DisplayBehaviorEditor = true;
+
+    /// <summary>
+    /// If true, the Collision Editor window is displayed
+    /// </summary>
+    public bool DisplayCollisionEditor = true;
 
     /// <summary>
     /// The display scaling to apply to the Interface
@@ -215,6 +220,14 @@ public class CFG
     /// The width of the ImGui input widgets in the field column
     /// </summary>
     public float BehaviorFieldInputWidth = 250f;
+
+    //----------------------------------
+    // Collision Editor
+    //----------------------------------
+    /// <summary>
+    /// The width of the ImGui input widgets in the field column
+    /// </summary>
+    public float CollisionFieldInputWidth = 250f;
 
     //----------------------------------
     /// General

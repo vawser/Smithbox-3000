@@ -3,17 +3,17 @@ using Smithbox.Core.Editor;
 using Smithbox.Core.Utils;
 using SoulsFormats;
 
-namespace Smithbox.Core.BehaviorEditorNS;
+namespace Smithbox.Core.CollisionEditorNS;
 
-public class BehaviorBank
+public class CollisionBank
 {
-    private BehaviorData DataParent;
+    private CollisionData DataParent;
 
     public string BankName = "Undefined";
 
     public Dictionary<string, BinderContents> Binders = new();
 
-    public BehaviorBank(BehaviorData parent, string bankName)
+    public CollisionBank(CollisionData parent, string bankName)
     {
         DataParent = parent;
         BankName = bankName;
@@ -29,8 +29,12 @@ public class BehaviorBank
         {
             try
             {
-                var binderData = DataParent.Project.FS.ReadFileOrThrow(filepath);
-                var curBinder = BND4.Read(binderData);
+                var bdtPath = filepath.Replace("hkxbhd", "hkxbdt");
+
+                var bhdData = DataParent.Project.FS.ReadFileOrThrow(filepath);
+                var bdtData = DataParent.Project.FS.ReadFileOrThrow(bdtPath);
+
+                var curBinder = BXF4.Read(bhdData, bdtData);
 
                 var newBinderContents = new BinderContents();
                 newBinderContents.Name = filename;
@@ -48,19 +52,19 @@ public class BehaviorBank
             }
             catch (Exception ex)
             {
-                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Behavior Editor:{BankName}] Failed to load {filepath}", LogLevel.Warning);
+                TaskLogs.AddLog($"[{DataParent.Project.ProjectName}:Collision Editor:{BankName}] Failed to load {filepath}", LogLevel.Warning);
             }
         }
     }
 
-    private string SearchFolder = @"Behaviors\";
+    private string SearchFolder = @"";
 
     /// <summary>
     /// Load the internal file
     /// </summary>
     public void LoadInternalFile()
     {
-        var selection = DataParent.Project.BehaviorEditor.Selection;
+        var selection = DataParent.Project.CollisionEditor.Selection;
 
         if (!Binders.ContainsKey(selection._selectedFileName))
             return;
@@ -72,7 +76,12 @@ public class BehaviorBank
         if (internalFile == null)
             return;
 
-        selection.SelectHavokRoot(internalFile);
+        var compendiumFile = binder.Files.Where(e => e.Name.Contains(".compendium")).FirstOrDefault();
+
+        if (compendiumFile == null)
+            return;
+
+        selection.SelectHavokRoot(compendiumFile, internalFile);
     }
 
     /// <summary>
@@ -106,7 +115,7 @@ public class BehaviorBank
 
     public bool SaveBehavior_ER()
     {
-        var selection = DataParent.Project.BehaviorEditor.Selection;
+        var selection = DataParent.Project.CollisionEditor.Selection;
 
         if (!Binders.ContainsKey(selection._selectedFileName))
             return false;
@@ -131,6 +140,6 @@ public class BehaviorBank
 public class BinderContents
 {
     public string Name { get; set; }
-    public BND4 Binder { get; set; }
+    public BXF4 Binder { get; set; }
     public List<BinderFile> Files { get; set; }
 }

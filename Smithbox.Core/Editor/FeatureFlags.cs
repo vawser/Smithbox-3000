@@ -17,4 +17,5 @@ public class FeatureFlags
     public static bool IncludeModelEditor = true;
     public static bool IncludeScriptingConsole = true;
     public static bool IncludeBehaviorEditor = true;
+    public static bool IncludeCollisionEditor = true;
 }

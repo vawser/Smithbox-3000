@@ -117,9 +117,6 @@ public class BehaviorData
 
     public Dictionary<string, List<object>> Categories = new();
 
-    // For getting the type list
-    private List<Type> visitedTypes = new();
-
     public void BuildCategories(HavokCategoryType categoryType, hkRootLevelContainer root)
     {
         Categories.Clear();
@@ -149,11 +146,6 @@ public class BehaviorData
             TraverseObjectTree(root, newCategory, havokType);
             Categories.Add(category, newCategory);
         }
-
-        foreach(var entry in visitedTypes)
-        {
-            TaskLogs.AddLog($"{entry}");
-        }
     }
 
     private void TraverseObjectTree(object? obj, List<object> entries, Type targetType, HashSet<object>? visited = null)
@@ -171,11 +163,6 @@ public class BehaviorData
 
         Type type = obj.GetType();
         bool isLeaf = type.IsPrimitive || type == typeof(string) || type.IsEnum;
-
-        if(!visitedTypes.Contains(type))
-        {
-            visitedTypes.Add(type);
-        }
 
         if (obj.GetType() == targetType)
         {

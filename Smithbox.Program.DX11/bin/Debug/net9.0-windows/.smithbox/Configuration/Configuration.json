@@ -8,6 +8,7 @@
   "FreeLookBaseSpeed": 10,
   "FreeLookFastSpeed": 4,
   "FreeLookSlowSpeed": 0.25,
+  "AllowInterfaceMovement": true,
   "DisplayProjectListWindow": true,
   "DisplayProjectWindow": true,
   "DisplayFileBrowser": true,
@@ -15,6 +16,7 @@
   "DisplaySecondaryParamEditor": false,
   "DisplayModelEditor": true,
   "DisplayBehaviorEditor": true,
+  "DisplayCollisionEditor": true,
   "InterfaceDisplayScale": 1,
   "ScalebyDPI": true,
   "WrapAliasDisplay": false,
@@ -34,5 +36,6 @@
   "ParamFieldInputWidth": 250,
   "DisplayParamImageView": true,
   "DisplayPaddingFields": true,
-  "BehaviorFieldInputWidth": 250
+  "BehaviorFieldInputWidth": 250,
+  "CollisionFieldInputWidth": 250
 }

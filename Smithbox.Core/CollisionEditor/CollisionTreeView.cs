@@ -1,70 +1,39 @@
 ﻿using Hexa.NET.ImGui;
-using HKLib.hk2018;
+using Org.BouncyCastle.Utilities;
+using Smithbox.Core.BehaviorEditorNS;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static HKLib.hk2018.hkaiUserEdgeUtils;
 
-namespace Smithbox.Core.BehaviorEditorNS;
+namespace Smithbox.Core.CollisionEditorNS;
 
-public class BehaviorTreeView
+public class CollisionTreeView
 {
     public Project Project;
-    public BehaviorEditor Editor;
+    public CollisionEditor Editor;
 
     public bool DetectShortcuts = false;
 
-    public BehaviorTreeView(Project curProject, BehaviorEditor editor)
+    public CollisionTreeView(Project curProject, CollisionEditor editor)
     {
         Editor = editor;
         Project = curProject;
     }
-
     public void Draw()
     {
         DetectShortcuts = ShortcutUtils.UpdateShortcutDetection();
 
-        DisplayHeader();
+        ImGui.BeginChild("collisionTreeArea");
 
-        ImGui.BeginChild("behaviorTreeArea");
-
-        foreach (var entry in Project.BehaviorData.Categories)
-        {
-            var name = entry.Key;
-            var objects = entry.Value;
-
-            if (ImGui.CollapsingHeader(name))
-            {
-                for (int i = 0; i < objects.Count; i++)
-                {
-                    var curEntry = objects[i];
-
-                    var displayName = BehaviorUtils.GetObjectFieldValue(curEntry, "m_name");
-
-                    // Special cases
-                    if(curEntry.GetType() == typeof(hkbClipGenerator))
-                    {
-                        displayName = BehaviorUtils.GetObjectFieldValue(curEntry, "m_animationName");
-                    }
-
-                    DrawObjectTree($"{displayName}##root{name}{i}", curEntry);
-                }
-            }
-        }
+        DrawObjectTree($"Root##root", Editor.Selection._selectedHavokRoot);
 
         ImGui.EndChild();
-    }
-
-    public void DisplayHeader()
-    {
-
     }
 
     public void DrawObjectTree(string label, object? obj, HashSet<object>? visited = null)

@@ -1,6 +1,7 @@
 ﻿using Andre.IO.VFS;
 using Hexa.NET.ImGui;
 using Smithbox.Core.BehaviorEditorNS;
+using Smithbox.Core.CollisionEditorNS;
 using Smithbox.Core.FileBrowserNS;
 using Smithbox.Core.Interface;
 using Smithbox.Core.ModelEditorNS;
@@ -152,6 +153,15 @@ public class Project
     public BehaviorEditor BehaviorEditor;
 
     /// <summary>
+    /// Collision Editor
+    /// </summary>
+    [JsonIgnore]
+    public CollisionData CollisionData;
+
+    [JsonIgnore]
+    public CollisionEditor CollisionEditor;
+
+    /// <summary>
     /// Aliases
     /// </summary>
     [JsonIgnore]
@@ -244,12 +254,20 @@ public class Project
             ModelEditor = new ModelEditor(0, this);
         }
 
-        // Behavio rEditor
+        // Behavior Editor
         if (FeatureFlags.IncludeBehaviorEditor)
         {
             BehaviorData = new(this);
 
             BehaviorEditor = new BehaviorEditor(0, this);
+        }
+
+        // Collision Editor
+        if (FeatureFlags.IncludeCollisionEditor)
+        {
+            CollisionData = new(this);
+
+            CollisionEditor = new CollisionEditor(0, this);
         }
 
         IsInitializing = false;
@@ -316,6 +334,15 @@ public class Project
                 if (CFG.Current.DisplayBehaviorEditor)
                 {
                     BehaviorEditor.Draw();
+                }
+            }
+
+            // Collision Editor
+            if (FeatureFlags.IncludeCollisionEditor)
+            {
+                if (CFG.Current.DisplayCollisionEditor)
+                {
+                    CollisionEditor.Draw();
                 }
             }
         }
