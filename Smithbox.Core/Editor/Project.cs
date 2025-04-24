@@ -141,6 +141,9 @@ public class Project
     /// Model Editor
     /// </summary>
     [JsonIgnore]
+    public ModelData ModelData;
+
+    [JsonIgnore]
     public ModelEditor ModelEditor;
 
     /// <summary>
@@ -251,6 +254,8 @@ public class Project
         // Model Editor
         if (FeatureFlags.IncludeModelEditor)
         {
+            ModelData = new(this);
+
             ModelEditor = new ModelEditor(0, this);
         }
 
