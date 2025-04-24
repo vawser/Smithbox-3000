@@ -8,7 +8,6 @@
   "FreeLookBaseSpeed": 10,
   "FreeLookFastSpeed": 4,
   "FreeLookSlowSpeed": 0.25,
-  "DisplayScriptConsoleWindow": true,
   "DisplayProjectListWindow": true,
   "DisplayProjectWindow": true,
   "DisplayFileBrowser": true,
@@ -34,5 +33,6 @@
   "ParamFieldColumnTruncationLength": 30,
   "ParamFieldInputWidth": 250,
   "DisplayParamImageView": true,
-  "DisplayPaddingFields": true
+  "DisplayPaddingFields": true,
+  "BehaviorFieldInputWidth": 250
 }

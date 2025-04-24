@@ -1,4 +1,5 @@
 ﻿using Hexa.NET.ImGui;
+using Smithbox.Core.Actions;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Utils;
 using System;
@@ -245,9 +246,8 @@ public class BehaviorFieldInput
         // Apply action
         if (commitChange && wasChanged)
         {
-            // TODO: implement
-            //var changeAction = new ParamFieldChange(curRow, curField, curValue, newValue);
-            //Editor.ActionManager.ExecuteAction(changeAction);
+            var changeAction = new BehaviorFieldChange(field, selectedNode.Instance, curValue, newValue);
+            Editor.ActionManager.ExecuteAction(changeAction);
         }
     }
 

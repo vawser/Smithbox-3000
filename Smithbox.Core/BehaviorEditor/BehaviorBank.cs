@@ -23,6 +23,7 @@ public class BehaviorBank
     public Dictionary<string, BND4> Binders = new();
 
     public string CurrentBinderName;
+    public HavokBinarySerializer Serializer;
     public BinderFile CurrentBinderFile;
     public hkRootLevelContainer CurrentHavokRoot;
 
@@ -46,11 +47,10 @@ public class BehaviorBank
                     if(file.Name.Contains(binderName))
                     {
                         CurrentBinderFile = file;
-
-                        HavokBinarySerializer serializer = new HavokBinarySerializer();
+                        Serializer = new HavokBinarySerializer();
                         using (MemoryStream memoryStream = new MemoryStream(file.Bytes.ToArray()))
                         {
-                            CurrentHavokRoot = (hkRootLevelContainer)serializer.Read(memoryStream);
+                            CurrentHavokRoot = (hkRootLevelContainer)Serializer.Read(memoryStream);
                         }
 
                         DataParent.BuildCategories(CurrentHavokRoot);
@@ -101,10 +101,10 @@ public class BehaviorBank
                 {
                     if (file.Name.Contains(CurrentBinderName))
                     {
-                        HavokBinarySerializer serializer = new HavokBinarySerializer();
                         using (MemoryStream memoryStream = new MemoryStream(CurrentBinderFile.Bytes.ToArray()))
                         {
-                            serializer.Write(CurrentHavokRoot, memoryStream);
+                            Serializer.Write(CurrentHavokRoot, memoryStream);
+                            file.Bytes = memoryStream.ToArray();
                         }
                     }
                 }
