@@ -228,11 +228,6 @@ public class ParamData
         return null;
     }
 
-    public void Update()
-    {
-
-    }
-
     public async Task<bool> LoadParamDefs()
     {
         await Task.Delay(1000);

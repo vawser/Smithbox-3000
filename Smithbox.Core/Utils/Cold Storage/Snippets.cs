@@ -266,4 +266,47 @@ internal class Snippets
 
     //    File.WriteAllText(writePath, json);
     //}
+
+    //public void FileDirectoryPrint()
+    //{
+    //    if (ImGui.MenuItem("DEBUG"))
+    //    {
+    //        string rootDirectory = SelectedProject.DataPath;
+
+    //        var entries = new List<FileDictionaryEntry>();
+    //        var files = Directory.GetFiles(rootDirectory, "*", SearchOption.AllDirectories);
+
+    //        foreach (var file in files)
+    //        {
+    //            string relativePath = Path.GetRelativePath(rootDirectory, file);
+    //            string archive = rootDirectory;
+    //            string folder = Path.GetDirectoryName(relativePath)?.Replace("\\", "/") ?? "";
+    //            string fileName = Path.GetFileNameWithoutExtension(file);
+    //            string extension = Path.GetExtension(file).TrimStart('.').ToLower();
+
+    //            // Handle .dcx case
+    //            if (extension == "dcx")
+    //            {
+    //                var baseName = Path.GetFileNameWithoutExtension(file); // strip .dcx
+    //                string basePath = Path.Combine(Path.GetDirectoryName(file), baseName);
+    //                extension = Path.GetExtension(basePath).TrimStart('.').ToLower();
+    //                fileName = Path.GetFileNameWithoutExtension(basePath);
+    //            }
+
+    //            entries.Add(new FileDictionaryEntry
+    //            {
+    //                Archive = "None",
+    //                Path = $@"/{relativePath.Replace("\\", "/")}",
+    //                Folder = $@"/{folder}",
+    //                Filename = $@"{fileName}",
+    //                Extension = extension
+    //            });
+    //        }
+
+    //        string json = JsonSerializer.Serialize(entries, new JsonSerializerOptions { WriteIndented = true });
+    //        File.WriteAllText(@$"{AppContext.BaseDirectory}\file_dictionary.json", json);
+
+    //        Console.WriteLine("File dictionary written to file_dictionary.json");
+    //    }
+    //}
 }

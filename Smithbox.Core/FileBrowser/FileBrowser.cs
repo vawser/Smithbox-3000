@@ -146,6 +146,9 @@ public class FileBrowser
 
     private void DisplayFileBrowser()
     {
+        if (!Initialized)
+            return;
+
         if (roots.Count == 0)
         {
             ImGui.Text("No File System roots available. Load a project.");
@@ -161,6 +164,9 @@ public class FileBrowser
 
     private void DisplayItemViewer()
     {
+        if (!Initialized)
+            return;
+
         if (selected == null)
         {
             ImGui.Text("Nothing selected");

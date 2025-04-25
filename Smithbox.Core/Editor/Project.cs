@@ -42,6 +42,7 @@ public class Project
     /// </summary>
     public bool AutoSelect;
 
+    // Editors enabled for this project
     public bool EnableFileBrowser;
     public bool EnableParamEditor;
     public bool EnableMapEditor;
@@ -77,6 +78,12 @@ public class Project
     /// </summary>
     [JsonIgnore]
     public Smithbox Source;
+
+    /// <summary>
+    /// Action manager for project-level changes (e.g. aliases)
+    /// </summary>
+    [JsonIgnore]
+    public ActionManager ActionManager;
 
     /// <summary>
     /// Compound filesystem, contains all the other systems, in the order of precedence
@@ -117,10 +124,16 @@ public class Project
     public FileDictionary FileDictionary;
 
     /// <summary>
-    /// File Browser
+    /// Aliases
     /// </summary>
     [JsonIgnore]
-    public FileBrowser FileBrowser;
+    public AliasStore Aliases;
+
+    /// <summary>
+    /// Shoebox Layouts
+    /// </summary>
+    [JsonIgnore]
+    public ShoeboxLayoutContainer ShoeboxLayouts;
 
     /// <summary>
     /// If true, the data elements (i.e. Aliases and Editors) for this project have been initialized.
@@ -139,6 +152,12 @@ public class Project
     /// </summary>
     [JsonIgnore]
     public bool IsSelected = false;
+
+    /// <summary>
+    /// File Browser
+    /// </summary>
+    [JsonIgnore]
+    public FileBrowser FileBrowser;
 
     /// <summary>
     /// Param Editor
@@ -187,24 +206,6 @@ public class Project
 
     [JsonIgnore]
     public CollisionEditor CollisionEditor;
-
-    /// <summary>
-    /// Aliases
-    /// </summary>
-    [JsonIgnore]
-    public AliasStore Aliases;
-
-    /// <summary>
-    /// Shoebox Layouts
-    /// </summary>
-    [JsonIgnore]
-    public ShoeboxLayoutContainer ShoeboxLayouts;
-
-    /// <summary>
-    /// Action manager for project-level changes (e.g. aliases)
-    /// </summary>
-    [JsonIgnore]
-    public ActionManager ActionManager;
 
     public async void Initialize()
     {
@@ -260,52 +261,7 @@ public class Project
             TaskLogs.AddLog($"[{ProjectName}] Failed to setup shoebox layouts.");
         }
 
-        // File Browser
-        if (EnableFileBrowser)
-        {
-            FileBrowser = new(0, this);
-        }
-
-        // Param Editor
-        if (EnableParamEditor)
-        {
-            ParamData = new(this);
-
-            PrimaryParamEditor = new ParamEditor(0, this);
-            SecondaryParamEditor = new ParamEditor(1, this);
-        }
-
-        // Map Editor
-        if (EnableMapEditor)
-        {
-            MapData = new(this);
-
-            MapEditor = new MapEditor(0, this);
-        }
-
-        // Model Editor
-        if (EnableModelEditor)
-        {
-            ModelData = new(this);
-
-            ModelEditor = new ModelEditor(0, this);
-        }
-
-        // Behavior Editor
-        if (EnableBehaviorEditor)
-        {
-            BehaviorData = new(this);
-
-            BehaviorEditor = new BehaviorEditor(0, this);
-        }
-
-        // Collision Editor
-        if (EnableCollisionEditor)
-        {
-            CollisionData = new(this);
-
-            CollisionEditor = new CollisionEditor(0, this);
-        }
+        InitializeEditors();
 
         IsInitializing = false;
         Initialized = true;
@@ -316,27 +272,33 @@ public class Project
     /// </summary>
     public void InitializeEditors()
     {
+        // TODO: this should probably dispose of existing stuff, not just null them
         FileBrowser = null;
+
         ParamData = null;
         PrimaryParamEditor = null;
         SecondaryParamEditor = null;
+
         MapData = null;
         MapEditor = null;
+
         ModelData = null;
         ModelEditor = null;
+
         BehaviorData = null;
         BehaviorEditor = null;
+
         CollisionData = null;
         CollisionEditor = null;
 
         // File Browser
-        if (EnableFileBrowser)
+        if (EnableFileBrowser && FeatureFlags.EnableFileBrowser)
         {
             FileBrowser = new(0, this);
         }
 
         // Param Editor
-        if (EnableParamEditor)
+        if (EnableParamEditor && FeatureFlags.EnableParamEditor)
         {
             ParamData = new(this);
 
@@ -345,7 +307,7 @@ public class Project
         }
 
         // Map Editor
-        if (EnableMapEditor)
+        if (EnableMapEditor && FeatureFlags.EnableMapEditor)
         {
             MapData = new(this);
 
@@ -353,7 +315,7 @@ public class Project
         }
 
         // Model Editor
-        if (EnableModelEditor)
+        if (EnableModelEditor && FeatureFlags.EnableModelEditor)
         {
             ModelData = new(this);
 
@@ -361,7 +323,7 @@ public class Project
         }
 
         // Behavior Editor
-        if (EnableBehaviorEditor)
+        if (EnableBehaviorEditor && FeatureFlags.EnableBehaviorEditor)
         {
             BehaviorData = new(this);
 
@@ -369,7 +331,7 @@ public class Project
         }
 
         // Collision Editor
-        if (EnableCollisionEditor)
+        if (EnableCollisionEditor && FeatureFlags.EnableCollisionEditor)
         {
             CollisionData = new(this);
 
@@ -406,8 +368,6 @@ public class Project
             // Param Editor
             if (EnableParamEditor && ParamData != null && PrimaryParamEditor != null)
             {
-                ParamData.Update();
-
                 PrimaryParamEditor.Draw();
 
                 if (CFG.Current.DisplaySecondaryParamEditor)
