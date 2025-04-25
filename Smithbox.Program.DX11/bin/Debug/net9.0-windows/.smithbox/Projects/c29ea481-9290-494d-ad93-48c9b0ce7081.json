@@ -6,5 +6,11 @@
   "ProjectType": 8,
   "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": true
+  "AutoSelect": true,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

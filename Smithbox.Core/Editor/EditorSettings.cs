@@ -87,67 +87,61 @@ public static class EditorSettings
                 UIHelper.Tooltip("The relative paths of the DLLs to include in the 'Launch Mod' action. Separate them by a space if using multiple.");
             }
 
-            if (FeatureFlags.IncludeParamEditor)
+            if(ImGui.CollapsingHeader("Param Editor", ImGuiTreeNodeFlags.DefaultOpen))
             {
-                if(ImGui.CollapsingHeader("Param Editor", ImGuiTreeNodeFlags.DefaultOpen))
-                {
-                    // Prioritize Loose Params
-                    ImGui.Checkbox("Prioritize Loose Params##useLooseParams", ref CFG.Current.UseLooseParams);
-                    UIHelper.Tooltip("If true, then loose params will be prioritized over packed params.");
+                // Prioritize Loose Params
+                ImGui.Checkbox("Prioritize Loose Params##useLooseParams", ref CFG.Current.UseLooseParams);
+                UIHelper.Tooltip("If true, then loose params will be prioritized over packed params.");
 
-                    ImGui.InputInt("Field Name Column Width##paramFieldWidth", ref CFG.Current.ParamFieldColumnTruncationLength);
-                    UIHelper.Tooltip("The width of the param field name column.");
+                ImGui.InputInt("Field Name Column Width##paramFieldWidth", ref CFG.Current.ParamFieldColumnTruncationLength);
+                UIHelper.Tooltip("The width of the param field name column.");
 
-                    ImGui.DragFloat("Field Input Column Width##paramFieldInputWidth", ref CFG.Current.ParamFieldInputWidth);
-                    UIHelper.Tooltip("The width of the param field input column.");
-                }
+                ImGui.DragFloat("Field Input Column Width##paramFieldInputWidth", ref CFG.Current.ParamFieldInputWidth);
+                UIHelper.Tooltip("The width of the param field input column.");
             }
 
-            if (FeatureFlags.IncludeModelEditor)
+            if (ImGui.CollapsingHeader("Viewport", ImGuiTreeNodeFlags.DefaultOpen))
             {
-                if (ImGui.CollapsingHeader("Viewport", ImGuiTreeNodeFlags.DefaultOpen))
+                // Use Inverted Controls
+                ImGui.Checkbox("Use Inverted Controls", ref CFG.Current.UseInvertedControls);
+                UIHelper.Tooltip("If true, then the mouse look will use inverted Y.");
+
+                // Look Sensitivity
+                var curLookSensitivity = CFG.Current.LookSensitivity;
+                ImGui.DragFloat("Look Sensitivity##viewportLookSensitivity", ref curLookSensitivity);
+                if (ImGui.IsItemDeactivatedAfterEdit())
                 {
-                    // Use Inverted Controls
-                    ImGui.Checkbox("Use Inverted Controls", ref CFG.Current.UseInvertedControls);
-                    UIHelper.Tooltip("If true, then the mouse look will use inverted Y.");
-
-                    // Look Sensitivity
-                    var curLookSensitivity = CFG.Current.LookSensitivity;
-                    ImGui.DragFloat("Look Sensitivity##viewportLookSensitivity", ref curLookSensitivity);
-                    if (ImGui.IsItemDeactivatedAfterEdit())
-                    {
-                        CFG.Current.LookSensitivity = curLookSensitivity;
-                    }
-                    UIHelper.Tooltip("The look sensitivity of the free look mode in the viewport.");
-
-                    // Free Look: Base Speed
-                    var curBaseSpeed = CFG.Current.FreeLookBaseSpeed;
-                    ImGui.DragFloat("Free Look: Base Speed##viewportBaseSpeed", ref curBaseSpeed);
-                    if (ImGui.IsItemDeactivatedAfterEdit())
-                    {
-                        CFG.Current.FreeLookBaseSpeed = curBaseSpeed;
-                    }
-                    UIHelper.Tooltip("The base movement speed of the camera in free look mode.");
-
-                    // Free Look: Fast Multiplier
-                    var curFastMultiplier = CFG.Current.FreeLookFastSpeed;
-                    ImGui.DragFloat("Free Look: Fast Speed Multiplier##viewportFastMultiplier", ref curFastMultiplier);
-                    if (ImGui.IsItemDeactivatedAfterEdit())
-                    {
-                        CFG.Current.FreeLookFastSpeed = curFastMultiplier;
-                    }
-                    UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Fast' mode.");
-
-                    // Free Look: Slow Multiplier
-                    var curSlowMultiplier = CFG.Current.FreeLookSlowSpeed;
-                    ImGui.DragFloat("Free Look: Slow Speed Multiplier##viewportSlowMultiplier", ref curSlowMultiplier);
-                    if (ImGui.IsItemDeactivatedAfterEdit())
-                    {
-                        CFG.Current.FreeLookSlowSpeed = curSlowMultiplier;
-                    }
-                    UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Slow' mode.");
-
+                    CFG.Current.LookSensitivity = curLookSensitivity;
                 }
+                UIHelper.Tooltip("The look sensitivity of the free look mode in the viewport.");
+
+                // Free Look: Base Speed
+                var curBaseSpeed = CFG.Current.FreeLookBaseSpeed;
+                ImGui.DragFloat("Free Look: Base Speed##viewportBaseSpeed", ref curBaseSpeed);
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                {
+                    CFG.Current.FreeLookBaseSpeed = curBaseSpeed;
+                }
+                UIHelper.Tooltip("The base movement speed of the camera in free look mode.");
+
+                // Free Look: Fast Multiplier
+                var curFastMultiplier = CFG.Current.FreeLookFastSpeed;
+                ImGui.DragFloat("Free Look: Fast Speed Multiplier##viewportFastMultiplier", ref curFastMultiplier);
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                {
+                    CFG.Current.FreeLookFastSpeed = curFastMultiplier;
+                }
+                UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Fast' mode.");
+
+                // Free Look: Slow Multiplier
+                var curSlowMultiplier = CFG.Current.FreeLookSlowSpeed;
+                ImGui.DragFloat("Free Look: Slow Speed Multiplier##viewportSlowMultiplier", ref curSlowMultiplier);
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                {
+                    CFG.Current.FreeLookSlowSpeed = curSlowMultiplier;
+                }
+                UIHelper.Tooltip("The multiplier to apply to the movement speed of the camera when in 'Slow' mode.");
+
             }
 
             ImGui.EndPopup();

@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Dark Souls PTDE\\DS1-Test",
   "DataPath": "F:\\SteamLibrary\\steamapps\\common\\Dark Souls Prepare to Die Edition\\DATA",
   "ProjectType": 2,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

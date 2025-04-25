@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Bloodborne\\Test-Project",
   "DataPath": "G:\\Game Data Repository\\Bloodborne\\dvdroot_ps4",
   "ProjectType": 6,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

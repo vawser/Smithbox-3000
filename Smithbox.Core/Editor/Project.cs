@@ -42,6 +42,13 @@ public class Project
     /// </summary>
     public bool AutoSelect;
 
+    public bool EnableFileBrowser;
+    public bool EnableParamEditor;
+    public bool EnableMapEditor;
+    public bool EnableModelEditor;
+    public bool EnableBehaviorEditor;
+    public bool EnableCollisionEditor;
+
     public Project() { }
 
     public Project(Smithbox source, Guid newGuid, string projectName, string projectPath, string dataPath, ProjectType projectType)
@@ -54,6 +61,13 @@ public class Project
         ProjectType = projectType;
         ImportedParamRowNames = false;
         EnableParamRowStrip = false;
+
+        EnableFileBrowser = true;
+        EnableParamEditor = true;
+        EnableMapEditor = true;
+        EnableModelEditor = true;
+        EnableBehaviorEditor = true;
+        EnableCollisionEditor = true;
 
         ActionManager = new ActionManager();
     }
@@ -247,13 +261,13 @@ public class Project
         }
 
         // File Browser
-        if (FeatureFlags.IncludeFileBrowser)
+        if (EnableFileBrowser)
         {
             FileBrowser = new(0, this);
         }
 
         // Param Editor
-        if (FeatureFlags.IncludeParamEditor)
+        if (EnableParamEditor)
         {
             ParamData = new(this);
 
@@ -262,7 +276,7 @@ public class Project
         }
 
         // Map Editor
-        if (FeatureFlags.IncludeMapEditor)
+        if (EnableMapEditor)
         {
             MapData = new(this);
 
@@ -270,7 +284,7 @@ public class Project
         }
 
         // Model Editor
-        if (FeatureFlags.IncludeModelEditor)
+        if (EnableModelEditor)
         {
             ModelData = new(this);
 
@@ -278,7 +292,7 @@ public class Project
         }
 
         // Behavior Editor
-        if (FeatureFlags.IncludeBehaviorEditor)
+        if (EnableBehaviorEditor)
         {
             BehaviorData = new(this);
 
@@ -286,7 +300,7 @@ public class Project
         }
 
         // Collision Editor
-        if (FeatureFlags.IncludeCollisionEditor)
+        if (EnableCollisionEditor)
         {
             CollisionData = new(this);
 
@@ -295,6 +309,72 @@ public class Project
 
         IsInitializing = false;
         Initialized = true;
+    }
+
+    /// <summary>
+    /// Called if the project editor settings are changed
+    /// </summary>
+    public void InitializeEditors()
+    {
+        FileBrowser = null;
+        ParamData = null;
+        PrimaryParamEditor = null;
+        SecondaryParamEditor = null;
+        MapData = null;
+        MapEditor = null;
+        ModelData = null;
+        ModelEditor = null;
+        BehaviorData = null;
+        BehaviorEditor = null;
+        CollisionData = null;
+        CollisionEditor = null;
+
+        // File Browser
+        if (EnableFileBrowser)
+        {
+            FileBrowser = new(0, this);
+        }
+
+        // Param Editor
+        if (EnableParamEditor)
+        {
+            ParamData = new(this);
+
+            PrimaryParamEditor = new ParamEditor(0, this);
+            SecondaryParamEditor = new ParamEditor(1, this);
+        }
+
+        // Map Editor
+        if (EnableMapEditor)
+        {
+            MapData = new(this);
+
+            MapEditor = new MapEditor(0, this);
+        }
+
+        // Model Editor
+        if (EnableModelEditor)
+        {
+            ModelData = new(this);
+
+            ModelEditor = new ModelEditor(0, this);
+        }
+
+        // Behavior Editor
+        if (EnableBehaviorEditor)
+        {
+            BehaviorData = new(this);
+
+            BehaviorEditor = new BehaviorEditor(0, this);
+        }
+
+        // Collision Editor
+        if (EnableCollisionEditor)
+        {
+            CollisionData = new(this);
+
+            CollisionEditor = new CollisionEditor(0, this);
+        }
     }
 
     public void Draw(Command cmd)
@@ -318,23 +398,17 @@ public class Project
             Menubar();
 
             // File Browser
-            if (FeatureFlags.IncludeFileBrowser)
+            if (EnableFileBrowser && FileBrowser != null)
             {
-                if (CFG.Current.DisplayFileBrowser)
-                {
-                    FileBrowser.Draw();
-                }
+                FileBrowser.Draw();
             }
 
             // Param Editor
-            if (FeatureFlags.IncludeParamEditor)
+            if (EnableParamEditor && ParamData != null && PrimaryParamEditor != null)
             {
                 ParamData.Update();
 
-                if (CFG.Current.DisplayPrimaryParamEditor)
-                {
-                    PrimaryParamEditor.Draw();
-                }
+                PrimaryParamEditor.Draw();
 
                 if (CFG.Current.DisplaySecondaryParamEditor)
                 {
@@ -343,39 +417,27 @@ public class Project
             }
 
             // Map Editor
-            if (FeatureFlags.IncludeMapEditor)
+            if (EnableMapEditor && MapEditor != null)
             {
-                if (CFG.Current.DisplayMapEditor)
-                {
-                    MapEditor.Draw();
-                }
+                MapEditor.Draw();
             }
 
             // Model Editor
-            if (FeatureFlags.IncludeModelEditor)
+            if (EnableModelEditor && ModelEditor != null)
             {
-                if (CFG.Current.DisplayModelEditor)
-                {
-                    ModelEditor.Draw();
-                }
+                ModelEditor.Draw();
             }
 
             // Behavior Editor
-            if (FeatureFlags.IncludeBehaviorEditor)
+            if (EnableBehaviorEditor && BehaviorEditor != null)
             {
-                if (CFG.Current.DisplayBehaviorEditor)
-                {
-                    BehaviorEditor.Draw();
-                }
+                BehaviorEditor.Draw();
             }
 
             // Collision Editor
-            if (FeatureFlags.IncludeCollisionEditor)
+            if (EnableCollisionEditor && CollisionEditor != null)
             {
-                if (CFG.Current.DisplayCollisionEditor)
-                {
-                    CollisionEditor.Draw();
-                }
+                CollisionEditor.Draw();
             }
         }
 
@@ -393,36 +455,6 @@ public class Project
                     Process.Start("explorer.exe", ProjectPath);
                 }
                 UIHelper.Tooltip("Open the project folder for this project.");
-
-                ImGui.EndMenu();
-            }
-
-            // Technically not per project, but functionally belongs here
-            if (ImGui.BeginMenu("View"))
-            {
-                if (FeatureFlags.IncludeFileBrowser)
-                {
-                    if (ImGui.MenuItem("File Browser", CFG.Current.DisplayFileBrowser))
-                    {
-                        CFG.Current.DisplayFileBrowser = !CFG.Current.DisplayFileBrowser;
-                    }
-                    UIHelper.Tooltip("Toggle the visibility of the File Browser window.");
-                }
-
-                if (FeatureFlags.IncludeParamEditor)
-                {
-                    if (ImGui.MenuItem("Param Editor (Primary)", CFG.Current.DisplayPrimaryParamEditor))
-                    {
-                        CFG.Current.DisplayPrimaryParamEditor = !CFG.Current.DisplayPrimaryParamEditor;
-                    }
-                    UIHelper.Tooltip("Toggle the visibility of the Param Editor (Primary) window.");
-
-                    if (ImGui.MenuItem("Param Editor (Secondary)", CFG.Current.DisplaySecondaryParamEditor))
-                    {
-                        CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
-                    }
-                    UIHelper.Tooltip("Toggle the visibility of the Param Editor (Secondary) window.");
-                }
 
                 ImGui.EndMenu();
             }

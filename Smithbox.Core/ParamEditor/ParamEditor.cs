@@ -139,6 +139,17 @@ public class ParamEditor
                 ImGui.EndMenu();
             }
 
+            if (ImGui.BeginMenu("View"))
+            {
+                if (ImGui.MenuItem($"Secondary Param Editor"))
+                {
+                    CFG.Current.DisplaySecondaryParamEditor = !CFG.Current.DisplaySecondaryParamEditor;
+                }
+                UIHelper.ShowActiveStatus(CFG.Current.DisplaySecondaryParamEditor);
+
+                ImGui.EndMenu();
+            }
+
             if (ImGui.BeginMenu("Data"))
             {
                 if (Project.ParamData.Initialized)

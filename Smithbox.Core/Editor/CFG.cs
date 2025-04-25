@@ -82,44 +82,14 @@ public class CFG
     public bool DisplayProjectWindow = true;
 
     /// <summary>
-    /// If true, the File Browser window is displayed
-    /// </summary>
-    public bool DisplayFileBrowser = true;
-
-    /// <summary>
-    /// If true, the Primary Param Editor window is displayed
-    /// </summary>
-    public bool DisplayPrimaryParamEditor = true;
-
-    /// <summary>
-    /// If true, the Secondary Param Editor window is displayed
-    /// </summary>
-    public bool DisplaySecondaryParamEditor = true;
-
-    /// <summary>
-    /// If true, the Map Editor window is displayed
-    /// </summary>
-    public bool DisplayMapEditor = true;
-
-    /// <summary>
-    /// If true, the Model Editor window is displayed
-    /// </summary>
-    public bool DisplayModelEditor = true;
-
-    /// <summary>
-    /// If true, the Behavior Editor window is displayed
-    /// </summary>
-    public bool DisplayBehaviorEditor = true;
-
-    /// <summary>
-    /// If true, the Collision Editor window is displayed
-    /// </summary>
-    public bool DisplayCollisionEditor = true;
-
-    /// <summary>
     /// The display scaling to apply to the Interface
     /// </summary>
     public float InterfaceDisplayScale = 1.0f;
+
+    /// <summary>
+    /// If true, the Project window is displayed
+    /// </summary>
+    public bool DisplaySecondaryParamEditor = false;
 
     /// <summary>
     /// If true, the interface display scaling with account for DPI

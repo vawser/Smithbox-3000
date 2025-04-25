@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Dark Souls Remastered\\DS1R-Test",
   "DataPath": "F:\\SteamLibrary\\steamapps\\common\\DARK SOULS REMASTERED",
   "ProjectType": 3,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

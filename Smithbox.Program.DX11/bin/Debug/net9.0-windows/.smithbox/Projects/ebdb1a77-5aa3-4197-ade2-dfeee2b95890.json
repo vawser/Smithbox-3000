@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Armored Core VI\\Projects\\AC6-Test\\Mod",
   "DataPath": "F:\\SteamLibrary\\steamapps\\common\\ARMORED CORE VI FIRES OF RUBICON\\Game",
   "ProjectType": 9,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

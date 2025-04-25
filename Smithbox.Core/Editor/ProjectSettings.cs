@@ -24,13 +24,12 @@ public static class ProjectSettings
     public static ProjectType ProjectType = ProjectType.None;
     public static bool AutoSelect = false;
 
-    public static void Reset()
-    {
-        ProjectName = "";
-        ProjectPath = "";
-        DataPath = "";
-        ProjectType = ProjectType.None;
-    }
+    public static bool EnableFileBrowser = true;
+    public static bool EnableParamEditor = true;
+    public static bool EnableMapEditor = true;
+    public static bool EnableModelEditor = true;
+    public static bool EnableBehaviorEditor = true;
+    public static bool EnableCollisionEditor = true;
 
     public static void Show(Smithbox baseEditor, Project curProject)
     {
@@ -42,6 +41,13 @@ public static class ProjectSettings
         DataPath = curProject.DataPath;
         ProjectType = curProject.ProjectType;
         AutoSelect = curProject.AutoSelect;
+
+        EnableFileBrowser = curProject.EnableFileBrowser;
+        EnableParamEditor = curProject.EnableParamEditor;
+        EnableMapEditor = curProject.EnableMapEditor;
+        EnableModelEditor = curProject.EnableModelEditor;
+        EnableBehaviorEditor = curProject.EnableBehaviorEditor;
+        EnableCollisionEditor = curProject.EnableCollisionEditor;
 
         Display = true;
     }
@@ -55,11 +61,11 @@ public static class ProjectSettings
 
         ImGui.SetNextWindowPos(center, ImGuiCond.Appearing, new Vector2(0.5f, 0.5f));
 
-        ImGui.SetNextWindowSize(new Vector2(640, 240), ImGuiCond.Always);
+        ImGui.SetNextWindowSize(new Vector2(670, 356), ImGuiCond.Always);
 
         if (Display)
         {
-            if (ImGui.Begin("Project Settings##projectSettingsWindow", ref Display, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove))
+            if (ImGui.Begin("Project Settings##projectSettingsWindow", ref Display, ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoMove))
             {
                 if (ImGui.BeginTable($"projectSettingsTable", 3, ImGuiTableFlags.SizingFixedFit))
                 {
@@ -138,6 +144,102 @@ public static class ProjectSettings
 
                     ImGui.TableSetColumnIndex(2);
 
+                    // File Browser
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable File Browser");
+                    UIHelper.Tooltip("If true, the File Browser will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableFileBrowser", ref EnableFileBrowser);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Param Editor
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable Param Editor");
+                    UIHelper.Tooltip("If true, the Param Editor will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableParamEditor", ref EnableParamEditor);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Map Editor
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable Map Editor");
+                    UIHelper.Tooltip("If true, the Map Editor will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableMapEditor", ref EnableMapEditor);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Model Editor
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable Model Editor");
+                    UIHelper.Tooltip("If true, the Model Editor will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableModelEditor", ref EnableModelEditor);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Behavior Editor
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable Behavior Editor");
+                    UIHelper.Tooltip("If true, the Behavior Editor will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableBehaviorEditor", ref EnableBehaviorEditor);
+
+                    ImGui.TableSetColumnIndex(2);
+
+                    // Collision Editor
+                    ImGui.TableNextRow();
+                    ImGui.TableSetColumnIndex(0);
+
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("Enable Collision Editor");
+                    UIHelper.Tooltip("If true, the Collision Editor will be initialized for this project.");
+
+                    ImGui.TableSetColumnIndex(1);
+
+                    ImGui.SetNextItemWidth(inputWidth);
+
+                    ImGui.Checkbox("##projectEnableCollisionEditor", ref EnableCollisionEditor);
+
+                    ImGui.TableSetColumnIndex(2);
+
                     ImGui.EndTable();
 
                     if (!AllowUpdate())
@@ -164,7 +266,16 @@ public static class ProjectSettings
                             TargetProject.ProjectType = ProjectType;
                             TargetProject.AutoSelect = AutoSelect;
 
+                            TargetProject.EnableFileBrowser = EnableFileBrowser;
+                            TargetProject.EnableParamEditor = EnableParamEditor;
+                            TargetProject.EnableMapEditor = EnableMapEditor;
+                            TargetProject.EnableModelEditor = EnableModelEditor;
+                            TargetProject.EnableBehaviorEditor = EnableBehaviorEditor;
+                            TargetProject.EnableCollisionEditor = EnableCollisionEditor;
+
                             TargetProject.Save();
+
+                            TargetProject.InitializeEditors();
                         }
                         UIHelper.Tooltip("Updates the project settings.");
                     }

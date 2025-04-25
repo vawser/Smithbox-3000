@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Sekiro\\Projects\\Sekiro-Test",
   "DataPath": "F:\\SteamLibrary\\steamapps\\common\\Sekiro",
   "ProjectType": 7,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }

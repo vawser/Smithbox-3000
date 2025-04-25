@@ -4,7 +4,13 @@
   "ProjectPath": "G:\\Modding\\Demon\u0027s Souls\\DES-Test",
   "DataPath": "G:\\Game Data Repository\\Demon\u0027s Souls\\PS3_GAME\\USRDIR",
   "ProjectType": 1,
-  "ImportedParamRowNames": false,
+  "ImportedParamRowNames": true,
   "EnableParamRowStrip": false,
-  "AutoSelect": false
+  "AutoSelect": false,
+  "EnableFileBrowser": true,
+  "EnableParamEditor": true,
+  "EnableMapEditor": true,
+  "EnableModelEditor": true,
+  "EnableBehaviorEditor": true,
+  "EnableCollisionEditor": true
 }
