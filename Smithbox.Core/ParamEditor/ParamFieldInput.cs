@@ -1,21 +1,12 @@
 ﻿using Andre.Formats;
 using Hexa.NET.ImGui;
+using Smithbox.Core.Actions;
 using Smithbox.Core.Editor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Andre.Formats.Param;
-using Hexa.NET.Utilities;
-using Hexa.NET.Utilities.Text;
+using Smithbox.Core.Interface;
 using Smithbox.Core.Utils;
 using System.Numerics;
-using Smithbox.Core.Actions;
-using static HKLib.hk2018.hkaiUserEdgeUtils;
-using System.Reflection;
+using static Andre.Formats.Param;
 using static Smithbox.Core.Actions.ParamRowChange;
-using Smithbox.Core.Interface;
 
 namespace Smithbox.Core.ParamEditorNS;
 

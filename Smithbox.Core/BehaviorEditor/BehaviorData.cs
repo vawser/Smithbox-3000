@@ -1,20 +1,8 @@
-﻿using Andre.IO.VFS;
-using HKLib.hk2018;
-using Microsoft.Extensions.Logging;
+﻿using HKLib.hk2018;
 using Smithbox.Core.Editor;
-using Smithbox.Core.FileBrowserNS.Entries;
-using Smithbox.Core.ParamEditorNS;
 using Smithbox.Core.Resources;
-using Smithbox.Core.Utils;
-using SoulsFormats;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Smithbox.Core.BehaviorEditorNS;
 
