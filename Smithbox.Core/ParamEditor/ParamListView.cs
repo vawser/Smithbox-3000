@@ -21,6 +21,8 @@ public class ParamListView
 
     public bool DetectShortcuts = false;
 
+    public Dictionary<int, bool> ParamVisibility;
+
     public ParamListView(Project curProject, ParamEditor editor)
     {
         ID = editor.ID;
@@ -41,6 +43,17 @@ public class ParamListView
         for (int i = 0; i < Project.ParamData.PrimaryBank.Params.Count; i++)
         {
             var entry = Project.ParamData.PrimaryBank.Params.ElementAt(i);
+
+            if (ParamVisibility != null)
+            {
+                if (ParamVisibility.ContainsKey(i))
+                {
+                    if (ParamVisibility[i] == false)
+                    {
+                        continue;
+                    }
+                }
+            }
 
             var isSelected = Editor.Selection.IsParamSelected(i, entry.Key, entry.Value);
 
@@ -107,7 +120,7 @@ public class ParamListView
 
         if (ImGui.Button($"{Icons.Search}"))
         {
-            // TODO: update param visibility
+            ParamVisibility = Editor.SearchEngine.ProcessParamVisibility();
         }
         UIHelper.Tooltip("Filter the param list.");
 
@@ -117,7 +130,7 @@ public class ParamListView
         if (ImGui.Button($"{Icons.Times}"))
         {
             Editor.SearchEngine.ParamFilterInput = "";
-            // TODO: update param visibility
+            ParamVisibility = null;
         }
         UIHelper.Tooltip("Clear the param list filter.");
 
