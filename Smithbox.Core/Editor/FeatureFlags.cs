@@ -13,5 +13,6 @@ public class FeatureFlags
     public static bool EnableMapEditor = true;
     public static bool EnableModelEditor = true;
     public static bool EnableBehaviorEditor = true;
-    public static bool EnableCollisionEditor = true;
+
+    public static bool EnableCollisionEditor = false; 
 }

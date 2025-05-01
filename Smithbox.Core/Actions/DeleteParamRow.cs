@@ -1,5 +1,6 @@
 ﻿using Andre.Formats;
 using Smithbox.Core.Editor;
+using Smithbox.Core.ParamEditorNS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,16 @@ namespace Smithbox.Core.Actions;
 
 public class DeleteParamRow : AtomicAction
 {
+    private readonly ParamEditor Editor;
+
     private readonly List<Param.Row> Deletables = new();
     private readonly Param Param;
     private readonly List<int> RemoveIndices = new();
     private readonly bool SetSelection = false;
 
-    public DeleteParamRow(Param param, List<Param.Row> rows)
+    public DeleteParamRow(ParamEditor editor, Param param, List<Param.Row> rows)
     {
+        Editor = editor;
         Param = param;
         Deletables.AddRange(rows);
     }
@@ -29,9 +33,7 @@ public class DeleteParamRow : AtomicAction
             Param.RemoveRowAt(RemoveIndices.Last());
         }
 
-        if (SetSelection)
-        {
-        }
+        Editor.Selection._selectedRows = new();
 
         return ActionEvent.NoEvent;
     }
@@ -43,11 +45,9 @@ public class DeleteParamRow : AtomicAction
             Param.InsertRow(RemoveIndices[i], Deletables[i]);
         }
 
-        if (SetSelection)
-        {
-        }
-
         //ParamBank.RefreshParamDifferenceCacheTask();
+
+        Editor.Selection._selectedRows = new();
 
         return ActionEvent.NoEvent;
     }

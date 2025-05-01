@@ -184,6 +184,11 @@ public class CFG
     /// </summary>
     public bool DisplayPaddingFields = true;
 
+    /// <summary>
+    /// The default offset to apply to duplicated rows
+    /// </summary>
+    public int ParamRowDuplicateOffset = 1;
+
     //----------------------------------
     // Model Editor
     //----------------------------------

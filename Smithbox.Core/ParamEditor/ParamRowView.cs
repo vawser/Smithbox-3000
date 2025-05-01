@@ -72,6 +72,31 @@ public class ParamRowView
                     {
                         Editor.Selection.SelectRow(i, curRow, CurrentRowSelectionMode);
                     }
+
+                    // Context Menu - Only for first element in selection
+                    if (isSelected)
+                    {
+                        if (ImGui.BeginPopupContextItem($"Options##ParamRowContext{i}"))
+                        {
+                            if (ImGui.Selectable($"Duplicate##duplicateAction{i}"))
+                            {
+                                Editor.ParamActions.DuplicateRowMenu();
+
+                                ImGui.CloseCurrentPopup();
+                            }
+                            UIHelper.Tooltip("Duplicate the current row selection.");
+
+                            if (ImGui.Selectable($"Delete##deleteAction{i}"))
+                            {
+                                Editor.ParamActions.DeleteRow();
+
+                                ImGui.CloseCurrentPopup();
+                            }
+                            UIHelper.Tooltip("Delete the current row selection.");
+
+                            ImGui.EndPopup();
+                        }
+                    }
                 }
             }
 
@@ -129,13 +154,13 @@ public class ParamRowView
             // Duplicate
             if (DetectShortcuts && Keyboard.KeyPress(Key.D) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
             {
-                // Duplicate selection
+                Editor.ParamActions.DuplicateRow(CFG.Current.ParamRowDuplicateOffset);
             }
 
             // Delete
             if (DetectShortcuts && Keyboard.KeyPress(Key.Delete) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
             {
-                // Delete selection
+                Editor.ParamActions.DeleteRow();
             }
         }
     }

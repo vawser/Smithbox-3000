@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Smithbox.Program.DX11")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+580180cfa6ff3cf149cb0049925151166a2adb33")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbd8af69b24ebe838cdb35234f4ee5ea55b5a69c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Smithbox.Program.DX11")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Smithbox.Program.DX11")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,7 +1,9 @@
 ﻿using Andre.Formats;
 using Smithbox.Core.Editor;
+using Smithbox.Core.ParamEditorNS;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,143 +12,90 @@ namespace Smithbox.Core.Actions;
 
 public class AddParamRow : AtomicAction
 {
-    private readonly bool appOnly;
-    private readonly List<Param.Row> Clonables = new();
-    private readonly List<Param.Row> Clones = new();
-    private readonly int InsertIndex;
-    private readonly Param Param;
-    private readonly List<Param.Row> Removed = new();
-    private readonly List<int> RemovedIndex = new();
-    private readonly bool replParams;
-    private string ParamString;
-    private int IdOffset;
-    private bool IsDuplicate;
+    private readonly ParamEditor Editor;
 
-    public AddParamRow(Param param, string pstring, List<Param.Row> rows, bool appendOnly, bool replaceParams,
-        int index = -1, int idOffset = 1, bool isDuplicate = false)
+    private readonly List<RowSelect> Clonables = new();
+
+    private readonly Param Param;
+    private readonly List<Param.Row> Clones = new();
+
+    private readonly int IdOffset;
+    private readonly int InsertIndex;
+
+    private readonly bool IsAppend;
+    private readonly bool ApplyInnerEdits;
+
+    public AddParamRow(ParamEditor editor, Param param, List<RowSelect> rows, int idOffset = 1, int index = -1, bool isAppend = false,  bool applyInnerEdits = false)
     {
+        Editor = editor;
         Param = param;
         Clonables.AddRange(rows);
-        ParamString = pstring;
-        appOnly = appendOnly;
-        replParams = replaceParams;
+
+        IsAppend = isAppend;
         InsertIndex = index;
         IdOffset = idOffset;
-        IsDuplicate = isDuplicate;
+
+        ApplyInnerEdits = applyInnerEdits;
     }
 
     public override ActionEvent Execute()
     {
-        foreach (Param.Row row in Clonables)
+        var newSelection = new List<RowSelect>();
+
+        foreach (var entry in Clonables)
         {
-            var newrow = new Param.Row(row);
+            var curIndex = entry.Index;
+            var newRow = new Param.Row(entry.Row);
 
-            // Only apply for Duplicate action
-            if (IsDuplicate)
-            {
-                /*
-                foreach (var cell in newrow.Cells)
-                {
-                    var meta = FieldMetaData.Get(cell.Def);
-                    var adjust = false;
-
-                    if (meta.DeepCopyTargetType != null)
-                    {
-                        // Attack
-                        if (CFG.Current.Param_Toolbar_Duplicate_AffectAttackField)
-                        {
-                            adjust = true;
-                        }
-
-                        // Bullet
-                        if (CFG.Current.Param_Toolbar_Duplicate_AffectBulletField)
-                        {
-                            adjust = true;
-                        }
-
-                        // Behavior
-                        if (CFG.Current.Param_Toolbar_Duplicate_AffectBehaviorField)
-                        {
-                            adjust = true;
-                        }
-
-                        // SpEffect
-                        if (CFG.Current.Param_Toolbar_Duplicate_AffectSpEffectField)
-                        {
-                            adjust = true;
-                        }
-
-                        // Origin
-                        if (CFG.Current.Param_Toolbar_Duplicate_AffectSourceField)
-                        {
-                            adjust = true;
-                        }
-
-                        if (adjust)
-                        {
-                            // Assuming ints here
-                            int id = (int)cell.Value;
-
-                            // Ignore if value is -1
-                            if (id != -1)
-                            {
-                                id = id + IdOffset;
-
-                                cell.Value = id;
-                            }
-                        }
-                    }
-                }
-                */
-            }
+            // Apply offset
+            newRow.ID = newRow.ID + IdOffset;
 
             if (InsertIndex > -1)
             {
-                newrow.Name = row.Name != null ? row.Name + "_1" : "";
-                Param.InsertRow(InsertIndex, newrow);
+                newRow.Name = entry.Row.Name != null ? entry.Row.Name + "_1" : "";
+                Param.InsertRow(InsertIndex, newRow);
+
+                newSelection.Add(new RowSelect(InsertIndex, newRow));
             }
             else
             {
-                if (Param[row.ID] != null)
+                // If row with this ID already exists, we need to insert it by index after
+                if (Param[newRow.ID] != null)
                 {
-                    if (replParams)
-                    {
-                        Param.Row existing = Param[row.ID];
-                        RemovedIndex.Add(Param.IndexOfRow(existing));
-                        Removed.Add(existing);
-                        Param.RemoveRow(existing);
-                    }
-                    else
-                    {
-                        var rowIdOffset = IdOffset;
-                        if (rowIdOffset <= 0)
-                            rowIdOffset = 1;
+                    int index = -1;
+                    Param.Row row = null;
 
-                        newrow.Name = row.Name != null ? row.Name + "_1" : "";
-                        var newID = row.ID + rowIdOffset;
-                        while (Param[newID] != null)
+                    for (var i = 0; i < Param.Rows.Count; i++)
+                    {
+                        if (Param.Rows[i].ID == newRow.ID)
                         {
-                            newID += rowIdOffset;
+                            index = i;
+                            row = Param.Rows[i];
                         }
+                    }
 
-                        newrow.ID = newID;
-                        Param.InsertRow(Param.IndexOfRow(Param[newID - rowIdOffset]) + 1, newrow);
+                    if(row != null && index != -1)
+                    {
+                        Param.InsertRow(index + 1, newRow);
+                        newSelection.Add(new RowSelect(index + 1, newRow));
                     }
                 }
 
-                if (Param[row.ID] == null)
+                // If row doesn't exist 
+                if (Param[newRow.ID] == null)
                 {
-                    newrow.Name = row.Name != null ? row.Name : "";
-                    if (appOnly)
+                    // Simply appned it to the current list
+                    if (IsAppend)
                     {
-                        Param.AddRow(newrow);
+                        Param.AddRow(newRow);
                     }
+                    // Or insert it at its natural index within the current list (based on ID) 
                     else
                     {
                         var index = 0;
                         foreach (Param.Row r in Param.Rows)
                         {
-                            if (r.ID > newrow.ID)
+                            if (r.ID > newRow.ID)
                             {
                                 break;
                             }
@@ -154,15 +103,19 @@ public class AddParamRow : AtomicAction
                             index++;
                         }
 
-                        Param.InsertRow(index, newrow);
+                        Param.InsertRow(index, newRow);
+                        newSelection.Add(new RowSelect(index, newRow));
                     }
                 }
             }
 
-            Clones.Add(newrow);
+            Clones.Add(newRow);
         }
 
         //ParamBank.RefreshParamDifferenceCacheTask();
+
+        // Select the new rows
+        Editor.Selection._selectedRows = newSelection;
 
         return ActionEvent.NoEvent;
     }
@@ -179,14 +132,10 @@ public class AddParamRow : AtomicAction
             Param.RemoveRow(Clones[i]);
         }
 
-        for (var i = Removed.Count() - 1; i >= 0; i--)
-        {
-            Param.InsertRow(RemovedIndex[i], Removed[i]);
-        }
-
         Clones.Clear();
-        RemovedIndex.Clear();
-        Removed.Clear();
+
+        Editor.Selection._selectedRows.Clear();
+
         return ActionEvent.NoEvent;
     }
 }

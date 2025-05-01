@@ -136,6 +136,7 @@ public class ParamEditor
                         ActionManager.RedoAction();
                     }
                 }
+
                 ImGui.EndMenu();
             }
 

@@ -126,6 +126,9 @@ public class ParamSelection
         // Range Append
         else if (selectMode is SelectMode.SelectRangeAppend)
         {
+            if (_selectedRows.Count <= 0)
+                return;
+
             var lastRow = _selectedRows.Last();
             var lastRowId = lastRow.Row.ID;
             var curRowID = row.ID;
