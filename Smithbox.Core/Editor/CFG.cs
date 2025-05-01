@@ -185,6 +185,11 @@ public class CFG
     public bool DisplayPaddingFields = true;
 
     /// <summary>
+    /// If true, the row indices are displayed
+    /// </summary>
+    public bool DisplayRowIndices = true;
+
+    /// <summary>
     /// The default offset to apply to duplicated rows
     /// </summary>
     public int ParamRowDuplicateOffset = 1;

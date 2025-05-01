@@ -854,4 +854,96 @@ public class ParamSearchEngine
 
         return false;
     }
+
+    /// <summary>
+    /// Param Row search filtering
+    /// </summary>
+    /// <param name="curParam"></param>
+    /// <returns></returns>
+    public Dictionary<int, bool> ProcessRowVisibility(Param curParam)
+    {
+        StoredParam = curParam;
+
+        var filterResult = new Dictionary<int, bool>();
+
+        for (int i = 0; i < curParam.Rows.Count(); i++)
+        {
+            var visible = true;
+
+            var curRow = curParam.Rows.ElementAt(i);
+
+            visible = GetRowTruth(curRow);
+
+            filterResult.Add(i, visible);
+        }
+
+        return filterResult;
+    }
+
+    public bool GetRowTruth(Row curRow)
+    {
+        // Default is basic string loose match for value
+        var input = RowFilterInput.Trim();
+
+        Regex reg = new Regex(input, RegexOptions.IgnoreCase);
+
+        if (RowSearch_IsRegexLenient)
+        {
+            reg = new Regex($@"^{input}$");
+        }
+
+        if (reg.IsMatch($"{curRow.ID}"))
+        {
+            return true;
+        }
+
+        if (reg.IsMatch($"{curRow.Name}"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Param search filtering
+    /// </summary>
+    /// <returns></returns>
+    public Dictionary<int, bool> ProcessParamVisibility()
+    {
+        var filterResult = new Dictionary<int, bool>();
+
+        for (int i = 0; i < Project.ParamData.PrimaryBank.Params.Count(); i++)
+        {
+            var visible = true;
+
+            var curParam = Project.ParamData.PrimaryBank.Params.ElementAt(i);
+
+            visible = GetParamTruth(curParam.Key, curParam.Value);
+
+            filterResult.Add(i, visible);
+        }
+
+        return filterResult;
+    }
+
+    public bool GetParamTruth(string name, Param curParam)
+    {
+        // Default is basic string loose match for value
+        var input = ParamFilterInput.Trim();
+
+        Regex reg = new Regex(input, RegexOptions.IgnoreCase);
+
+        if (ParamSearch_IsRegexLenient)
+        {
+            reg = new Regex($@"^{input}$");
+        }
+
+        if (reg.IsMatch($"{name}"))
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -92,6 +92,7 @@ public class ParamSelection
         _selectedFieldIndex = -1;
         _selectedField = null;
 
+        Editor.RowView.UpdateRowVisibility(_selectedParam);
         Editor.FieldView.InvalidateColumns();
     }
 

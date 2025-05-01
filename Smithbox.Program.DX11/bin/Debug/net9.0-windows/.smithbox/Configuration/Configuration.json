@@ -31,6 +31,8 @@
   "ParamFieldInputWidth": 250,
   "DisplayParamImageView": true,
   "DisplayPaddingFields": true,
+  "DisplayRowIndices": true,
+  "ParamRowDuplicateOffset": 1,
   "BehaviorFieldInputWidth": 250,
   "CollisionFieldInputWidth": 250
 }

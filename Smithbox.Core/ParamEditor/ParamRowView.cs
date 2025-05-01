@@ -1,4 +1,5 @@
-﻿using Hexa.NET.ImGui;
+﻿using Andre.Formats;
+using Hexa.NET.ImGui;
 using Smithbox.Core.Editor;
 using Smithbox.Core.Interface;
 using Smithbox.Core.Interface.Input;
@@ -20,6 +21,8 @@ public class ParamRowView
     private int ID;
 
     public bool DetectShortcuts = false;
+
+    public Dictionary<int, bool> RowVisibility;
 
     public ParamRowView(Project curProject, ParamEditor editor)
     {
@@ -46,16 +49,45 @@ public class ParamRowView
 
             var curParam = Project.ParamData.PrimaryBank.Params[Editor.Selection._selectedParamName];
 
+            // Pre-filter the rows since clipper doens't play nice with in-place filtering
+            var sourceRows = new List<Param.Row>();
+
+            if (RowVisibility != null)
+            {
+                for (int i = 0; i < curParam.Rows.Count; i++)
+                {
+                    var row = curParam.Rows[i];
+
+                    if (RowVisibility.ContainsKey(i))
+                    {
+                        if (RowVisibility[i] == true)
+                        {
+                            sourceRows.Add(row);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                sourceRows = curParam.Rows.ToList();
+            }
+
             ImGuiListClipper clipper = new ImGuiListClipper();
-            clipper.Begin(curParam.Rows.Count);
+            clipper.Begin(sourceRows.Count);
 
             while (clipper.Step())
             {
                 for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
                 {
-                    var curRow = curParam.Rows[i];
+                    var curRow = sourceRows[i];
 
                     var rowName = $"{i}:{curRow.ID}";
+
+                    if(!CFG.Current.DisplayRowIndices)
+                    {
+                        rowName = $"{curRow.ID}";
+                    }
+
                     if (curRow.Name != null)
                     {
                         rowName += $" {curRow.Name}";
@@ -125,7 +157,8 @@ public class ParamRowView
             if (Keyboard.KeyPress(Key.G) && ImGui.IsKeyDown(ImGuiKey.LeftCtrl))
             {
                 Editor.SearchEngine.RowFilterInput = "";
-                // TODO: update row visibility
+                RowVisibility = null;
+                UpdateRowVisibility(Editor.Selection.GetSelectedParam());
             }
         }
     }
@@ -194,7 +227,7 @@ public class ParamRowView
 
         if (ImGui.Button($"{Icons.Search}"))
         {
-            // TODO: update row visibility
+            RowVisibility = Editor.SearchEngine.ProcessRowVisibility(Editor.Selection.GetSelectedParam());
         }
         UIHelper.Tooltip("Filter the row list.");
 
@@ -204,7 +237,7 @@ public class ParamRowView
         if (ImGui.Button($"{Icons.Times}"))
         {
             Editor.SearchEngine.RowFilterInput = "";
-            // TODO: update row visibility
+            RowVisibility = null;
         }
         UIHelper.Tooltip("Clear the row list filter.");
 
@@ -221,5 +254,26 @@ public class ParamRowView
             regexMode = "Lenient";
 
         UIHelper.Tooltip($"Toggle whether regular expressions are run lenient or strict.\nCurrent Mode: {regexMode}");
+
+        // Row Indices
+        ImGui.SameLine();
+
+        if (ImGui.Button($"{Icons.Bars}"))
+        {
+            CFG.Current.DisplayRowIndices = !CFG.Current.DisplayRowIndices;
+        }
+
+        UIHelper.Tooltip($"Toggle whether row indices are displayed.");
+    }
+
+    /// <summary>
+    /// Updates the field visibility dictionary on row change
+    /// </summary>
+    /// <param name="newRow"></param>
+    public void UpdateRowVisibility(Param curParam)
+    {
+        var search = Editor.SearchEngine;
+
+        RowVisibility = search.ProcessRowVisibility(curParam);
     }
 }

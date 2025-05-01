@@ -1,7 +1,7 @@
 #--------------------------------------
 # TODO
 #--------------------------------------
-1. Param Row manipulations: Add, Remove, Visual Re-order, Actual Re-order - Needs to support multi-select
+1. Param Row manipulations: Visual Re-order, Actual Re-order - Needs to support multi-select
 2. Param meta elements: Param Enum, etc.
 4. Data Import/Export actions (use JSON instead of CSV, perhaps gate CSV tools behind setting)
 5. Row and Param filters
