@@ -9,7 +9,7 @@
       "Hexa.NET.ImGui/1.0.0": {
         "dependencies": {
           "HexaGen.Runtime": "1.1.18",
-          "Microsoft.NET.ILLink.Tasks": "9.0.4"
+          "Microsoft.NET.ILLink.Tasks": "9.0.7"
         },
         "runtime": {
           "Hexa.NET.ImGui.dll": {}
@@ -23,7 +23,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {}
+      "Microsoft.NET.ILLink.Tasks/9.0.7": {}
     }
   },
   "libraries": {
@@ -39,12 +39,12 @@
       "path": "hexagen.runtime/1.1.18",
       "hashPath": "hexagen.runtime.1.1.18.nupkg.sha512"
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.4": {
+    "Microsoft.NET.ILLink.Tasks/9.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
-      "path": "microsoft.net.illink.tasks/9.0.4",
-      "hashPath": "microsoft.net.illink.tasks.9.0.4.nupkg.sha512"
+      "sha512": "sha512-SZ1brSGoLnhLbE8QUZrtN6YwzN2gDT1wbx9qDBEfFFJcstiDTjJ6ygNuTPBV/K7SjGfx2YNbcJi5+ygbPOZpDg==",
+      "path": "microsoft.net.illink.tasks/9.0.7",
+      "hashPath": "microsoft.net.illink.tasks.9.0.7.nupkg.sha512"
     }
   }
 }

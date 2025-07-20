@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Andre.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586057a01e01fb3a3547f8a590f192439b128802")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07f1f3de61519d2e672fe02f1dd2be7ac1c6c861")]
 [assembly: System.Reflection.AssemblyProductAttribute("Andre.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Andre.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
