@@ -33,6 +33,7 @@ public class ParamEditor
     public ParamFieldDecorator FieldDecorator;
     public ParamFieldInput FieldInput;
     public ParamSearchEngine SearchEngine;
+    public ParamReloader ParamReloader;
 
     public bool DetectShortcuts = false;
 
@@ -54,6 +55,8 @@ public class ParamEditor
         RowView = new(Project, this);
         FieldView = new(Project, this);
         FieldImageView = new(Project, this);
+
+        ParamReloader = new(Project, this);
     }
 
     public void Draw()
@@ -177,6 +180,21 @@ public class ParamEditor
                 ImGui.EndMenu();
             }
 
+            if (ImGui.BeginMenu("Memory"))
+            {
+                if (ImGui.MenuItem($"Reload Selected Param"))
+                {
+                    ParamReloader.ReloadSelectedParam();
+                }
+
+                if (ImGui.MenuItem($"Reload All Params"))
+                {
+                    ParamReloader.ReloadAllParams();
+                }
+
+                ImGui.EndMenu();
+            }
+
             ParamUpgrader.ParamUpgradeWarning(Project);
 
             ImGui.EndMenuBar();
@@ -204,6 +222,16 @@ public class ParamEditor
             if (Keyboard.KeyPress(Key.R) && Keyboard.IsDown(Key.LCtrl))
             {
                 ActionManager.RedoAction();
+            }
+
+            if (Keyboard.KeyPress(Key.F5))
+            {
+                ParamReloader.ReloadSelectedParam();
+            }
+
+            if (Keyboard.KeyPress(Key.F5) && Keyboard.IsDown(Key.LCtrl))
+            {
+                ParamReloader.ReloadAllParams();
             }
         }
     }

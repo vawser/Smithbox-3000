@@ -1,16 +1,17 @@
 #--------------------------------------
 # TODO
 #--------------------------------------
-1. Param Row manipulations: Visual Re-order, Actual Re-order - Needs to support multi-select
+1. Param Row manipulations: Re-order - Needs to support multi-select
 2. Param meta elements: Param Enum, etc.
 4. Data Import/Export actions (use JSON instead of CSV, perhaps gate CSV tools behind setting)
-5. Row and Param filters
+5. Row and Param advanced filters
 6. Hot reload support
 7. All the tool window stuff for the Param Editor
 8. Texture Load support
 9. Field selection context actions
 10. Row selection context actions
 11. Param selection context actions
+12. Drag and drop pin zone for Param and Row: user can drag param/row into top zone, creates new pinned section. Ideally, user can drag them out of top zone to clear.
 
 #--------------------------------------
 # WILL NOT ADD

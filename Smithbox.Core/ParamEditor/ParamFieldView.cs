@@ -541,7 +541,6 @@ public class ParamFieldView
             CFG.Current.DisplayAuxColumns = !CFG.Current.DisplayAuxColumns;
         }
 
-
         var auxColumnMode = "Hidden";
         if (CFG.Current.DisplayAuxColumns)
             auxColumnMode = "Visible";

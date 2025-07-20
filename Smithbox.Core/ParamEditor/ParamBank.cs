@@ -1571,8 +1571,6 @@ public class ParamBank
         VfsUtils.WriteWithBackup(DataParent.Project, fs, toFs, @"param\gameparam\gameparam.parambnd.dcx", paramBnd);
 
         return successfulSave;
-
-        return successfulSave;
     }
 
     /// <summary>
